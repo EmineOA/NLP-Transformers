@@ -1,0 +1,53 @@
+**Récapitulatif et clarification des étapes du mini-projet LLM**
+
+**1. Définir l'agent**
+• **Objectif** : Cadrer précisément la mission de l'agent pour éviter qu'il s'éparpille.
+• **Ce qu'il faut faire** : Choisir un rôle précis (ex. assistant de révision, tuteur Python, guide touristique). Définir qui l'utilise, ce qu'il traite et surtout ce qu'il doit refuser ou rediriger.
+• **À fournir** : La description du périmètre et 5 exemples concrets de dialogues types.
+
+**2. Observer le modèle**
+• **Objectif** : Décortiquer la mécanique interne d'un petit LLM causal pré-entraîné (ex. Qwen2.5-0.5B-Instruct, SmolLM, TinyLlama).
+• **Ce qu'il faut faire** :
+  1. Charger le tokenizer et le modèle avec `transformers`.
+  2. Inspecter les token IDs sur une courte phrase.
+  3. Récupérer les logits et expliquer leur forme tensorielle `[batch, sequence_length, vocab_size]`.
+  4. Appliquer un softmax sur le dernier token pour visualiser les probabilités des mots suivants.
+  5. Tester et commenter les stratégies de décodage : `argmax`, `temperature`, `top-k` et `top-p`.
+  6. Relier le tout aux notions de cours (embeddings, attention causale, unembedding).
+
+**3. Construire une baseline conversationnelle**
+• **Objectif** : Obtenir un premier agent fonctionnel uniquement via le prompt, sans entraînement.
+• **Ce qu'il faut faire** :
+  - Structurer les échanges avec le template officiel (`apply_chat_template`).
+  - Définir un message système clair avec le rôle et les limites.
+  - Gérer une mémoire conversationnelle bornée (fenêtre glissante des k derniers tours).
+  - Comparer deux formulations de prompts ou une version zero-shot vs few-shot.
+  - Garder la meilleure configuration comme référence.
+
+**4. Préparer les données**
+• **Objectif** : Créer le corpus pour le fine-tuning.
+• **Ce qu'il faut faire** :
+  - Rassembler 200 à 1 000 exemples courts et représentatifs (style, format, refus).
+  - Découper en trois splits étanches : train, validation et test.
+  - Vérifier manuellement la qualité et l'absence de données personnelles.
+
+**5. Adapter le modèle**
+• **Objectif** : Spécialiser le Transformer avec un entraînement léger par adaptateurs.
+• **Ce qu'il faut faire** :
+  - Utiliser LoRA ou QLoRA via `peft` (poids de base gelés).
+  - Noter les hyperparamètres : modèle, quantification (4-bit), rang r, lora_alpha, learning rate, batch size, époques, max length.
+  - Tracer les courbes de loss (train et validation).
+  - Sauvegarder le meilleur checkpoint selon la validation pour éviter l'overfitting.
+
+**6. Évaluer avant et après adaptation**
+• **Objectif** : Mesurer le gain réel apporté par LoRA par rapport à la baseline.
+• **Ce qu'il faut faire** :
+  - Tester au moins 20 requêtes inédites (issues du split de test) sur la baseline et le modèle adapté.
+  - Noter selon une grille claire : pertinence, respect du rôle/format, mémoire du contexte, gestion du hors-sujet, hallucinations.
+  - Présenter les résultats dans un tableau comparatif et analyser au moins 5 réussites ou échecs.
+
+**7. Créer l'interface**
+• **Objectif** : Rendre l'agent testable de façon interactive dans le notebook.
+• **Ce qu'il faut faire** :
+  - Monter une interface simple avec `gradio`.
+  - Intégrer un historique de discussion (`gr.Chatbot`), un champ de saisie (`gr.Textbox`), un bouton de réinitialisation et un court texte précisant le rôle et les limites de l'agent.
