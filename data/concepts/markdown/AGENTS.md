@@ -35,8 +35,10 @@ difficulte: 45
 | `Raisonnement attendu` | Les points que la réponse doit contenir | `points_cles` |
 | `Erreurs typiques` | Les erreurs fréquentes et ce qu'elles révèlent | non |
 | `Réponse excellente` | Ce qui dépasse le niveau parfait | non |
-| `Indices` | Exactement 2 indices fixes : l'indice 1 après l'échec du 1ᵉʳ essai, l'indice 2 après l'échec du 2ᵉ | pas encore |
+| `Indices` | Exactement 2 indices fixes : l'indice 1 après l'échec du 1ᵉʳ essai, l'indice 2 après l'échec du 2ᵉ | `indices` |
 | `Parfait` / `Partiel` / `Incorrect` | Les critères de chaque niveau, suivis d'une ligne `Exemple : « … »` | `niveaux` |
+
+Le gras, l'italique et les retours à la ligne sont retirés à l'export : le JSON ne contient que du texte brut.
 
 ## Interdits
 - Le caractère `|` n'importe où dans la fiche.
