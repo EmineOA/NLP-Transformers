@@ -38,7 +38,32 @@
       "points_cles": [
         "une décision **et** un principe général (« il faut toujours… », « on n'a jamais le droit de… ») ;",
         "idéalement, la reconnaissance que le choix inverse a aussi un coût."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "donne une décision claire (tirer ou ne pas tirer)",
+            "formule un **principe général**, applicable à d'autres situations (minimiser le nombre de morts, ne jamais être la cause active d'une mort...)",
+            "ce principe justifie bien la décision prise"
+          ],
+          "exemple": "Je tire. Ma règle : quand toutes les options font des victimes, il faut choisir celle qui en fait le moins."
+        },
+        "partiel": {
+          "criteres": [
+            "décision justifiée uniquement pour ce cas, sans règle générale",
+            "principe formulé, mais qui ne correspond pas vraiment à la décision prise"
+          ],
+          "exemple": "Je tire, cinq morts c'est pire qu'un."
+        },
+        "incorrect": {
+          "criteres": [
+            "contourne le dilemme (crier, faire dérailler le tramway...) sans trancher",
+            "décision sans aucune raison",
+            "hors sujet"
+          ],
+          "exemple": "Je crie pour prévenir les ouvriers."
+        }
+      }
     },
     {
       "id": "dilemme-du-tramway_q2",
@@ -53,7 +78,32 @@
         "reconnaître que le **compte est identique**, donc que la différence ne vient pas des conséquences ;",
         "chercher une variable **autre** que le nombre de morts ;",
         "tester la différence proposée : est-ce qu'elle explique *vraiment* les deux réponses ?"
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "donne sa décision",
+            "reconnaît que le nombre de morts est le même, donc que la différence ne vient pas des conséquences",
+            "identifie une différence précise entre le levier et la passerelle et se demande si elle compte **moralement** (idéal : la mort est un moyen sur la passerelle, un effet secondaire avec le levier) ; OU, en utilitariste cohérent, pousse l'homme en assumant que seul le compte importe"
+          ],
+          "exemple": "Je ne le pousse pas. Le compte est le même, donc ce n'est pas ça. La différence : avec le levier, l'ouvrier meurt par malchance ; ici, j'ai besoin de sa mort pour que mon plan marche, je me sers de lui."
+        },
+        "partiel": {
+          "criteres": [
+            "identifie une différence (contact, proximité, « c'est moi qui tue ») sans se demander si elle justifie moralement une réponse différente",
+            "décrit seulement le ressenti (« c'est plus horrible ») tout en reconnaissant que le compte est le même"
+          ],
+          "exemple": "Je ne le pousse pas, parce que là je dois le toucher, c'est beaucoup plus dur."
+        },
+        "incorrect": {
+          "criteres": [
+            "ajoute des éléments absents de l'énoncé pour éviter la question (« il n'arrêterait peut-être pas le tramway »)",
+            "décision sans justification",
+            "ne remarque pas que le compte est identique et répond comme si les chiffres avaient changé"
+          ],
+          "exemple": "Je ne le pousse pas, rien ne prouve qu'il arrêterait vraiment le tramway."
+        }
+      }
     },
     {
       "id": "dilemme-du-tramway_q3",
@@ -64,7 +114,34 @@
         "appliquer **explicitement** la règle formulée en Q2 ;",
         "avec la règle « moyen / effet secondaire », conclure qu'il ne faut pas tirer, puisque sa mort est nécessaire, **puis** constater si cette conclusion est acceptable ou non ;",
         "avec une règle fondée sur le contact physique, conclure qu'on peut tirer, et remarquer que la règle devient alors discutable."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "donne une décision",
+            "applique explicitement sa règle de la question 2 à la boucle (comparer avec sa réponse à la Q2)",
+            "repère que la boucle ressemble physiquement au levier, mais que le corps de l'ouvrier y sert de frein, comme sur la passerelle",
+            "conclut de façon cohérente : garde sa règle et accepte la conséquence, ou révise sa règle en disant pourquoi (un utilitariste qui a poussé en Q2 peut tirer en invoquant le compte)"
+          ],
+          "exemple": "Je ne tire pas. Ça ressemble au levier, mais l'ouvrier sert de frein : sans lui, le tramway fait le tour. Avec ma règle « ne pas se servir de quelqu'un », je ne dois pas tirer, même si ça me gêne."
+        },
+        "partiel": {
+          "criteres": [
+            "voit que le corps de l'ouvrier sert de frein, mais n'applique pas sa règle de la Q2",
+            "applique sa règle de la Q2 sans voir que la boucle ressemble à la passerelle",
+            "voit la contradiction avec sa règle mais ne dit pas ce qu'il en conclut"
+          ],
+          "exemple": "Je tire : ma règle était de ne toucher personne, et là je ne touche personne."
+        },
+        "incorrect": {
+          "criteres": [
+            "répond comme au premier levier, sans voir que la boucle change quoi que ce soit",
+            "tire avec la règle « on ne se sert jamais de quelqu'un » sans voir la contradiction",
+            "décision sans justification"
+          ],
+          "exemple": "Je tire, c'est exactement comme le premier levier."
+        }
+      }
     }
   ]
 }

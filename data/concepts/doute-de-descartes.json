@@ -35,7 +35,33 @@
         "proposer une preuve ;",
         "l'**attaquer soi-même** (« mais en rêve aussi… ») ;",
         "conclure honnêtement sur sa solidité."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "propose une preuve qu'il est éveillé",
+            "la teste contre l'hypothèse du rêve (« mais en rêve aussi... »)",
+            "conclut honnêtement : sa preuve ne donne pas de certitude, parce que le rêve peut l'imiter (ou explique précisément pourquoi elle résisterait)"
+          ],
+          "exemple": "Je me pince et ça fait mal. Mais en rêve, je pourrais aussi rêver la douleur, donc ça ne prouve rien avec certitude."
+        },
+        "partiel": {
+          "criteres": [
+            "propose une preuve et commence à la tester, sans conclure",
+            "affirme qu'aucune preuve n'est possible, sans en proposer ni expliquer pourquoi",
+            "teste sa preuve mais conclut qu'elle tient, avec un argument faible"
+          ],
+          "exemple": "Aucune preuve ne marche, on peut tout rêver."
+        },
+        "incorrect": {
+          "criteres": [
+            "preuve sans aucun test contre le rêve",
+            "« c'est évident, je le sais »",
+            "hors sujet"
+          ],
+          "exemple": "Je suis éveillé parce que je lis ce texte et que tout est normal."
+        }
+      }
     },
     {
       "id": "doute-de-descartes_q2",
@@ -46,7 +72,31 @@
         "la personne doit montrer **pourquoi** le génie ne peut pas tromper sur ce point ;",
         "la tromperie **suppose** quelqu'un de trompé ;",
         "le doute se confirme lui-même."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "identifie **sa propre existence** en tant que chose qui pense, doute ou est trompée (ou le fait que quelque chose lui apparaît)",
+            "explique pourquoi le génie ne peut pas le tromper là-dessus : pour être trompé, il faut exister"
+          ],
+          "exemple": "Que j'existe. Même s'il me trompe sur tout, il faut bien que je sois là pour être trompé."
+        },
+        "partiel": {
+          "criteres": [
+            "trouve la bonne chose (« moi », « que je pense ») sans expliquer pourquoi elle résiste",
+            "propose « ce que je ressens », en parlant du fait de ressentir, sans aller jusqu'à l'existence"
+          ],
+          "exemple": "Le fait que je pense."
+        },
+        "incorrect": {
+          "criteres": [
+            "propose quelque chose que le génie peut fausser : la logique, les maths, le monde, le corps, les souvenirs",
+            "affirme que le malin génie lui-même existe certainement",
+            "« rien », sans réflexion"
+          ],
+          "exemple": "Les maths : 2 + 3 = 5, ça reste vrai quoi qu'il arrive."
+        }
+      }
     },
     {
       "id": "doute-de-descartes_q3",
@@ -56,7 +106,31 @@
       "points_cles": [
         "pour chaque élément de la liste, se demander : *le malin génie pourrait-il me tromper là-dessus ?* Si oui, le cogito ne le prouve pas ;",
         "remarquer que le cogito est **à la première personne** : chacun ne peut le faire que pour soi."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "dit que le cogito prouve seulement qu'**une chose qui pense existe, au moment où elle pense**",
+            "dit qu'il ne prouve ni le corps, ni le passé (« hier »), ni l'existence des autres (dont l'auteur du texte)",
+            "justifie au moins un de ces points (le malin génie pourrait tromper là-dessus, ou chacun ne peut faire le cogito que pour soi)"
+          ],
+          "exemple": "Il prouve juste que moi, qui pense, j'existe en ce moment. Pas mon corps, ni hier, ni l'auteur : le génie pourrait me tromper sur tout ça."
+        },
+        "partiel": {
+          "criteres": [
+            "liste juste mais incomplète (oublie le corps, le passé ou les autres), ou sans aucune justification",
+            "dit bien ce qui est prouvé, mais pas ce qui ne l'est pas"
+          ],
+          "exemple": "Il prouve que j'existe, mais pas que j'ai un corps."
+        },
+        "incorrect": {
+          "criteres": [
+            "affirme que le cogito prouve le corps, le passé ou l'existence des autres",
+            "ne dit pas ce que le cogito prouve"
+          ],
+          "exemple": "Il prouve que j'ai un corps, puisque c'est mon cerveau qui pense."
+        }
+      }
     }
   ]
 }

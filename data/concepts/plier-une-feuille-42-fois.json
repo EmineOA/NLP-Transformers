@@ -43,7 +43,32 @@
         "distinguer « on ajoute » et « on multiplie » ;",
         "remarquer que la couche ajoutée à chaque pli est égale à *toute* l'épaisseur déjà accumulée ;",
         "en conclure que la croissance s'accélère."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "dit qu'un pli **double** l'épaisseur (multiplie par 2), et non qu'il ajoute une épaisseur fixe",
+            "en déduit que la croissance s'accélère (multiplication répétée), donc que la Lune n'est pas absurde"
+          ],
+          "exemple": "Chaque pli double l'épaisseur, donc après 42 plis on a multiplié 42 fois par 2. Ça devient énorme très vite : la Lune est possible."
+        },
+        "partiel": {
+          "criteres": [
+            "dit que l'épaisseur double, mais n'en tire aucune conclusion, ou conclut quand même que la Lune est absurde",
+            "conclut que la Lune est possible « parce que ça grandit vite », sans dire que le pli double",
+            "parle de doublement mais calcule « × 42 » ou « 2 × 42 » au lieu de 2 puissance 42"
+          ],
+          "exemple": "Chaque pli double l'épaisseur. Mais la Lune, ça me paraît quand même impossible."
+        },
+        "incorrect": {
+          "criteres": [
+            "raisonnement additif : chaque pli ajoute une épaisseur de feuille (42 × 0,1 mm = 4,2 mm)",
+            "répond seulement qu'on ne peut pas plier une feuille 42 fois, sans parler de ce que fait un pli à l'épaisseur",
+            "aucune explication"
+          ],
+          "exemple": "Chaque pli ajoute une épaisseur de feuille, donc ça fait 42 feuilles : quelques millimètres."
+        }
+      }
     },
     {
       "id": "plier-une-feuille-42-fois_q2",
@@ -54,7 +79,33 @@
         "si un pli double, l'étape d'avant vaut la moitié ;",
         "la hauteur gagnée au dernier pli est égale à toute la hauteur accumulée avant ;",
         "en exponentielle, l'essentiel du chemin se fait à la fin."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "situe la feuille du 41ᵉ pli à la **moitié** de la hauteur finale (environ 220 000 km), donc avant la Lune",
+            "relie ce résultat au doublement (l'étape d'avant vaut la moitié)",
+            "conclut que le dernier pli, à lui seul, ajoute autant que tous les plis précédents réunis"
+          ],
+          "exemple": "Au 41ᵉ pli, elle faisait la moitié, environ 220 000 km. Le dernier pli a donc ajouté autant que tous les autres ensemble."
+        },
+        "partiel": {
+          "criteres": [
+            "trouve la moitié, mais ne dit rien de juste sur le poids du dernier pli",
+            "dit que le dernier pli compte énormément, sans situer correctement le 41ᵉ pli",
+            "bon raisonnement avec une erreur de calcul (par exemple 110 000 km)"
+          ],
+          "exemple": "Il était à la moitié, vers 220 000 km."
+        },
+        "incorrect": {
+          "criteres": [
+            "place le 41ᵉ pli presque à la Lune (« il ne manquait qu'une couche »)",
+            "suppose une progression régulière (41/42 du chemin)",
+            "aucun raisonnement"
+          ],
+          "exemple": "Presque à la Lune, il ne manquait qu'un tout petit bout."
+        }
+      }
     }
   ]
 }

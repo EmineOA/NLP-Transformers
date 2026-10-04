@@ -54,7 +54,32 @@
       "points_cles": [
         "chaque client a toujours une chambre suivante, car il n'y a **pas de dernière chambre** ;",
         "dans un hôtel de 100 chambres, le client de la 100 n'aurait nulle part où aller : c'est l'existence d'une dernière chambre qui bloque."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "propose que chaque client passe de la chambre n à la chambre n + 1 (ou toute règle équivalente qui libère une chambre, sans mettre personne dehors ni faire partager une chambre)",
+            "explique que ça marche parce qu'il **n'y a pas de dernière chambre**",
+            "explique que dans un hôtel de 100 chambres, le client de la 100 n'aurait nulle part où aller"
+          ],
+          "exemple": "Tout le monde passe à la chambre suivante, la 1 se libère. Ça marche parce qu'il n'y a pas de dernière chambre ; avec 100 chambres, celui de la 100 se retrouverait dehors."
+        },
+        "partiel": {
+          "criteres": [
+            "bonne annonce, sans expliquer pourquoi elle échouerait dans un hôtel fini",
+            "bonne idée, mais formulée en imaginant une fin (« jusqu'au dernier client »)"
+          ],
+          "exemple": "Chacun se décale d'une chambre et le nouveau prend la 1."
+        },
+        "incorrect": {
+          "criteres": [
+            "« impossible, l'hôtel est complet »",
+            "met le client dans « la dernière chambre », fait partager une chambre ou met quelqu'un dehors",
+            "règle où deux clients se retrouvent dans la même chambre"
+          ],
+          "exemple": "Je le mets dans la dernière chambre de l'hôtel."
+        }
+      }
     },
     {
       "id": "infinis-plus-grands-que-l-infini_q2",
@@ -65,7 +90,32 @@
         "voir que pour des ensembles **finis**, les deux définitions coïncident toujours ;",
         "pour les ensembles **infinis**, elles peuvent diverger, et il faut **choisir** ;",
         "les mathématiques modernes mesurent la taille d'un ensemble par la correspondance un à un."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "dit que les deux ont raison, chacun selon sa définition (ou que la réponse dépend de la définition)",
+            "distingue **l'inclusion** (les pairs sont contenus dans les entiers) et **la correspondance un à un** (faire des paires sans que personne ne reste seul)",
+            "remarque que pour l'infini, ces deux façons de comparer ne donnent plus le même résultat"
+          ],
+          "exemple": "Ils ne parlent pas de la même chose : Euclide regarde que les pairs sont contenus dans les entiers, l'hôtel compte en faisant des paires. Pour l'infini, ces deux façons ne donnent plus le même résultat."
+        },
+        "partiel": {
+          "criteres": [
+            "sent que « autant » n'a pas le même sens pour les deux, sans réussir à dire quelles sont les deux notions",
+            "donne raison à l'hôtel en expliquant la correspondance un à un, sans voir ce que mesure Euclide"
+          ],
+          "exemple": "L'hôtel a raison : chaque entier a sa chambre paire, donc il y en a autant."
+        },
+        "incorrect": {
+          "criteres": [
+            "donne raison à Euclide parce qu'il y a « deux fois moins » de pairs (confond proportion et taille)",
+            "« l'infini, c'est l'infini, donc ils sont égaux », sans autre argument",
+            "hors sujet"
+          ],
+          "exemple": "Euclide a raison, il y a deux fois moins de nombres pairs."
+        }
+      }
     },
     {
       "id": "infinis-plus-grands-que-l-infini_q3",
@@ -77,7 +127,33 @@
         "l'idée qu'on peut le faire **un chiffre par client**, et qu'un seul chiffre différent suffit pour être un nombre différent ;",
         "l'utilisation de la liste du gérant pour la construction.",
         "pour éviter les nombres à double écriture (0,0999… = 0,1), on choisit des chiffres différents en excluant 0 et 9. Ce détail n'est pas exigé."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "construit un nombre qui diffère du client de la chambre n en au moins un chiffre, pour chaque n, en s'appuyant sur la liste (idéalement : change le n-ième chiffre du n-ième client)",
+            "explique pourquoi ce passager n'est dans aucune chambre : il diffère de chaque client en au moins un chiffre",
+            "le nombre construit est bien entre 0 et 1, donc c'est bien un passager du car (ce point peut rester implicite)"
+          ],
+          "exemple": "Je prends le 1ᵉʳ chiffre du client de la chambre 1 et je le change, puis le 2ᵉ chiffre de celui de la chambre 2, etc. Mon nombre diffère de chaque client en au moins un chiffre, donc il n'est dans aucune chambre."
+        },
+        "partiel": {
+          "criteres": [
+            "a l'idée de construire un nombre différent de chacun, sans méthode précise",
+            "décrit la méthode diagonale sans expliquer pourquoi le passager n'est dans aucune chambre",
+            "méthode proche, mais qui ne garantit pas la différence avec chaque client (par exemple ne changer que le premier chiffre)"
+          ],
+          "exemple": "Il faut inventer un nombre qui n'est égal à aucun de ceux de la liste, en le comparant à chacun."
+        },
+        "incorrect": {
+          "criteres": [
+            "propose « un nombre très grand » ou « un nombre avec une infinité de chiffres »",
+            "affirme que l'hôtel étant infini, tout le monde peut être logé",
+            "aucune proposition"
+          ],
+          "exemple": "Impossible, l'hôtel est infini, il y a de la place pour tout le monde."
+        }
+      }
     }
   ]
 }
