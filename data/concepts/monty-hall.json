@@ -1,0 +1,83 @@
+{
+  "id": "monty-hall",
+  "matiere": "mathematiques",
+  "concept": "Le problème de Monty Hall (probabilités conditionnelles)",
+  "difficulte": 45,
+  "explication": [
+    {
+      "titre": "Introduction",
+      "contenu": "Les projecteurs t'aveuglent. Le public crie. Tu es sur le plateau d'un jeu télévisé, face à trois grandes portes fermées.\n\nDerrière l'une d'elles, il y a une voiture neuve. Derrière les deux autres, une chèvre. Le présentateur sourit et te demande de choisir.\n\nTu choisis la porte n°1.\n\nAlors le présentateur fait quelque chose d'étrange. Il ne t'ouvre pas ta porte. Il marche jusqu'à la porte n°3 et l'ouvre : une chèvre. Puis il se tourne vers toi :\n\n« Vous voulez garder la n°1… ou passer à la n°2 ? »"
+    },
+    {
+      "titre": "Ce que tout le monde répond",
+      "contenu": "Si tu ressembles à la grande majorité des gens, tu viens de penser à peu près ceci : il reste deux portes, la voiture est derrière l'une des deux, donc c'est une chance sur deux. Changer ne sert à rien. Et puis, si je change et que je perds, je vais m'en vouloir toute ma vie.\n\nC'est un raisonnement propre, logique, rassurant.\n\nEt il est faux. **Si tu changes de porte, tu gagnes deux fois sur trois.**\n\nSi ça te paraît absurde, rassure-toi : tu es en excellente compagnie. Probablement meilleure que ce que tu crois."
+    },
+    {
+      "titre": "Le jour où 1 000 docteurs se sont trompés",
+      "contenu": "En 1990, une chroniqueuse américaine, Marilyn vos Savant, reçoit cette énigme dans le courrier des lecteurs du magazine *Parade*. Elle répond simplement : il faut changer, tu gagnes 2 fois sur 3.\n\nCe qui suit est une petite émeute. Environ 10 000 lettres arrivent à la rédaction. Près de mille d'entre elles sont signées par des titulaires de doctorat, dont des mathématiciens, et beaucoup lui expliquent avec une grande assurance qu'elle s'est trompée et qu'elle devrait avoir honte de répandre de telles bêtises.\n\nElle avait raison.\n\nMême Paul Erdős, l'un des mathématiciens les plus brillants du XXᵉ siècle, auteur de plus de 1 500 articles, a refusé d'y croire. Il n'a cédé que devant une simulation sur ordinateur qui jouait la partie des milliers de fois.\n\nCe n'est donc pas une question d'intelligence. C'est une question de câblage. Ton cerveau a un bug, et ce problème appuie exactement dessus."
+    },
+    {
+      "titre": "Le présentateur sait tout",
+      "contenu": "Le détail que ton cerveau ignore, c'est celui-ci : **le présentateur sait où est la voiture.**\n\nIl n'ouvre pas une porte au hasard. Il ouvre toujours une porte avec une chèvre. Il n'a pas le droit de te montrer la voiture, sinon il n'y aurait plus de jeu. Le présentateur n'est pas un spectateur neutre : c'est un complice qui, chaque fois qu'il agit, te glisse un indice sans le vouloir.\n\nReprenons depuis le début. Quand tu as choisi la porte n°1, tu avais **une chance sur trois** de tomber sur la voiture. Ça, personne ne le conteste.\n\nCe qui veut dire qu'il y avait **deux chances sur trois** que la voiture soit derrière *l'une des deux autres portes*.\n\nLe présentateur arrive. Parmi ces deux autres portes, il en ouvre une, et il choisit forcément celle avec la chèvre. Il a pris le groupe « les deux autres portes », qui valait 2/3, et il en a retiré la mauvaise. Les deux tiers de chances n'ont pas disparu. Ils se sont tous concentrés sur la seule porte qui reste.\n\nTa porte, elle, n'a rien appris. Le présentateur n'y a pas touché, et il ne pouvait pas y toucher. Elle vaut toujours 1/3, comme au début."
+    },
+    {
+      "titre": "La preuve pour ceux qui ne sont toujours pas convaincus",
+      "contenu": "Si ça résiste encore dans ta tête, c'est normal. Alors grossissons le problème.\n\nImagine **cent** portes. Une voiture, quatre-vingt-dix-neuf chèvres. Tu choisis la porte n°1.\n\nLe présentateur, qui sait tout, ouvre alors quatre-vingt-dix-huit portes. Chèvre, chèvre, chèvre… Il les ouvre toutes, sauf la tienne et la n°74.\n\nIl te demande : « Vous gardez la n°1, ou vous prenez la n°74 ? »"
+    },
+    {
+      "titre": "La preuve pour ceux qui ne sont toujours pas convaincus (suite)",
+      "contenu": "Là, ton instinct se réveille. Tu avais une chance sur cent d'avoir trouvé la voiture du premier coup. Et pourquoi diable le présentateur a-t-il soigneusement évité la porte n°74 ? Soit tu avais trouvé la voiture d'emblée (1 chance sur 100), soit elle est derrière la 74 (99 chances sur 100). Tu changes, évidemment.\n\nC'est exactement le même jeu qu'avec trois portes. Simplement, à trois portes, l'indice est assez discret pour que ton cerveau passe à côté."
+    },
+    {
+      "titre": "Battus par des pigeons",
+      "contenu": "Voici maintenant la partie la plus vexante de l'histoire.\n\nEn 2010, deux chercheurs ont fait jouer à ce jeu… des pigeons. Trois touches lumineuses, une récompense de graines cachée derrière l'une d'elles, une touche éliminée, puis le choix de garder ou de changer. Ils ont fait passer la même épreuve, avec le même entraînement, à des étudiants.\n\nLes pigeons ont appris à changer quasiment à chaque fois. Ils ne calculent rien : ils ont simplement remarqué que changer leur rapportait plus souvent des graines.\n\nLes humains, eux, ont continué à hésiter. Ils restaient fidèles à leur premier choix, comme si une porte pouvait être vexée qu'on l'abandonne. Le pigeon n'a ni intuition fausse à défendre ni ego. Toi, si."
+    },
+    {
+      "titre": "Le dernier retournement",
+      "contenu": "Changeons maintenant un seul détail. Le présentateur ne sait plus où est la voiture. Il glisse, se rattrape à une poignée au hasard, et la porte n°3 s'ouvre sur une chèvre, par pure chance.\n\nMêmes portes. Même voiture. Même chèvre visible."
+    },
+    {
+      "titre": "Le dernier retournement (suite)",
+      "contenu": "Cette fois, **c'est vraiment du 50/50.**\n\nPourquoi ? Parce que le présentateur n'a rien filtré. Il aurait très bien pu ouvrir la porte de la voiture. Si la chèvre est apparue, c'est par chance, pas parce que quelqu'un qui sait a évité la voiture. Le complice a disparu, et avec lui l'indice.\n\nTout est là. Une probabilité n'est pas écrite sur les portes. Ce n'est pas une propriété de la voiture ou des chèvres. **C'est une mesure de ce que tu sais.** Et ce que tu sais dépend de ce que savaient ceux qui ont agi avant toi.\n\nLes mathématiciens ont un nom pour ça : une **probabilité conditionnelle**, c'est-à-dire la probabilité d'un événement *sachant* une information. Ici : « la voiture est derrière la n°2, *sachant que* le présentateur, qui sait tout, a ouvert la n°3 ». La règle pour recalculer une probabilité quand une information arrive a été trouvée au XVIIIᵉ siècle par un pasteur anglais, Thomas Bayes, et publiée après sa mort, en 1763. On l'appelle le **théorème de Bayes**. Il fait aujourd'hui tourner les filtres anti-spam, les diagnostics médicaux et une bonne partie de l'intelligence artificielle.\n\nTon cerveau, lui, regarde la scène finale (deux portes fermées) et oublie comment on y est arrivé. Il juge la photo et ignore le film.\n\nRelis ta réponse à la question 1. Tu avais choisi quoi ?"
+    }
+  ],
+  "questions": [
+    {
+      "id": "monty-hall_q1",
+      "type": "prédiction",
+      "apres_section": 1,
+      "enonce": "Tu gardes ou tu changes ? Écris ton choix et explique ton raisonnement, même s'il te paraît évident. Il n'y a pas de piège à cette question : on reviendra à ta réponse à la fin.",
+      "points_cles": [
+        "la personne raisonne-t-elle uniquement sur la **situation finale** (deux portes) ou sur le **déroulé** du jeu ?",
+        "mentionne-t-elle le fait que le présentateur sait où est la voiture ?",
+        "invoque-t-elle une raison psychologique (regret, « rester fidèle à son premier choix ») ?"
+      ]
+    },
+    {
+      "id": "monty-hall_q2",
+      "type": "prédiction + explication",
+      "apres_section": 5,
+      "enonce": "Cette fois, tu gardes ou tu changes ? Quelle est la probabilité que la voiture soit derrière ta porte n°1 ? Et derrière la n°74 ? Explique d'où viennent ces deux nombres. Ta réponse est-elle différente de celle de la question 1 ? Pourquoi ?",
+      "points_cles": [
+        "ton choix initial avait 1 chance sur 100 d'être bon, et rien de ce qu'a fait le présentateur ne touche ta porte ;",
+        "les 99/100 restants étaient répartis sur les 99 autres portes ; le présentateur, qui sait, en élimine 98 vides : les 99/100 se concentrent sur la seule porte qu'il a épargnée ;",
+        "faire le lien avec 3 portes : même mécanisme, 1/3 contre 2/3."
+      ]
+    },
+    {
+      "id": "monty-hall_q3",
+      "type": "explication",
+      "apres_section": 8,
+      "enonce": "Cette fois, est-ce que changer de porte est toujours avantageux ? La scène que tu as sous les yeux est *exactement* la même qu'avant. Qu'est-ce qui a changé dans le raisonnement ? Explique pourquoi la réponse change (ou pourquoi elle ne change pas).",
+      "points_cles": [
+        "ce qui compte n'est pas la scène finale, mais **le processus** qui l'a produite ;",
+        "un présentateur qui ouvre au hasard ne filtre rien : il aurait pu révéler la voiture ;",
+        "le fait qu'une chèvre apparaisse rend ta porte et l'autre porte **symétriques**.",
+        "tu as choisi la n°1, et le présentateur ouvre la n°3 au hasard.",
+        "Voiture en 1 (1/3) : la n°3 cache une chèvre à coup sûr.",
+        "Voiture en 2 (1/3) : la n°3 cache une chèvre à coup sûr.",
+        "Voiture en 3 (1/3) : la voiture est révélée, et ce cas est **exclu** par ce qu'on observe. Il reste deux cas de même poids, donc 1/2 – 1/2. Dans le jeu normal, au contraire, le présentateur est *obligé* d'ouvrir la n°3 quand la voiture est en 2. C'est ce qui donne 2/3."
+      ]
+    }
+  ]
+}

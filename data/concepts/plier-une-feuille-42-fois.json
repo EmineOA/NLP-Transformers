@@ -1,0 +1,60 @@
+{
+  "id": "plier-une-feuille-42-fois",
+  "matiere": "mathematiques",
+  "concept": "La croissance exponentielle",
+  "difficulte": 25,
+  "explication": [
+    {
+      "titre": "Introduction",
+      "contenu": "Prends une feuille de papier. Une feuille normale, de celles qui traînent dans une imprimante. Elle fait à peu près un dixième de millimètre d'épaisseur. Si tu la plies en deux, elle fait deux dixièmes. Rien de spectaculaire.\n\nMaintenant, imagine que tu continues. Encore. Et encore. Quarante-deux fois.\n\nÀ ce moment-là, ta feuille ne tient plus sur ton bureau. Elle ne tient plus dans ta ville, ni dans le ciel. Son sommet se trouve quelque part *derrière la Lune*.\n\nÇa ne peut pas être vrai. Quarante-deux, c'est un petit nombre. On compte jusqu'à quarante-deux en une demi-minute."
+    },
+    {
+      "titre": "Ce que ton cerveau calcule en secret",
+      "contenu": "Quand tu as lu le titre, ton cerveau a fait un calcul sans te demander ton avis. Il s'est dit à peu près ceci : chaque pli ajoute un peu d'épaisseur, donc 42 plis ajoutent 42 fois un peu. Une pile un peu épaisse, quoi. Peut-être un dictionnaire.\n\nC'est un très bon calcul. Il est juste faux.\n\nSi chaque pli *ajoutait* un dixième de millimètre, tu aurais à la fin une pile de 4,2 millimètres. L'épaisseur d'une pièce de monnaie. Mais un pli n'ajoute pas. Un pli **double**. Tout ce que tu as déjà, il le recopie par-dessus.\n\nCes deux façons de grandir ont un nom. Quand on *ajoute* la même quantité à chaque étape, la croissance est **linéaire** : sur un graphique, elle trace une ligne droite. Quand on *multiplie* par le même nombre à chaque étape, la croissance est **exponentielle**. Le mot vient de l'*exposant*, le petit nombre en haut à droite dans 2⁴² : l'épaisseur de ta feuille, c'est 0,1 mm × 2⁴², deux multiplié par lui-même quarante-deux fois.\n\nEt c'est là que les choses dérapent."
+    },
+    {
+      "titre": "L'ascenseur fou",
+      "contenu": "Imagine ta pile de papier comme un ascenseur. Chaque pli te fait monter d'un étage. Sauf que dans cet ascenseur-là, chaque nouvel étage est plus haut que *tous les étages précédents réunis*.\n\nAu début, l'ascenseur est d'une lenteur désespérante. Après 7 plis, ta feuille fait à peine plus d'un centimètre. Après 10 plis, environ 10 centimètres : l'épaisseur d'un téléphone posé sur la tranche. Franchement, rien qui mérite une vidéo.\n\nMais l'ascenseur accélère.\n\nAu **20ᵉ** pli, ta pile mesure 105 mètres. Un immeuble de trente étages, fait d'une seule feuille de papier.\n\nAu **23ᵉ** pli, elle dépasse les 839 mètres. Plus haut que le Burj Khalifa, la plus haute tour du monde. Des touristes payent pour monter à un étage que ta feuille a dépassé sans effort.\n\nAu **30ᵉ** pli, tu franchis les 100 kilomètres, 107 pour être précis. L'air devient trop rare pour respirer, le ciel devient noir : officiellement, ta feuille de papier est dans l'espace.\n\nAu **42ᵉ** pli, elle mesure environ 440 000 kilomètres. La Lune est à 384 000. Tu l'as dépassée."
+    },
+    {
+      "titre": "L'ascenseur fou (suite)",
+      "contenu": "Au 41ᵉ pli, ta feuille n'avait fait que *la moitié* du chemin, environ 220 000 km. Toute l'autre moitié a été parcourue en un seul geste. C'est la signature de l'exponentielle : **le dernier pas pèse autant que tous les autres réunis.**"
+    },
+    {
+      "titre": "Mais ça ne s'arrête pas là",
+      "contenu": "Si l'ascenseur continue, il devient franchement absurde.\n\nAu **51ᵉ** pli, ta feuille passe derrière le Soleil, à 150 millions de kilomètres.\n\nAu **103ᵉ** pli, elle est plus grande que l'univers observable. Tout ce que l'humanité a jamais vu au télescope, chaque galaxie, chaque étoile, tiendrait dans l'épaisseur de ta feuille pliée.\n\nCent trois. Même pas le nombre de pages d'un roman de plage."
+    },
+    {
+      "titre": "Alors pourquoi tu n'y arrives pas ?",
+      "contenu": "Si tu as essayé de plier une vraie feuille pendant ta lecture (ce qui serait raisonnable), tu as dû t'arrêter vers 7 plis. C'est la limite qu'on se répète dans les cours de récré, et elle n'est pas loin de la vérité.\n\nLe problème, c'est que chaque pli divise aussi la *surface* de ta feuille par deux. Ton ascenseur monte vite, mais il devient de plus en plus étroit. Après 7 plis, une feuille A4 est devenue un petit bloc d'environ 2,6 × 1,9 cm de côté et de plus d'un centimètre d'épaisseur. Presque un cube. Et le papier refuse de se plier sur lui-même.\n\nEn 2002, une lycéenne américaine, Britney Gallivan, a décidé de régler la question. Elle a calculé exactement quelle longueur de papier il faut pour réussir un nombre de plis donné, puis elle a pris un rouleau de plus d'un kilomètre de papier toilette spécial. Elle a réussi **12 plis**. Record du monde.\n\nIl ne reste donc que 30 plis avant la Lune. Bon courage.\n\nD'après sa formule, pour atteindre ces 42 plis, il te faudrait une bande de papier d'environ cent mille années-lumière de long. C'est à peu près la taille de notre galaxie. Pour toucher la Lune, il faut d'abord une feuille aussi grande que la Voie lactée."
+    },
+    {
+      "titre": "Ton cerveau pense en ligne droite. Le monde, lui, double.",
+      "contenu": "On s'en fiche un peu, du papier. Ce qui compte, c'est que ce piège se cache partout.\n\nLa légende raconte qu'un roi voulut récompenser l'inventeur des échecs. L'inventeur demanda simplement un grain de riz sur la première case, deux sur la deuxième, quatre sur la troisième, et ainsi de suite. Le roi trouva la demande modeste. À la 64ᵉ case, il aurait fallu des siècles de production mondiale de riz.\n\nUne épidémie qui double tous les trois jours paraît anodine pendant des semaines : dix malades, vingt, quarante. Puis, en quelques doublements, les hôpitaux débordent.\n\nUn placement qui double tous les dix ans semble ennuyeux à 30 ans. À 70, la dernière décennie rapporte plus que toutes les précédentes réunies, exactement comme le dernier pli de ta feuille.\n\nReviens à ta feuille. Au 38ᵉ pli, elle mesurait environ 27 000 km : à peine 7 % du chemin vers la Lune. Vu de là, personne n'aurait parié qu'il ne restait que quatre plis.\n\nC'est tout le danger de l'exponentielle. Le problème n'est jamais le dernier pli. Le problème, c'est qu'à l'avant-dernier, tout semble encore normal.\n\nAlors la prochaine fois que tu entends « ça double tous les… », pense à ta feuille de papier. Et demande-toi à quel pli on en est."
+    }
+  ],
+  "questions": [
+    {
+      "id": "plier-une-feuille-42-fois_q1",
+      "type": "explication",
+      "apres_section": 1,
+      "enonce": "Avant de lire la suite : que fait *exactement* un pli à l'épaisseur de la feuille ? À partir de là, est-ce que l'histoire de la Lune te paraît possible ou absurde ? Explique ton raisonnement, même si tu n'es pas sûr de toi.",
+      "points_cles": [
+        "distinguer « on ajoute » et « on multiplie » ;",
+        "remarquer que la couche ajoutée à chaque pli est égale à *toute* l'épaisseur déjà accumulée ;",
+        "en conclure que la croissance s'accélère."
+      ]
+    },
+    {
+      "id": "plier-une-feuille-42-fois_q2",
+      "type": "prédiction",
+      "apres_section": 3,
+      "enonce": "Au 42ᵉ pli, tu as dépassé la Lune. Où se trouvait le sommet de ta feuille un pli plus tôt, au 41ᵉ ? Qu'est-ce que ça te dit sur le poids du *dernier* pli dans tout le voyage ?",
+      "points_cles": [
+        "si un pli double, l'étape d'avant vaut la moitié ;",
+        "la hauteur gagnée au dernier pli est égale à toute la hauteur accumulée avant ;",
+        "en exponentielle, l'essentiel du chemin se fait à la fin."
+      ]
+    }
+  ]
+}

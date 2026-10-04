@@ -1,0 +1,70 @@
+{
+  "id": "dilemme-du-tramway",
+  "matiere": "philosophie",
+  "concept": "Le dilemme du tramway (conséquentialisme vs déontologie, doctrine du double effet)",
+  "difficulte": 45,
+  "explication": [
+    {
+      "titre": "Introduction",
+      "contenu": "Un tramway dévale la pente. Ses freins ont lâché. Le conducteur s'est évanoui.\n\nDevant lui, sur la voie, cinq ouvriers réparent les rails. Ils portent des casques antibruit et lui tournent le dos. Ils ne l'entendront pas arriver.\n\nTu es à côté d'un aiguillage. Si tu tires le levier, le tramway part sur une voie secondaire. Mais sur cette voie-là, il y a aussi un ouvrier. Un seul.\n\nTu as quelques secondes. Personne d'autre ne peut agir."
+    },
+    {
+      "titre": "La calculatrice",
+      "contenu": "Si tu as tiré le levier, tu fais partie d'une très large majorité. Dans les grandes enquêtes, environ **85 %** des gens disent qu'il est permis de le faire.\n\nLe raisonnement est limpide : cinq vies valent plus qu'une. C'est triste pour l'ouvrier de la voie secondaire, mais ne rien faire, c'est laisser mourir cinq personnes alors qu'on pouvait l'éviter.\n\nCe raisonnement a un nom. Au XVIIIᵉ siècle, le philosophe anglais Jeremy Bentham l'a érigé en système : une action est bonne si elle produit **le plus grand bonheur pour le plus grand nombre**. On l'appelle l'**utilitarisme**. Il appartient à une grande famille de morales qu'on appelle le **conséquentialisme** : une action se juge uniquement à ses conséquences. C'est la première machine morale qui tourne dans ta tête : **une calculatrice**. Elle additionne, elle soustrait, elle choisit le résultat qui fait le moins de dégâts.\n\nPour l'instant, tout va bien. Changeons un seul détail."
+    },
+    {
+      "titre": "La passerelle",
+      "contenu": "Même tramway. Même pente. Mêmes cinq ouvriers qui ne voient rien.\n\nMais cette fois, il n'y a pas d'aiguillage. Tu es sur une passerelle au-dessus de la voie. À côté de toi, penché sur la rambarde, un homme porte un énorme sac à dos, très lourd. Tu le comprends en un éclair : si tu le pousses, sa chute arrêtera le tramway. Il mourra. Les cinq ouvriers seront sauvés. Toi, tu es trop léger pour arrêter quoi que ce soit en sautant.\n\nUne vie contre cinq. Exactement les mêmes chiffres.\n\nEt pourtant, selon les enquêtes, seulement **10 à 30 %** des gens disent qu'il est permis de le pousser."
+    },
+    {
+      "titre": "Le gardien",
+      "contenu": "Les philosophes ont proposé plusieurs différences. Certaines ne tiennent pas longtemps.\n\n*« Là, je le touche. »* C'est vrai que ça joue : si on remplace la poussée par une trappe qu'on ouvre d'un bouton, beaucoup plus de gens acceptent. Mais est-ce une vraie raison morale ? L'homme meurt de la même façon, pour la même raison. Ça décrit ce qui nous fait reculer, ça ne dit pas pourquoi on aurait raison de reculer.\n\n*« Là, c'est moi qui le tue ; avec le levier, c'est le tramway. »* Mais avec le levier aussi, c'est ton geste qui envoie le tramway sur l'ouvrier.\n\nLa différence la plus solide est ailleurs. Sur la voie secondaire, la mort de l'ouvrier est **un effet secondaire** : tu détournes le tramway, et malheureusement, il se trouve là. S'il pouvait s'écarter au dernier moment, tant mieux, ton plan marcherait encore mieux. Sur la passerelle, la mort de l'homme est **le moyen** : c'est son corps qui sert de frein. Sans lui, ton plan ne marche pas.\n\nC'est la deuxième machine morale dans ta tête : **un gardien**. Il ne compte pas. Il pose des limites. Au XVIIIᵉ siècle, le philosophe allemand Emmanuel Kant l'a formulé ainsi : on ne doit jamais traiter un être humain *seulement comme un moyen*. Un humain n'est pas un outil, même pour une bonne cause. Ce type de morale, qui juge une action à la règle qu'elle respecte ou qu'elle viole plutôt qu'à ses résultats, s'appelle la **déontologie**, du grec *deon*, « le devoir ». Bien avant lui, Thomas d'Aquin avait posé une idée voisine, qu'on appelle aujourd'hui la **doctrine du double effet** : on peut parfois accepter un mal comme conséquence d'une action, mais jamais le *vouloir* comme moyen.\n\nEn 2001, le chercheur Joshua Greene a fait passer ces dilemmes à des volontaires allongés dans un scanner IRM. Face au levier, ce sont surtout des zones associées au calcul et au raisonnement froid qui s'activent. Face à la passerelle, des zones liées aux émotions s'allument fortement, et les gens mettent plus de temps à répondre quand ils choisissent quand même de pousser. Comme si les deux machines se disputaient en direct.\n\nOn croit généralement avoir *une* morale. Le tramway montre qu'on en a au moins deux, qui sont d'accord 99 % du temps. Le dilemme est fabriqué pour tomber dans le 1 % restant.\n\nTu penses peut-être maintenant tenir ta règle : « On peut détourner un danger, mais pas se servir de quelqu'un. » Alors voici la variante que la philosophe américaine Judith Jarvis Thomson a imaginée pour la mettre à l'épreuve."
+    },
+    {
+      "titre": "La boucle",
+      "contenu": "Retour à l'aiguillage. Le levier, les cinq ouvriers, la voie secondaire avec un seul ouvrier.\n\nMais cette fois, la voie secondaire n'est pas une impasse. Elle **fait une boucle** et rejoint la voie principale, juste avant les cinq. Si tu tires le levier et que la voie secondaire est vide, le tramway fait le tour et écrase les cinq quand même, simplement un peu plus tard.\n\nUne seule chose peut l'arrêter : le corps de l'ouvrier qui travaille sur la boucle. Il est assez lourd pour stopper le tramway, comme l'homme au sac à dos."
+    },
+    {
+      "titre": "Ce que la boucle révèle",
+      "contenu": "Regarde ce qui vient de se passer.\n\nPhysiquement, c'est la situation du premier levier : un aiguillage, un geste à distance, pas de contact. Mais logiquement, c'est la passerelle : si l'ouvrier pouvait s'écarter, ton plan échouerait, puisque le tramway ferait le tour. Sa mort n'est plus un effet secondaire. **Son corps est le frein.** D'après le gardien et la doctrine du double effet, tu ne devrais donc pas tirer.\n\nPourtant, quand on pose la question, à peu près **la moitié** des gens tirent quand même.\n\nTa règle, qui semblait si claire après la passerelle, se met à trembler. Peut-être que le gardien réagit moins à l'idée de « se servir de quelqu'un » qu'à l'image d'une main qui pousse. Peut-être que la calculatrice reprend le dessus dès que la scène redevient abstraite. Les philosophes en débattent encore. Il existe aujourd'hui tellement de variantes que la discipline a reçu un nom : la *trolleyologie*. On estime que les philosophes ont écrasé plus de gens imaginaires avec des tramways que toutes les compagnies ferroviaires réunies.\n\nIl n'y a pas de réponse gratuite. Si tu fais confiance à la calculatrice, tu sauves le plus de vies possible, mais tu dois accepter de pousser l'homme de la passerelle, et toutes les situations où l'on sacrifie quelqu'un « pour le bien commun ». Si tu fais confiance au gardien, tu protèges chaque individu contre ce genre de calcul, mais tu dois accepter, parfois, de laisser mourir cinq personnes que tu aurais pu sauver.\n\nLe dilemme du tramway ne parle pas de trains. Il parle de toi, devant le levier, découvrant que ta morale n'est pas une seule voix mais un débat. Et que la plupart du temps, tu n'entends ce débat que lorsqu'un tramway fou vient le provoquer."
+    }
+  ],
+  "questions": [
+    {
+      "id": "dilemme-du-tramway_q1",
+      "type": "position + justification",
+      "apres_section": 1,
+      "enonce": "Est-ce que tu tires le levier ? Explique pourquoi, et surtout : **sur quel principe** repose ta décision ? Essaie de l'écrire comme une règle que tu serais prêt à appliquer dans d'autres situations.",
+      "points_cles": [
+        "une décision **et** un principe général (« il faut toujours… », « on n'a jamais le droit de… ») ;",
+        "idéalement, la reconnaissance que le choix inverse a aussi un coût."
+      ]
+    },
+    {
+      "id": "dilemme-du-tramway_q2",
+      "type": "contraste minimal",
+      "apres_section": 3,
+      "enonce": "Est-ce que tu le pousses ? Si ta réponse est différente de celle du levier, la calculatrice ne peut pas l'expliquer : le compte est le même. Alors **qu'est-ce qui a changé** entre les deux situations ? Essaie de trouver la différence qui compte vraiment, celle qui justifierait de tirer le levier mais pas de pousser l'homme.",
+      "points_cles": [
+        "**le contact physique** : c'est un vrai facteur *psychologique* (avec une trappe à bouton, l'acceptation double environ), mais c'est une raison faible *moralement*, puisque l'homme meurt de la même façon ;",
+        "**la proximité ou le caractère personnel** de l'acte : c'est un vrai facteur psychologique, mais justifie-t-il moralement une différence ?",
+        "**tuer vs détourner** : c'est discutable, puisque le levier aussi est un acte qui cause une mort ;",
+        "**moyen vs effet secondaire** : c'est la plus solide. Sur la passerelle, la mort de l'homme est *nécessaire au plan* ; avec le levier, elle est un effet secondaire, et le plan marcherait mieux sans elle. C'est le critère de Kant et de la doctrine du double effet.",
+        "reconnaître que le **compte est identique**, donc que la différence ne vient pas des conséquences ;",
+        "chercher une variable **autre** que le nombre de morts ;",
+        "tester la différence proposée : est-ce qu'elle explique *vraiment* les deux réponses ?"
+      ]
+    },
+    {
+      "id": "dilemme-du-tramway_q3",
+      "type": "test de principe",
+      "apres_section": 5,
+      "enonce": "Est-ce que tu tires le levier ? Cette situation ressemble-t-elle davantage au **premier levier** ou à la **passerelle** ? Applique la règle que tu as trouvée à la question 2, et dis si elle te donne une réponse que tu acceptes. Si ce n'est pas le cas, qu'est-ce que ça dit de ta règle ?",
+      "points_cles": [
+        "appliquer **explicitement** la règle formulée en Q2 ;",
+        "avec la règle « moyen / effet secondaire », conclure qu'il ne faut pas tirer, puisque sa mort est nécessaire, **puis** constater si cette conclusion est acceptable ou non ;",
+        "avec une règle fondée sur le contact physique, conclure qu'on peut tirer, et remarquer que la règle devient alors discutable."
+      ]
+    }
+  ]
+}
