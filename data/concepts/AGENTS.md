@@ -1,7 +1,13 @@
 # data/concepts
 
-6 fiches concept au format JSON, une par fichier (`<id>.json`) : 3 en mathématiques, 3 en philosophie.
+Les 6 fiches concept (3 en mathématiques, 3 en philosophie), sous deux formes.
 
-Format : contrat 1 (fiche concept) + `difficulte` (0-100) + `apres_section` dans chaque question (la question est posée juste après la section n° `apres_section` de `explication`, avant la révélation de la réponse) + `niveaux` dans chaque question : `{parfait, partiel, incorrect}`, chacun avec `criteres` (liste) et `exemple` (réponse-type), pour guider le verdict du LLM. Règle de lecture : `parfait` = tous les critères ; `partiel` et `incorrect` = au moins un des cas.
+| Dossier | Contenu | Rôle |
+|---|---|---|
+| `markdown/<matiere>/<id>.md` | La fiche complète : récit, questions, corrigé, indices, niveaux, sources. | **Source.** C'est ici qu'on écrit et qu'on corrige. |
+| `json/<id>.json` | Ce que l'agent utilise : explication découpée en sections, questions, grille d'évaluation. | **Généré** à partir des Markdown. Lu par le prompt. |
 
-Fichiers générés automatiquement à partir des fiches Markdown : ne pas les modifier à la main.
+Règles :
+- On corrige le Markdown, jamais le JSON à la main. Le JSON est ensuite régénéré.
+- Le même `<id>` (nom du fichier, ex. `monty-hall`) désigne le concept des deux côtés.
+- Format détaillé : [`markdown/AGENTS.md`](markdown/AGENTS.md) et [`json/AGENTS.md`](json/AGENTS.md).

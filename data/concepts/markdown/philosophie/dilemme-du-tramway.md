@@ -1,0 +1,207 @@
+# Le dilemme du tramway : tuer une personne pour en sauver cinq ?
+
+```yaml
+concept: "Le dilemme du tramway (conséquentialisme vs déontologie, doctrine du double effet)"
+difficulte: 45
+```
+
+---
+
+## Le récit
+
+Un tramway dévale la pente. Ses freins ont lâché. Le conducteur s'est évanoui.
+
+Devant lui, sur la voie, cinq ouvriers réparent les rails. Ils portent des casques antibruit et lui tournent le dos. Ils ne l'entendront pas arriver.
+
+Tu es à côté d'un aiguillage. Si tu tires le levier, le tramway part sur une voie secondaire. Mais sur cette voie-là, il y a aussi un ouvrier. Un seul.
+
+Tu as quelques secondes. Personne d'autre ne peut agir.
+
+> **À toi de réfléchir — Question 1** *(position + justification)*
+> Est-ce que tu tires le levier ? Explique pourquoi, et surtout : **sur quel principe** repose ta décision ? Essaie de l'écrire comme une règle que tu serais prêt à appliquer dans d'autres situations.
+
+### La calculatrice
+
+Si tu as tiré le levier, tu fais partie d'une très large majorité. Dans les grandes enquêtes, environ **85 %** des gens disent qu'il est permis de le faire.
+
+Le raisonnement est limpide : cinq vies valent plus qu'une. C'est triste pour l'ouvrier de la voie secondaire, mais ne rien faire, c'est laisser mourir cinq personnes alors qu'on pouvait l'éviter.
+
+Ce raisonnement a un nom. Au XVIIIᵉ siècle, le philosophe anglais Jeremy Bentham l'a érigé en système : une action est bonne si elle produit **le plus grand bonheur pour le plus grand nombre**. On l'appelle l'**utilitarisme**. Il appartient à une grande famille de morales qu'on appelle le **conséquentialisme** : une action se juge uniquement à ses conséquences. C'est la première machine morale qui tourne dans ta tête : **une calculatrice**. Elle additionne, elle soustrait, elle choisit le résultat qui fait le moins de dégâts.
+
+Pour l'instant, tout va bien. Changeons un seul détail.
+
+### La passerelle
+
+Même tramway. Même pente. Mêmes cinq ouvriers qui ne voient rien.
+
+Mais cette fois, il n'y a pas d'aiguillage. Tu es sur une passerelle au-dessus de la voie. À côté de toi, penché sur la rambarde, un homme porte un énorme sac à dos, très lourd. Tu le comprends en un éclair : si tu le pousses, sa chute arrêtera le tramway. Il mourra. Les cinq ouvriers seront sauvés. Toi, tu es trop léger pour arrêter quoi que ce soit en sautant.
+
+Une vie contre cinq. Exactement les mêmes chiffres.
+
+Et pourtant, selon les enquêtes, seulement **10 à 30 %** des gens disent qu'il est permis de le pousser.
+
+> **À toi de réfléchir — Question 2** *(contraste minimal)*
+> Est-ce que tu le pousses ? Si ta réponse est différente de celle du levier, la calculatrice ne peut pas l'expliquer : le compte est le même. Alors **qu'est-ce qui a changé** entre les deux situations ? Essaie de trouver la différence qui compte vraiment, celle qui justifierait de tirer le levier mais pas de pousser l'homme.
+
+### Le gardien
+
+Les philosophes ont proposé plusieurs différences. Certaines ne tiennent pas longtemps.
+
+*« Là, je le touche. »* C'est vrai que ça joue : si on remplace la poussée par une trappe qu'on ouvre d'un bouton, beaucoup plus de gens acceptent. Mais est-ce une vraie raison morale ? L'homme meurt de la même façon, pour la même raison. Ça décrit ce qui nous fait reculer, ça ne dit pas pourquoi on aurait raison de reculer.
+
+*« Là, c'est moi qui le tue ; avec le levier, c'est le tramway. »* Mais avec le levier aussi, c'est ton geste qui envoie le tramway sur l'ouvrier.
+
+La différence la plus solide est ailleurs. Sur la voie secondaire, la mort de l'ouvrier est **un effet secondaire** : tu détournes le tramway, et malheureusement, il se trouve là. S'il pouvait s'écarter au dernier moment, tant mieux, ton plan marcherait encore mieux. Sur la passerelle, la mort de l'homme est **le moyen** : c'est son corps qui sert de frein. Sans lui, ton plan ne marche pas.
+
+C'est la deuxième machine morale dans ta tête : **un gardien**. Il ne compte pas. Il pose des limites. Au XVIIIᵉ siècle, le philosophe allemand Emmanuel Kant l'a formulé ainsi : on ne doit jamais traiter un être humain *seulement comme un moyen*. Un humain n'est pas un outil, même pour une bonne cause. Ce type de morale, qui juge une action à la règle qu'elle respecte ou qu'elle viole plutôt qu'à ses résultats, s'appelle la **déontologie**, du grec *deon*, « le devoir ». Bien avant lui, Thomas d'Aquin avait posé une idée voisine, qu'on appelle aujourd'hui la **doctrine du double effet** : on peut parfois accepter un mal comme conséquence d'une action, mais jamais le *vouloir* comme moyen.
+
+En 2001, le chercheur Joshua Greene a fait passer ces dilemmes à des volontaires allongés dans un scanner IRM. Face au levier, ce sont surtout des zones associées au calcul et au raisonnement froid qui s'activent. Face à la passerelle, des zones liées aux émotions s'allument fortement, et les gens mettent plus de temps à répondre quand ils choisissent quand même de pousser. Comme si les deux machines se disputaient en direct.
+
+On croit généralement avoir *une* morale. Le tramway montre qu'on en a au moins deux, qui sont d'accord 99 % du temps. Le dilemme est fabriqué pour tomber dans le 1 % restant.
+
+Tu penses peut-être maintenant tenir ta règle : « On peut détourner un danger, mais pas se servir de quelqu'un. » Alors voici la variante que la philosophe américaine Judith Jarvis Thomson a imaginée pour la mettre à l'épreuve.
+
+### La boucle
+
+Retour à l'aiguillage. Le levier, les cinq ouvriers, la voie secondaire avec un seul ouvrier.
+
+Mais cette fois, la voie secondaire n'est pas une impasse. Elle **fait une boucle** et rejoint la voie principale, juste avant les cinq. Si tu tires le levier et que la voie secondaire est vide, le tramway fait le tour et écrase les cinq quand même, simplement un peu plus tard.
+
+Une seule chose peut l'arrêter : le corps de l'ouvrier qui travaille sur la boucle. Il est assez lourd pour stopper le tramway, comme l'homme au sac à dos.
+
+> **À toi de réfléchir — Question 3** *(test de principe)*
+> Est-ce que tu tires le levier ? Cette situation ressemble-t-elle davantage au **premier levier** ou à la **passerelle** ? Applique la règle que tu as trouvée à la question 2, et dis si elle te donne une réponse que tu acceptes. Si ce n'est pas le cas, qu'est-ce que ça dit de ta règle ?
+
+### Ce que la boucle révèle
+
+Regarde ce qui vient de se passer.
+
+Physiquement, c'est la situation du premier levier : un aiguillage, un geste à distance, pas de contact. Mais logiquement, c'est la passerelle : si l'ouvrier pouvait s'écarter, ton plan échouerait, puisque le tramway ferait le tour. Sa mort n'est plus un effet secondaire. **Son corps est le frein.** D'après le gardien et la doctrine du double effet, tu ne devrais donc pas tirer.
+
+Pourtant, quand on pose la question, à peu près **la moitié** des gens tirent quand même.
+
+Ta règle, qui semblait si claire après la passerelle, se met à trembler. Peut-être que le gardien réagit moins à l'idée de « se servir de quelqu'un » qu'à l'image d'une main qui pousse. Peut-être que la calculatrice reprend le dessus dès que la scène redevient abstraite. Les philosophes en débattent encore. Il existe aujourd'hui tellement de variantes que la discipline a reçu un nom : la *trolleyologie*. On estime que les philosophes ont écrasé plus de gens imaginaires avec des tramways que toutes les compagnies ferroviaires réunies.
+
+Il n'y a pas de réponse gratuite. Si tu fais confiance à la calculatrice, tu sauves le plus de vies possible, mais tu dois accepter de pousser l'homme de la passerelle, et toutes les situations où l'on sacrifie quelqu'un « pour le bien commun ». Si tu fais confiance au gardien, tu protèges chaque individu contre ce genre de calcul, mais tu dois accepter, parfois, de laisser mourir cinq personnes que tu aurais pu sauver.
+
+Le dilemme du tramway ne parle pas de trains. Il parle de toi, devant le levier, découvrant que ta morale n'est pas une seule voix mais un débat. Et que la plupart du temps, tu n'entends ce débat que lorsqu'un tramway fou vient le provoquer.
+
+---
+
+## Corrigé
+
+> **Comment l'utiliser.** Aucune position n'est « la bonne » : des philosophes reconnus défendent chacune d'elles. On évalue :
+> 1. la **présence d'un principe** formulé comme une règle générale ;
+> 2. la **cohérence** de ce principe d'une question à l'autre ;
+> 3. la capacité à **identifier la variable qui change** entre les situations ;
+> 4. la **lucidité sur le prix** de sa position.
+>
+> Une personne qui change d'avis en cours de route et l'explique fait preuve d'un excellent raisonnement.
+
+### Q1 — Le levier
+- **Positions valides** :
+  - **Je tire** : sauver cinq vies plutôt qu'une, minimiser les morts (logique conséquentialiste) ;
+  - **Je ne tire pas** : je ne veux pas être la cause active d'une mort ; laisser faire n'est pas tuer (distinction tuer / laisser mourir) ; je n'ai pas le droit de décider qui meurt.
+- **Raisonnement attendu** :
+  - une décision **et** un principe général (« il faut toujours… », « on n'a jamais le droit de… ») ;
+  - idéalement, la reconnaissance que le choix inverse a aussi un coût.
+- **Erreurs typiques** :
+  - chercher une **échappatoire** (« je crie pour les prévenir », « je fais dérailler le tramway ») : c'est compréhensible, mais ça contourne la question. On rappelle que l'expérience de pensée exclut ces options ;
+  - une réponse sans principe (« je le sens comme ça ») : elle est acceptable pour une prédiction, mais insuffisante ici, puisqu'on demande une règle.
+- **Réponse excellente** : formule un principe précis **et** anticipe un cas où ce principe deviendrait gênant. Par exemple : « Si on peut toujours sacrifier un pour cinq, alors un chirurgien pourrait tuer un patient sain pour donner ses organes à cinq malades… »
+- **Indices (un par relance, du plus léger au plus fort)** :
+  - Indice 1 (après le 1ᵉʳ essai) : « Imagine que tu dois expliquer ton choix, plus tard, à la famille de celui ou de ceux qui sont morts. Quelle phrase leur dirais-tu ? »
+  - Indice 2 (après le 2ᵉ essai) : « Transforme ta raison en une règle qui commence par « Il faut toujours… » ou « On n'a jamais le droit de… ». Fonctionne-t-elle aussi dans d'autres situations que le tramway ? »
+- **Parfait (tous les critères)** :
+  - donne une décision claire (tirer ou ne pas tirer) ;
+  - formule un **principe général**, applicable à d'autres situations (minimiser le nombre de morts, ne jamais être la cause active d'une mort...) ;
+  - ce principe justifie bien la décision prise.
+  - Exemple : « Je tire. Ma règle : quand toutes les options font des victimes, il faut choisir celle qui en fait le moins. »
+- **Partiel (au moins un de ces cas)** :
+  - décision justifiée uniquement pour ce cas, sans règle générale ;
+  - principe formulé, mais qui ne correspond pas vraiment à la décision prise.
+  - Exemple : « Je tire, cinq morts c'est pire qu'un. »
+- **Incorrect (au moins un de ces cas)** :
+  - contourne le dilemme (crier, faire dérailler le tramway...) sans trancher ;
+  - décision sans aucune raison ;
+  - hors sujet.
+  - Exemple : « Je crie pour prévenir les ouvriers. »
+
+### Q2 — La passerelle
+- **Réponse attendue** : la plupart des personnes refusent de pousser. La question porte sur la **différence identifiée** entre les deux cas.
+- **Différences proposées, de la plus faible à la plus solide** :
+  - **le contact physique** : c'est un vrai facteur *psychologique* (avec une trappe à bouton, l'acceptation double environ), mais c'est une raison faible *moralement*, puisque l'homme meurt de la même façon ;
+  - **la proximité ou le caractère personnel** de l'acte : c'est un vrai facteur psychologique, mais justifie-t-il moralement une différence ?
+  - **tuer vs détourner** : c'est discutable, puisque le levier aussi est un acte qui cause une mort ;
+  - **moyen vs effet secondaire** : c'est la plus solide. Sur la passerelle, la mort de l'homme est *nécessaire au plan* ; avec le levier, elle est un effet secondaire, et le plan marcherait mieux sans elle. C'est le critère de Kant et de la doctrine du double effet.
+- **Raisonnement attendu** :
+  - reconnaître que le **compte est identique**, donc que la différence ne vient pas des conséquences ;
+  - chercher une variable **autre** que le nombre de morts ;
+  - tester la différence proposée : est-ce qu'elle explique *vraiment* les deux réponses ?
+- **Erreurs typiques** :
+  - « c'est différent parce que c'est plus horrible » : c'est vrai, mais on décrit le ressenti sans l'expliquer ;
+  - ajouter des détails absents (« peut-être que l'homme ne l'arrêtera pas ») : on suppose la certitude ;
+  - **pousser** avec la même logique qu'au levier sans voir de différence : c'est une position cohérente (utilitariste stricte) et elle est acceptée si elle est assumée et justifiée.
+- **Réponse excellente** : trouve d'elle-même le critère **moyen / effet secondaire**, ou une formulation proche (« sans lui, mon plan ne marche pas »).
+- **Indices (un par relance, du plus léger au plus fort)** :
+  - Indice 1 (après le 1ᵉʳ essai) : « Le nombre de morts est le même dans les deux cas. Ce n'est donc pas le compte qui change : qu'est-ce qui est différent dans ce que *toi* tu fais ? »
+  - Indice 2 (après le 2ᵉ essai) : « Pose-toi cette question dans chaque situation : si la victime pouvait s'échapper au dernier moment, ton plan marcherait-il encore ? »
+- **Parfait (tous les critères)** :
+  - donne sa décision ;
+  - reconnaît que le nombre de morts est le même, donc que la différence ne vient pas des conséquences ;
+  - identifie une différence précise entre le levier et la passerelle et se demande si elle compte **moralement** (idéal : la mort est un moyen sur la passerelle, un effet secondaire avec le levier) ; OU, en utilitariste cohérent, pousse l'homme en assumant que seul le compte importe.
+  - Exemple : « Je ne le pousse pas. Le compte est le même, donc ce n'est pas ça. La différence : avec le levier, l'ouvrier meurt par malchance ; ici, j'ai besoin de sa mort pour que mon plan marche, je me sers de lui. »
+- **Partiel (au moins un de ces cas)** :
+  - identifie une différence (contact, proximité, « c'est moi qui tue ») sans se demander si elle justifie moralement une réponse différente ;
+  - décrit seulement le ressenti (« c'est plus horrible ») tout en reconnaissant que le compte est le même.
+  - Exemple : « Je ne le pousse pas, parce que là je dois le toucher, c'est beaucoup plus dur. »
+- **Incorrect (au moins un de ces cas)** :
+  - ajoute des éléments absents de l'énoncé pour éviter la question (« il n'arrêterait peut-être pas le tramway ») ;
+  - décision sans justification ;
+  - ne remarque pas que le compte est identique et répond comme si les chiffres avaient changé.
+  - Exemple : « Je ne le pousse pas, rien ne prouve qu'il arrêterait vraiment le tramway. »
+
+### Q3 — La boucle
+- **Réponse attendue** : il n'y en a pas d'unique. Ce qu'on vérifie, c'est que la personne voit la **tension**. Le cas ressemble physiquement au levier, mais logiquement à la passerelle, puisque le corps de l'ouvrier est le moyen d'arrêter le tramway.
+- **Raisonnement attendu** :
+  - appliquer **explicitement** la règle formulée en Q2 ;
+  - avec la règle « moyen / effet secondaire », conclure qu'il ne faut pas tirer, puisque sa mort est nécessaire, **puis** constater si cette conclusion est acceptable ou non ;
+  - avec une règle fondée sur le contact physique, conclure qu'on peut tirer, et remarquer que la règle devient alors discutable.
+- **Positions cohérentes** :
+  - **je ne tire pas**, et le critère du moyen est maintenu, même s'il donne une réponse contre-intuitive ;
+  - **je tire**, et la règle de Q2 est révisée, par exemple : « ce qui me gênait sur la passerelle, c'était l'acte personnel et violent, pas le fait de se servir de quelqu'un » ;
+  - **je tire en tant qu'utilitariste**, ce qui est cohérent si la personne a aussi accepté de pousser en Q2.
+- **Erreurs typiques** :
+  - tirer en Q3 avec la règle « on ne se sert jamais de quelqu'un » sans voir la contradiction : c'est l'erreur centrale à signaler ;
+  - répondre comme au premier levier sans remarquer que la boucle change la *structure* du plan.
+- **Réponse excellente** : repère que ce cas **sépare deux variables** qui allaient ensemble dans les deux premiers (le caractère physique de l'acte d'un côté, l'usage de la personne comme moyen de l'autre). Elle conclut sur ce que ça révèle de la *source* réelle de ses intuitions, et assume le prix de la position finale.
+- **Indices (un par relance, du plus léger au plus fort)** :
+  - Indice 1 (après le 1ᵉʳ essai) : « Reprends la règle que tu as trouvée à la question 2 et applique-la à cette nouvelle voie. Que te dit-elle de faire ? »
+  - Indice 2 (après le 2ᵉ essai) : « Sur la boucle, si l'ouvrier pouvait s'écarter au dernier moment, que ferait le tramway ? Sa mort est-elle un effet secondaire, comme au premier levier, ou est-ce elle qui arrête le tramway, comme sur la passerelle ? »
+- **Parfait (tous les critères)** :
+  - donne une décision ;
+  - applique explicitement sa règle de la question 2 à la boucle (comparer avec sa réponse à la Q2) ;
+  - repère que la boucle ressemble physiquement au levier, mais que le corps de l'ouvrier y sert de frein, comme sur la passerelle ;
+  - conclut de façon cohérente : garde sa règle et accepte la conséquence, ou révise sa règle en disant pourquoi (un utilitariste qui a poussé en Q2 peut tirer en invoquant le compte).
+  - Exemple : « Je ne tire pas. Ça ressemble au levier, mais l'ouvrier sert de frein : sans lui, le tramway fait le tour. Avec ma règle « ne pas se servir de quelqu'un », je ne dois pas tirer, même si ça me gêne. »
+- **Partiel (au moins un de ces cas)** :
+  - voit que le corps de l'ouvrier sert de frein, mais n'applique pas sa règle de la Q2 ;
+  - applique sa règle de la Q2 sans voir que la boucle ressemble à la passerelle ;
+  - voit la contradiction avec sa règle mais ne dit pas ce qu'il en conclut.
+  - Exemple : « Je tire : ma règle était de ne toucher personne, et là je ne touche personne. »
+- **Incorrect (au moins un de ces cas)** :
+  - répond comme au premier levier, sans voir que la boucle change quoi que ce soit ;
+  - tire avec la règle « on ne se sert jamais de quelqu'un » sans voir la contradiction ;
+  - décision sans justification.
+  - Exemple : « Je tire, c'est exactement comme le premier levier. »
+
+---
+
+## Sources et précisions
+- Philippa Foot, « The Problem of Abortion and the Doctrine of the Double Effect », *Oxford Review*, 1967 : version originale (le conducteur de tramway).
+- Judith Jarvis Thomson, « Killing, Letting Die, and the Trolley Problem », *The Monist*, 1976, et « The Trolley Problem », *Yale Law Journal*, 1985 : variantes de l'observateur, de la passerelle (« fat man », remplacé ici par un homme au sac à dos lourd) et de la boucle.
+- Jeremy Bentham, *Introduction aux principes de la morale et de la législation*, 1789 ; Emmanuel Kant, *Fondements de la métaphysique des mœurs*, 1785 (formule de l'humanité) ; Thomas d'Aquin, *Somme théologique*, IIa-IIae, q. 64, a. 7 (légitime défense, origine de la doctrine du double effet).
+- Joshua Greene et al., « An fMRI Investigation of Emotional Engagement in Moral Judgment », *Science*, 2001.
+- Pourcentages : Hauser, Cushman, Young et al., « A Dissociation Between Moral Judgments and Justifications », *Mind & Language*, 2007 (≈ 85 % pour le levier, ≈ 12 % pour la passerelle ; environ la moitié pour la variante en boucle). **Les chiffres de la boucle sont à revérifier dans l'article avant publication.** Selon les études, l'acceptation de la passerelle varie d'environ 10 % à 30 %.
+- « Trolleyologie » : terme popularisé notamment par Kwame Anthony Appiah (*Experiments in Ethics*, 2008). La phrase sur les compagnies ferroviaires est une plaisanterie, pas une statistique.
+- Variante de la trappe : Greene et al., « Pushing moral buttons », *Cognition*, 2009, sur le rôle de la « force personnelle ». De mémoire : environ 31 % d'acceptation pour la poussée, environ 60 % pour la trappe actionnée à distance. **À revérifier.**
