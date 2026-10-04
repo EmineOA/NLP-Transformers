@@ -1,0 +1,76 @@
+{
+  "id": "bateau-de-thesee",
+  "matiere": "philosophie",
+  "concept": "L'identité à travers le changement (identité personnelle)",
+  "difficulte": 35,
+  "explication": [
+    {
+      "titre": "Introduction",
+      "contenu": "Regarde ta main.\n\nLa peau qui la recouvre n'existait pas il y a deux mois. Les cellules de ton épiderme se renouvellent en quelques semaines : celles d'aujourd'hui sont nées après ton dernier anniversaire, et les précédentes sont parties en poussière dans ton lit, sur ton clavier, dans l'air de ta chambre. Ton sang se renouvelle en quelques mois. Ton squelette lui-même se reconstruit lentement, morceau par morceau, en une dizaine d'années.\n\nPourtant, quand tu regardes une photo de toi à six ans, tu dis : « c'est moi ».\n\nQu'est-ce qui te permet de dire ça ?"
+    },
+    {
+      "titre": "Un bateau à Athènes",
+      "contenu": "Pour y voir clair, il faut remonter à Athènes, il y a plus de deux mille ans.\n\nD'après la légende, le héros Thésée revient en vainqueur de Crète, où il a tué le Minotaure. Les Athéniens décident de conserver précieusement son navire, un bateau à trente rames, comme une relique. Chaque année, ils le sortent pour une cérémonie sacrée.\n\nLe problème, c'est que le bois pourrit. Alors, quand une planche est abîmée, on la remplace par une planche neuve. Une seule planche, c'est évidemment toujours le bateau de Thésée. Personne ne dirait le contraire.\n\nPuis une deuxième planche est remplacée. Une dixième. Une centième.\n\nL'historien Plutarque raconte que le bateau a été entretenu ainsi pendant des siècles, et que les philosophes de l'époque s'en servaient déjà comme exemple pour se disputer. Car au bout d'un moment, il ne reste **plus une seule planche d'origine**. Tout a été changé, pièce par pièce, sans que le bateau ne cesse jamais d'être là, au port, sous le même nom."
+    },
+    {
+      "titre": "Ce que ton intuition vient de choisir",
+      "contenu": "Si tu as répondu oui, tu as probablement choisi la **continuité**. Le bateau n'a jamais disparu. Il a changé lentement, comme un fleuve dont l'eau change sans cesse mais qui reste la Seine. Ce qui compte, c'est la forme, la fonction, et le fait qu'à chaque instant il y ait eu un bateau à cet endroit.\n\nSi tu as répondu non, tu as choisi la **matière**. Le bateau de Thésée, c'étaient *ces planches-là*, celles que Thésée a touchées. Ce qui reste au port est une copie très bien entretenue, comme une cathédrale entièrement reconstruite.\n\nLes deux camps se tiennent. Mais au XVIIᵉ siècle, le philosophe anglais Thomas Hobbes ajoute un détail qui fait tout exploser."
+    },
+    {
+      "titre": "Le deuxième bateau",
+      "contenu": "Imagine qu'un homme suive l'entretien du bateau depuis le début. Chaque fois qu'une vieille planche est retirée, il la récupère discrètement. Il la nettoie, la stocke dans un hangar. Un collectionneur avec un sens très particulier du recyclage.\n\nLe jour où la dernière planche d'origine est remplacée, il possède tout le bois de l'ancien navire. Il remonte chaque planche à sa place exacte, selon les plans d'origine.\n\nIl y a maintenant **deux bateaux** dans le port d'Athènes. Celui qui a été réparé sans interruption. Et celui qui est fait, planche par planche, du bois que Thésée a touché.\n\nLes deux ne peuvent pas être le bateau de Thésée : il n'y en a jamais eu qu'un.\n\nLes philosophes ont un vocabulaire précis pour ce piège. Deux objets peuvent être **qualitativement identiques** : parfaitement semblables, comme deux exemplaires du même livre. Mais un seul peut être **numériquement identique** au bateau de Thésée, c'est-à-dire être *lui*, et pas une simple réplique. La question n'est donc pas « lequel lui ressemble ? ». Les deux lui ressemblent. La question est : lequel *est* lui ?"
+    },
+    {
+      "titre": "Chaque règle a un prix",
+      "contenu": "C'est là que le piège se referme.\n\nSi tu dis que **le bateau réparé** est le vrai, tu choisis la continuité. Mais alors, le bois que Thésée a touché, réassemblé exactement comme avant, n'est qu'une copie. Une relique qui ne contient plus rien de la relique.\n\nSi tu dis que **le bateau reconstruit** est le vrai, tu choisis la matière. Mais alors, pendant toutes ces années, les Athéniens ont célébré un faux. Et pire : à quel moment précis le bateau du port a-t-il cessé d'être le vrai ? À la planche numéro 151 ? À la 152 ? Il faudrait qu'une planche, une seule, fasse basculer toute l'identité du navire.\n\nIl n'y a pas de réponse gratuite. Chaque critère sauve une intuition et en sacrifie une autre. C'est un curseur : tu peux le placer où tu veux, mais tu payes toujours quelque chose.\n\nOn pourrait laisser les bateaux aux Grecs. Sauf que ce bateau, c'est toi."
+    },
+    {
+      "titre": "Le bateau, c'est toi",
+      "contenu": "Ton corps est un bateau réparé en pleine mer. Ta peau, ton sang, une bonne partie de tes os sont neufs. Il y a des exceptions : la plupart des neurones de ton cortex, par exemple, t'accompagnent depuis ta naissance. Mais la matière qui te compose circule en permanence, comme l'eau dans un fleuve.\n\nAlors, si tu es le même que l'enfant de la photo, ce n'est sans doute pas à cause de la matière. En 1694, dans la deuxième édition de son *Essai sur l'entendement humain*, le philosophe anglais John Locke propose une autre réponse : ce qui fait que tu es toi, c'est **la mémoire et la conscience**. Tu es la même personne que cet enfant parce que tu te souviens de ce qu'il a vécu, et que tes pensées d'aujourd'hui prolongent les siennes. C'est ce qu'on appelle depuis le **critère psychologique** de l'identité personnelle, par opposition au **critère physique**, qui dit que tu es ton corps.\n\nC'est une belle réponse. Mais elle mène tout droit à la version la plus vertigineuse du bateau de Thésée."
+    },
+    {
+      "titre": "Le téléporteur",
+      "contenu": "En 1984, le philosophe britannique Derek Parfit imagine la machine suivante.\n\nTu entres dans une cabine sur Terre. Un scanner enregistre la position exacte de chaque atome de ton corps, puis le détruit. L'information est envoyée sur Mars à la vitesse de la lumière. Là-bas, une machine reconstruit un corps identique, atome par atome, avec ton cerveau, donc avec tes souvenirs, ton caractère, ta dernière pensée avant d'entrer dans la cabine.\n\nLa personne qui sort de la cabine sur Mars est convaincue d'être toi. Elle se souvient de ton enfance, elle appelle tes parents, elle reprend tes projets. Pour Locke, c'est toi. Pour quiconque te connaît, c'est toi.\n\nLe voyage dure quelques minutes. Il est rapide, pas cher, sans danger apparent. Le service client, en revanche, n'a jamais reçu de réclamation de la part des originaux."
+    },
+    {
+      "titre": "Ce qui compte vraiment",
+      "contenu": "Si tu as hésité, tu n'es pas seul. Beaucoup de gens qui répondent « continuité » pour le bateau refusent pourtant la cabine. Le téléporteur, c'est le second bateau de Hobbes avec un battement de cœur : une copie parfaite, faite d'autres atomes, avec une coupure au milieu.\n\nParfit lui-même en tire une conclusion surprenante. Peut-être que la question « est-ce encore moi ? » n'a pas toujours de réponse précise, comme la question « à quelle planche le bateau a-t-il cessé d'être le vrai ? ». Et peut-être que ce n'est pas si grave. Ce qui compte, selon lui, ce n'est pas d'être *identique* à quelqu'un, mais d'être **relié** à lui : par les souvenirs, le caractère, les projets qui continuent.\n\nRegarde encore ta main. Elle n'est pas faite de la même matière que celle de l'enfant sur la photo. Il n'y a pas de planche magique qui prouverait que c'est la même. Il y a un bateau qui n'a jamais cessé de naviguer, qu'on a réparé en pleine mer pendant des années, et qui continue d'avancer.\n\nTu n'es peut-être pas quelqu'un qui reste le même. Tu es peut-être quelqu'un qui continue."
+    }
+  ],
+  "questions": [
+    {
+      "id": "bateau-de-thesee_q1",
+      "type": "position + critère",
+      "apres_section": 2,
+      "enonce": "Ce bateau, dont toutes les planches ont été remplacées, est-il encore le bateau de Thésée ? Réponds oui ou non, puis surtout : **qu'est-ce qui, selon toi, fait qu'un objet reste « le même »** ? Essaie de formuler ta règle en une phrase.",
+      "points_cles": [
+        "une réponse **et** une règle générale (« un objet reste le même tant que… ») ;",
+        "idéalement, un exemple d'appui (un fleuve, une ville, une équipe de foot dont tous les joueurs ont changé)."
+      ]
+    },
+    {
+      "id": "bateau-de-thesee_q2",
+      "type": "dilemme / cohérence",
+      "apres_section": 4,
+      "enonce": "Lequel des deux est le vrai bateau de Thésée ? Applique la règle que tu as formulée à la question 1. Est-ce qu'elle tient toujours ? Si elle te donne une réponse qui te gêne, explique pourquoi, et dis si tu changes de règle.",
+      "points_cles": [
+        "appliquer **explicitement** la règle de Q1 au nouveau cas ;",
+        "remarquer que ce cas met les deux critères **en compétition directe** : avant, ils pouvaient coexister, maintenant il faut choisir ;",
+        "si la personne change de règle, elle le dit et explique pourquoi."
+      ]
+    },
+    {
+      "id": "bateau-de-thesee_q3",
+      "type": "application à soi",
+      "apres_section": 7,
+      "enonce": "Tu dois aller sur Mars. Le trajet en fusée dure sept mois ; le téléporteur, quelques minutes. Est-ce que tu appuies sur le bouton ? Est-ce un **voyage** ou est-ce **ta mort suivie de la naissance d'un autre** ? Réponds en utilisant ta règle des questions 1 et 2.",
+      "points_cles": [
+        "relier explicitement la réponse aux critères de Q1 et Q2 ;",
+        "reconnaître que le téléporteur est un **second bateau de Hobbes** : une reconstruction parfaite, mais avec d'autres atomes et une interruption.",
+        "une personne qui a choisi la **continuité** pour le bateau et qui **refuse** le téléporteur est cohérente : le téléporteur casse la continuité ;",
+        "une personne qui a choisi la **matière** et qui **accepte** le téléporteur ne l'est pas, car la matière est détruite, sauf si elle explique pourquoi les personnes ne sont pas des bateaux ;",
+        "une personne qui accepte au nom de la mémoire alors qu'elle avait choisi la continuité doit expliquer ce changement."
+      ]
+    }
+  ]
+}
