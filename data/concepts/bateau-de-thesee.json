@@ -46,7 +46,33 @@
       "points_cles": [
         "une réponse **et** une règle générale (« un objet reste le même tant que… ») ;",
         "idéalement, un exemple d'appui (un fleuve, une ville, une équipe de foot dont tous les joueurs ont changé)."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "donne une réponse claire (oui, non, ou « en partie » en disant en quoi)",
+            "formule une **règle générale** sur ce qui fait qu'un objet reste le même (continuité, forme et fonction, matière...)",
+            "la réponse découle de cette règle"
+          ],
+          "exemple": "Oui. Un objet reste le même tant qu'il n'a jamais cessé d'exister et qu'il a changé progressivement, comme un fleuve."
+        },
+        "partiel": {
+          "criteres": [
+            "justification propre à ce bateau, sans règle générale",
+            "règle très vague (« c'est une question de point de vue ») sans dire quels critères s'opposent",
+            "règle fondée uniquement sur le nom de l'objet"
+          ],
+          "exemple": "Je dirais oui, on l'a juste réparé."
+        },
+        "incorrect": {
+          "criteres": [
+            "oui ou non sans aucune justification",
+            "hors sujet (valeur historique, coût de l'entretien...) sans répondre à la question",
+            "réponse et règle qui se contredisent"
+          ],
+          "exemple": "Non."
+        }
+      }
     },
     {
       "id": "bateau-de-thesee_q2",
@@ -57,7 +83,33 @@
         "appliquer **explicitement** la règle de Q1 au nouveau cas ;",
         "remarquer que ce cas met les deux critères **en compétition directe** : avant, ils pouvaient coexister, maintenant il faut choisir ;",
         "si la personne change de règle, elle le dit et explique pourquoi."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "choisit un bateau, ou défend de façon argumentée qu'aucun des deux ne l'est ou que la question n'a pas de réponse déterminée",
+            "applique **explicitement** sa règle de la question 1 (comparer avec sa réponse à la Q1), ou annonce et justifie un changement de règle",
+            "reconnaît au moins un prix de sa position (le bois de Thésée devient une copie ; ou il faudrait une planche précise où tout bascule)"
+          ],
+          "exemple": "Le bateau réparé, avec ma règle de continuité. Le prix : le bois que Thésée a touché, remonté à l'identique, ne serait qu'une copie, et ça me gêne un peu."
+        },
+        "partiel": {
+          "criteres": [
+            "choisit en appliquant sa règle de la Q1, mais ne voit aucun prix ni aucune difficulté",
+            "change de règle en l'assumant, mais sans dire pourquoi",
+            "décrit bien le conflit entre les deux critères, sans trancher ni expliquer pourquoi on ne peut pas trancher"
+          ],
+          "exemple": "Le bateau réparé, parce que d'après ma règle il n'a jamais cessé d'exister."
+        },
+        "incorrect": {
+          "criteres": [
+            "« les deux sont le vrai bateau », sans distinguer « lui ressembler » et « être lui »",
+            "utilise un autre critère qu'à la Q1 sans s'en rendre compte",
+            "choix sans justification"
+          ],
+          "exemple": "Les deux sont le bateau de Thésée."
+        }
+      }
     },
     {
       "id": "bateau-de-thesee_q3",
@@ -70,7 +122,33 @@
         "une personne qui a choisi la **continuité** pour le bateau et qui **refuse** le téléporteur est cohérente : le téléporteur casse la continuité ;",
         "une personne qui a choisi la **matière** et qui **accepte** le téléporteur ne l'est pas, car la matière est détruite, sauf si elle explique pourquoi les personnes ne sont pas des bateaux ;",
         "une personne qui accepte au nom de la mémoire alors qu'elle avait choisi la continuité doit expliquer ce changement."
-      ]
+      ],
+      "niveaux": {
+        "parfait": {
+          "criteres": [
+            "donne une décision (appuyer, refuser, ou hésiter en disant pourquoi)",
+            "relie cette décision à son critère d'identité des questions 1 et 2, de façon cohérente, ou justifie le changement (comparer avec ses réponses précédentes)",
+            "identifie ce que le téléporteur change par rapport à un voyage normal : une coupure dans la continuité et une matière nouvelle, mais des souvenirs conservés"
+          ],
+          "exemple": "Je refuse. Pour moi, comme pour le bateau, c'est la continuité qui compte, et la cabine me détruit puis fabrique une copie : il y a une coupure. Celui sur Mars aurait mes souvenirs, mais ce ne serait pas moi."
+        },
+        "partiel": {
+          "criteres": [
+            "décision justifiée, mais sans lien avec sa règle des questions 1 et 2",
+            "lien avec sa règle, mais incohérence non relevée (par exemple critère de la matière et accepte la cabine)",
+            "s'appuie seulement sur le fait que la copie se croira elle-même"
+          ],
+          "exemple": "J'appuie, de toute façon la personne sur Mars aura tous mes souvenirs et ma personnalité."
+        },
+        "incorrect": {
+          "criteres": [
+            "répond sur la sécurité technique ou le confort du voyage",
+            "décision sans justification",
+            "hors sujet"
+          ],
+          "exemple": "Non, j'ai peur que la machine tombe en panne."
+        }
+      }
     }
   ]
 }
