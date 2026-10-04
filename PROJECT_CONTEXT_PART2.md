@@ -19,7 +19,7 @@ Objectifs couverts :
 Modèle actuellement utilisé :
 
 ```text
-Qwen/Qwen2.5-0.5B-Instruct
+Qwen/Qwen2.5-3B-Instruct
 ```
 
 Le modèle est chargé localement avec Hugging Face `transformers`.
@@ -90,7 +90,7 @@ llm.device
 Modèle par défaut :
 
 ```text
-Qwen/Qwen2.5-0.5B-Instruct
+Qwen/Qwen3-0.5B-Instruct
 ```
 
 Le modèle est placé en mode évaluation avec `model.eval()`.  
@@ -522,7 +522,7 @@ Nombre de messages : 6
 
 ### Limite observée
 
-Qwen2.5-0.5B peut produire des réponses sémantiquement faibles ou incohérentes sur certains tours de conversation.
+Qwen2.5-3B peut produire des réponses sémantiquement faibles ou incohérentes sur certains tours de conversation.
 
 Ce comportement doit être considéré comme une **limite de la baseline**, et non automatiquement comme un bug du code.
 
@@ -643,7 +643,7 @@ Réponse stable : True
                     apply_chat_template
                              │
                              ▼
-                  Qwen2.5-0.5B-Instruct
+                  Qwen2.5-3B-Instruct
                              │
                              ▼
                        génération

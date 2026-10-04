@@ -4,7 +4,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-DEFAULT_MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
+DEFAULT_MODEL_NAME = "Qwen/Qwen2.5-3B-Instruct"
 
 
 @dataclass
