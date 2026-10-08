@@ -24,7 +24,8 @@ Format : contrat 1 (fiche concept), avec en plus `difficulte`, `apres_section`, 
       "niveaux": {
         "parfait":   {"criteres": ["…"], "exemple": "…"},
         "partiel":   {"criteres": ["…"], "exemple": "…"},
-        "incorrect": {"criteres": ["…"], "exemple": "…"}
+        "incorrect": {"criteres": ["…"], "exemple": "…"},
+        "refus":     {"criteres": ["…"], "exemple": "…"}
       }
     }
   ]
@@ -39,6 +40,6 @@ Format : contrat 1 (fiche concept), avec en plus `difficulte`, `apres_section`, 
 | `apres_section` | La question est posée juste après la section n° `apres_section` (numérotée à partir de 1), avant la révélation de sa réponse. |
 | `points_cles` | Ce que la réponse doit contenir. |
 | `indices` | Exactement 2 indices fixes, valables quelle que soit la réponse : `indices[0]` est affiché après l'échec du 1ᵉʳ essai, `indices[1]` après l'échec du 2ᵉ. |
-| `niveaux` | La grille du verdict. `parfait` : **tous** les critères sont présents. `partiel` et `incorrect` : **au moins un** des cas décrits. `exemple` est une réponse-type qui sert à calibrer le modèle, pas une réponse à recopier. |
+| `niveaux` | La grille du verdict. `parfait` : **tous** les critères sont présents. `partiel`, `incorrect` et `refus` : **au moins un** des cas décrits. `refus` couvre les demandes interdites, la manipulation et les insultes ; un hors-sujet reste `incorrect`. `exemple` est une réponse-type qui sert à calibrer le modèle, pas une réponse à recopier. |
 
 Il y a 3 questions par concept (2 pour `plier-une-feuille-42-fois`).
