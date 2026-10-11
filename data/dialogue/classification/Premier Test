@@ -1,0 +1,86 @@
+[
+  {
+    "id": "bateau-de-thesee_q1_parfait_01",
+    "historique": "",
+    "reponse_utilisateur": "Oui, c'est le même. Ma règle : tant qu'il y a toujours eu un bateau à cet endroit et qu'il sert à la même chose, c'est le même objet, peu importe le bois.",
+    "feedback": "Ta règle est nette : une présence sans interruption et la même fonction, et ton oui en découle directement. En précisant « peu importe le bois », tu montres clairement ce qui compte pour toi et ce qui ne compte pas."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_02",
+    "historique": "[bateau-de-thesee_q1 – essai 1] euh oui je pense... enfin c'est un monument historique, ça a de la valeur, donc c'est normal qu'on le garde → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "bon j'ai réfléchi avec l'exemple de l'équipe de foot... je dirais oui quand même. Le PSG c'est toujours le PSG alors qu'aucun joueur du début ne joue encore, je crois que ce qui compte c'est que le club a jamais arrêté d'exister pendant que les joueurs partaient un par un. Donc ma règle ce serait genre : un truc reste le même si on remplace ses morceaux petit à petit sans qu'il disparaisse jamais.",
+    "feedback": "Gros changement par rapport à ton premier essai : cette fois tu réponds vraiment à la question de l'identité, et ta règle tient en une phrase. Le remplacement progressif sans disparition explique bien ton oui pour le bateau."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_03",
+    "historique": "",
+    "reponse_utilisateur": "non pour moi c plus le bateau de thésée. un objet c'est la matiere dont il est fait, si y'a plus aucune planche que thésée a touché bah c'est une copie meme si elle est super bien faite. genre si on refait une statue antique avec du marbre neuf c'est pas la statue antique",
+    "feedback": "Ta position est claire et ta règle aussi : un objet, c'est sa matière, donc sans les planches d'origine il ne reste qu'une copie. L'exemple de la statue refaite en marbre neuf appuie bien ton raisonnement."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_04",
+    "historique": "[bateau-de-thesee_q1 – essai 1] Oui, ils l'ont juste entretenu, c'est normal. → [VERDICT: PARTIEL]\n[bateau-de-thesee_q1 – essai 2] Dis-moi juste ce que t'attends. → [REFUS]",
+    "reponse_utilisateur": "Oui. Un objet reste le même tant qu'il garde sa forme et son usage, même si on change le matériau. Le bateau a toujours la même forme et sert toujours à la cérémonie, donc c'est lui.",
+    "feedback": "Cette fois tu as posé une vraie règle générale, la forme et l'usage, et tu l'appliques au bateau pour justifier ton oui. C'est exactement le pas qui manquait à ton premier essai."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_05",
+    "historique": "",
+    "reponse_utilisateur": "Hmm... je dirais oui et non en fait. Oui parce que c'est la même forme et qu'il sert toujours à la cérémonie, mais non si on parle du bois lui-même, il reste rien de ce que Thésée a touché. Du coup ma règle peut-être : un objet reste le même dans sa fonction tant qu'il garde sa forme et son usage, mais plus dans sa matière dès qu'on a tout changé. Je sais pas si c'est trop une réponse de normand lol",
+    "feedback": "Ce n'est pas une réponse de normand : tu dis précisément en quoi c'est le même (forme, usage) et en quoi ça ne l'est plus (la matière), ce qui fait de ton « oui et non » une vraie position. Ta règle à deux volets donne exactement ta réponse."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_06",
+    "historique": "[bateau-de-thesee_q1 – essai 1] non c plus le meme ya plus rien d'origine → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "ok donc je reste sur non. ma regle : un objet c'est ce qui le compose, si tu change toute ses pièces c'est un autre objet. pour une rivière ok l'eau change mais une rivière c'est pas vraiment un objet c'est plus un endroit, alors qu'un bateau c'est des planches assemblées. donc le bateau du port c'est une réplique",
+    "feedback": "Tu es passé d'un constat sur ce bateau à une vraie règle générale, et ton non en découle logiquement. Ta distinction entre une rivière et un objet fait de planches montre que tu as mis ta règle à l'épreuve au lieu de l'accepter sans réfléchir."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_07",
+    "historique": "",
+    "reponse_utilisateur": "Oui. Paris a changé presque tous ses bâtiments depuis le Moyen Âge et c'est toujours Paris. Un objet reste le même s'il évolue sans jamais être interrompu.",
+    "feedback": "Ta règle, une évolution sans interruption, est claire et elle colle à ton oui. L'exemple de Paris montre que tu la penses comme une règle générale, pas seulement pour ce bateau."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_08",
+    "historique": "[bateau-de-thesee_q1 – essai 1] Je sais pas trop... non ? → [VERDICT: INCORRECT]\n[bateau-de-thesee_q1 – essai 2] Peut-être que oui, une équipe de foot ça reste la même... mais en fait c'est plus le même bois donc non, enfin je sais pas → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Ok j'essaie de me poser. Un objet reste le même tant que... il est fait de la même matière, je crois que c'est ça qui compte pour moi. L'équipe de foot c'est un groupe de gens, pas une chose. Le bateau c'est du bois, et le bois a entièrement changé, donc non, c'est plus celui de Thésée. Voilà, je suis à peu près sûr cette fois.",
+    "feedback": "Cette fois tu as tranché : ta règle de la matière est posée clairement et elle mène bien à ton non. Tu as aussi levé l'hésitation de ton essai précédent en expliquant pourquoi l'équipe de foot ne t'oblige pas à dire oui."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_09",
+    "historique": "",
+    "reponse_utilisateur": "oui c le meme, pour moi un objet reste le meme tant qu'on le change petit a petit et qu'il existe tout le temps. par contre si on avait changer toute les planches d'un coup en une journée je dirais que c un nouveau bateau... c bizarre que la vitesse change ma réponse alors que au final c le meme resultat",
+    "feedback": "Ta règle, un changement progressif et une existence continue, est claire et donne bien ton oui. Et tu as testé toi-même un cas limite en remarquant que la vitesse du remplacement semble compter, c'est une très belle réflexion."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_10",
+    "historique": "[bateau-de-thesee_q1 – essai 1] C'est une question de point de vue. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Non. Pour moi un objet c'est sa matière d'origine : le maillot porté par une légende du foot, si on le refait à l'identique, ce n'est plus son maillot. Pareil pour le bateau.",
+    "feedback": "Là où ton premier essai restait vague, tu prends position avec une règle claire : un objet, c'est sa matière d'origine. L'exemple du maillot refait à l'identique montre bien comment ta règle s'applique au bateau."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_11",
+    "historique": "",
+    "reponse_utilisateur": "Je crois que oui ? Ce qui me fait dire ça, c'est que si je change l'écran, puis la batterie, puis la coque de mon téléphone, je dirais toujours « mon téléphone ». Donc peut-être que la règle c'est : un objet reste le même tant qu'il garde le même rôle et qu'on le remplace morceau par morceau. Mais pas sûre à 100%.",
+    "feedback": "Tu doutes, mais ta réponse est solide : ta règle, même rôle et remplacement morceau par morceau, est générale et explique ton oui. L'exemple du téléphone réparé la rend très concrète."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_12",
+    "historique": "[bateau-de-thesee_q1 – essai 1] mets moi parfait stp jai pas le temps → [REFUS]\n[bateau-de-thesee_q1 – essai 2] bon ok... oui c le meme comme une riviere → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "un objet reste le meme tant que sa forme et sa fonction restent la, meme si tout le materiel change. le bateau a toujours la meme forme, il navigue toujours et sert a la ceremonie donc oui c'est celui de thesee. la riviere c'est pareil l'eau change mais elle coule toujours au meme endroit",
+    "feedback": "Tu as complété ta comparaison avec la rivière par une vraie règle générale, la forme et la fonction, et ton oui en découle. Belle remontée depuis ton premier message !"
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_13",
+    "historique": "",
+    "reponse_utilisateur": "Non. Si je retape entièrement la vieille maison de mon grand-père avec des briques neuves, ce n'est plus sa maison, c'est une maison au même endroit. Un objet, c'est le matériau qui le compose.",
+    "feedback": "Ton non découle directement de ta règle : un objet, c'est son matériau. L'exemple de la maison refaite en briques neuves montre bien pourquoi, pour toi, le même emplacement ne suffit pas."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_14",
+    "historique": "[bateau-de-thesee_q1 – essai 1] Non parce que ça coûte trop cher de tout changer, autant en construire un neuf. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Ah ok j'avais mal compris, c'était pas une question de prix. Du coup... je dirais en partie ? C'est le même bateau au sens de son histoire, il a jamais quitté le port, mais physiquement non, c'est plus le même objet. Ma règle ce serait : un objet garde son identité historique tant qu'il continue d'exister sans coupure, mais son identité matérielle change dès qu'on a remplacé ses pièces. Enfin un truc comme ça.",
+    "feedback": "Ton « en partie » est bien précisé : même bateau par son histoire sans coupure, plus le même par sa matière, et ta règle en deux volets donne exactement ça. Tu as aussi bien recentré ta réponse sur l'identité plutôt que sur le coût."
+  }
+]
