@@ -2,7 +2,9 @@
 
 Source du dataset d'entraînement QLoRA : une ligne par réponse utilisateur, avec son verdict attendu et le feedback du tuteur. Un LLM générateur remplit les colonnes vides (il renvoie du JSON, fusionné ensuite par un script). Un script générera enfin le JSONL d'entraînement (format `messages`) en injectant la grille de la fiche concept correspondante.
 
-Fichier : `dataset_source.csv` (séparateur `;`, encodage UTF-8 avec BOM, s'ouvre dans Excel).
+Fichiers :
+- `dataset_source.csv` (séparateur `;`, encodage UTF-8 avec BOM, s'ouvre dans Excel) ;
+- `prompt_a_donner.md` : prompt à donner au LLM générateur, une question à la fois.
 
 ## Répartition
 
