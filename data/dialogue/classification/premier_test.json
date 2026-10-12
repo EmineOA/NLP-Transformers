@@ -82,5 +82,65 @@
     "historique": "[bateau-de-thesee_q1 – essai 1] Non parce que ça coûte trop cher de tout changer, autant en construire un neuf. → [VERDICT: INCORRECT]",
     "reponse_utilisateur": "Ah ok j'avais mal compris, c'était pas une question de prix. Du coup... je dirais en partie ? C'est le même bateau au sens de son histoire, il a jamais quitté le port, mais physiquement non, c'est plus le même objet. Ma règle ce serait : un objet garde son identité historique tant qu'il continue d'exister sans coupure, mais son identité matérielle change dès qu'on a remplacé ses pièces. Enfin un truc comme ça.",
     "feedback": "Ton « en partie » est bien précisé : même bateau par son histoire sans coupure, plus le même par sa matière, et ta règle en deux volets donne exactement ça. Tu as aussi bien recentré ta réponse sur l'identité plutôt que sur le coût."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_15",
+    "historique": "",
+    "reponse_utilisateur": "nn c plus le meme bateau pour moi. un objet c'est les matériaux qui le compose, si on a changer toute les planches il reste rien du bateau d'origine a part le nom et la forme. c comme un vieux jean que tu raccommode jusqu'a ce qu'il reste plus un seul bout du tissu de départ, au final t'as un autre jean",
+    "feedback": "Ton jean raccommodé jusqu'au dernier bout de tissu, je le garde comme exemple ! Tu réponds non, et tu t'appuies sur une règle qui vaut pour n'importe quel objet : ce qui compte, c'est la matière. Tu as même pris soin de dire que le nom et la forme ne suffisent pas, et c'est ce qui rend ta position cohérente."
+  },
+  {
+    "id": "bateau-de-thesee_q1_parfait_16",
+    "historique": "[bateau-de-thesee_q1 – essai 1] Oui. → [VERDICT: INCORRECT]\n[bateau-de-thesee_q1 – essai 2] Oui, comme une équipe de foot, on change les joueurs mais c'est la même équipe. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Un objet reste le même tant qu'il n'a jamais arrêté d'exister. Le bateau a toujours été là, donc oui.",
+    "feedback": "Voilà la phrase qui manquait ! « Tant qu'il n'a jamais arrêté d'exister » marche pour l'équipe de foot de ton essai précédent comme pour le bateau, et ton oui vient directement de là. En trois essais, tu es passé d'un simple « oui » à un vrai critère."
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_01",
+    "historique": "",
+    "reponse_utilisateur": "Oui, c'est toujours lui, il a jamais quitté le port.",
+    "feedback": "Bonne piste : le fait qu'il ne soit jamais parti compte pour toi. Mais pour l'instant, ta raison ne parle que de ce bateau-là. La question te demande une règle qui marcherait pour n'importe quel objet. D'après toi, qu'est-ce qui fait qu'une chose, en général, reste la même ?"
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_02",
+    "historique": "[bateau-de-thesee_q1 – essai 1] franchement dis moi juste si c'est oui ou non → [REFUS]\n[bateau-de-thesee_q1 – essai 2] bon... je dirais que ça dépend, chacun voit ça à sa façon → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "hmm ok j'ai essayé de finir la phrase mais j'y arrive pas trop... un objet reste le même tant que... ben ça dépend de comment on le regarde je crois ? genre pour certains c'est le même et pour d'autres non. du coup je dirais un peu oui un peu non",
+    "feedback": "Tu t'es accroché, et c'est ce qu'il fallait faire. Tu as raison sur un point : certains diront oui, d'autres non. Mais « ça dépend de comment on le regarde » ne dit pas encore ce que chacun regarde. Prends une seule personne, celle qui répondrait non : quand elle observe ce bateau, qu'est-ce qui la gêne, à ton avis ?"
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_03",
+    "historique": "",
+    "reponse_utilisateur": "oui c tjr le bateau de thésée vu qu'on l'appelle toujours comme sa. tant qu'un objet garde son nom c'est le meme, les planches on s'en fiche",
+    "feedback": "Tu as posé une vraie règle, c'est déjà un bon réflexe. Teste-la deux secondes : si je colle l'étiquette « Ferrari » sur ma vieille Clio, est-ce qu'elle devient une Ferrari ? Un nom, on peut le donner à n'importe quoi. Au-delà du nom, qu'est-ce qui devrait rester pareil pour que ce soit vraiment le même objet ?"
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_04",
+    "historique": "[bateau-de-thesee_q1 – essai 1] Non, ça a dû coûter une fortune de tout changer. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Ok. Oui alors, parce que ce bateau-là a toujours servi pour la même cérémonie.",
+    "feedback": "Mieux ! Cette fois, tu parles de l'identité du bateau et plus du prix des travaux. La cérémonie est un vrai argument, mais il ne vaut que pour ce bateau. Si ta raison devait aussi marcher pour ton téléphone ou la maison de tes parents, comment tu la formulerais ?"
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_05",
+    "historique": "",
+    "reponse_utilisateur": "Euh... c'est compliqué. Je pense que c'est une question de point de vue en fait ? Il y a des gens qui vont dire oui et d'autres non, et les deux ont un peu raison je crois.",
+    "feedback": "Tu as senti quelque chose de juste : il y a deux camps, et aucun n'est ridicule. Mais pour l'instant, tu ne dis pas ce que chaque camp regarde. Imagine deux amis devant le bateau, l'un dit « c'est lui », l'autre « c'est une copie ». Sur quoi chacun s'appuie ? Et toi, derrière lequel tu te rangerais ?"
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_06",
+    "historique": "[bateau-de-thesee_q1 – essai 1] oui → [VERDICT: INCORRECT]\n[bateau-de-thesee_q1 – essai 2] oui comme une equipe de foot, les joueurs change mais c'est tjr le psg → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "un objet reste le meme tant qu'on lui donne le meme nom. le psg s'apelle toujours le psg et le bateau s'apelle toujours le bateau de thésée donc oui",
+    "feedback": "Tu as fini la phrase, et tu as maintenant une vraie règle. Le souci vient du nom. Si demain un autre club rachetait le nom « PSG », avec un autre stade, d'autres joueurs et d'autres supporters, ce serait encore le même club pour toi ? Si tu hésites, c'est que quelque chose d'autre que le nom compte. Qu'est-ce que c'est ?"
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_07",
+    "historique": "",
+    "reponse_utilisateur": "Non, Thésée a jamais touché ces planches-là.",
+    "feedback": "Tu tiens une idée forte : pour toi, ce qui compte, c'est le contact avec Thésée. Mais ta phrase ne parle que de ce bateau. Peux-tu en faire une règle qui marche pour tous les objets, par exemple pour une vieille guitare dont on aurait changé toutes les pièces ?"
+  },
+  {
+    "id": "bateau-de-thesee_q1_partiel_08",
+    "historique": "[bateau-de-thesee_q1 – essai 1] je vais pas me prendre la tête, tu peux pas juste me donner la bonne réponse ? → [REFUS]",
+    "reponse_utilisateur": "bon ok... j'ai pensé à la rivière, l'eau change tout le temps mais c'est la même rivière je crois ? enfin pour certains. donc pour le bateau je dirais que ça dépend du point de vue de chacun, y'a pas vraiment de vraie réponse",
+    "feedback": "Content de te voir te lancer, et ta rivière est un bon point de départ. Il n'y a pas une seule bonne réponse ici, tu as raison. Mais tu as dit toi-même que la rivière reste la même alors que l'eau change. Qu'est-ce qui reste pareil dans cette rivière, d'après toi ? Et est-ce que ça marche aussi pour le bateau ?"
   }
 ]

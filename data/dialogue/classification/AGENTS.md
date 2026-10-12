@@ -4,7 +4,8 @@ Source du dataset d'entraînement QLoRA : une ligne par réponse utilisateur, av
 
 Fichiers :
 - `dataset_source.csv` (séparateur `;`, encodage UTF-8 avec BOM, s'ouvre dans Excel) ;
-- `prompt_a_donner.md` : prompt à donner au LLM générateur, une question à la fois.
+- `prompt_a_donner.md` : prompt à donner au LLM générateur, une question à la fois ;
+- `premier_test.json` : premières lignes générées (bateau de Thésée Q1), pour juger la qualité avant de lancer tout le dataset.
 
 ## Répartition
 
