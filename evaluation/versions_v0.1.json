@@ -1,0 +1,8 @@
+{
+  "modele": "a_renseigner",
+  "prompt": "a_renseigner",
+  "fiches": "archive_git_fournie_a_versionner",
+  "adaptateur": null,
+  "origine_predictions": "reelle_ou_simulation_a_renseigner",
+  "commentaire": "Renseigner le commit Git et les versions effectives avant la mesure."
+}
