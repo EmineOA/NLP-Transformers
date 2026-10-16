@@ -1,0 +1,24 @@
+{
+  "prompt": "data/dialogue/classification/prompt_a_donner.md @ 33532ca",
+  "fiches": "data/concepts/markdown @ 33532ca",
+  "squelette": "generer_squelette.py + attribuer_generateurs.py (graine 2026) @ 33532ca",
+  "generateurs": {
+    "claude-opus-5.5": {
+      "lignes_prevues": 472,
+      "interface": "agent Hermes (desktop), un seul agent, sans sous-agents",
+      "effort": "moyen",
+      "debut": "2026-10-16",
+      "fin": null,
+      "lignes_regenerees": 0
+    },
+    "sol-6.1": {
+      "lignes_prevues": 531,
+      "interface": "agent Hermes (desktop)",
+      "effort": "moyen",
+      "debut": null,
+      "fin": null,
+      "lignes_regenerees": 0
+    }
+  },
+  "corrections_manuelles": []
+}

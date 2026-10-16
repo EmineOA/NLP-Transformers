@@ -62,7 +62,7 @@ Le générateur reçoit le label imposé et écrit une réponse censée le méri
 
 ### Étape 1 : figer les versions
 
-Avant de générer, on note dans un fichier `manifest.json` :
+Avant de générer, on note dans `generation/manifest.json` :
 - la version des fiches ;
 - la version du prompt ;
 - le modèle générateur et ses paramètres ;
@@ -81,11 +81,15 @@ Avoir deux générateurs permet de vérifier que les résultats ne dépendent pa
 
 **Remarque :** le tirage n'est pas stratifié, donc la répartition des verdicts n'est pas identique entre les deux modèles (par exemple 114 `PARFAIT` pour Opus contre 158 pour Sol). Ça n'empêche pas la comparaison, mais il faut la faire verdict par verdict.
 
+**Où vont les sorties :** `generation/<generateur>/<question_id>.json`, au format exact du prompt (voir `generation/AGENTS.md`). `preparer_lot.py` donne le bloc de lignes à envoyer pour une question et un générateur.
+
 ### Étape 2 : pilote
 
 On génère une question complète, on la relit et on corrige le prompt si besoin. Les autres questions ne sont générées qu'**une fois le prompt gelé**. Toute modification ultérieure du prompt impose de regénérer les questions déjà produites.
 
 ### Étape 3 : contrôles automatiques (script, sans LLM)
+
+Script : `valider_dataset.py`. Il écrit `generation/rapport_validation.csv` avec, pour chaque ligne, `OK`, `ALERTE` (à relire) ou `REJET` (à regénérer).
 
 - **Structure** : `id` conservés, aucun `;`, aucun `[VERDICT` dans le feedback, JSON valide.
 - **Historique** : il respecte `labels_historique` (nombre d'éléments, ordre, verdicts, format exact).
@@ -93,7 +97,7 @@ On génère une question complète, on la relit et on corrige le prompt si besoi
   - `PARFAIT` : aucune question ;
   - `PARTIEL` et `INCORRECT` : se termine par une question ;
   - `HORS_PERIMETRE` : relance la question.
-- **Fuite de la réponse** : une liste de termes interdits par question (par exemple « 2/3 » pour Monty Hall Q1). Ils ne doivent pas apparaître dans le feedback d'une réponse non `PARFAIT`, ni dans une réponse d'élève qui ne peut pas encore les connaître.
+- **Fuite de la réponse** : pas de liste de termes interdits. Elle est vérifiée par le LLM juge (étape 4) et par l'audit humain (« le feedback donne-t-il la réponse ? »).
 - **Tics d'IA** : recherche des formules listées dans la section 5 du prompt.
 - **Diversité** : repérer les quasi-doublons entre lignes et les copies des exemples des fiches, et regarder la répartition des longueurs.
 
