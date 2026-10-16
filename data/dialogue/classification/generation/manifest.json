@@ -245,5 +245,27 @@
     ],
     "validation_pedagogique_independante": "non_effectuee",
     "statut_labels": "imposes_pour_generation_non_valides_independamment"
+  },
+  "archivage_sorties_brutes": {
+    "commit_avant_retrait": "4e60507",
+    "motif": "Textes fusionnés à l’identique dans dataset_source.csv ; retrait des doublons de stockage.",
+    "liste_attributions": "generation/AGENTS.md",
+    "source_maintenue": "dataset_source.csv"
+  },
+  "export_jsonl": {
+    "fichier": "dataset_messages.jsonl",
+    "lignes": 1003,
+    "sha256": "0639badca2611f56c8d9c3f1a284a0fedd6d1925c4cecdb5bb5766d36cd1b812",
+    "schema": {
+      "messages": [
+        "system",
+        "user",
+        "assistant"
+      ]
+    },
+    "prompt_version": "fewshot",
+    "historique": "résumé textuel conservé dans le message utilisateur, indices déduits du numéro d’essai ; aucun ancien feedback inventé",
+    "ordre": "identique au CSV ; identifiants, split et générateur restent dans le CSV",
+    "validation_pedagogique_independante": "non_effectuee"
   }
 }

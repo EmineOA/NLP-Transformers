@@ -2,6 +2,53 @@
 
 Ce dossier contient la source du dataset d'entraînement QLoRA du tuteur Brainmaxing. Ce README décrit **comment on le génère et comment on vérifie qu'il est cohérent**. Le format des colonnes et les règles de l'historique sont décrits dans [`AGENTS.md`](AGENTS.md).
 
+## Livraison et utilisation par Emine
+
+Les fichiers à utiliser sont :
+
+| Fichier | Usage |
+|---|---|
+| `dataset_source.csv` | Source unique à corriger : 1 003 lignes, 14 colonnes, identifiants, split et générateur conservés. |
+| `dataset_messages.jsonl` | Export commun Opus + Sol : 1 003 objets au format `{"messages": [...]}`. |
+| `export_jsonl.py` | Reproduit l'export depuis le CSV et les fiches, sans générer de texte. |
+| `generation/AGENTS.md` | Méthode, répartition et liste exhaustive des 472 identifiants Opus et 531 identifiants Sol. |
+| `generation/manifest.json` | Versions, corrections, empreintes et provenance des sorties archivées. |
+
+Depuis la racine du dépôt :
+
+```bash
+python data/dialogue/classification/valider_dataset.py
+python data/dialogue/classification/export_jsonl.py
+python -m unittest discover -s tests -p 'test_*.py' -v
+```
+
+L'exporteur n'a pas de dépendance supplémentaire : il utilise la bibliothèque standard et les fonctions existantes du dépôt. La suite complète de tests nécessite les dépendances du moteur, dont PyTorch et Transformers.
+
+Chaque ligne JSONL contient seulement `messages`, avec trois messages :
+
+1. `system` : prompt produit par `src/llm/prompts.py`, version `fewshot` par défaut, avec la fiche et la question réelles. Les exemples de fiche sont ceux du moteur, pas les cibles du CSV.
+2. `user` : historique résumé conservé en texte, indices déduits du numéro d'essai, puis réponse actuelle de l'élève. Aucun ancien feedback complet n'est inventé.
+3. `assistant` : `[VERDICT: PARFAIT|PARTIEL|INCORRECT]` ou `[HORS_PERIMETRE]`, puis un saut de ligne et le feedback cible.
+
+Le JSONL garde l'ordre du CSV. L'objet JSONL à l'indice `i` correspond à la ligne CSV à l'indice `i` après lecture avec `csv.DictReader`. `id`, `cas`, `style`, `labels_historique`, `split` et `generateur` ne sont pas injectés dans les messages. Les identifiants contiennent le label : ne pas les ajouter au prompt lors de l'évaluation.
+
+Pour l'entraînement, conserver les trois messages et calculer la perte sur la cible `assistant`. Pour la baseline ou l'évaluation, séparer les entrées et la cible :
+
+```python
+model_inputs = example["messages"][:-1]
+expected_output = example["messages"][-1]["content"]
+```
+
+`generate_response` reconstruit lui-même le message système et refuse les messages système externes. Pour utiliser ce moteur avec la ligne CSV correspondante, lui passer `example["messages"][1:-1]`, la fiche chargée par `concept_id`, la question chargée par `question_id` et `prompt_version="fewshot"`. Ne jamais lui envoyer le dernier message `assistant` du JSONL. Le test `tests/test_dataset_integration.py` vérifie sur les 1 003 lignes que les messages finalement transmis au backend sont exactement ceux de l'export, cible exclue.
+
+Le résumé est une représentation explicite de l'historique disponible, pas une reconstitution d'anciens tours complets. Le moteur reste inchangé. Pour une comparaison baseline/LoRA équitable, les deux doivent recevoir cette même représentation ; une application qui envoie de vrais échanges complets doit être alignée avec l'équipe avant de revendiquer cette équivalence.
+
+Le split existant reste dans le CSV : 885 lignes `train`, 118 lignes `val`, groupées par question. Le JSONL commun contient les deux : appliquer la colonne `split` avant l'entraînement, sans utiliser tout l'export comme un unique lot train. Le test final indépendant n'est pas ce fichier.
+
+**État des contrôles techniques :** 1 003 lignes `OK` dans le validateur, 1 003 cibles acceptées par le parseur, 18 tests passés avec les dépendances du moteur. L'intégration utilise un backend simulé : aucun score ni entraînement Qwen n'est mesuré ici. Ces contrôles ne valent pas validation pédagogique indépendante ; le juge et l'audit humain restent à faire.
+
+Les deux dossiers de sorties JSON redondantes ont été retirés après comparaison exacte avec le CSV et sauvegarde. Leurs contenus et chemins restent récupérables au commit `4e60507`. Les anciens fichiers pilote placés directement dans ce dossier restent des archives, hors export. Corriger le CSV, relancer les contrôles, puis régénérer le JSONL ; ne pas modifier ce dernier à la main.
+
 ## 1. Objectif
 
 Produire un dataset de **1 003 lignes**. Chaque ligne contient une réponse d'élève, le verdict attendu (`PARFAIT`, `PARTIEL`, `INCORRECT` ou `HORS_PERIMETRE`) et le feedback du tuteur. Il faut aussi **prouver que ces lignes sont justes** avant de les utiliser pour entraîner le modèle.
@@ -83,7 +130,7 @@ Avoir deux générateurs permet de vérifier que les résultats ne dépendent pa
 
 **Remarque :** le tirage n'est pas stratifié, donc la répartition des verdicts n'est pas identique entre les deux modèles (par exemple 114 `PARFAIT` pour Opus contre 158 pour Sol). Ça n'empêche pas la comparaison, mais il faut la faire verdict par verdict.
 
-**Où vont les sorties :** `generation/<generateur>/<question_id>.json`, au format exact du prompt (voir `generation/AGENTS.md`). `preparer_lot.py` donne le bloc de lignes à envoyer pour une question et un générateur.
+**Où allaient les sorties brutes :** `generation/<generateur>/<question_id>.json`, au format exact du prompt. Ces 34 fichiers ont été fusionnés dans le CSV puis retirés ; leur provenance et leur liste d'identifiants restent dans `generation/AGENTS.md`. `preparer_lot.py` permet encore de préparer un lot de correction pour une question et un générateur.
 
 ### Étape 2 : pilote
 

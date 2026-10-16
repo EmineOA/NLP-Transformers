@@ -1,1 +1,2 @@
 *.csv -text
+*.jsonl text eol=lf
