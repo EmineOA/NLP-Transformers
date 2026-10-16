@@ -17,9 +17,18 @@
       "lignes_prevues": 531,
       "interface": "agent Hermes (desktop)",
       "effort": "moyen",
-      "debut": null,
+      "debut": "2026-10-16",
       "fin": null,
-      "lignes_regenerees": 0
+      "lignes_regenerees": 0,
+      "modele_runtime": "gpt-6.1-sol",
+      "provider": "openai-codex",
+      "effort_statut": "moyen demandé par utilisateur, réglage non vérifié par agent",
+      "lignes_generees": 95,
+      "questions_terminees": [
+        "bateau-de-thesee_q1",
+        "bateau-de-thesee_q2",
+        "bateau-de-thesee_q3"
+      ]
     }
   },
   "corrections_manuelles": []
