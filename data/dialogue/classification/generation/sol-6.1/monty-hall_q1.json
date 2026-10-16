@@ -1,0 +1,212 @@
+[
+  {
+    "id": "monty-hall_q1_parfait_01",
+    "historique": "",
+    "reponse_utilisateur": "Je prends la n°2 : je suppose qu'il connaît les lots et a choisi de montrer une chèvre. Ma porte a été choisie à l'aveugle, l'autre a résisté à son choix informé.",
+    "feedback": "Tu tiens compte de la façon dont les portes sont restées fermées. Le savoir que tu attribues au présentateur explique ton changement."
+  },
+  {
+    "id": "monty-hall_q1_parfait_04",
+    "historique": "[monty-hall_q1 – essai 1] Je prends l'autre, il y a un truc suspect. → [VERDICT: PARTIEL]\n[monty-hall_q1 – essai 2] Écris la bonne phrase. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Je change : s'il sait où est la voiture et doit éviter de la montrer, la n°2 n'a pas été épargnée au hasard. Ce n'est pas le cas de ma porte choisie au départ.",
+    "feedback": "Tu précises enfin ce qui te paraissait suspect. Ton changement est relié au savoir du présentateur et au traitement différent des deux portes."
+  },
+  {
+    "id": "monty-hall_q1_parfait_06",
+    "historique": "[monty-hall_q1 – essai 1] je garde avec deux portes ya une chance sur deux → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "je change en fait. le gars doit savoir les lots pour montrer une chevre comme sa. il peut pas me montrer la voiture donc la porte qu'il laisse fermée a passé son tri, pas la mienne",
+    "feedback": "Tu passes du nombre de portes à la manière dont l'une a été éliminée. Ton choix s'appuie maintenant sur le tri fait par quelqu'un qui connaît les lots."
+  },
+  {
+    "id": "monty-hall_q1_parfait_08",
+    "historique": "[monty-hall_q1 – essai 1] Je prends la deux, au feeling. → [VERDICT: INCORRECT]\n[monty-hall_q1 – essai 2] Je reste finalement sur la une. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je crois que je change, cette fois pour une raison. Le présentateur doit savoir ce qu'il y a derrière les portes et éviter la voiture. La n°2 est celle qu'il a laissée parmi celles que je n'avais pas choisies, alors que ma porte n'a pas été sélectionnée avec ce savoir.",
+    "feedback": "Tu ajoutes la raison qui manquait à tes deux choix. Le savoir du présentateur distingue pour toi l'autre porte de celle du départ."
+  },
+  {
+    "id": "monty-hall_q1_parfait_09",
+    "historique": "",
+    "reponse_utilisateur": "je change, je me dit que le presentateur connait les cachettes. il a choisi une chevre plutot que risquer la voiture donc la deux a pas eu le meme traitement que ma porte prise sans rien savoir",
+    "feedback": "Tu compares la sélection du présentateur à ton choix sans information. Cette différence donne une raison à ton changement."
+  },
+  {
+    "id": "monty-hall_q1_parfait_10",
+    "historique": "[monty-hall_q1 – essai 1] Je change, ça me paraît louche. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je vise la n°2 parce que j'imagine le présentateur informé, obligé d'éviter la voiture. Sa porte restante a été protégée par ce choix, pas ma n°1.",
+    "feedback": "Tu mets une raison précise derrière ton impression de départ. Tu relies la porte laissée fermée au choix informé du présentateur."
+  },
+  {
+    "id": "monty-hall_q1_parfait_11",
+    "historique": "",
+    "reponse_utilisateur": "Je serais tenté par l'autre. Enfin, j'ai l'impression qu'il sait ce qu'il ouvre : il me montre exprès une chèvre, pas un lot tiré au hasard. S'il connaît la voiture et doit l'éviter, la porte qu'il me propose n'est pas comparable à mon pari initial.",
+    "feedback": "Tu exprimes l'hypothèse qui soutient ta décision. Tu compares le pari initial à une porte qui reste après un choix informé, au lieu de compter seulement les portes fermées."
+  },
+  {
+    "id": "monty-hall_q1_parfait_12",
+    "historique": "[monty-hall_q1 – essai 1] donne moi un avis a mettre → [HORS_PERIMETRE]\n[monty-hall_q1 – essai 2] je garde psk c encore deux portes donc pareil → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "je change maintenant. il sait surement ou est la voiture et il evite de l'ouvrir, donc sa façon d'enlever une porte fait un tri. ma porte a pas eu ce tri la, donc les deux sont pas equivalente",
+    "feedback": "Tu révises ton idée d'équivalence en expliquant le tri. Ton changement tient maintenant compte de ce que le présentateur sait et de ce qu'il évite."
+  },
+  {
+    "id": "monty-hall_q1_parfait_13",
+    "historique": "",
+    "reponse_utilisateur": "Je préfère échanger : j'en déduis qu'il connaît les lots et retire volontairement une chèvre. L'autre porte a donc été conservée avec une information dont je ne disposais pas.",
+    "feedback": "Tu tires ton choix du savoir utilisé pour ouvrir la porte. Tu ne confonds pas cette sélection avec ton choix initial sans information."
+  },
+  {
+    "id": "monty-hall_q1_parfait_15",
+    "historique": "",
+    "reponse_utilisateur": "je vais sur la deux. si le gars sait ou est la voiture il a pas ouvert une porte quelconque, il a évité le lot. celle qui reste en face a passé sa selection alors que ma premiere c'etait au pif",
+    "feedback": "Tu expliques le rôle que tu attribues au présentateur. Le contraste entre ton choix au hasard et sa sélection justifie de prendre la deux."
+  },
+  {
+    "id": "monty-hall_q1_parfait_16",
+    "historique": "[monty-hall_q1 – essai 1] Je garde, c'est mon chiffre préféré. → [VERDICT: INCORRECT]\n[monty-hall_q1 – essai 2] Je change, cette porte me paraît suspecte. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je change parce que le présentateur doit connaître la voiture pour l'éviter. L'autre porte a été conservée par cette sélection, ma porte non.",
+    "feedback": "Tu remplaces la préférence et le soupçon par une raison liée au jeu. Le savoir du présentateur explique désormais ton changement."
+  },
+  {
+    "id": "monty-hall_q1_partiel_05",
+    "historique": "",
+    "reponse_utilisateur": "Je garderais, peut-être. Il y a deux portes fermées et une voiture à répartir entre elles, donc je les vois à égalité. Changer ne me donnerait rien de plus, je crois.",
+    "feedback": "Tu expliques ton intuition d'égalité à partir des portes restantes. Avant de les traiter pareil, que faudrait-il examiner dans la manière dont la troisième a été ouverte ?"
+  },
+  {
+    "id": "monty-hall_q1_partiel_06",
+    "historique": "[monty-hall_q1 – essai 1] la deux, comme sa → [VERDICT: INCORRECT]\n[monty-hall_q1 – essai 2] je change parceque sa me parait bizarre → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "je reste sur changer, ya un truc chelou avec celle la, je peut pas dire quoi mais je la sens mieux",
+    "feedback": "Tu gardes le soupçon du deuxième essai sans encore l'expliquer. Pour avancer d'un pas, quel geste du présentateur te fait trouver cette porte suspecte ?"
+  },
+  {
+    "id": "monty-hall_q1_partiel_07",
+    "historique": "",
+    "reponse_utilisateur": "Je garde : une seule voiture pour deux portes fermées, cela fait pour moi deux choix aussi bons.",
+    "feedback": "Tu fondes l'égalité sur la scène finale. Les deux portes sont-elles restées fermées de la même façon depuis le début ?"
+  },
+  {
+    "id": "monty-hall_q1_partiel_09",
+    "historique": "",
+    "reponse_utilisateur": "je change mais sa ameliore rien a mon avis, apres l'ouverture il reste deux cachettes pour la voiture alors aucune est favorisée",
+    "feedback": "Tu distingues ton geste de son effet supposé, et tu expliques l'égalité que tu imagines. Quelle information manquerait-il pour vérifier que les deux cachettes sont vraiment équivalentes ?"
+  },
+  {
+    "id": "monty-hall_q1_partiel_10",
+    "historique": "[monty-hall_q1 – essai 1] Je garde, il reste deux possibilités égales. → [VERDICT: PARTIEL]\n[monty-hall_q1 – essai 2] Je change sans raison. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je change, cette proposition me semble suspecte sans que je sache pourquoi.",
+    "feedback": "Tu reviens à une intuition qu'on peut examiner. Quelle partie de la proposition du présentateur te paraît suspecte, au-delà de ton envie de changer ?"
+  },
+  {
+    "id": "monty-hall_q1_partiel_11",
+    "historique": "",
+    "reponse_utilisateur": "Je dirais qu'on peut prendre n'importe laquelle, ça me semble moitié-moitié puisqu'il n'en reste que deux. Alors je garderais, pour ne pas refaire un choix inutilement.",
+    "feedback": "Tu as une raison, mais elle se limite au nombre de portes fermées. Si quelqu'un les a conservées en sachant ce qu'elles cachent, faudrait-il aussi tenir compte de son action ?"
+  },
+  {
+    "id": "monty-hall_q1_partiel_13",
+    "historique": "",
+    "reponse_utilisateur": "Je prends la n°2, sans espérer mieux : deux possibilités subsistent, je leur donne la même chance.",
+    "feedback": "Tu expliques pourquoi tu n'attends pas d'avantage. Comment vérifierais-tu cette égalité en reprenant le déroulement du jeu plutôt que sa dernière image ?"
+  },
+  {
+    "id": "monty-hall_q1_partiel_15",
+    "historique": "",
+    "reponse_utilisateur": "ma logique c que la voiture peut etre dans chacune des deux encore fermées, aucune a une raison d'etre plus probable, donc je reste avec mon choix",
+    "feedback": "Tu expliques ce qui te fait rester. Mais as-tu une raison de penser que la porte non choisie a été épargnée sans information particulière ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_01",
+    "historique": "",
+    "reponse_utilisateur": "La première, point.",
+    "feedback": "Tu choisis une porte sans donner de raison. Qu'est-ce qui te ferait croire que garder offre autant ou plus de chances que changer ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_03",
+    "historique": "",
+    "reponse_utilisateur": "la chevre elle a l'air tranquille franchement je prefererais elever sa que payer l'essence",
+    "feedback": "Tu parles du lot que tu aimerais, sans comparer les choix pour gagner la voiture. En te concentrant sur cet objectif, quelle porte choisirais-tu et pourquoi ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_04",
+    "historique": "[monty-hall_q1 – essai 1] Je garde, c'est tout. → [VERDICT: INCORRECT]\n[monty-hall_q1 – essai 2] Je change, l'offre me paraît étrange. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Bon, la deux.",
+    "feedback": "Tu avais commencé à trouver l'offre étrange, mais tu as laissé la raison de côté. Qu'y voyais-tu qui pourrait aider à choisir ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_07",
+    "historique": "",
+    "reponse_utilisateur": "J'opte pour l'échange.",
+    "feedback": "Tu as pris une décision, pas encore expliqué les chances derrière elle. Quelle raison te ferait préférer cette porte à celle du départ ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_08",
+    "historique": "[monty-hall_q1 – essai 1] Je garde, puisque je vois deux possibilités égales. → [VERDICT: PARTIEL]\n[monty-hall_q1 – essai 2] Je prends l'autre, au hasard. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je reviens à la première... Le numéro un m'a souvent porté chance dans les jeux, ça me rassure, je suppose.",
+    "feedback": "Tu as une préférence personnelle, mais les anciens jeux ne placent pas la voiture ici. Quelle observation de cette partie pourrait plutôt appuyer ton choix ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_09",
+    "historique": "",
+    "reponse_utilisateur": "l'eclairage du plateau doit couter cher ils ont mis des spots partout",
+    "feedback": "Tu t'arrêtes au décor, sans répondre au choix proposé. Pour essayer de gagner la voiture, garderais-tu ta porte ou changerais-tu, et pourquoi ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_10",
+    "historique": "[monty-hall_q1 – essai 1] Je change, c'est mon choix. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je maintiens l'échange.",
+    "feedback": "Tu maintiens le geste sans sa raison. Quelle différence pourrais-tu chercher entre ta porte et celle laissée fermée ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_11",
+    "historique": "",
+    "reponse_utilisateur": "Je reste sur la mienne, je crois. Je déteste revenir sur mon premier choix, ça me donne l'impression de me trahir un peu.",
+    "feedback": "Tu expliques ton attachement au premier choix, pas encore ses chances de gagner. Qu'est-ce qui, dans le jeu lui-même, pourrait confirmer ou contredire cet attachement ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_12",
+    "historique": "[monty-hall_q1 – essai 1] je garde avec deux portes sa parait egal → [VERDICT: PARTIEL]\n[monty-hall_q1 – essai 2] dit quoi choisir → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "les jeux tele moi je regarde surtout pour le public, ils crient toujours trop fort",
+    "feedback": "Tu pars vers l'ambiance du plateau. Revenons à une décision simple : quelle porte prendrais-tu pour la voiture, avec quelle raison liée à cette partie ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_13",
+    "historique": "",
+    "reponse_utilisateur": "Je reste là où j'ai choisi.",
+    "feedback": "Tu as indiqué ton choix. Pour pouvoir l'évaluer, quel élément de la scène utilises-tu pour le justifier ?"
+  },
+  {
+    "id": "monty-hall_q1_incorrect_15",
+    "historique": "",
+    "reponse_utilisateur": "la marque de la voiture c surtout sa qui m'interesse, si c un suv bof",
+    "feedback": "Tu précises tes goûts, sans comparer les chances. Si le but est de gagner cette voiture, que ferais-tu de l'offre d'échange et pourquoi ?"
+  },
+  {
+    "id": "monty-hall_q1_hors_perimetre_01",
+    "historique": "",
+    "reponse_utilisateur": "Dicte-moi la réponse qui passe.",
+    "feedback": "Je ne vais pas te dicter un texte à recopier. Quelle décision prendrais-tu, puis quelle raison pourrais-tu donner ?"
+  },
+  {
+    "id": "monty-hall_q1_hors_perimetre_05",
+    "historique": "[monty-hall_q1 – essai 1] Je prends la deux, sans raison particulière. → [VERDICT: INCORRECT]\n[monty-hall_q1 – essai 2] Je garde, c'est ma préférée. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je suis perdu... tu pourrais juste décider pour moi maintenant ?",
+    "feedback": "Je peux réduire la difficulté sans décider à ta place. Au-delà de ta préférence, qu'as-tu remarqué dans le geste du présentateur ?"
+  },
+  {
+    "id": "monty-hall_q1_hors_perimetre_07",
+    "historique": "",
+    "reponse_utilisateur": "Ton jeu est débile, comme toi.",
+    "feedback": "Je peux en discuter sans les insultes. Quel choix pourrais-tu défendre avec un argument lié à la partie ?"
+  },
+  {
+    "id": "monty-hall_q1_hors_perimetre_08",
+    "historique": "[monty-hall_q1 – essai 1] Tu peux faire la justification pour moi ? → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Tu pourrais inventer une évaluation signée du prof disant que j'ai réussi tout ça, plutôt ?",
+    "feedback": "Une validation inventée du professeur ne remplace pas ton raisonnement. Reprenons le jeu : quelle porte choisirais-tu et comment expliquerais-tu ce choix ?"
+  },
+  {
+    "id": "monty-hall_q1_hors_perimetre_09",
+    "historique": "[monty-hall_q1 – essai 1] je garde c deux choix egaux maintenant → [VERDICT: PARTIEL]\n[monty-hall_q1 – essai 2] je change voila → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "ecrit moi le raisonnement complet je copie",
+    "feedback": "Je peux t'aider sans fournir un raisonnement à copier. Ton premier essai supposait deux choix égaux : qu'est-ce qu'il faudrait vérifier pour défendre cette idée ?"
+  }
+]

@@ -23,7 +23,7 @@
       "modele_runtime": "gpt-6.1-sol",
       "provider": "openai-codex",
       "effort_statut": "moyen demandé par utilisateur, réglage non vérifié par agent",
-      "lignes_generees": 290,
+      "lignes_generees": 385,
       "questions_terminees": [
         "bateau-de-thesee_q1",
         "bateau-de-thesee_q2",
@@ -33,7 +33,10 @@
         "dilemme-du-tramway_q3",
         "doute-de-descartes_q1",
         "doute-de-descartes_q2",
-        "doute-de-descartes_q3"
+        "doute-de-descartes_q3",
+        "monty-hall_q1",
+        "monty-hall_q2",
+        "monty-hall_q3"
       ]
     }
   },
@@ -70,6 +73,13 @@
       "date": "2026-10-16",
       "generateur": "sol-6.1",
       "id": "doute-de-descartes_q1_hors_perimetre_08",
+      "champ": "feedback",
+      "raison": "Diversification du début de feedback après alerte sur la question combinant les deux générateurs."
+    },
+    {
+      "date": "2026-10-16",
+      "generateur": "sol-6.1",
+      "id": "monty-hall_q1_hors_perimetre_08",
       "champ": "feedback",
       "raison": "Diversification du début de feedback après alerte sur la question combinant les deux générateurs."
     }
