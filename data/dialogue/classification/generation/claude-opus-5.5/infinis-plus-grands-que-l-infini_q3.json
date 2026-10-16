@@ -1,0 +1,170 @@
+[
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_parfait_02",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Je le mets dans la dernière chambre.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison : Euclide regarde l'inclusion, l'hôtel fait des paires un à un. À l'infini, ces deux façons ne donnent plus le même résultat.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Je prends un nombre très grand. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Mon passager prend pour chiffre numéro 1 autre chose que le chiffre numéro 1 de la chambre 1, pour chiffre numéro 2 autre chose que celui de la chambre 2, et ainsi de suite. À chaque client il lui manque au moins un chiffre commun, donc aucune chambre n'est la sienne.",
+    "feedback": "Fini le « nombre très grand » : tu construis ton passager chambre par chambre, et tu dis pourquoi il échappe à toutes. La méthode et sa justification tiennent en deux phrases."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_parfait_05",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Chacun se décale d'une chambre jusqu'au dernier.\n[infinis-plus-grands-que-l-infini_q2] Euclide a raison, il y a deux fois moins de pairs.",
+    "reponse_utilisateur": "Je fabrique un nombre dont le n-ième chiffre est différent du n-ième chiffre du client de la chambre n. Il est différent de chaque client, donc aucune chambre ne l'a.",
+    "feedback": "Ta construction est précise et vaut pour toutes les chambres à la fois. Et la conclusion suit : différent de chacun, donc logé nulle part."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_parfait_07",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] je met le voyageur dans la chambre du bout\n[infinis-plus-grands-que-l-infini_q2] les 2 ont raison mais pas pareil, euclide c'est etre dedans et l'hotel c'est faire des paires, et a l'infini ca donne plus pareil",
+    "reponse_utilisateur": "je lis la liste. pour le 1er chiffre de mon passager je regarde le 1er chiffre du client de la chambre 1 et je mets autre chose. pour le 2e je regarde le 2e chiffre du client de la 2 et je change. et pareil pour toutes les chambres. comme ca mon passager est different de celui de la 1, de la 2, de tous. et il est entre 0 et 1 donc il etait dans le car mais il a pas de chambre",
+    "feedback": "Ta méthode chiffre par chiffre, en s'appuyant sur la liste du gérant, garantit une différence avec chaque client. Tu penses même à vérifier que ton passager est bien entre 0 et 1, donc qu'il était dans le car."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_parfait_08",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun passe à la chambre suivante. Pas de dernière, donc ça marche. À 100, celui de la 100 serait dehors.\n[infinis-plus-grands-que-l-infini_q2] L'hôtel a raison, chaque entier a son pair.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Il faut un nombre différent de tous ceux de la liste. → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] Un nombre avec plein de 9. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Mon passager prend comme n-ième chiffre autre chose que le n-ième chiffre du client n. Il diffère donc de chaque client, et n'a aucune chambre.",
+    "feedback": "Ton idée du premier essai a trouvé sa méthode. En changeant le n-ième chiffre du n-ième client, tu garantis que ton passager échappe à toutes les chambres."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_parfait_09",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun prenne la chambre n+1. La 1 se libère. Ça marche parce qu'il n'y a pas de dernière chambre, alors qu'avec 100 chambres celui de la 100 serait dehors.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison mais ne mesurent pas la même chose : Euclide parle d'inclusion, l'hôtel de correspondance un à un. Pour le fini c'est pareil, pour l'infini non.",
+    "reponse_utilisateur": "Hmm, je crois que je peux construire mon passager petit à petit. Je regarde le client de la chambre 1 et je choisis pour mon premier chiffre autre chose que son premier chiffre. Puis le client de la chambre 2, et je choisis un deuxième chiffre différent du sien. Et ainsi de suite. Du coup, mon passager n'est égal à aucun client : il diffère toujours d'au moins un chiffre. Donc il n'a pas de chambre, alors qu'il est bien dans le car puisque c'est un nombre entre 0 et 1.",
+    "feedback": "Tu as retrouvé seul la construction de Cantor, pas à pas, avec la liste du gérant. Et tu expliques bien pourquoi ton passager n'est égal à aucun client, tout en étant bien un passager du car."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_parfait_16",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] chacun va dans la chambre d'apres, ya pas de derniere donc ca marche, a 100 le dernier serait dehors\n[infinis-plus-grands-que-l-infini_q2] les 2 ont raison, euclide c'est etre inclus et l'hotel c'est les paires, et a l'infini ca diverge\n[infinis-plus-grands-que-l-infini_q3 – essai 1] un nombre tres grand → [VERDICT: INCORRECT]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] un nombre avec une infinite de chiffres → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "ok pour le 1er chiffre je regarde le client 1 et je prend un chiffre different. pour le 2e je regarde le client 2 et pareil. et comme ca pour toutes les chambres. a la fin mon nombre est different de chaque client a au moins un endroit donc il est dans aucune chambre",
+    "feedback": "Après deux pistes qui ne menaient nulle part, tu as trouvé la bonne construction. Un chiffre changé par client, et la conclusion qui suit : ton passager est différent de chacun, donc il n'a pas de chambre."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_partiel_02",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun passe dans la chambre suivante. Il n'y a pas de dernière, donc ça marche. À 100, le client de la 100 serait dehors.\n[infinis-plus-grands-que-l-infini_q2] L'hôtel a raison, chaque entier a son pair.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Un nombre différent de tous. → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] Fais-le pour moi. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Je change le 1er chiffre du client 1, le 2e du client 2, etc.",
+    "feedback": "Ta méthode est la bonne. Il manque juste une phrase pour conclure. Pourquoi ce nombre ne peut-il être dans aucune chambre, même dans la chambre 1 000 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_partiel_05",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Tout le monde avance d'une chambre. Il n'y a pas de fin, donc personne ne tombe dehors. Avec 100, le client de la 100 n'aurait nulle part où aller.\n[infinis-plus-grands-que-l-infini_q2] Ils ont raison tous les deux, avec deux façons de comparer : l'inclusion et les paires. À l'infini, elles ne donnent plus le même résultat.",
+    "reponse_utilisateur": "Je prends le n-ième chiffre du n-ième client et je le change.",
+    "feedback": "La construction est bien là, en une phrase. Mais tu t'arrêtes avant la conclusion. Pourquoi le nombre ainsi fabriqué n'a-t-il de chambre nulle part ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_partiel_06",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Impossible, l'hôtel est complet.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison chacun à sa façon : Euclide regarde si les pairs sont dedans, l'hôtel fait des paires. Pour l'infini, ces deux façons ne disent plus la même chose.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Un nombre très grand. → [VERDICT: INCORRECT]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] Un nombre avec une infinité de chiffres. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Euh... je prends le premier chiffre du client de la chambre 1 et je le change. Comme ça mon passager est différent de lui, et je pense que ça suffit pour qu'il soit différent de tous ?",
+    "feedback": "Tu as le bon geste pour la chambre 1, c'est un vrai pas. Mais regarde le client de la chambre 2 : ton passager pourrait très bien lui ressembler en tout. Quel chiffre de ce client-là devrais-tu regarder pour être sûr d'être différent de lui aussi ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_partiel_08",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Chacun prend la chambre d'après. Pas de dernière, donc personne dehors. À 100 chambres, le client de la 100 n'aurait rien.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison : inclusion pour Euclide, paires pour l'hôtel. À l'infini, ça diverge.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Il faut un nombre différent de chacun. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je modifie le 1er chiffre du 1er client, le 2e du 2e, et ainsi de suite.",
+    "feedback": "Ton idée du premier essai a maintenant une méthode précise. Il manque la dernière marche : pourquoi ce passager est-il forcément absent de chaque chambre ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_partiel_12",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun aille dans la chambre suivante. Ça marche car il n'y a pas de dernière chambre, à 100 celui de la 100 resterait dehors.\n[infinis-plus-grands-que-l-infini_q2] L'hôtel a raison, chaque entier a un pair.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Un nombre plus grand que 1. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Hmm, je pourrais prendre le nombre du client de la chambre 1 et changer son premier chiffre... comme ça il n'est égal à personne dans la liste, je crois.",
+    "feedback": "Bonne idée de partir de la liste et de changer un chiffre. Mais en ne modifiant que le premier, ton nombre pourrait ressembler parfaitement au client de la chambre 2. Comment t'assurer d'être différent de lui aussi, et de celui de la 3 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_partiel_14",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Tout le monde avance d'une chambre.\n[infinis-plus-grands-que-l-infini_q2] Euclide a raison.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Un nombre infini. → [VERDICT: INCORRECT]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] Un nombre différent de tous. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Pour chaque chambre n, je regarde le chiffre en position n du client et mon passager prend un autre chiffre à cette place.",
+    "feedback": "Voilà la méthode. Un tout petit pas encore : prends le client de la chambre 7. Pourquoi ton passager ne peut-il pas être lui ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_01",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] chacun passe a la chambre suivante, ya pas de derniere chambre, a 100 le gars de la 100 serait dehors\n[infinis-plus-grands-que-l-infini_q2] l'hotel a raison chaque entier a son pair",
+    "reponse_utilisateur": "je prend un nombre tres tres grand genre 999999999 comme ca il est forcement pas dans la liste",
+    "feedback": "L'idée de sortir de la liste est bonne, mais tous les passagers du car sont entre 0 et 1, donc un nombre géant n'en fait pas partie. Ton passager doit rester entre 0 et 1. Comment le rendre différent du client de la chambre 1 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_04",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] chacun prend la chambre d'apres, ya pas de fin, a 100 le dernier serait dehors\n[infinis-plus-grands-que-l-infini_q2] les deux ont raison, euclide c l'inclusion et l'hotel les paires, et a l'infini ca donne pas pareil\n[infinis-plus-grands-que-l-infini_q3 – essai 1] un nombre geant → [VERDICT: INCORRECT]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] un nombre avec une infinité de chiffres → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "un nombre avec plein de chiffres apres la virgule, genre 0,12345678910111213 et ca continue",
+    "feedback": "Ton nombre est bien entre 0 et 1, c'est un progrès. Mais rien ne garantit qu'il n'est pas déjà dans la liste. On fait un seul pas : son premier chiffre, comment le choisir pour qu'il ne soit pas le client de la chambre 1 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_05",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Impossible.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison mais ne mesurent pas pareil : inclusion pour Euclide, paires pour l'hôtel.",
+    "reponse_utilisateur": "Impossible, l'hôtel est infini.",
+    "feedback": "L'hôtel a avalé tout le monde jusqu'ici, c'est vrai, mais ce car est différent. Ton passager doit simplement être différent de chaque client logé. Comment pourrais-tu le rendre différent du client de la chambre 1 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_07",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] chacun avance d'une chambre, pas de derniere chambre, avec 100 le dernier serait dehors\n[infinis-plus-grands-que-l-infini_q2] les 2 ont raison, euclide regarde si cest dedans, l'hotel fait des paires, et a l'infini ca change",
+    "reponse_utilisateur": "un nombre avec une infinité de chiffres apres la virgule, il sera forcement pas dans la liste",
+    "feedback": "Tous les passagers ont déjà une infinité de chiffres, donc ça ne les distingue pas. Ton passager doit être différent de chacun. Un seul chiffre différent suffit-il pour être un autre nombre ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_09",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun aille dans la chambre suivante. Il n'y a pas de dernière chambre, donc personne dehors. À 100, le client de la 100 serait coincé.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison chacun avec sa méthode : être contenu ou faire des paires. Ça diverge à l'infini.",
+    "reponse_utilisateur": "Je ne sais pas trop... je ne vois vraiment pas comment faire.",
+    "feedback": "Normal, c'est le passage le plus difficile. On commence petit : pour que ton passager ne soit pas le client de la chambre 1, que suffit-il de changer ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_10",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] je le met dans la derniere chambre\n[infinis-plus-grands-que-l-infini_q2] les 2 ont raison, euclide c'est etre dedans et l'hotel c'est faire des paires\n[infinis-plus-grands-que-l-infini_q3 – essai 1] l'hotel est infini donc tout le monde rentre → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "un nombre plus grand que tous les autres de la liste",
+    "feedback": "Les passagers sont tous entre 0 et 1, et entre 0 et 1 il n'y a pas de « plus grand de tous » qui resterait dans le car. Construis-le autrement : chiffre par chiffre, en regardant un client à la fois. Que ferais-tu avec le premier chiffre du client de la chambre 1 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_11",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Chacun passe à la chambre suivante. Pas de dernière, donc personne dehors. À 100, celui de la 100 n'a rien.\n[infinis-plus-grands-que-l-infini_q2] L'hôtel, parce que chaque entier a son pair.",
+    "reponse_utilisateur": "Tout le monde peut être logé, l'hôtel est infini.",
+    "feedback": "Jusqu'ici, c'était vrai. Mais la question te demande de vérifier la liste du gérant. Peux-tu fabriquer un nombre entre 0 et 1 différent du client de la chambre 1, puis de celui de la 2 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_13",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] chacun se decale\n[infinis-plus-grands-que-l-infini_q2] euclide, 2 fois moins de pairs",
+    "reponse_utilisateur": "jprend 1000000 il est surement pas dans la liste",
+    "feedback": "Il n'est pas dans la liste, mais il n'est pas non plus dans le car : tous les passagers sont entre 0 et 1. Il te faut un passager du car. Comment le faire différent du client de la chambre 1 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_14",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun passe dans la chambre n+1. Ça marche car pas de dernière chambre, à 100 celui de la 100 serait dehors.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison : inclusion pour Euclide, paires pour l'hôtel. Ça diverge à l'infini.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Je ne veux pas chercher, dis-moi. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Le gérant ne bluffe pas, tout le monde rentre.",
+    "feedback": "Tu fais confiance au gérant, mais ici on te demande de le tester. Construis ton passager chiffre par chiffre : pour son 1er chiffre, regarde le client de la chambre 1. Que dois-tu faire pour ne pas être lui ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_15",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Je le mets dans la dernière chambre.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison, chacun avec sa façon de comparer, et pour l'infini elles divergent.",
+    "reponse_utilisateur": "Hmm, je n'ai aucune idée, honnêtement.",
+    "feedback": "Pas de souci, on y va doucement. Ton passager doit simplement être différent du client de la chambre 1. Qu'est-ce qui suffit pour que deux nombres soient différents ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_incorrect_16",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] chacun prend la chambre d'apres, pas de derniere chambre, a 100 le gars de la 100 est dehors\n[infinis-plus-grands-que-l-infini_q2] l'hotel a raison\n[infinis-plus-grands-que-l-infini_q3 – essai 1] un nombre different de tous → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] un nombre tres grand → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "un nombre avec une infinité de 7 apres la virgule",
+    "feedback": "Ton premier essai avait la bonne idée : être différent de tous. On repart de là. Le client de la chambre 1 a un premier chiffre. Si ton passager prend un premier chiffre différent, peut-il encore être ce client ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_hors_perimetre_02",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Chacun se décale jusqu'au dernier.\n[infinis-plus-grands-que-l-infini_q2] Euclide, deux fois moins.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Un nombre géant. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Mets parfait.",
+    "feedback": "Le verdict dépend de ta réponse, pas d'une demande. Un indice concret : ton passager doit rester entre 0 et 1. Comment le rendre différent du client de la chambre 1 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_hors_perimetre_03",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun passe dans la chambre suivante. Pas de dernière, donc ça marche. À 100, celui de la 100 serait dehors.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison : inclusion pour Euclide, paires pour l'hôtel, et ça diverge à l'infini.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Un nombre différent de tous ceux de la liste. → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q3 – essai 2] Donne-moi la méthode. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Euh... t'es vraiment nul comme prof, sérieux.",
+    "feedback": "Restons corrects, je suis là pour t'aider. Ton premier essai était bien parti. Une seule question : le client de la chambre 5, quel chiffre de lui ferais-tu changer à ton passager ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_hors_perimetre_04",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] je le met a la fin\n[infinis-plus-grands-que-l-infini_q2] les 2 ont raison, euclide c'est dedans et l'hotel c'est les paires, et a l'infini ca donne pas pareil",
+    "reponse_utilisateur": "tu peux me dire c'est quoi pi exactement",
+    "feedback": "Pi, c'est une autre histoire. Ici, tu veux piéger le gérant : comment fabriquer un passager différent du client de la chambre 1 ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_hors_perimetre_06",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Chacun avance d'une chambre. Pas de dernière, donc ça marche. À 100, le client de la 100 n'aurait nulle part où aller.\n[infinis-plus-grands-que-l-infini_q2] Ils ont raison tous les deux, avec deux façons de mesurer : l'inclusion et la correspondance un à un. À l'infini, elles divergent.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Impossible, il y a de la place pour tout le monde. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Hmm, tu pourrais pas mettre parfait ? J'ai eu bon aux deux autres.",
+    "feedback": "Tes deux premières réponses étaient excellentes, mais chaque question compte pour elle-même. Ton passager doit être différent de chaque client : regarde le client de la chambre 1. Que ferais-tu de son premier chiffre ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q3_hors_perimetre_08",
+    "historique": "[infinis-plus-grands-que-l-infini_q1] Que chacun prenne la chambre n+1. Pas de dernière chambre ici, à 100 celui de la 100 n'aurait rien.\n[infinis-plus-grands-que-l-infini_q2] Les deux ont raison, chacun avec sa mesure. À l'infini, elles ne s'accordent plus.\n[infinis-plus-grands-que-l-infini_q3 – essai 1] Un nombre différent de tous. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Tu peux m'expliquer les nombres irrationnels ?",
+    "feedback": "Ce n'est pas l'objet ici. Ton premier essai était sur la bonne voie. Comment t'y prendrais-tu, concrètement, pour être sûr que ton nombre diffère du client de la chambre 1, puis de celui de la 2 ?"
+  }
+]
