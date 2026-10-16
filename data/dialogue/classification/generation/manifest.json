@@ -1,0 +1,271 @@
+{
+  "prompt": "data/dialogue/classification/prompt_a_donner.md @ 33532ca",
+  "fiches": "data/concepts/markdown @ 33532ca",
+  "squelette": "generer_squelette.py + attribuer_generateurs.py (graine 2026) @ 33532ca",
+  "generateurs": {
+    "claude-opus-5.5": {
+      "lignes_prevues": 472,
+      "interface": "agent Hermes (desktop), un seul agent, sans sous-agents",
+      "effort": "moyen",
+      "debut": "2026-10-16",
+      "fin": "2026-10-16",
+      "lignes_regenerees": 0,
+      "lignes_generees": 472,
+      "corrections_apres_validation": "Pour chaque question, les lignes REJET (3 signalées par le script : 2 questions finales manquantes, 1 caractère ;) et ALERTE (tics, reformulation, quasi-doublons, style court trop long) ont été réécrites jusqu'à 472/472 OK. Relecture complémentaire : feedbacks qui répétaient un indice déjà donné (essais 2 et 3) reformulés."
+    },
+    "sol-6.1": {
+      "lignes_prevues": 531,
+      "interface": "agent Hermes (desktop)",
+      "effort": "moyen",
+      "debut": "2026-10-16",
+      "fin": "2026-10-16",
+      "lignes_regenerees": 0,
+      "modele_runtime": "gpt-6.1-sol",
+      "provider": "openai-codex",
+      "effort_statut": "moyen demandé par utilisateur, réglage non vérifié par agent",
+      "lignes_generees": 531,
+      "questions_terminees": [
+        "bateau-de-thesee_q1",
+        "bateau-de-thesee_q2",
+        "bateau-de-thesee_q3",
+        "dilemme-du-tramway_q1",
+        "dilemme-du-tramway_q2",
+        "dilemme-du-tramway_q3",
+        "doute-de-descartes_q1",
+        "doute-de-descartes_q2",
+        "doute-de-descartes_q3",
+        "infinis-plus-grands-que-l-infini_q1",
+        "infinis-plus-grands-que-l-infini_q2",
+        "infinis-plus-grands-que-l-infini_q3",
+        "monty-hall_q1",
+        "monty-hall_q2",
+        "monty-hall_q3",
+        "plier-une-feuille-42-fois_q1",
+        "plier-une-feuille-42-fois_q2"
+      ],
+      "statut": "generation_terminee_controles_automatiques_uniquement",
+      "relecture": "Relecture par le générateur, passe Humanizer sur les feedbacks, contrôle des critères des fiches, des historiques et des indices déjà vus. Ni juge indépendant ni audit humain exécuté.",
+      "sorties": "generation/sol-6.1/<question_id>.json"
+    }
+  },
+  "corrections_manuelles": [
+    {
+      "date": "2026-10-16",
+      "generateur": "sol-6.1",
+      "id": "dilemme-du-tramway_q2_hors_perimetre_04",
+      "champ": "feedback",
+      "raison": "Diversification du début de feedback signalé par le validateur."
+    },
+    {
+      "date": "2026-10-16",
+      "generateur": "sol-6.1",
+      "id": "dilemme-du-tramway_q2_hors_perimetre_08",
+      "champ": "feedback",
+      "raison": "Diversification du début de feedback signalé par le validateur."
+    },
+    {
+      "date": "2026-10-16",
+      "generateur": "sol-6.1",
+      "id": "dilemme-du-tramway_q3_incorrect_04",
+      "champ": "feedback",
+      "raison": "Relecture : ne pas répéter le second indice déjà vu à l’essai 3."
+    },
+    {
+      "date": "2026-10-16",
+      "generateur": "sol-6.1",
+      "id": "dilemme-du-tramway_q3_incorrect_16",
+      "champ": "feedback",
+      "raison": "Relecture : repartir du constat antérieur au lieu de répéter le second indice."
+    },
+    {
+      "date": "2026-10-16",
+      "generateur": "sol-6.1",
+      "id": "doute-de-descartes_q1_hors_perimetre_08",
+      "champ": "feedback",
+      "raison": "Diversification du début de feedback après alerte sur la question combinant les deux générateurs."
+    },
+    {
+      "date": "2026-10-16",
+      "generateur": "sol-6.1",
+      "id": "monty-hall_q1_hors_perimetre_08",
+      "champ": "feedback",
+      "raison": "Diversification du début de feedback après alerte sur la question combinant les deux générateurs."
+    }
+  ],
+  "fusion": {
+    "date": "2026-10-16T15:19:01.221347+02:00",
+    "destination": "dataset_source.csv",
+    "lignes": 1003,
+    "colonnes_remplies": [
+      "historique",
+      "reponse_utilisateur",
+      "feedback"
+    ],
+    "labels_modifies": false,
+    "ordre_et_autres_colonnes_conserves": true,
+    "sha256_csv_avant": "9377c9bf34a2ae8f53680a7a7cd94e2c8bba6a05b127601a9cc1e280b5b4b6ad",
+    "sha256_csv_apres": "5106395375328f46357183c89bcc07440827e69986b18e2e4509cdc1150d20de",
+    "sources": [
+      {
+        "fichier": "generation/claude-opus-5.5/bateau-de-thesee_q1.json",
+        "sha256": "d0f379283e9a6e59d9f49b4787e95c1000e1d3e836f66f05d37234868ca0785d"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/bateau-de-thesee_q2.json",
+        "sha256": "4c684c320d671a263464f303406a5fb07989d83f3ce552338ef3a44fbd70e788"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/bateau-de-thesee_q3.json",
+        "sha256": "b70ebc93f191bb0147d2fa7c456740b9d1230adc67db29629373e0120587ce3a"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/dilemme-du-tramway_q1.json",
+        "sha256": "7ba01eb6b5cbdcbf9922adfa8c86e67403b2e99609cca2df2e4588bcc608c315"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/dilemme-du-tramway_q2.json",
+        "sha256": "cf16e3cdb71457b9b12cb6ee21f36d4ae5133c24c04ce1e5051f709d400174fa"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/dilemme-du-tramway_q3.json",
+        "sha256": "79a0b0546fb91075ea0f84f3d676050b60e6ad4b6d9f673570c0eb42a217c951"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/doute-de-descartes_q1.json",
+        "sha256": "abefe92b9d3c068cd0549a144647ad35edf61bbe3dbbe68e11c2b949d81cf4bd"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/doute-de-descartes_q2.json",
+        "sha256": "76f00d0fd92eefb1e877acbb2fe41de8e066a6e80a623983ce85dfe09b0a3b34"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/doute-de-descartes_q3.json",
+        "sha256": "1d5309ead9e22003e8ab4a1450404607ea16039be63379e479bf0c2a26e55915"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/infinis-plus-grands-que-l-infini_q1.json",
+        "sha256": "aed03726e133b41066119c0a5ffafd45b2be6136ccf8b489cb06de8c7ed71c13"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/infinis-plus-grands-que-l-infini_q2.json",
+        "sha256": "564fe6f83bbb119fb48deba565dc5e0153f500bb08bb19ba123f8fa712226185"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/infinis-plus-grands-que-l-infini_q3.json",
+        "sha256": "d9d8255b575425b6518bc726baa505743820de9eeba67ec1d2a89d269688bdc0"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/monty-hall_q1.json",
+        "sha256": "f39916f4cc488189c2ad72dd9ac88c672223cb79e7ce0eef2a4fa05889204ed2"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/monty-hall_q2.json",
+        "sha256": "21f2860bdb22f66417b74de154de661ce03d30df5e073f7f85022ac258ba6a96"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/monty-hall_q3.json",
+        "sha256": "dbb0d90294fb164af57fdd1e0e465e5ad2d2b8bb9ab95a823d203d51de2b40a2"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/plier-une-feuille-42-fois_q1.json",
+        "sha256": "ccb61d6972a216e0f68bc605be026c1173e072040f43c2076b67ef677e64eecd"
+      },
+      {
+        "fichier": "generation/claude-opus-5.5/plier-une-feuille-42-fois_q2.json",
+        "sha256": "8fbb3e156639e5ecc83a774c7c4383a684428bf91c0d1aadaad5662aea2b943c"
+      },
+      {
+        "fichier": "generation/sol-6.1/bateau-de-thesee_q1.json",
+        "sha256": "2d7ed8257fce16f51141844e6830c4c3d34d4f9b14ab881d5fac54c5e8243a6b"
+      },
+      {
+        "fichier": "generation/sol-6.1/bateau-de-thesee_q2.json",
+        "sha256": "c7f3bea52e91ce1f865627ddfb30e2fcb89712e7dfebe87bdcc67ec7190dfdc8"
+      },
+      {
+        "fichier": "generation/sol-6.1/bateau-de-thesee_q3.json",
+        "sha256": "5a17b5e5b2cb2cf26e00c74a4f37b307271613faed78c1d472320ed9b5e233da"
+      },
+      {
+        "fichier": "generation/sol-6.1/dilemme-du-tramway_q1.json",
+        "sha256": "13d31234a1f4d2ddef48fbadb725bc6769cd3895251da35a72dc7bc79b8c3afa"
+      },
+      {
+        "fichier": "generation/sol-6.1/dilemme-du-tramway_q2.json",
+        "sha256": "e978fb0317751892ba2733c63b999c9b933e9f97991bca381f7f0648131e8f2e"
+      },
+      {
+        "fichier": "generation/sol-6.1/dilemme-du-tramway_q3.json",
+        "sha256": "763db5207213e348582b6e7acb7f1f6722c73697a7b1033827422e89bc730a31"
+      },
+      {
+        "fichier": "generation/sol-6.1/doute-de-descartes_q1.json",
+        "sha256": "cb10112559122d5f1a76efbb0deafa186f53fca532bc8b256e5afa4390936eb8"
+      },
+      {
+        "fichier": "generation/sol-6.1/doute-de-descartes_q2.json",
+        "sha256": "7114171420e459a3c63d764bd1ff0de1f68fd36053ac4f43aa00f12a22f6c46a"
+      },
+      {
+        "fichier": "generation/sol-6.1/doute-de-descartes_q3.json",
+        "sha256": "2256b4249c7a2e9427e05fc491412ac5a9ed53efcaa7445d36d4dd0ed1da8697"
+      },
+      {
+        "fichier": "generation/sol-6.1/infinis-plus-grands-que-l-infini_q1.json",
+        "sha256": "c8bcbeecb201e38713ee75c86fd077c618cbeb69b0b9b6d35da9378ab10b051f"
+      },
+      {
+        "fichier": "generation/sol-6.1/infinis-plus-grands-que-l-infini_q2.json",
+        "sha256": "7138b8aa9bfd72def033a00929baa927919a2acd9cd0643dab39d97c51aa8979"
+      },
+      {
+        "fichier": "generation/sol-6.1/infinis-plus-grands-que-l-infini_q3.json",
+        "sha256": "18cf6eaab7f9f20d9740dbef314aaee5fe71fc7aa2f99f1b68507106a0fc698d"
+      },
+      {
+        "fichier": "generation/sol-6.1/monty-hall_q1.json",
+        "sha256": "67dd1badb7ffad17cd77948cee059f9df74afe534536bafc16189f14f71125f2"
+      },
+      {
+        "fichier": "generation/sol-6.1/monty-hall_q2.json",
+        "sha256": "cc7169845bcb7e273f091e54209c8fa2cee3c2fd4bea3e00bcb32fd52d692c3e"
+      },
+      {
+        "fichier": "generation/sol-6.1/monty-hall_q3.json",
+        "sha256": "ac03e8f98f656771d5a482eaa44c939ea132c25c8b3edbe9310979e5d17310a2"
+      },
+      {
+        "fichier": "generation/sol-6.1/plier-une-feuille-42-fois_q1.json",
+        "sha256": "e3976dd53827faa9832346b4ade4afd642a38646a5e07457738afe0164f76502"
+      },
+      {
+        "fichier": "generation/sol-6.1/plier-une-feuille-42-fois_q2.json",
+        "sha256": "dcc757371ba4184cd772ffe0ddfc54dc92f1f04b331719f7e26a1f59e8162a9d"
+      }
+    ],
+    "validation_pedagogique_independante": "non_effectuee",
+    "statut_labels": "imposes_pour_generation_non_valides_independamment"
+  },
+  "archivage_sorties_brutes": {
+    "commit_avant_retrait": "4e60507",
+    "motif": "Textes fusionnés à l’identique dans dataset_source.csv ; retrait des doublons de stockage.",
+    "liste_attributions": "generation/AGENTS.md",
+    "source_maintenue": "dataset_source.csv"
+  },
+  "export_jsonl": {
+    "fichier": "dataset_messages.jsonl",
+    "lignes": 1003,
+    "sha256": "0639badca2611f56c8d9c3f1a284a0fedd6d1925c4cecdb5bb5766d36cd1b812",
+    "schema": {
+      "messages": [
+        "system",
+        "user",
+        "assistant"
+      ]
+    },
+    "prompt_version": "fewshot",
+    "historique": "résumé textuel conservé dans le message utilisateur, indices déduits du numéro d’essai ; aucun ancien feedback inventé",
+    "ordre": "identique au CSV ; identifiants, split et générateur restent dans le CSV",
+    "validation_pedagogique_independante": "non_effectuee"
+  }
+}

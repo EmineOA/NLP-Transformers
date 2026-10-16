@@ -1,0 +1,5 @@
+# Artefacts Python locaux ; les caches déjà suivis ne sont pas supprimés.
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
