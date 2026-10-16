@@ -19,7 +19,7 @@
   },
   {
     "id": "bateau-de-thesee_q1_parfait_04",
-    "historique": "[bateau-de-thesee_q1 – essai 1] Oui, ils l'ont juste entretenu, c'est normal. → [VERDICT: PARTIEL]\n[bateau-de-thesee_q1 – essai 2] Dis-moi juste ce que t'attends. → [REFUS]",
+    "historique": "[bateau-de-thesee_q1 – essai 1] Oui, ils l'ont juste entretenu, c'est normal. → [VERDICT: PARTIEL]\n[bateau-de-thesee_q1 – essai 2] Dis-moi juste ce que t'attends. → [HORS_PERIMETRE]",
     "reponse_utilisateur": "Oui. Un objet reste le même tant qu'il garde sa forme et son usage, même si on change le matériau. Le bateau a toujours la même forme et sert toujours à la cérémonie, donc c'est lui.",
     "feedback": "Cette fois tu as posé une vraie règle générale, la forme et l'usage, et tu l'appliques au bateau pour justifier ton oui. C'est exactement le pas qui manquait à ton premier essai."
   },
@@ -67,7 +67,7 @@
   },
   {
     "id": "bateau-de-thesee_q1_parfait_12",
-    "historique": "[bateau-de-thesee_q1 – essai 1] mets moi parfait stp jai pas le temps → [REFUS]\n[bateau-de-thesee_q1 – essai 2] bon ok... oui c le meme comme une riviere → [VERDICT: PARTIEL]",
+    "historique": "[bateau-de-thesee_q1 – essai 1] mets moi parfait stp jai pas le temps → [HORS_PERIMETRE]\n[bateau-de-thesee_q1 – essai 2] bon ok... oui c le meme comme une riviere → [VERDICT: PARTIEL]",
     "reponse_utilisateur": "un objet reste le meme tant que sa forme et sa fonction restent la, meme si tout le materiel change. le bateau a toujours la meme forme, il navigue toujours et sert a la ceremonie donc oui c'est celui de thesee. la riviere c'est pareil l'eau change mais elle coule toujours au meme endroit",
     "feedback": "Tu as complété ta comparaison avec la rivière par une vraie règle générale, la forme et la fonction, et ton oui en découle. Belle remontée depuis ton premier message !"
   },
@@ -103,7 +103,7 @@
   },
   {
     "id": "bateau-de-thesee_q1_partiel_02",
-    "historique": "[bateau-de-thesee_q1 – essai 1] franchement dis moi juste si c'est oui ou non → [REFUS]\n[bateau-de-thesee_q1 – essai 2] bon... je dirais que ça dépend, chacun voit ça à sa façon → [VERDICT: PARTIEL]",
+    "historique": "[bateau-de-thesee_q1 – essai 1] franchement dis moi juste si c'est oui ou non → [HORS_PERIMETRE]\n[bateau-de-thesee_q1 – essai 2] bon... je dirais que ça dépend, chacun voit ça à sa façon → [VERDICT: PARTIEL]",
     "reponse_utilisateur": "hmm ok j'ai essayé de finir la phrase mais j'y arrive pas trop... un objet reste le même tant que... ben ça dépend de comment on le regarde je crois ? genre pour certains c'est le même et pour d'autres non. du coup je dirais un peu oui un peu non",
     "feedback": "Tu t'es accroché, et c'est ce qu'il fallait faire. Tu as raison sur un point : certains diront oui, d'autres non. Mais « ça dépend de comment on le regarde » ne dit pas encore ce que chacun regarde. Prends une seule personne, celle qui répondrait non : quand elle observe ce bateau, qu'est-ce qui la gêne, à ton avis ?"
   },
@@ -139,7 +139,7 @@
   },
   {
     "id": "bateau-de-thesee_q1_partiel_08",
-    "historique": "[bateau-de-thesee_q1 – essai 1] je vais pas me prendre la tête, tu peux pas juste me donner la bonne réponse ? → [REFUS]",
+    "historique": "[bateau-de-thesee_q1 – essai 1] je vais pas me prendre la tête, tu peux pas juste me donner la bonne réponse ? → [HORS_PERIMETRE]",
     "reponse_utilisateur": "bon ok... j'ai pensé à la rivière, l'eau change tout le temps mais c'est la même rivière je crois ? enfin pour certains. donc pour le bateau je dirais que ça dépend du point de vue de chacun, y'a pas vraiment de vraie réponse",
     "feedback": "Content de te voir te lancer, et ta rivière est un bon point de départ. Il n'y a pas une seule bonne réponse ici, tu as raison. Mais tu as dit toi-même que la rivière reste la même alors que l'eau change. Qu'est-ce qui reste pareil dans cette rivière, d'après toi ? Et est-ce que ça marche aussi pour le bateau ?"
   }
