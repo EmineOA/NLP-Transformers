@@ -1,0 +1,182 @@
+[
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_01",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque pli double l'épaisseur. Mais la Lune, ça me paraît quand même impossible.",
+    "reponse_utilisateur": "Hmm, si le 42e pli double la hauteur, alors au 41e elle faisait la moitié, à peu près 220 000 km. Donc on n'était même pas à la Lune ! Ça veut dire que le dernier pli, tout seul, a fait autant de chemin que les 41 premiers réunis, je crois.",
+    "feedback": "Tu remontes d'un pli en divisant par deux, et tu trouves que la feuille n'avait même pas atteint la Lune. Ta conclusion sur le dernier pli, qui pèse autant que tous les autres, est la bonne leçon du doublement."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_02",
+    "historique": "[plier-une-feuille-42-fois_q1] un pli double l'epaisseur, donc x2 quarante deux fois, ca devient enorme, la lune c possible\n[plier-une-feuille-42-fois_q2 – essai 1] dis moi juste ou elle etait → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "ok. vu qu'un pli double, au 41e c la moitié de 440 000 donc 220 000 km, meme pas la lune. et du coup le dernier pli il a rajouté 220 000 km a lui tout seul, autant que tout les autres plis ensemble",
+    "feedback": "Tu as trouvé seul ce que tu demandais. Le doublement à l'envers donne la moitié, 220 000 km, et ton dernier pli qui ajoute autant que tous les autres est parfaitement justifié."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_05",
+    "historique": "[plier-une-feuille-42-fois_q1] un pli double, c pas +0,1 c x2. et x2 quarante deux fois ca fait enorme, la lune c possible",
+    "reponse_utilisateur": "au 41e elle faisait la moitié vu que le 42e double, donc 220 000 km, avant la lune. le dernier pli a fait la moitié du trajet a lui tout seul, autant que les 41 autres. c fou",
+    "feedback": "Ton « ×2 » de la Q1 te sert ici dans l'autre sens. La moitié au 41ᵉ pli, avant la Lune, et un dernier pli qui fait autant que tous les autres : tout y est."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_06",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça double, donc 2 × 42 = 84 couches.\n[plier-une-feuille-42-fois_q2 – essai 1] Presque à la Lune. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Le 42e pli double, donc au 41e : la moitié, 220 000 km, avant la Lune. Le dernier pli a ajouté autant que tous les précédents.",
+    "feedback": "Ton « presque à la Lune » est corrigé, et pour la bonne raison. La moitié par le doublement, et le poids du dernier pli : trois phrases, rien ne manque."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_09",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double l'épaisseur, la Lune est possible.",
+    "reponse_utilisateur": "Au 41e : moitié de 440 000, soit 220 000 km. Le 42e double ça, donc il ajoute autant que tous les autres plis réunis.",
+    "feedback": "Net et juste. Le doublement explique la moitié, et tu en tires directement le poids du dernier pli."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_10",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque pli double, donc on multiplie par 2 quarante-deux fois. Ça devient énorme, la Lune est possible.\n[plier-une-feuille-42-fois_q2 – essai 1] Au 41e pli, elle était à 220 000 km. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je complète : si au 41e elle faisait 220 000 km et au 42e 440 000, alors le dernier pli a ajouté 220 000 km, autant que les 41 plis d'avant réunis. Je crois que c'est ça, le truc de l'exponentielle : presque tout se passe à la fin.",
+    "feedback": "Ton 220 000 km a maintenant sa conséquence. Le dernier pli ajoute autant que les 41 autres, et tu généralises : avec une exponentielle, presque tout se joue à la fin."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_14",
+    "historique": "[plier-une-feuille-42-fois_q1] ca double a chaque pli, 2 4 8 16, au bout de 42 c enorme donc la lune c possible\n[plier-une-feuille-42-fois_q2 – essai 1] le dernier pli il compte beaucoup → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "oui et je peux le dire mieux : au 41e c la moitie, 220 000 km, avant la lune. donc le dernier pli a ajouté 220 000 km, autant que tout les plis d'avant",
+    "feedback": "Ton « il compte beaucoup » est devenu précis. Tu situes le 41ᵉ pli à la moitié, avant la Lune, et tu montres que le dernier pli ajoute autant que tous les autres."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_16",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça double à chaque pli.\n[plier-une-feuille-42-fois_q2 – essai 1] Montre-moi le calcul. → [HORS_PERIMETRE]\n[plier-une-feuille-42-fois_q2 – essai 2] Au 41e pli, presque à la Lune, mais le dernier compte beaucoup. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Euh, si le 42e pli double, alors au 41e c'était la moitié des 440 000 km, donc 220 000... pas presque à la Lune du tout, en fait. Le dernier pli a fait la moitié du trajet à lui seul, autant que tous les autres réunis.",
+    "feedback": "Tu as corrigé ton « presque à la Lune » en partant du doublement, et le résultat te surprend toi-même. La moitié au 41ᵉ pli et le poids du dernier pli sont maintenant bien justifiés."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_05",
+    "historique": "[plier-une-feuille-42-fois_q1] ca double a chaque pli mais la lune c impossible",
+    "reponse_utilisateur": "le dernier pli il compte enormement, c lui qui fait tout le boulot je pense",
+    "feedback": "Ton intuition est juste, le dernier pli pèse lourd. Mais tu ne dis pas où était la feuille juste avant. Si un pli double la hauteur, que se passe-t-il quand tu en enlèves un ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_06",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double l'épaisseur, donc ça devient énorme. La Lune est possible.\n[plier-une-feuille-42-fois_q2 – essai 1] Donne la réponse. → [HORS_PERIMETRE]\n[plier-une-feuille-42-fois_q2 – essai 2] Au 41e, à 220 000 km. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Au 41e, la moitié : 110 000 km. Le dernier pli ajoute autant que tout le reste.",
+    "feedback": "Le raisonnement est le bon, et le poids du dernier pli aussi. Mais ton chiffre s'est glissé : ton essai précédent disait 220 000 km. Quelle est la moitié de 440 000 ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_07",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque pli ajoute une épaisseur, ça fait quelques millimètres.",
+    "reponse_utilisateur": "Hmm, je dirais la moitié, donc 220 000 km, parce que le dernier pli double ?",
+    "feedback": "Bien trouvé, et pour la bonne raison. Il manque la deuxième partie de la question : qu'est-ce que ça dit du dernier pli, comparé à tous ceux d'avant ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_09",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double, la Lune est possible.",
+    "reponse_utilisateur": "La moitié : 200 000 km. Le dernier pli fait donc autant que tous les autres.",
+    "feedback": "Le raisonnement tient, et ta conclusion sur le dernier pli aussi. Vérifie juste ton calcul : la moitié de 440 000, ça fait combien ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_10",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça double, mais la Lune c'est trop loin.\n[plier-une-feuille-42-fois_q2 – essai 1] Presque à la Lune. → [VERDICT: INCORRECT]\n[plier-une-feuille-42-fois_q2 – essai 2] La moitié. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Euh... la moitié, donc 220 000 km, je crois.",
+    "feedback": "C'est bien la moitié, et tu as le chiffre. Un tout petit pas encore : 440 000, c'est 220 000 plus 220 000. L'un de ces deux morceaux a été fait par les 41 premiers plis. Et l'autre, par qui ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_11",
+    "historique": "[plier-une-feuille-42-fois_q1] ca double a chaque fois donc x2 x2 x2, ca devient enorme, la lune c possible",
+    "reponse_utilisateur": "jpense que le dernier pli c le plus important de tous, c lui qui fait le plus gros",
+    "feedback": "Tu as raison, le dernier pli fait le plus gros. Mais où était la feuille juste avant lui ? Ton « ×2 » de la Q1 peut t'aider à le trouver en marche arrière, non ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_14",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça double, donc 2 puissance 42, la Lune est possible.\n[plier-une-feuille-42-fois_q2 – essai 1] La moitié, 220 000 km. → [VERDICT: PARTIEL]\n[plier-une-feuille-42-fois_q2 – essai 2] Presque à la Lune. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "le dernier pli fait vraiment beaucoup de chemin, ca je suis sur",
+    "feedback": "C'est vrai, et ton premier essai avait trouvé la moitié, 220 000 km. On remet les deux ensemble : de 220 000 à 440 000, combien le dernier pli a-t-il ajouté ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_15",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça grandit très vite, donc la Lune est possible.",
+    "reponse_utilisateur": "Au 41e, la moitié : 210 000 km. Le dernier pli fait donc la moitié du trajet.",
+    "feedback": "Le raisonnement est bon, et ta conclusion sur le dernier pli aussi. Il y a juste une petite erreur de calcul : quelle est la moitié de 440 000 ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_01",
+    "historique": "[plier-une-feuille-42-fois_q1] Je ne sais pas.",
+    "reponse_utilisateur": "Je pense qu'au 41e la feuille touchait presque la Lune, il restait juste quelques kilomètres à faire.",
+    "feedback": "C'est ce que dit l'intuition, mais un pli n'ajoute pas un petit bout : il double tout. Que se passe-t-il si tu fais le chemin à l'envers, en enlevant ce dernier pli ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_02",
+    "historique": "[plier-une-feuille-42-fois_q1] un pli double l'epaisseur donc x2 42 fois, ca devient gigantesque, la lune c possible\n[plier-une-feuille-42-fois_q2 – essai 1] le dernier pli compte beaucoup → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "au 41e elle avait fait 41/42 du chemin, donc presque 430 000 km",
+    "feedback": "Tu as fait comme si chaque pli ajoutait la même distance, alors qu'à la Q1 tu avais vu qu'il double. Si le 42ᵉ pli double la hauteur, quelle fraction des 440 000 km la feuille mesurait-elle au 41ᵉ ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_06",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça ajoute une feuille à chaque fois.\n[plier-une-feuille-42-fois_q2 – essai 1] Presque à la Lune. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Pas loin de la Lune.",
+    "feedback": "Toujours la même intuition, sans raison. Un pli double la hauteur. Si le 42ᵉ l'a doublée pour arriver à 440 000 km, il partait de combien ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_07",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double l'épaisseur, donc c'est une multiplication répétée. Ça grandit très vite, la Lune est possible.",
+    "reponse_utilisateur": "Hmm, au 41e pli je pense qu'elle était presque à la Lune, il ne manquait qu'un tout petit morceau.",
+    "feedback": "Curieux : à la Q1, tu avais bien vu que chaque pli double. Applique-le en marche arrière. Si le 42ᵉ pli double la hauteur, que valait-elle juste avant ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_08",
+    "historique": "[plier-une-feuille-42-fois_q1] ca double a chaque pli, donc la lune c possible\n[plier-une-feuille-42-fois_q2 – essai 1] presque a la lune → [VERDICT: INCORRECT]\n[plier-une-feuille-42-fois_q2 – essai 2] le dernier pli compte beaucoup → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "au 41e elle etait a 41/42 de 440 000, vu que ca monte petit a petit",
+    "feedback": "Ton deuxième essai avait senti que le dernier pli comptait beaucoup, et là tu le fais compter comme les autres. Un seul pas : 440 000 km après doublement. Avant le doublement, combien ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_09",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça double, mais la Lune c'est impossible.",
+    "reponse_utilisateur": "Près de la Lune.",
+    "feedback": "Tu as une idée, mais aucune raison derrière. Ta Q1 disait que ça double. Que se passe-t-il si tu enlèves le dernier pli ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_11",
+    "historique": "[plier-une-feuille-42-fois_q1] on peut pas plier 42 fois",
+    "reponse_utilisateur": "41 plis sur 42 c presque tout, donc elle etait a genre 430 000 km",
+    "feedback": "Ça marcherait si chaque pli ajoutait la même distance. Mais un pli double la hauteur. Si tu enlèves le dernier pli, la hauteur est divisée par combien ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_14",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça grandit vite, donc la Lune est possible.\n[plier-une-feuille-42-fois_q2 – essai 1] Presque à la Lune. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "41 sur 42, donc à peu près 430 000 km, je crois.",
+    "feedback": "Tu as mis un calcul sur ton intuition, c'est bien, mais il suppose que chaque pli ajoute la même chose. Si le 42ᵉ pli double la hauteur, quelle fraction des 440 000 km avait-on au 41ᵉ ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_15",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque pli double, la Lune est possible.",
+    "reponse_utilisateur": "Avant la Lune.",
+    "feedback": "C'est vrai, mais sans chiffre ni raison. À quelle hauteur, d'après toi, et que dit ce chiffre du dernier pli ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_16",
+    "historique": "[plier-une-feuille-42-fois_q1] Je ne sais pas trop.\n[plier-une-feuille-42-fois_q2 – essai 1] La moitié, je crois. → [VERDICT: PARTIEL]\n[plier-une-feuille-42-fois_q2 – essai 2] Dis-moi la réponse, stp. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Hmm, finalement je crois qu'elle était presque arrivée, il ne manquait qu'un tout petit bout...",
+    "feedback": "Ton premier essai disait « la moitié », et il était bien plus juste. On repart de là, doucement : la moitié de 440 000 km, ça fait combien, et est-ce avant ou après la Lune ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_01",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double, donc on multiplie par 2 quarante-deux fois. Ça explose, la Lune est possible.",
+    "reponse_utilisateur": "Hmm, tu pourrais juste me dire où elle était au 41e pli ?",
+    "feedback": "Tu as tout ce qu'il faut avec ta Q1. Si un pli double la hauteur, que devient-elle quand tu en enlèves un ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_03",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça grandit vite.\n[plier-une-feuille-42-fois_q2 – essai 1] Presque à la Lune. → [VERDICT: INCORRECT]\n[plier-une-feuille-42-fois_q2 – essai 2] 41/42 du chemin. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Va te faire foutre avec ta feuille.",
+    "feedback": "Je comprends que ce soit frustrant, mais restons corrects. Un seul calcul : la moitié de 440 000 km, c'est combien ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_06",
+    "historique": "[plier-une-feuille-42-fois_q1] Ça double, la Lune est possible.\n[plier-une-feuille-42-fois_q2 – essai 1] La moitié, 220 000 km. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Mets parfait.",
+    "feedback": "Le verdict ne bouge pas, mais il te manque peu. De 220 000 à 440 000 km, le dernier pli a ajouté combien, comparé au reste ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_08",
+    "historique": "[plier-une-feuille-42-fois_q1] ca grandit vite donc la lune c possible\n[plier-une-feuille-42-fois_q2 – essai 1] presque a la lune → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "tu sais combien de temps on met pour aller sur la lune en fusee",
+    "feedback": "Quelques jours, mais ce n'est pas la question ici. Si le 42ᵉ pli double la hauteur, où était la feuille au 41ᵉ ?"
+  }
+]

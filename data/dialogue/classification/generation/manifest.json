@@ -8,8 +8,10 @@
       "interface": "agent Hermes (desktop), un seul agent, sans sous-agents",
       "effort": "moyen",
       "debut": "2026-10-16",
-      "fin": null,
-      "lignes_regenerees": 0
+      "fin": "2026-10-16",
+      "lignes_regenerees": 0,
+      "lignes_generees": 472,
+      "corrections_apres_validation": "Pour chaque question, les lignes REJET (6 au total : question finale manquante, caractère ;) et ALERTE (tics, reformulation, quasi-doublons, style court trop long) ont été réécrites jusqu'à 472/472 OK. Relecture complémentaire : feedbacks qui répétaient un indice déjà donné (essais 2 et 3) reformulés."
     },
     "sol-6.1": {
       "lignes_prevues": 531,
