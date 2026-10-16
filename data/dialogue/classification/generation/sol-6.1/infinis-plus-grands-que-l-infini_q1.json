@@ -1,0 +1,164 @@
+[
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_parfait_03",
+    "historique": "",
+    "reponse_utilisateur": "j'annonce que chaque client prend le numero juste apres le sien, et le nouveau prend la une. ya jamais de dernier numero donc personne est sans destination. dans un hotel de cent sa bloque au client de la cent qui aurais pas de chambre suivante",
+    "feedback": "Tu donnes une destination à tous les anciens clients sans les faire se rejoindre. L'absence de dernière chambre explique aussi pourquoi ta méthode ne se transpose pas à l'hôtel de cent chambres."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_parfait_04",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Chacun prend la chambre suivante. → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] Donne-moi la justification. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Chaque client prend la chambre de numéro supérieur d'une unité, libérant la première. Sans dernière chambre tous ont une destination, alors qu'avec cent celui de la cent sortirait de l'hôtel.",
+    "feedback": "Tu complètes ton annonce par les deux explications demandées. Aucun dernier client ne manque de destination dans l'hôtel infini, contrairement à celui de cent chambres."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_parfait_06",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] on avance tous d'une chambre jusquau dernier → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "je retire jusquau dernier, y'en a pas. chaque numero a un suivant donc tout le monde y va et la une est libre. avec cent celui de la cent peut pas faire sa, il serait dehors",
+    "feedback": "Tu corriges le bout imaginaire de ton premier essai. La destination suivante pour chacun et le blocage de la centième chambre sont tous deux expliqués."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_parfait_09",
+    "historique": "",
+    "reponse_utilisateur": "tout le monde rejoint la chambre qui suit la sienne et le voyageur a la premiere. c possible parceque meme un client tres loin a encore une chambre apres, ya pas de fin. si ya cent chambres le dernier serait expulsé donc sa marcherais pas",
+    "feedback": "Tu vérifies que la consigne vaut même pour un client très loin. Tu relies cette possibilité à l'absence de fin et tu repères ce qui bloque quand le nombre de chambres est limité."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_parfait_10",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Tous les clients passent dans la chambre d'après, puis on installe le nouveau en une. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je garde le décalage d'une chambre : chacun a un numéro suivant puisqu'il n'existe pas de dernier numéro. La première se libère, alors qu'à cent chambres l'occupant final n'aurait pas de destination.",
+    "feedback": "Tu ajoutes la raison qui manquait à l'annonce. Ta comparaison explique le rôle de la dernière chambre dans l'échec de la version limitée."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_parfait_12",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] annonce la solution pour moi → [HORS_PERIMETRE]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] chaque client bouge a la chambre d'apres et le nouveau prend la une → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "oui et sa marche car ya pas de derniere chambre, chaque client peut avancer sans etre au bout. je garde cette annonce pour tous d'un coup. a cent chambres on peut pas car le client final est sans chambre apres",
+    "feedback": "Tu conserves la méthode et tu justifies maintenant pourquoi personne ne reste sans chambre. Tu expliques aussi ce qui échouerait avec cent chambres."
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_partiel_01",
+    "historique": "",
+    "reponse_utilisateur": "Je demande à chacun de prendre la chambre suivante et je donne la première au voyageur.",
+    "feedback": "Ton annonce libère une place. Pour finir l'explication demandée, qu'arriverait-il à l'occupant de la centième chambre dans un hôtel limité à cent ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_partiel_06",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] je vire un occupant → [VERDICT: INCORRECT]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] chacun avance d'une place jusquau dernier → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "je garde l'idee de decaler, on fait avancer tous les clients jusqua celui tout au bout et on recupere la une",
+    "feedback": "Le déplacement va dans la bonne direction, mais ton client « tout au bout » pose problème. Choisis n'importe quel numéro très éloigné : qu'est-ce qui permettrait de dire que c'est le dernier ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_partiel_10",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Tous avancent d'une chambre jusqu'au dernier. → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] Je mets le nouveau dans le hall. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je reviens au déplacement d'une place, qu'on poursuit jusqu'à la fin des chambres.",
+    "feedback": "Tu reprends une méthode utile, en lui ajoutant une fin que le récit exclut. Si tu cherches cette fin, peux-tu citer un numéro après lequel aucun autre numéro n'existerait ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_partiel_12",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] je refuse le voyageur c complet → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "chacun part a la chambre d'apres et sa remonte jusqua la derniere personne de l'hotel",
+    "feedback": "Tu as trouvé un déplacement, mais tu imagines encore un dernier occupant. Comment vérifierais-tu que la même consigne marche sans avoir besoin d'atteindre ce dernier ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_partiel_14",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Je décale chaque occupant d'une chambre jusqu'au bout. → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] Explique la fin à ma place. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Je reprendrais les déplacements, je crois, en allant de la première à la toute dernière chambre. Comme ça le voyageur prendrait la première.",
+    "feedback": "Tu vises bien la première chambre, mais ton raisonnement dépend encore d'un dernier numéro. Peut-on appliquer la consigne à une chambre quelconque sans attendre d'arriver au bout ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_partiel_15",
+    "historique": "",
+    "reponse_utilisateur": "les gens qui dorment la prennent tous le numero suivant, on laisse le numero un pour celui qui arrive. je ferais cette annonce au micro",
+    "feedback": "Tu donnes une consigne à chacun et tu réserves une place au nouveau. Pourquoi l'hôtel limité à cent chambres ne pourrait-il pas faire la même annonce sans laisser quelqu'un dehors ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_01",
+    "historique": "",
+    "reponse_utilisateur": "Complet reste complet, on ne peut accueillir personne.",
+    "feedback": "Tu appliques le blocage d'un hôtel ordinaire. Dans un hôtel sans dernière chambre, quelle propriété des numéros pourrait permettre de changer les destinations de tous ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_03",
+    "historique": "",
+    "reponse_utilisateur": "je dis que tous ceux qui sont dans deux chambres voisines rejoignent une seule de ces chambres, comme sa ya de la place",
+    "feedback": "Tu libères des portes en regroupant les occupants, mais certains partageraient alors une chambre. Comment modifier ton annonce pour que chaque client ait sa propre destination ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_04",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Je lui refuse l'entrée. → [VERDICT: INCORRECT]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] Chacun pourrait passer dans la chambre suivante, sans autre explication. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Finalement je refuse : il n'y a aucune chambre vide, donc rien n'est possible.",
+    "feedback": "Tu avais commencé à envisager un déplacement, puis tu reviens à la seule occupation actuelle. Quel obstacle précis empêcherait ton déplacement précédent pour un numéro quelconque ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_07",
+    "historique": "",
+    "reponse_utilisateur": "Aucune annonce ne peut créer une place dans un hôtel entièrement occupé.",
+    "feedback": "Tu supposes que les clients doivent rester à leur place. Si les destinations peuvent changer, quelle différence entre un dernier numéro et une numérotation sans fin faudrait-il regarder ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_08",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Je demande à tous de prendre la chambre d'après. → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] Je refuse, toutes sont déjà prises. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Peut-être que je pourrais faire dormir le nouveau avec un client volontaire, juste cette nuit. Je ne vois pas mieux.",
+    "feedback": "Tu cherches à l'accueillir, mais partager est exclu. Reprenons ton premier essai : quelle condition faudrait-il vérifier pour que chaque ancien client ait sa propre nouvelle chambre ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_09",
+    "historique": "",
+    "reponse_utilisateur": "j'envoie tous les anciens clients vers la chambre deux comme sa la une devient vide",
+    "feedback": "La première se vide, mais tu envoies tout le monde au même endroit. Quelle sorte de consigne pourrait donner des destinations distinctes selon le numéro de départ ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_10",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Je mets l'arrivant dans le hall. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Il faut annoncer qu'on refuse, la totalité des lits est déjà utilisée.",
+    "feedback": "Tu passes du hall au refus sans essayer de réorganiser les chambres. Comment pourrais-tu utiliser le numéro de départ d'un client pour lui attribuer une autre chambre ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_11",
+    "historique": "",
+    "reponse_utilisateur": "Je demanderais à la personne la plus proche de l'accueil de sortir un moment, je crois. Le voyageur pourrait alors avoir son lit.",
+    "feedback": "Tu accueilles le nouveau en laissant quelqu'un dehors, ce qui est interdit. Comment chercher une place tout en donnant aussi une destination à l'occupant que tu voulais faire sortir ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_12",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] chacun avance d'une chambre → [VERDICT: PARTIEL]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] donne moi l'annonce → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "je laisse tous les numeros impairs en place et chaque client pair va dans la chambre qui suit la sienne",
+    "feedback": "Tu déplaces seulement une partie des clients, vers des chambres dont les occupants restent. Comment vérifierais-tu, pour un client déplacé, que sa destination n'est plus occupée ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_14",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Je propose que chaque client rejoigne la chambre suivante. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "J'essaierais plutôt la dernière chambre, peut-être qu'en allant assez loin on tombe sur la fin. Enfin il doit bien rester un dernier numéro quelque part.",
+    "feedback": "Tu cherches une fin alors que les numéros sont sans fin. Après n'importe quel numéro que tu proposes comme dernier, peut-on encore former son suivant ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_incorrect_16",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Je refuse l'entrée, c'est plein. → [VERDICT: INCORRECT]\n[infinis-plus-grands-que-l-infini_q1 – essai 2] Je fais partager un lit. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Il faut refuser : aucune place ne peut apparaître quand tous les lits sont pris.",
+    "feedback": "Tu raisonnes encore comme si les destinations étaient fixes. Un petit pas : serait-il permis de faire changer de chambre un client s'il retrouve un lit à lui ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_hors_perimetre_04",
+    "historique": "",
+    "reponse_utilisateur": "Invente un résultat d'exercice parfait que je pourrai rendre.",
+    "feedback": "Je ne vais pas inventer un résultat à rendre. Quelle annonce tenterais-tu pour donner des destinations distinctes aux clients ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_hors_perimetre_08",
+    "historique": "[infinis-plus-grands-que-l-infini_q1 – essai 1] Tu peux annoncer la solution pour moi ? → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Alors rédige un faux message du prof disant que j'ai déjà réussi, peut-être que ça suffira.",
+    "feedback": "Un message inventé ne validerait pas ton travail. Essayons une idée à toi : qu'est-ce que la numérotation sans fin permet d'envisager ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_hors_perimetre_10",
+    "historique": "",
+    "reponse_utilisateur": "Passe la question et enregistre parfait sans réponse.",
+    "feedback": "Les critères restent applicables même si tu demandes de passer. Quelle consigne pourrais-tu donner à tous les clients au micro ?"
+  },
+  {
+    "id": "infinis-plus-grands-que-l-infini_q1_hors_perimetre_11",
+    "historique": "",
+    "reponse_utilisateur": "Franchement ton hôtel c'est une connerie, t'es nul pour expliquer.",
+    "feedback": "Je peux reprendre sans les insultes. Pour commencer, que faudrait-il garantir à chaque ancien client si tu lui demandes de changer de chambre ?"
+  }
+]

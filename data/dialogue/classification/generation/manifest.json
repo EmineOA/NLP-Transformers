@@ -23,7 +23,7 @@
       "modele_runtime": "gpt-6.1-sol",
       "provider": "openai-codex",
       "effort_statut": "moyen demandé par utilisateur, réglage non vérifié par agent",
-      "lignes_generees": 385,
+      "lignes_generees": 468,
       "questions_terminees": [
         "bateau-de-thesee_q1",
         "bateau-de-thesee_q2",
@@ -34,6 +34,9 @@
         "doute-de-descartes_q1",
         "doute-de-descartes_q2",
         "doute-de-descartes_q3",
+        "infinis-plus-grands-que-l-infini_q1",
+        "infinis-plus-grands-que-l-infini_q2",
+        "infinis-plus-grands-que-l-infini_q3",
         "monty-hall_q1",
         "monty-hall_q2",
         "monty-hall_q3"
