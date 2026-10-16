@@ -74,3 +74,13 @@ def export_dataset(source: Path, output: Path, prompt_version: str = "fewshot") 
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(text, encoding="utf-8", newline="\n")
     return len(records)
+
+
+if __name__ == "__main__":
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument("--source", type=Path, default=FOLDER / "dataset_source.csv")
+    cli.add_argument("--output", type=Path, default=FOLDER / "dataset_messages.jsonl")
+    cli.add_argument("--prompt-version", choices=("criteria", "fewshot"), default="fewshot")
+    args = cli.parse_args()
+    count = export_dataset(args.source, args.output, args.prompt_version)
+    print(f"{count} exemples exportés : {args.output}")

@@ -4,6 +4,8 @@ import json
 import unittest
 import csv
 import tempfile
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,6 +65,17 @@ class TestDatasetExport(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "doubl"):
                 export.export_dataset(source, output)
             self.assertEqual(first, output.read_bytes())
+
+    def test_cli_exports_all_rows(self):
+        """Exerce la commande publique sur le vrai CSV complet."""
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / "complete.jsonl"
+            result = subprocess.run([sys.executable, str(MODULE), "--output", str(output)],
+                                    capture_output=True, text=True, encoding="utf-8", cwd=ROOT)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue(output.is_file(), "La commande n'a produit aucun JSONL.")
+            self.assertEqual(len(output.read_text(encoding="utf-8").splitlines()), 1003)
+            self.assertIn("1003", result.stdout)
 
 
 if __name__ == "__main__":
