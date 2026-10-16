@@ -1,0 +1,16 @@
+{
+  "versions": {
+    "criteria": {
+      "exactitude_dev": 0.4444,
+      "format_rate": 0.8889,
+      "n": 9
+    },
+    "fewshot": {
+      "exactitude_dev": 0.6667,
+      "format_rate": 0.8889,
+      "n": 9
+    }
+  },
+  "meilleure_sur_developpement": "fewshot",
+  "attention": "Les labels de développement doivent être validés par le bloc A; ne constitue pas le test final."
+}
