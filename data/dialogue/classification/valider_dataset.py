@@ -1,7 +1,8 @@
 """Contrôles automatiques des lignes générées (étape 3 du README), sans LLM.
 
-Lit le squelette (dataset_source.csv) et les fichiers generation/<generateur>/<question_id>.json,
-puis écrit generation/rapport_validation.csv : une ligne par entrée, avec son statut
+Lit par défaut le CSV fusionné dataset_source.csv (les JSON bruts sont optionnels
+avec --dossier), puis écrit generation/rapport_validation.csv : une ligne par entrée,
+avec son statut
 (OK, ALERTE ou REJET) et les raisons. Les fichiers générés ne sont pas modifiés.
 
 - REJET  : la ligne ne respecte pas le format ou les règles du feedback -> à regénérer.
@@ -15,6 +16,7 @@ import glob
 import json
 import os
 import re
+from pathlib import Path
 import subprocess
 from collections import Counter, defaultdict
 
@@ -69,7 +71,7 @@ def textes_externes():
 def exemples_fiches():
     exemples = defaultdict(list)
     for chemin in glob.glob(os.path.join(FICHES, "*.json")):
-        for q in json.load(open(chemin, encoding="utf-8"))["questions"]:
+        for q in json.loads(Path(chemin).read_text(encoding="utf-8"))["questions"]:
             exemples[q["id"]] += [n.get("exemple", "") for n in q["niveaux"].values() if n.get("exemple")]
     return exemples
 
@@ -95,22 +97,31 @@ def verifier_historique(ligne, historique):
 def main():
     cli = argparse.ArgumentParser()
     cli.add_argument("--question", help="ne valider qu'une question_id")
-    cli.add_argument("--dossier", default=GENERATION, help="dossier des fichiers générés (par défaut generation/)")
+    cli.add_argument("--dossier", help="vérifier d'anciennes sorties JSON plutôt que le CSV fusionné")
     args = cli.parse_args()
     global RAPPORT
-    RAPPORT = os.path.join(args.dossier, "rapport_validation.csv")
+    report_folder = args.dossier or GENERATION
+    RAPPORT = os.path.join(report_folder, "rapport_validation.csv")
 
     with open(SQUELETTE, encoding="utf-8-sig", newline="") as f:
-        squelette = {l["id"]: l for l in csv.DictReader(f, delimiter=";")}
+        source_rows = list(csv.DictReader(f, delimiter=";"))
+    squelette = {line["id"]: line for line in source_rows}
     exemples, externes = exemples_fiches(), textes_externes()
 
     entrees = []  # (generateur, fichier, entree)
-    for chemin in sorted(glob.glob(os.path.join(args.dossier, "*", "*.json"))):
-        generateur, nom = os.path.basename(os.path.dirname(chemin)), os.path.basename(chemin)[:-5]
-        if args.question and nom != args.question:
-            continue
-        for entree in json.load(open(chemin, encoding="utf-8")):
-            entrees.append((generateur, nom, entree))
+    if args.dossier:
+        for chemin in sorted(glob.glob(os.path.join(args.dossier, "*", "*.json"))):
+            generateur, nom = os.path.basename(os.path.dirname(chemin)), os.path.basename(chemin)[:-5]
+            if args.question and nom != args.question:
+                continue
+            for entree in json.loads(Path(chemin).read_text(encoding="utf-8")):
+                entrees.append((generateur, nom, entree))
+    else:
+        for line in source_rows:
+            if not args.question or line["question_id"] == args.question:
+                entrees.append((line["generateur"], line["question_id"], {key: line[key] for key in CHAMPS}))
+    if not entrees:
+        raise SystemExit("Aucune ligne à contrôler : vérifier le CSV, le dossier ou la question.")
 
     resultats, vus = [], Counter(e.get("id") for _, _, e in entrees)
     debuts = Counter((nom, " ".join(e.get("feedback", "").split()[:3]).lower()) for _, nom, e in entrees)
@@ -176,7 +187,7 @@ def main():
         statut = "REJET" if rejets else "ALERTE" if alertes else "OK"
         resultats.append((e["id"], generateur, nom, label, statut, rejets + alertes))
 
-    os.makedirs(args.dossier, exist_ok=True)
+    os.makedirs(report_folder, exist_ok=True)
     with open(RAPPORT, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f, delimiter=";")
         w.writerow(["id", "generateur", "question_id", "label", "statut", "raisons"])

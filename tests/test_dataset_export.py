@@ -77,6 +77,18 @@ class TestDatasetExport(unittest.TestCase):
             self.assertEqual(len(output.read_text(encoding="utf-8").splitlines()), 1003)
             self.assertIn("1003", result.stdout)
 
+    def test_validator_reads_filled_csv_without_raw_json(self):
+        """Le CSV fusionné reste vérifiable après retrait des sorties brutes."""
+        import contextlib
+        import io
+        from unittest.mock import patch
+        validation = importlib.import_module("data.dialogue.classification.valider_dataset")
+        with tempfile.TemporaryDirectory() as folder, contextlib.redirect_stdout(io.StringIO()) as output:
+            with patch.object(validation, "GENERATION", folder), patch.object(sys, "argv", ["valider_dataset.py"]):
+                validation.main()
+            self.assertIn("1003 lignes contrôlées", output.getvalue())
+            self.assertIn("'OK': 1003", output.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()
