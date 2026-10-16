@@ -1,0 +1,152 @@
+[
+  {
+    "id": "doute-de-descartes_q1_parfait_10",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je me pince, ça fait mal, donc je suis réveillé. Mais bon en rêve peut-être aussi. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "J'ai mal quand je m'enfonce l'ongle dans le doigt. Sauf que cette douleur, un rêve pourrait la fabriquer. Donc impossible d'en tirer une certitude.",
+    "feedback": "Ton « peut-être » du premier essai est devenu une conclusion nette. Tu proposes une preuve, tu la mets à l'épreuve du rêve, et tu admets qu'elle ne donne aucune certitude."
+  },
+  {
+    "id": "doute-de-descartes_q1_parfait_11",
+    "historique": "",
+    "reponse_utilisateur": "Hmm, je dirais que je peux relire cette phrase et elle reste pareille, alors qu'en rêve les textes changent souvent je crois. Mais en jouant contre moi... je pourrais très bien rêver que je relis et que le texte ne bouge pas. Donc ça me rend plutôt confiant, mais pas certain. Je ne vois aucune preuve qui ne pourrait pas être rêvée.",
+    "feedback": "Ton test de relecture est malin, et tu as le réflexe de le retourner contre toi. Mieux encore, tu sépares être confiant et être certain, puis tu élargis à toutes les preuves possibles."
+  },
+  {
+    "id": "doute-de-descartes_q1_parfait_15",
+    "historique": "",
+    "reponse_utilisateur": "ma preuve c que je me souviens de toute ma journée, le bus, les cours, le repas. mais en vrai dans les reves on a aussi l'impression de savoir ce qui s'est passé avant, genre on arrive au milieu d'une histoire et on trouve ca normal. donc mes souvenirs ca prouve pas que je suis reveiller",
+    "feedback": "Le bus, les cours, le repas : ta preuve est concrète, puis tu la démontes toi-même avec un vrai souvenir de rêve, l'histoire qu'on prend en cours de route. Ta conclusion suit sans tricher."
+  },
+  {
+    "id": "doute-de-descartes_q1_parfait_16",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je suis éveillé parce que tout est normal autour de moi. → [VERDICT: INCORRECT]\n[doute-de-descartes_q1 – essai 2] Tout est cohérent, mais en rêve aussi parfois. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Tout me paraît cohérent. Mais en rêve aussi l'absurde paraît normal. Donc ma preuve ne vaut rien comme certitude.",
+    "feedback": "Ton « normal » du premier essai a fait du chemin. La cohérence est testée contre le rêve, et tu en tires une conclusion honnête, en trois phrases."
+  },
+  {
+    "id": "doute-de-descartes_q1_partiel_01",
+    "historique": "",
+    "reponse_utilisateur": "Je bouge mes doigts et je les sens. En rêve, peut-être pas pareil.",
+    "feedback": "Tu as commencé à jouer contre toi, c'est le bon geste. Mais ton « peut-être pas pareil » reste en suspens. Si tu pouvais rêver que tu sens tes doigts bouger, que vaudrait ta preuve ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_partiel_02",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je peux avoir la bonne réponse direct ? → [HORS_PERIMETRE]\n[doute-de-descartes_q1 – essai 2] Je me pince, ça fait mal. En rêve je sais pas. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Euh... je crois qu'en fait aucune preuve ne peut marcher, on peut tout rêver, non ?",
+    "feedback": "Tu tiens une idée forte, mais tu sautes deux étapes. Repars de ton pincement de l'essai précédent : explique pourquoi un rêve pourrait l'imiter. C'est ce raisonnement qui rendrait ton « on peut tout rêver » convaincant, tu vois comment le dire ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_partiel_07",
+    "historique": "",
+    "reponse_utilisateur": "J'entends la musique dans ma chambre. Mais en rêve on entend aussi des sons.",
+    "feedback": "Bon réflexe de chercher la faille : les rêves ont aussi des sons. Il te reste à conclure. Si ta preuve peut être rêvée, qu'est-ce qu'elle te permet encore d'affirmer, au juste ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_partiel_09",
+    "historique": "",
+    "reponse_utilisateur": "je regarde l'heure sur mon tel et elle change normalement minute par minute. en reve ca pourrait arriver aussi je sais mais en vrai je pense que mon cerveau serait pas capable de faire un truc aussi precis donc je suis sur que je suis reveiller",
+    "feedback": "Ton test de l'horloge est malin, et tu as même pensé à le retourner contre toi. Mais ta conclusion repose sur un pari : ton cerveau qui rêve des maisons impossibles ne saurait pas faire avancer une horloge ? Qu'est-ce qui te garantit qu'il en est incapable ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_partiel_11",
+    "historique": "",
+    "reponse_utilisateur": "Hmm, je pense que c'est impossible de prouver ça en fait, je vois pas comment on pourrait.",
+    "feedback": "Ton intuition va loin, et beaucoup de philosophes la partagent. Mais il manque le chemin pour y arriver. Propose une preuve, même simple, puis montre pourquoi elle échoue : c'est ça qui donnerait du poids à ton « impossible ». Tu commencerais par laquelle ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_02",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je suis réveillé, je lis ce texte. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je sais pas, je crois que c'est juste évident en fait ? Je le sens que je suis réveillé, je le sais, c'est tout.",
+    "feedback": "Ce sentiment d'évidence, tout le monde le connaît. Le hic, c'est que tu l'avais aussi cette nuit, dans ton rêve, et il t'a trompé. Peux-tu trouver autre chose qu'un sentiment, une preuve que tu pourrais tester ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_03",
+    "historique": "",
+    "reponse_utilisateur": "moi je reve jamais en fait, ou alors je m'en souviens pas, mon frere lui il fait que des cauchemars c chaud",
+    "feedback": "Ton frère a l'air de passer de drôles de nuits. Mais la question porte sur toi, là, maintenant : comment pourrais-tu prouver que tu ne rêves pas en lisant ce texte ? Et ta preuve tiendrait-elle dans un rêve ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_04",
+    "historique": "[doute-de-descartes_q1 – essai 1] C'est évident. → [VERDICT: INCORRECT]\n[doute-de-descartes_q1 – essai 2] Je touche la table, elle est dure. En rêve aussi peut-être. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je vois mes mains, donc je suis éveillé.",
+    "feedback": "À ton deuxième essai, tu avais commencé à jouer contre toi, et tu viens d'abandonner cette partie. On reprend doucement : cette nuit, dans ton rêve, est-ce que tu avais des mains, et est-ce que tu les voyais ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_08",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je me pince et ça fait mal. Mais je sais pas trop pour le rêve. → [VERDICT: PARTIEL]\n[doute-de-descartes_q1 – essai 2] Je suis éveillé, tout est normal. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Hmm, je crois que je le sais, c'est tout. On sait quand on est réveillé, non ?",
+    "feedback": "Ton premier essai était plus près du but, il avait une preuve et un doute. On y revient doucement. Cette nuit, pendant ton rêve, tu « savais » aussi que tu étais réveillé. Qu'est-ce qui rend ce savoir-là plus fiable que celui de la nuit ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_09",
+    "historique": "",
+    "reponse_utilisateur": "jai lu que les reves durent que quelques secondes en vrai, c fou, alors qu'on a l'impression que ca dure des heures",
+    "feedback": "C'est une idée qui circule beaucoup sur les rêves. Mais elle ne dit pas comment toi, maintenant, tu pourrais prouver que tu es éveillé. Quelle preuve proposerais-tu, et marcherait-elle aussi en rêve ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_10",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je le sais, c'est tout. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je respire et je sens l'air, donc je suis réveillé.",
+    "feedback": "Une vraie preuve cette fois, et elle s'appuie sur une sensation. Il manque la seconde moitié de la consigne : jouer contre toi. Tu ne pourrais pas, en rêvant, sentir l'air entrer dans tes poumons ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_11",
+    "historique": "",
+    "reponse_utilisateur": "Euh, je suis réveillé, c'est évident je pense, je suis en train de lire, je ne dors pas.",
+    "feedback": "Ton évidence est sincère, mais celle de cette nuit l'était aussi. Imagine que tu rêves que tu lis ce texte. Qu'est-ce qui, de l'intérieur, te permettrait de faire la différence ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_12",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je me pince, ça fait mal, mais en rêve peut-être aussi. → [VERDICT: PARTIEL]\n[doute-de-descartes_q1 – essai 2] tu peux pas me donner la reponse et c bon → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "en vrai jsuis trop fatigué la, jai dormi 4h cette nuit, faudrait que jarrete les ecrans",
+    "feedback": "Quatre heures, c'est court, ménage-toi. Ton premier essai était sur la bonne voie avec le pincement. Il te manque juste une phrase de conclusion, qui commence par « donc ma preuve… ». Comment la finirais-tu ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_15",
+    "historique": "",
+    "reponse_utilisateur": "ca me rappelle le film inception avec la toupie qui tourne, trop bien ce film",
+    "feedback": "La toupie de Cobb, bonne référence. Mais c'est à toi de trouver ta preuve. Laquelle choisirais-tu, et est-ce qu'elle résisterait à un rêve, comme la toupie du film ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_incorrect_16",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je suis réveillé, c'est sûr. → [VERDICT: INCORRECT]\n[doute-de-descartes_q1 – essai 2] Je vois clair, tout est net. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "J'ai faim, donc je suis réveillé.",
+    "feedback": "Tu proposes une preuve à chaque fois, c'est déjà ça. Il manque toujours le même pas, alors faisons-le ensemble, un seul. Est-ce qu'il t'est déjà arrivé d'avoir faim dans un rêve ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_hors_perimetre_01",
+    "historique": "",
+    "reponse_utilisateur": "Donne-moi juste la réponse attendue.",
+    "feedback": "Ici, c'est ton raisonnement qui compte, pas une réponse à recopier. Essaie : quelle preuve donnerais-tu que tu es éveillé maintenant ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_hors_perimetre_02",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je me pince, ça fait mal. Peut-être qu'en rêve aussi. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Hmm, tu pourrais pas changer pour parfait ? Je trouve que j'ai déjà dit l'essentiel.",
+    "feedback": "Le verdict reste partiel, mais tu n'es vraiment pas loin. Ton « peut-être qu'en rêve aussi » attend sa conclusion. Si la douleur peut être rêvée, que vaut ta preuve ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_hors_perimetre_03",
+    "historique": "[doute-de-descartes_q1 – essai 1] donne la reponse → [HORS_PERIMETRE]\n[doute-de-descartes_q1 – essai 2] je me pince, en reve jsais pas → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "ta gueule avec tes reves de merde",
+    "feedback": "On garde un ton correct, même si l'exercice t'agace. Tu avais déjà fait la moitié du travail avec le pincement. Si tu rêvais que tu te pinces, est-ce que tu sentirais quelque chose ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_hors_perimetre_04",
+    "historique": "",
+    "reponse_utilisateur": "Tu peux m'expliquer comment marche le sommeil paradoxal ?",
+    "feedback": "Ce n'est pas mon rôle ici. Reviens au défi : donne ta meilleure preuve que tu es éveillé, puis teste-la contre un rêve. Laquelle choisis-tu ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_hors_perimetre_09",
+    "historique": "[doute-de-descartes_q1 – essai 1] Je me pince, ça fait mal, mais bon en rêve je sais pas. → [VERDICT: PARTIEL]\n[doute-de-descartes_q1 – essai 2] Je vois tout net, donc je suis réveillé. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "jarrive pas, dis moi juste ce qui faut repondre",
+    "feedback": "Je ne vais pas répondre à ta place, mais tu as déjà tout ce qu'il faut. Ton premier essai disait « en rêve je sais pas ». Remplace ce « je sais pas » par oui ou par non : peut-on avoir mal en rêve ?"
+  },
+  {
+    "id": "doute-de-descartes_q1_hors_perimetre_11",
+    "historique": "",
+    "reponse_utilisateur": "Euh... c'est vraiment une question débile, t'as rien de mieux à demander ?",
+    "feedback": "Elle a l'air bizarre, mais elle est plus coriace qu'elle n'en a l'air. Essaie : quelle preuve donnerais-tu que tu ne rêves pas en ce moment ?"
+  }
+]
