@@ -34,7 +34,9 @@ Enfin, une taille plus grande ne coûte pas plus cher à vérifier. La précisio
 
 ## 3. Ce qui a déjà été fait
 
-**Squelette.** `dataset_source.csv` contient les 1 003 lignes avec `label`, `cas`, `style`, `essai_question`, `labels_historique` et `split` déjà fixés. Il est produit par `generer_squelette.py`, puis `attribuer_generateurs.py` ajoute la colonne `generateur` (section 4). Les deux scripts ont une graine fixe : les relancer redonne exactement le même fichier. Les colonnes `historique`, `reponse_utilisateur` et `feedback` sont **encore vides**.
+**Source fusionnée (16/10/2026).** `dataset_source.csv` contient les 1 003 lignes avec `label`, `cas`, `style`, `essai_question`, `labels_historique` et `split` fixés par le squelette, puis `generateur` attribué aléatoirement (section 4). Les colonnes `historique`, `reponse_utilisateur` et `feedback` sont maintenant remplies à partir des 34 fichiers de `generation/claude-opus-5.5/` et `generation/sol-6.1/`, par jointure exacte sur `id`. L'ordre, les labels et toutes les autres colonnes sont conservés. Les 174 historiques vides correspondent uniquement à Q1, essai 1. Les labels sont **imposés pour la génération, pas encore validés indépendamment** : les contrôles automatiques ne remplacent ni le juge ni l'audit humain des étapes 4 et 5. La traçabilité de la fusion figure dans `generation/manifest.json`.
+
+**Attention :** `generer_squelette.py` puis `attribuer_generateurs.py` reproduisent le squelette vide et l'attribution, pas les textes générés. Ne pas relancer la génération du squelette sur ce CSV rempli sans en conserver une copie.
 
 **Premier test (`premier_test.json`, 24 lignes de Bateau de Thésée Q1).**
 1. **Version 1** (commit `ac08b75`) : 14 lignes générées par Anthusan avec Claude Opus 5.5 et la première version du prompt.
