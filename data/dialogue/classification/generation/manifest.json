@@ -18,12 +18,12 @@
       "interface": "agent Hermes (desktop)",
       "effort": "moyen",
       "debut": "2026-10-16",
-      "fin": null,
+      "fin": "2026-10-16",
       "lignes_regenerees": 0,
       "modele_runtime": "gpt-6.1-sol",
       "provider": "openai-codex",
       "effort_statut": "moyen demandé par utilisateur, réglage non vérifié par agent",
-      "lignes_generees": 468,
+      "lignes_generees": 531,
       "questions_terminees": [
         "bateau-de-thesee_q1",
         "bateau-de-thesee_q2",
@@ -39,8 +39,13 @@
         "infinis-plus-grands-que-l-infini_q3",
         "monty-hall_q1",
         "monty-hall_q2",
-        "monty-hall_q3"
-      ]
+        "monty-hall_q3",
+        "plier-une-feuille-42-fois_q1",
+        "plier-une-feuille-42-fois_q2"
+      ],
+      "statut": "generation_terminee_controles_automatiques_uniquement",
+      "relecture": "Relecture par le générateur, passe Humanizer sur les feedbacks, contrôle des critères des fiches, des historiques et des indices déjà vus. Ni juge indépendant ni audit humain exécuté.",
+      "sorties": "generation/sol-6.1/<question_id>.json"
     }
   },
   "corrections_manuelles": [

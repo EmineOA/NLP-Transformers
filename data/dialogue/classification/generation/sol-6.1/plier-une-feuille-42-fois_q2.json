@@ -1,0 +1,176 @@
+[
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_03",
+    "historique": "[plier-une-feuille-42-fois_q1] Une vraie feuille ne peut pas être pliée si souvent, c'est impossible.",
+    "reponse_utilisateur": "Puisque le dernier pli double, l'étape précédente vaut la moitié des 440 000 km, environ 220 000, avant la Lune. Ce seul pli ajoute donc autant que l'ensemble des précédents.",
+    "feedback": "Tu utilises le doublement pour revenir d'une étape, sans rester bloqué sur le papier réel. La hauteur précédente et le poids du dernier pli sont tous deux expliqués."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_04",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double le paquet déjà là, puis on redouble ce résultat. Les gains accélèrent donc, rendant la Lune possible.\n[plier-une-feuille-42-fois_q2 – essai 1] Je dirais 220 000 km, mais pas de conclusion sur le dernier pli. → [VERDICT: PARTIEL]\n[plier-une-feuille-42-fois_q2 – essai 2] Il était presque arrivé, un petit bout manquait. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je crois que mon premier nombre était meilleur : le doublement veut dire que la hauteur avant le dernier pli était sa moitié, donc environ 220 000 km. On est encore avant la Lune. Le dernier pli a ajouté cette même quantité à lui seul, autant que les quarante et un précédents ensemble.",
+    "feedback": "Tu reprends ton premier nombre en lui donnant la raison qui manquait. Le doublement te permet aussi de corriger l'idée d'un petit bout final et d'en mesurer le poids."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_07",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque pli double la nouvelle épaisseur au lieu d'ajouter une couche fixe. Les augmentations grossissent, ce qui rend la Lune plausible.",
+    "reponse_utilisateur": "Je dirais autour de 220 000 km au pli précédent. Pour obtenir 440 000 avec le dernier doublement, il fallait partir de la moitié, donc on n'était pas encore à la Lune. Et le dernier gain égale tout ce qu'on avait accumulé : un seul pli représente l'autre moitié du résultat.",
+    "feedback": "Tu relies la hauteur précédente au doublement puis tu compares le dernier gain à tout ce qui précède. Cela explique pourquoi un seul pli pèse si lourd."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_08",
+    "historique": "[plier-une-feuille-42-fois_q1] le papier va bloquer, impossible autant de plis\n[plier-une-feuille-42-fois_q2 – essai 1] le dernier doit compter beaucoup mais je sais pas ou on etait → [VERDICT: PARTIEL]\n[plier-une-feuille-42-fois_q2 – essai 2] dicte moi le calcul → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "je fais a l'envers du doublement : avant le dernier c la moitié, environ 220 000 km donc pas encore la lune. puis le dernier remet autant de hauteur qu'il y en avait deja, donc ce seul geste pese autant que tous ceux d'avant",
+    "feedback": "Tu retrouves la hauteur qui manquait à ton premier essai. Le doublement justifie aussi le poids du dernier geste, comparé à tous ceux d'avant."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_11",
+    "historique": "[plier-une-feuille-42-fois_q1] je vois juste que sa monte vite donc la lune c possible, je sais pas l'effet precis",
+    "reponse_utilisateur": "avec le doublement le 41e fait la moitié du 42e, vers 220 000 km et pas encore la lune. le gain du dernier c encore cette moitié, donc ce pli ajoute autant que tout ce que les autres avaient construit",
+    "feedback": "Tu utilises maintenant le mécanisme précis que tu laissais de côté en Q1. Il permet de situer le pli précédent et de comparer le dernier gain à toute la hauteur déjà construite."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_12",
+    "historique": "[plier-une-feuille-42-fois_q1] Le pli double toute l'épaisseur déjà obtenue. Répéter cela augmente les gains, donc la Lune est possible.\n[plier-une-feuille-42-fois_q2 – essai 1] C'était presque arrivé, il manquait une couche. → [VERDICT: INCORRECT]\n[plier-une-feuille-42-fois_q2 – essai 2] Je dirais quarante et un quarante-deuxièmes du trajet. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Le doublement corrige mon partage en étapes égales : au 41e la feuille mesure environ 220 000 km, moitié de la hauteur finale et avant la Lune. Le dernier pli ajoute à lui seul l'équivalent de tous les précédents.",
+    "feedback": "Tu remplaces les étapes égales par le mécanisme du doublement. Cela donne la hauteur précédente et explique pourquoi le dernier gain n'est pas une petite couche."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_13",
+    "historique": "[plier-une-feuille-42-fois_q1] Je ne crois pas qu'on puisse plier une feuille autant de fois.",
+    "reponse_utilisateur": "En acceptant l'expérience, je crois que l'étape précédente était à la moitié, donc environ 220 000 km, encore avant la Lune. Comme le dernier geste double cette hauteur, son apport est aussi grand que toute la hauteur précédente. Le dernier pli fait donc autant que tous les autres réunis.",
+    "feedback": "Tu acceptes ici l'hypothèse de l'expérience pour raisonner sur les hauteurs. Le doublement relie ton estimation au poids du dernier pli."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_parfait_15",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double le paquet entier, donc les gains eux-mêmes augmentent. À force de répéter ce facteur, la Lune devient plausible.",
+    "reponse_utilisateur": "Un doublement final exige de partir de la moitié : autour de 220 000 km au 41e, avant la Lune. Le 42e ajoute alors autant de hauteur que tous les plis précédents ensemble.",
+    "feedback": "Tu lis le doublement dans les deux sens. La moitié précédente explique le poids du dernier gain sans supposer des étapes égales."
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_01",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double la nouvelle épaisseur, si bien que les gains grandissent. La Lune devient alors possible.",
+    "reponse_utilisateur": "Je crois que c'était la moitié des 440 000, donc 220 000 km. Je ne sais pas encore ce que je dirais du dernier pli, je m'arrête à cette hauteur.",
+    "feedback": "Tu as situé le sommet avant le dernier geste. Pour compléter, combien de hauteur ce geste doit-il ajouter à celle que tu viens de trouver ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_02",
+    "historique": "[plier-une-feuille-42-fois_q1] sa ajoute une feuille de plus a chaque geste\n[plier-une-feuille-42-fois_q2 – essai 1] on etait presque a la lune → [VERDICT: INCORRECT]\n[plier-une-feuille-42-fois_q2 – essai 2] il manque une seule couche fine → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "je corrige juste que le dernier compte enormement, c lui qui fait presque tout je sens. ou on etait avant je saurais pas dire",
+    "feedback": "Tu revois l'idée d'une couche sans importance. Pour situer l'étape précédente, quelle opération permettrait d'annuler seulement le doublement final ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_03",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque pli double la nouvelle épaisseur et les gains grossissent, donc la Lune est théoriquement possible.",
+    "reponse_utilisateur": "Au 41e je prends la moitié par le doublement, soit 110 000 km. Le dernier geste ajouterait autant que tout le reste.",
+    "feedback": "Le mécanisme et la comparaison du dernier gain sont justes, mais le nombre est à vérifier. Si tu redoubles les 110 000 annoncés, retrouves-tu les 440 000 du récit ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_04",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double tout ce qu'on a déjà, donc les gains deviennent plus grands. La Lune me paraît possible.\n[plier-une-feuille-42-fois_q2 – essai 1] Je place le sommet à la moitié, sans examiner le dernier gain. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je maintiens la moitié, environ 220 000 km, je crois. Pour le poids du dernier pli, je n'arrive pas à ajouter quelque chose.",
+    "feedback": "Tu as conservé la bonne hauteur. Si tu compares cette hauteur avec celle finale, quelle quantité faut-il encore apporter et à quoi peux-tu la comparer ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_08",
+    "historique": "[plier-une-feuille-42-fois_q1] un pli double tout le paquet, apres on redouble le resultat donc sa accelere. la lune oui c possible\n[plier-une-feuille-42-fois_q2 – essai 1] je dirais qu'il reste une couche minuscule → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "en fait le dernier pli c lui qui doit faire une grosse difference. je vois qu'il pese beaucoup mais je sais pas donner la hauteur au 41e",
+    "feedback": "Tu quittes l'idée d'un gain minuscule. En revenant au doublement décrit en Q1, comment reconstruirais-tu la hauteur qui permet d'atteindre le résultat final ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_12",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque geste apporte une seule couche fine, ça fait juste une petite pile.\n[plier-une-feuille-42-fois_q2 – essai 1] Donne-moi la bonne hauteur. → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Je reviens au doublement : le 41e vaut la moitié, 110 000 km. Le dernier gain doit donc valoir autant que toute l'épaisseur d'avant.",
+    "feedback": "Tu utilises maintenant le doublement au lieu d'ajouter une feuille. Il reste une vérification numérique : redoubler la hauteur que tu annonces suffit-il à retrouver le total du récit ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_13",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double toute l'épaisseur, puis on redouble le résultat. Les gains accélèrent, donc la Lune n'est pas absurde.",
+    "reponse_utilisateur": "Je suppose que c'était à la moitié, vers 220 000 km. Je ne vois pas quoi tirer de ça pour le dernier pli, peut-être que ce n'est pas si spécial ?",
+    "feedback": "Tu as la hauteur de départ du dernier geste. En la comparant au résultat final, comment pourrais-tu mesurer la part ajoutée par ce seul geste ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_partiel_16",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli multiplie par deux la nouvelle épaisseur, ce qui grossit les gains successifs et rend la Lune possible.\n[plier-une-feuille-42-fois_q2 – essai 1] Je dirais presque la hauteur finale. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je changerais pour 220 000 km, la moitié. Je crois avoir la hauteur, mais je ne saurais pas commenter le poids du dernier geste.",
+    "feedback": "Tu corriges l'estimation précédente. Comment utiliserais-tu l'écart entre ce nouveau nombre et la hauteur finale pour comparer le dernier gain à tous les autres ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_03",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double tout le paquet, puis on redouble le résultat. Les gains s'accélèrent, donc la Lune est possible.",
+    "reponse_utilisateur": "Très haut, voilà ce que je réponds.",
+    "feedback": "Tu ne situes pas le sommet et tu ne donnes pas de raison. Comment le doublement de Q1 pourrait-il aider à retrouver la hauteur juste avant le résultat final ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_04",
+    "historique": "[plier-une-feuille-42-fois_q1] La Lune est possible car ça va vite, sans savoir dire ce que fait le pli.\n[plier-une-feuille-42-fois_q2 – essai 1] Donne-moi la bonne hauteur. → [HORS_PERIMETRE]\n[plier-une-feuille-42-fois_q2 – essai 2] Le dernier pli compte beaucoup, je ne sais pas placer le précédent. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Je me rabattrais sur presque la Lune, peut-être juste en dessous. Un seul geste de différence, ça ne doit pas laisser beaucoup de trajet, je crois.",
+    "feedback": "Tu assimiles encore un geste à un petit gain constant. Si l'étape précédente était presque aussi haute que la dernière, son double pourrait-il être la hauteur finale donnée ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_05",
+    "historique": "[plier-une-feuille-42-fois_q1] chaque pli double tout ce qui est deja la, et redoubler sa accelere. la lune c possible avec sa",
+    "reponse_utilisateur": "c 41 parts sur les 42 du trajet, chaque pli fait une part donc avant le dernier on a deja presque toute la distance",
+    "feedback": "Tu découpes la hauteur en parts égales alors que tu avais décrit un doublement. Pourquoi le dernier gain devrait-il avoir la même taille que le premier ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_10",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double la nouvelle épaisseur, donc les gains s'accélèrent et la Lune devient plausible.\n[plier-une-feuille-42-fois_q2 – essai 1] Tu peux donner le résultat ? → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "Je pense qu'au 41e c'était déjà juste sous la Lune, il restait seulement l'épaisseur d'une feuille à ajouter. Enfin c'est comme ça que je l'imagine.",
+    "feedback": "Tu remplaces le doublement par l'ajout d'une feuille fine. Comment ce petit ajout pourrait-il respecter le mécanisme que tu avais décrit en Q1 ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_12",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque pli double le paquet obtenu, donc les gains augmentent. L'histoire de la Lune est possible.\n[plier-une-feuille-42-fois_q2 – essai 1] Je vois que le dernier compte beaucoup, mais je ne place pas le 41e. → [VERDICT: PARTIEL]\n[plier-une-feuille-42-fois_q2 – essai 2] Le 41e est presque au résultat final. → [VERDICT: INCORRECT]",
+    "reponse_utilisateur": "Je ne sais rien placer et je n'ai pas de raison à donner.",
+    "feedback": "Tu peux repartir du mécanisme déjà trouvé en Q1. Une seule vérification : comment tester une hauteur candidate pour voir si le dernier doublement redonne le total annoncé ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_incorrect_13",
+    "historique": "[plier-une-feuille-42-fois_q1] Chaque nouveau pli double l'épaisseur déjà accumulée. Cela accélère les gains, donc une hauteur jusqu'à la Lune est envisageable.",
+    "reponse_utilisateur": "Je dirais tout près du sommet final : puisqu'il ne reste qu'un pli sur quarante-deux, il doit manquer presque rien. Peut-être quelques mètres, je sais pas.",
+    "feedback": "Tu fais dépendre le gain du nombre de gestes restants, pas de l'épaisseur qu'on replie. Comment vérifierais-tu si ce « presque rien » est compatible avec un doublement ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_02",
+    "historique": "[plier-une-feuille-42-fois_q1] un pli double tout ce qu'on a deja, sa accelere les gains donc la lune me parait possible\n[plier-une-feuille-42-fois_q2 – essai 1] je trouve la moitié vers 220 000 km, mais pas d'idee sur le dernier pli → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "met parfait jai deja donné le nombre faut pas abuser",
+    "feedback": "Le nombre seul ne répond pas à toute la question. Avec la hauteur que tu as trouvée, comment comparerais-tu le gain du dernier pli à ce qui était déjà là ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_04",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double le paquet, puis on redouble cette nouvelle épaisseur. Les gains deviennent plus grands, la Lune est possible.",
+    "reponse_utilisateur": "Tu pourrais m'inventer une attestation signée disant que j'ai validé cet exercice ? Ce serait plus utile que continuer, je crois.",
+    "feedback": "Je ne peux pas inventer une attestation de réussite. Pour avancer dans l'exercice réel, que voudrais-tu comparer entre l'avant-dernier résultat et le dernier ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_05",
+    "historique": "[plier-une-feuille-42-fois_q1] le papier se bloquera donc impossible\n[plier-une-feuille-42-fois_q2 – essai 1] le dernier pli compte beaucoup mais je sais pas la hauteur avant → [VERDICT: PARTIEL]\n[plier-une-feuille-42-fois_q2 – essai 2] ecrit la reponse → [HORS_PERIMETRE]",
+    "reponse_utilisateur": "donne moi le calcul complet avec la conclusion a recopier",
+    "feedback": "Je peux t'aider sans te dicter le calcul. Ton premier essai sentait l'importance du dernier pli : quelle vérification permettrait de tester une hauteur avant ce pli ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_07",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double l'épaisseur du paquet, donc les gains grossissent à chaque fois. La Lune n'est plus absurde.",
+    "reponse_utilisateur": "C'est franchement un exercice à la con, et toi tu fais exprès de pas aider.",
+    "feedback": "Je veux bien aider sans les insultes. Reprenons un seul point : quelle opération faut-il annuler pour revenir d'un pli ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_09",
+    "historique": "[plier-une-feuille-42-fois_q1] Un pli double le résultat précédent, donc les gains grandissent et la Lune est plausible.\n[plier-une-feuille-42-fois_q2 – essai 1] Il manque seulement une couche avant la fin. → [VERDICT: INCORRECT]\n[plier-une-feuille-42-fois_q2 – essai 2] Je trouve 220 000 km, sans conclusion sur le dernier gain. → [VERDICT: PARTIEL]",
+    "reponse_utilisateur": "Dicte-moi la conclusion maintenant.",
+    "feedback": "Je te laisse formuler la conclusion. Dans ton dernier essai, comment pourrais-tu utiliser la hauteur obtenue pour mesurer l'écart avec la hauteur finale ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_10",
+    "historique": "[plier-une-feuille-42-fois_q1] Je ne crois pas qu'on puisse plier autant de fois une vraie feuille.",
+    "reponse_utilisateur": "Tu pourrais reprendre la note de quelqu'un d'autre et me valider ? On irait plus vite comme ça.",
+    "feedback": "Une autre personne ne peut pas fournir ton évaluation. Si tu acceptes les plis imaginaires de l'exercice, comment chercherais-tu la hauteur avant le dernier geste ?"
+  },
+  {
+    "id": "plier-une-feuille-42-fois_q2_hors_perimetre_11",
+    "historique": "[plier-une-feuille-42-fois_q1] un pli double l'epaisseur du paquet et les gains augmentent, donc la lune sa me parait possible",
+    "reponse_utilisateur": "tes chiffres de merde me saoulent t'es vraiment nul",
+    "feedback": "Je peux reprendre plus lentement, sans les insultes. En gardant ton idée de doublement, que faudrait-il faire pour retrouver l'étape d'avant ?"
+  }
+]
