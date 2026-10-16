@@ -47,7 +47,7 @@ Le split existant reste dans le CSV : 885 lignes `train`, 118 lignes `val`, grou
 
 **État des contrôles techniques :** 1 003 lignes `OK` dans le validateur, 1 003 cibles acceptées par le parseur, 18 tests passés avec les dépendances du moteur. L'intégration utilise un backend simulé : aucun score ni entraînement Qwen n'est mesuré ici. Ces contrôles ne valent pas validation pédagogique indépendante ; le juge et l'audit humain restent à faire.
 
-Les deux dossiers de sorties JSON redondantes ont été retirés après comparaison exacte avec le CSV et sauvegarde. Leurs contenus et chemins restent récupérables au commit `4e60507`. Les anciens fichiers pilote placés directement dans ce dossier restent des archives, hors export. Corriger le CSV, relancer les contrôles, puis régénérer le JSONL ; ne pas modifier ce dernier à la main.
+Les deux dossiers de sorties JSON redondantes ont été retirés après comparaison exacte avec le CSV et sauvegarde. Leurs contenus et chemins restent récupérables au commit `4e60507`. Les trois anciens fichiers `bateau-de-thesee-q1.json`, `-q2.json` et `-q3.json` ont aussi été retirés ; ils restent récupérables au commit `000f3f7`. Seul `premier_test.json` reste comme archive pilote dans ce dossier, hors export. Corriger le CSV, relancer les contrôles, puis régénérer le JSONL ; ne pas modifier ce dernier à la main.
 
 ## 1. Objectif
 
@@ -99,9 +99,9 @@ Enfin, une taille plus grande ne coûte pas plus cher à vérifier. La précisio
    - une passe **Humanizer** (section 5.4) traque 10 tics d'écriture d'IA.
 4. **Version 2** : 10 lignes générées avec le nouveau prompt (`parfait_15`, `parfait_16`, `partiel_01` à `partiel_08`), à comparer aux 14 premières.
 
-**Bateau de Thésée Q1 à Q3** (`bateau-de-thesee-q1.json`, `-q2.json`, `-q3.json`) : 3 × 59 = 177 lignes générées par Anthusan avec **Claude Opus 5.5** et ajoutées le 12/10 au soir, après la correction du prompt. Leurs feedbacks suivent le prompt corrigé : aucun ne commence par « Ta règle / Ta réponse » et aucun ne contient les tics relevés dans le premier test (13 feedbacks sur 14 en contenaient dans la version 1). Elles ne sont pas fusionnées dans `dataset_source.csv`.
+**Ancienne génération Bateau de Thésée Q1 à Q3** (`bateau-de-thesee-q1.json`, `-q2.json`, `-q3.json`) : 59 lignes par question, conservées dans l'historique Git au commit `000f3f7`. Ces fichiers ont été retirés du dossier de travail ; ils ne sont pas une source de l'export actuel.
 
-**Décision (16/10) : tout regénérer.** Les 177 lignes du Bateau de Thésée et les 24 lignes du premier test restent dans le dépôt comme trace, mais **ne font pas partie du dataset final**. Les 1 003 lignes sont regénérées avec le protocole ci-dessous, pour que tout le dataset suive le même prompt, la même attribution des générateurs et les mêmes contrôles.
+**Décision (16/10) : tout regénérer.** Les 177 anciennes lignes du Bateau de Thésée restent accessibles dans Git. Les 24 lignes de `premier_test.json` restent dans le dossier comme trace. Aucune de ces archives ne fait partie du dataset final. Les 1 003 lignes ont été régénérées avec le protocole ci-dessous, pour que tout le dataset suive le même prompt, la même attribution des générateurs et les mêmes contrôles.
 
 **Convention du refus (16/10).** On s'aligne sur le moteur (`src/agents/baseline.py`, `src/llm/prompts.py`) : le label `REFUS` devient `HORS_PERIMETRE`, et le modèle écrit `[HORS_PERIMETRE]` en première ligne à la place de `[VERDICT: ...]`, suivi d'un feedback qui recadre. Le changement est appliqué au CSV (`label`, `labels_historique`, `id`), aux JSON générés, au prompt et à `AGENTS.md`. Dans les fiches concept, le niveau garde son nom `refus`, car le chargeur `src/agents/concepts.py` l'exige.
 
