@@ -2,6 +2,8 @@
 import importlib
 import json
 import unittest
+import csv
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +36,33 @@ class TestDatasetExport(unittest.TestCase):
         self.assertNotIn(row["feedback"], inputs)
         self.assertNotIn(row["id"], inputs)
         self.assertNotIn("NE_PAS_INJECTER", inputs)
+
+    def test_export_round_trip_and_reject_duplicate_ids(self):
+        """Exporte les vrais cas du début du CSV et refuse les identifiants répétés."""
+        export = importlib.import_module("data.dialogue.classification.export_jsonl")
+        self.assertTrue(callable(getattr(export, "export_dataset", None)), "La fonction d'export manque.")
+        with (ROOT / "data/dialogue/classification/dataset_source.csv").open(encoding="utf-8-sig", newline="") as f:
+            reader = csv.DictReader(f, delimiter=";")
+            fields, rows = reader.fieldnames, list(reader)[:4]
+        with tempfile.TemporaryDirectory() as folder:
+            source, output = Path(folder) / "source.csv", Path(folder) / "dataset.jsonl"
+            with source.open("w", encoding="utf-8-sig", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=fields, delimiter=";")
+                writer.writeheader()
+                writer.writerows(rows)
+            self.assertEqual(export.export_dataset(source, output), len(rows))
+            first = output.read_bytes()
+            records = [json.loads(line) for line in first.decode("utf-8").splitlines()]
+            self.assertEqual(len(records), len(rows))
+            self.assertTrue(all(set(record) == {"messages"} for record in records))
+            self.assertFalse(first.startswith(b"\xef\xbb\xbf"))
+            export.export_dataset(source, output)
+            self.assertEqual(first, output.read_bytes())
+            with source.open("a", encoding="utf-8", newline="") as f:
+                csv.DictWriter(f, fieldnames=fields, delimiter=";").writerow(rows[0])
+            with self.assertRaisesRegex(ValueError, "doubl"):
+                export.export_dataset(source, output)
+            self.assertEqual(first, output.read_bytes())
 
 
 if __name__ == "__main__":
