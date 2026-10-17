@@ -76,6 +76,45 @@ def train_steps(model, examples: list[dict], learning_rate: float = LEARNING_RAT
     return losses
 
 
+def evaluate_loss(model, examples: list[dict]) -> float:
+    """Mesure la loss moyenne du modèle sur des exemples, sans l'entraîner.
+
+    Avec les exemples val (jamais vus à l'entraînement), c'est la "loss de validation" :
+    le seul chiffre qui dit si le modèle progresse sur des cas nouveaux.
+    Si elle remonte alors que la loss d'entraînement baisse, c'est du surapprentissage :
+    le modèle apprend ses exemples par cœur au lieu d'apprendre à bien répondre.
+
+    Paramètres :
+        model : modèle 4 bits avec adaptateurs LoRA (sortie de add_lora).
+        examples : exemples déjà tokenisés (sortie de tokenize_example).
+
+    Retour :
+        loss moyenne (float) sur tous les exemples.
+
+    Exemple :
+        evaluate_loss(model, val_examples)  # un float : la loss moyenne
+    """
+    # eval() : coupe le dropout, pour une mesure stable
+    model.eval()
+
+    total_loss = 0.0
+    # no_grad : PyTorch n'enregistre pas les calculs pour les gradients (moins de mémoire).
+    # A et B ne bougent pas car on n'appelle jamais optimizer.step().
+    with torch.no_grad():
+        for example in examples:
+            # [1, longueur] : 1 = taille du batch, un exemple à la fois (comme dans train_steps)
+            input_ids = torch.tensor([example["input_ids"]], device=model.device)
+            attention_mask = torch.tensor([example["attention_mask"]], device=model.device)
+            labels = torch.tensor([example["labels"]], device=model.device)
+
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+            total_loss += outputs.loss.item()
+
+    # on remet le mode entraînement : la boucle complète appellera evaluate_loss entre deux epochs
+    model.train()
+    return total_loss / len(examples)
+
+
 def generate_answer(model, tokenizer, messages: list[dict], max_new_tokens: int = 200) -> str:
     """Fait répondre le modèle à une conversation et retourne seulement le texte généré.
 
@@ -117,6 +156,8 @@ if __name__ == "__main__":
 
     NUM_EXAMPLES = 5
     NUM_EPOCHS = 4
+    # un sous-ensemble de val pour que le test reste rapide ; l'entraînement complet utilisera les 118
+    NUM_VAL_EXAMPLES = 20
 
     # Test "apprendre par cœur un petit lot" : si le pipeline marche, le modèle doit mémoriser 5 réponses
     # et la loss doit baisser entre le 1er et le dernier passage ; sinon il y a un bug.
@@ -126,20 +167,53 @@ if __name__ == "__main__":
     conversations = load_split("train")[:NUM_EXAMPLES]
     examples = [tokenize_example(messages, tokenizer) for messages in conversations]
 
+    val_conversations = load_split("val")[:NUM_VAL_EXAMPLES]
+    val_examples = [tokenize_example(messages, tokenizer) for messages in val_conversations]
+
     # but de la mesure de mémoire : vérifier que l'entraînement tient dans les 12 Go de la RTX 4070
     # et les 16 Go de la T4 de Colab
     torch.cuda.reset_peak_memory_stats()
+
+    # La copie se fait AVANT evaluate_loss, sinon on ne pourrait pas comparer avant/après.
+    # On copie TOUS les paramètres LoRA (environ 115 Mo) : une seule matrice prouverait trop peu.
+    # detach : la copie n'est plus reliée aux calculs de PyTorch ;
+    # clone : vraie copie des valeurs, pas un simple lien.
+    lora_copies = {}
+    for name, param in model.named_parameters():
+        if "lora_" in name:
+            lora_copies[name] = param.detach().clone()
+
+    val_loss_before = evaluate_loss(model, val_examples)
+
+    # prouve que l'évaluation n'entraîne pas : chaque paramètre LoRA doit être identique à sa copie.
+    # torch.equal = toutes les valeurs identiques (== donnerait un tableau de vrai/faux)
+    for name, param in model.named_parameters():
+        if "lora_" in name:
+            assert torch.equal(lora_copies[name], param), f"{name} a changé pendant evaluate_loss"
+    print(f"paramètres LoRA inchangés par evaluate_loss : OK ({len(lora_copies)} tenseurs)")
+
+    # le chrono ne couvre que l'entraînement, pour rester comparable aux mesures précédentes
     start_time = time.perf_counter()
     losses = train_steps(model, examples, num_epochs=NUM_EPOCHS)
     total_seconds = time.perf_counter() - start_time
+
+    val_loss_after = evaluate_loss(model, val_examples)
 
     assert len(losses) == NUM_EXAMPLES * NUM_EPOCHS  # une loss par pas
     first_pass_average = sum(losses[:NUM_EXAMPLES]) / NUM_EXAMPLES
     last_pass_average = sum(losses[-NUM_EXAMPLES:]) / NUM_EXAMPLES
     peak_memory_in_gb = torch.cuda.max_memory_allocated() / 1024**3  # octets -> Go
 
+    # Pas d'assert sur le sens de la loss val : baisse, stagnation ou hausse sont des résultats possibles, pas des bugs.
+    # Val avant = modèle de base (au départ B vaut 0, donc LoRA ne change rien).
+    # Val qui monte pendant que train baisse = surapprentissage ;
+    # sur 20 exemples, de petites variations peuvent aussi être du bruit.
+    assert val_loss_before > 0 and val_loss_after > 0  # la mesure renvoie bien une loss
+
     print(f"loss moyenne, 1er passage : {first_pass_average:.4f}")
     print(f"loss moyenne, {NUM_EPOCHS}e passage : {last_pass_average:.4f}")
+    print(f"loss val avant : {val_loss_before:.4f}")
+    print(f"loss val après : {val_loss_after:.4f}")
     print(f"temps total : {total_seconds:.1f} s")
     print(f"mémoire GPU maximale : {peak_memory_in_gb:.2f} Go")
 
