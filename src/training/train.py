@@ -7,6 +7,10 @@ puis on corrige légèrement A et B, les petites matrices LoRA ajoutées par add
 Le test final vérifie que la boucle marche : le modèle doit apprendre par cœur un petit lot.
 """
 
+import random
+import time
+from pathlib import Path
+
 import torch
 
 from src.agents.baseline import parse_pedagogical_response
@@ -18,24 +22,45 @@ from src.training.model import LORA_TARGET_MODULES, add_lora, load_model_4bit, l
 # à ajuster plus tard si besoin.
 LEARNING_RATE = 2e-4
 
+# On additionne les gradients de 8 exemples avant de corriger A et B : la direction est plus fiable
+# qu'avec un seul exemple, et la mémoire reste celle d'un exemple à la fois.
+# Cela équivaut à un batch de 8 pour la moyenne des gradients
+# (au token près : les exemples n'ont pas tous la même longueur).
+ACCUMULATION_STEPS = 8
 
-def train_steps(model, examples: list[dict], learning_rate: float = LEARNING_RATE, num_epochs: int = 1) -> list[float]:
-    """Entraîne le modèle, un exemple à la fois, et retourne la loss de chaque pas.
+# Graine du hasard : même ordre de mélange à chaque lancement, donc résultats reproductibles.
+SEED = 42
+
+
+def train_steps(
+    model,
+    examples: list[dict],
+    learning_rate: float = LEARNING_RATE,
+    num_epochs: int = 1,
+    accumulation_steps: int = ACCUMULATION_STEPS,
+    seed: int = SEED,
+) -> tuple[list[float], int]:
+    """Entraîne le modèle, par groupes d'exemples, et retourne les loss et le nombre de corrections.
 
     La loss est le nombre qui mesure l'erreur du modèle : plus il est petit, mieux le modèle prédit.
-    Une epoch est un passage complet sur tous les exemples.
+    Une epoch est un passage complet sur tous les exemples, dans un ordre mélangé.
+    Un groupe est une série d'exemples dont on additionne les gradients avant une seule correction de A et B.
 
     Paramètres :
         model : modèle 4 bits avec adaptateurs LoRA (sortie de add_lora).
-        examples : exemples déjà tokenisés (sortie de tokenize_example).
+        examples : exemples déjà tokenisés (sortie de tokenize_example) ; la liste n'est pas modifiée.
         learning_rate : taille du pas de correction.
         num_epochs : nombre de passages sur les exemples.
+        accumulation_steps : nombre d'exemples par groupe (le dernier groupe peut être plus petit).
+        seed : graine du mélange, pour retrouver le même ordre à chaque lancement.
 
     Retour :
-        liste de loss (float), une par pas, dans l'ordre.
+        (losses, number_of_optimizer_steps) : la loss de chaque exemple (float, dans l'ordre vu)
+        et le nombre de corrections de A et B faites.
 
     Exemple :
-        len(train_steps(model, examples, num_epochs=2))  # 2 * len(examples)
+        losses, steps = train_steps(model, examples, num_epochs=2, accumulation_steps=1)
+        # len(losses) == steps == 2 * len(examples)
     """
     # Le gradient traverse les poids gelés du modèle 4 bits pour atteindre A et B, mais on ne met à jour
     # que A et B : l'optimiseur AdamW (l'algorithme qui applique les corrections) ne reçoit donc
@@ -47,33 +72,57 @@ def train_steps(model, examples: list[dict], learning_rate: float = LEARNING_RAT
     model.train()
 
     losses = []
+    number_of_optimizer_steps = 0
     for epoch in range(1, num_epochs + 1):
-        for example in examples:
-            # [1, longueur] : 1 = taille du batch, un exemple à la fois (donc pas de padding)
-            input_ids = torch.tensor([example["input_ids"]], device=model.device)
-            attention_mask = torch.tensor([example["attention_mask"]], device=model.device)
-            labels = torch.tensor([example["labels"]], device=model.device)
+        # On mélange une liste d'indices et non la liste reçue, pour ne pas la modifier chez l'appelant.
+        # Sans mélange, le modèle verrait toutes les questions d'un même concept d'affilée.
+        # seed + epoch : un ordre différent à chaque epoch, mais le même à chaque lancement.
+        # random.Random(...) crée un générateur de hasard local : le hasard global de Python n'est pas touché.
+        indices = list(range(len(examples)))
+        random.Random(seed + epoch).shuffle(indices)
 
-            # Un pas d'entraînement, en 4 temps :
-            # 1. le modèle prédit chaque token et calcule l'erreur sur la seule réponse du tuteur :
-            #    les -100 de labels sont les tokens ignorés dans la loss (consigne et messages de l'élève)
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-            # quand on donne labels, le modèle calcule lui-même la loss : l'erreur moyenne sur les tokens à prédire
-            loss = outputs.loss
-            # 2. backward calcule, pour chaque valeur de A et B, comment la loss change si on la modifie un peu
-            #    (c'est le gradient : il pointe vers là où la loss AUGMENTE).
-            #    backward n'a pas d'argument car il remonte tous les calculs qui ont produit loss
-            #    (PyTorch les a enregistrés).
-            loss.backward()
-            # 3. step déplace A et B dans le sens OPPOSÉ au gradient, d'un petit pas, pour faire baisser la loss
+        # On découpe l'ordre mélangé en groupes de accumulation_steps exemples ;
+        # le dernier groupe peut être plus court (par exemple 10 exemples en groupes de 4 : 4 + 4 + 2).
+        for group_start in range(0, len(indices), accumulation_steps):
+            group_indices = indices[group_start:group_start + accumulation_steps]
+            # vraie taille du groupe : le dernier groupe peut avoir moins de accumulation_steps exemples
+            group_size = len(group_indices)
+
+            for index in group_indices:
+                example = examples[index]
+                # [1, longueur] : 1 = taille du batch, un exemple à la fois (donc pas de padding)
+                input_ids = torch.tensor([example["input_ids"]], device=model.device)
+                attention_mask = torch.tensor([example["attention_mask"]], device=model.device)
+                labels = torch.tensor([example["labels"]], device=model.device)
+
+                # Un groupe d'entraînement, en 5 temps (les temps 1 à 3 se répètent pour chaque exemple) :
+                # 1. le modèle prédit chaque token. Avec labels, il renvoie lui-même outputs.loss :
+                #    la moyenne de l'erreur sur les tokens de la réponse du tuteur.
+                #    Les -100 de labels sont les tokens ignorés (consigne et messages de l'élève).
+                outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+                # 2. backward ADDITIONNE les gradients d'un exemple à l'autre. Diviser la loss par la taille
+                #    du groupe donne donc leur MOYENNE. On divise par la vraie taille pour que le dernier groupe,
+                #    plus petit, compte juste.
+                loss = outputs.loss / group_size
+                # 3. backward calcule, pour chaque valeur de A et B, comment la loss change si on la modifie un peu
+                #    (c'est le gradient : il pointe vers là où la loss AUGMENTE).
+                #    backward n'a pas d'argument car il remonte tous les calculs qui ont produit loss
+                #    (PyTorch les a enregistrés).
+                loss.backward()
+
+                # On enregistre la loss NON divisée, sinon les valeurs affichées dépendraient de la taille du groupe.
+                # .item() récupère le nombre seul, sans garder tout le graphe de calcul en mémoire
+                losses.append(outputs.loss.item())
+                print(f"epoch {epoch}, exemple {len(losses)} : loss {losses[-1]:.4f}")
+
+            # Temps 4 et 5 : une fois par groupe (hors de la boucle sur les exemples du groupe).
+            # 4. step déplace A et B dans le sens OPPOSÉ au gradient (ici la moyenne du groupe),
+            #    d'un petit pas, pour faire baisser la loss
             optimizer.step()
-            # 4. zero_grad remet les gradients à zéro, sinon ils s'additionneraient d'un exemple à l'autre
+            # 5. zero_grad remet les gradients à zéro, sinon ils s'additionneraient d'un groupe à l'autre
             optimizer.zero_grad()
-
-            # .item() récupère le nombre seul, sans garder tout le graphe de calcul en mémoire
-            losses.append(loss.item())
-            print(f"epoch {epoch}, pas {len(losses)} : loss {losses[-1]:.4f}")
-    return losses
+            number_of_optimizer_steps += 1
+    return losses, number_of_optimizer_steps
 
 
 def evaluate_loss(model, examples: list[dict]) -> float:
@@ -149,18 +198,19 @@ def generate_answer(model, tokenizer, messages: list[dict], max_new_tokens: int 
     return tokenizer.decode(new_ids, skip_special_tokens=True)
 
 
-if __name__ == "__main__":
-    # Lancer depuis la racine du dépôt : python -m src.training.train
-    import time
-    from pathlib import Path
+# Dossier ignoré par git (voir .gitignore). Nom "test" : cet adaptateur n'a vu que 5 exemples.
+ADAPTER_DIR = "adapters/test_5_exemples"
 
+
+def test_memorize_small_batch():
+    """Test : le modèle apprend par cœur 5 exemples, et l'adaptateur est sauvegardé dans ADAPTER_DIR."""
     NUM_EXAMPLES = 5
     NUM_EPOCHS = 4
     # un sous-ensemble de val pour que le test reste rapide ; l'entraînement complet utilisera les 118
     NUM_VAL_EXAMPLES = 20
 
-    # Test "apprendre par cœur un petit lot" : si le pipeline marche, le modèle doit mémoriser 5 réponses
-    # et la loss doit baisser entre le 1er et le dernier passage ; sinon il y a un bug.
+    # Si le pipeline marche, le modèle doit mémoriser 5 réponses et la loss doit baisser
+    # entre le 1er et le dernier passage ; sinon il y a un bug.
     model, tokenizer = load_model_4bit()
     model = add_lora(model)
 
@@ -194,12 +244,14 @@ if __name__ == "__main__":
 
     # le chrono ne couvre que l'entraînement, pour rester comparable aux mesures précédentes
     start_time = time.perf_counter()
-    losses = train_steps(model, examples, num_epochs=NUM_EPOCHS)
+    # accumulation_steps=1 : une correction par exemple, comme avant l'accumulation
+    losses, number_of_optimizer_steps = train_steps(model, examples, num_epochs=NUM_EPOCHS, accumulation_steps=1)
     total_seconds = time.perf_counter() - start_time
 
     val_loss_after = evaluate_loss(model, val_examples)
 
-    assert len(losses) == NUM_EXAMPLES * NUM_EPOCHS  # une loss par pas
+    assert len(losses) == NUM_EXAMPLES * NUM_EPOCHS  # une loss par exemple vu
+    assert number_of_optimizer_steps == NUM_EXAMPLES * NUM_EPOCHS  # 5 exemples * 4 epochs = 20 corrections
     first_pass_average = sum(losses[:NUM_EXAMPLES]) / NUM_EXAMPLES
     last_pass_average = sum(losses[-NUM_EXAMPLES:]) / NUM_EXAMPLES
     peak_memory_in_gb = torch.cuda.max_memory_allocated() / 1024**3  # octets -> Go
@@ -223,9 +275,6 @@ if __name__ == "__main__":
     # avec la loss de validation (118 exemples val).
     assert last_pass_average < first_pass_average
 
-    # Dossier ignoré par git (voir .gitignore). Nom "test" : cet adaptateur n'a vu que 5 exemples.
-    ADAPTER_DIR = "adapters/test_5_exemples"
-
     # save_pretrained sur un modèle LoRA sauvegarde seulement A et B, pas les 3 milliards de poids de base
     model.save_pretrained(ADAPTER_DIR)
 
@@ -234,12 +283,15 @@ if __name__ == "__main__":
         total_bytes += file_path.stat().st_size
     print(f"taille de l'adaptateur : {total_bytes / 1024**2:.1f} Mo")  # octets -> Mo
 
-    # On libère le GPU : sans cela, le modèle entraîné et le modèle rechargé seraient en mémoire en même temps.
+    # On libère le GPU pour que le test suivant parte d'une mémoire vide.
     # del supprime notre variable ; empty_cache rend au GPU la mémoire que PyTorch gardait en réserve.
-    # Recharger un modèle neuf prouve que les fichiers sur le disque suffisent.
     del model
     torch.cuda.empty_cache()
 
+
+def test_save_and_reload():
+    """Test : l'adaptateur sauvegardé par test_memorize_small_batch se recharge et répond au bon format."""
+    # Recharger un modèle neuf prouve que les fichiers sur le disque suffisent.
     model, tokenizer = load_model_with_adapter(ADAPTER_DIR)
 
     number_of_lora_parameters = 0
@@ -273,3 +325,36 @@ if __name__ == "__main__":
     parsed = parse_pedagogical_response(generated_answer)
     assert parsed["valid_format"], "la réponse ne respecte pas le contrat de sortie"
     print(f"format valide (verdict : {parsed['verdict']})")
+
+    del model
+    torch.cuda.empty_cache()
+
+
+def test_accumulation():
+    """Test : 10 exemples en groupes de 4 donnent 3 corrections (4 + 4 + 2) et 10 loss."""
+    # Modèle neuf avec add_lora, pour deux raisons :
+    # - le modèle rechargé est gelé et sans gradient checkpointing (pas assez de mémoire sur la RTX 4070) ;
+    # - un modèle déjà entraîné rendrait ce test dépendant du précédent.
+    model, tokenizer = load_model_4bit()
+    model = add_lora(model)
+
+    # Les exemples 5 à 14 de train : 10 exemples, différents des 5 du premier test
+    conversations = load_split("train")[5:15]
+    examples = [tokenize_example(messages, tokenizer) for messages in conversations]
+
+    # 10 exemples en groupes de 4 : 4 + 4 + 2 = 3 groupes (le dernier est plus petit), donc 3 corrections
+    losses, number_of_optimizer_steps = train_steps(model, examples, num_epochs=1, accumulation_steps=4)
+    assert number_of_optimizer_steps == 3
+    assert len(losses) == 10
+    print("accumulation : 10 exemples, groupes de 4 → 3 corrections")
+
+    del model
+    torch.cuda.empty_cache()
+
+
+if __name__ == "__main__":
+    # Lancer depuis la racine du dépôt : python -m src.training.train
+    # L'ordre compte : test_save_and_reload lit l'adaptateur écrit par test_memorize_small_batch.
+    test_memorize_small_batch()
+    test_save_and_reload()
+    test_accumulation()
