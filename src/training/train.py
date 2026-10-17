@@ -39,6 +39,7 @@ def train_steps(
     num_epochs: int = 1,
     accumulation_steps: int = ACCUMULATION_STEPS,
     seed: int = SEED,
+    optimizer=None,
 ) -> tuple[list[float], int]:
     """Entraîne le modèle, par groupes d'exemples, et retourne les loss et le nombre de corrections.
 
@@ -53,6 +54,7 @@ def train_steps(
         num_epochs : nombre de passages sur les exemples.
         accumulation_steps : nombre d'exemples par groupe (le dernier groupe peut être plus petit).
         seed : graine du mélange, pour retrouver le même ordre à chaque lancement.
+        optimizer : optimiseur AdamW déjà créé (None : train_steps en crée un neuf avec learning_rate).
 
     Retour :
         (losses, number_of_optimizer_steps) : la loss de chaque exemple (float, dans l'ordre vu)
@@ -65,8 +67,11 @@ def train_steps(
     # Le gradient traverse les poids gelés du modèle 4 bits pour atteindre A et B, mais on ne met à jour
     # que A et B : l'optimiseur AdamW (l'algorithme qui applique les corrections) ne reçoit donc
     # que les paramètres entraînables (requires_grad).
-    trainable_params = [param for param in model.parameters() if param.requires_grad]
-    optimizer = torch.optim.AdamW(trainable_params, lr=learning_rate)
+    # Pour l'entraînement complet, l'appelant passe le même optimiseur d'une epoch à l'autre :
+    # AdamW garde en mémoire une moyenne des gradients passés, et le recréer à chaque epoch effacerait cette mémoire.
+    if optimizer is None:
+        trainable_params = [param for param in model.parameters() if param.requires_grad]
+        optimizer = torch.optim.AdamW(trainable_params, lr=learning_rate)
 
     # mode entraînement : active le dropout des adaptateurs LoRA, défini dans add_lora
     model.train()
