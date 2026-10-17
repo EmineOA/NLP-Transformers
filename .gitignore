@@ -3,3 +3,6 @@ __pycache__/
 *.py[cod]
 .venv/
 .pytest_cache/
+
+# Adaptateurs LoRA entraînés (~100 Mo chacun) : jamais dans git
+adapters/
