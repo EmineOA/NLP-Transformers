@@ -2,7 +2,7 @@
 
 Ce fichier lance le vrai entraînement : le modèle voit tous les exemples train, epoch après epoch.
 Une epoch est un passage complet sur les exemples. Un pas d'optimisation est une correction de A et B
-(une correction toutes les 8 exemples).
+(une correction tous les batch_size x accumulation_steps exemples, 8 par défaut).
 Après chaque epoch, et aussi tous les N pas avec --eval-every N, on mesure la loss de validation
 (l'erreur sur des exemples jamais vus).
 Chaque fois qu'elle bat son record, l'adaptateur LoRA est sauvegardé dans {output_dir}/best.
@@ -14,6 +14,7 @@ Les tests de la boucle sont dans train.py ; ceux des petites fonctions de ce fic
 
 # Lancer depuis la racine : python -m src.training.run_training (~4 h par epoch sur RTX 4070 12 Go, mémoire saturée ; bien plus rapide sur Colab A100, à mesurer ; fermer les jeux)
 # Test rapide : python -m src.training.run_training --quick
+# Vrai batch (A100 80 Go) : python -m src.training.run_training --batch-size 4 --accumulation-steps 2
 # Test sans GPU des petites fonctions : python -m src.training.run_training --self-test
 
 import argparse
@@ -228,6 +229,8 @@ def build_config(
     num_train_examples: int,
     num_val_examples: int,
     gpu_name: str,
+    batch_size: int = 1,
+    accumulation_steps: int = ACCUMULATION_STEPS,
 ) -> dict:
     """Rassemble les réglages de l'entraînement, tels qu'ils seront écrits dans config.json.
 
@@ -235,10 +238,12 @@ def build_config(
         num_epochs, learning_rate, lora_rank, lora_alpha, lora_dropout, patience, eval_every : réglages de run_training.
         num_train_examples, num_val_examples : nombre d'exemples réellement utilisés.
         gpu_name : nom de la carte graphique.
+        batch_size : nombre d'exemples lus ensemble par le modèle.
+        accumulation_steps : nombre de lots dont on additionne les gradients avant une correction.
 
     Retour :
-        un dict prêt pour json.dump (les clés batch_size_par_pas, batch_size_effectif, quantification
-        et max_length décrivent le matériel et les constantes du projet).
+        un dict prêt pour json.dump (batch_size_effectif = batch_size_par_pas x accumulation_steps ;
+        quantification et max_length décrivent les constantes du projet).
 
     Exemple :
         build_config(3, 2e-4, 16, 32, 0.05, 0, 0, 885, 118, "RTX 4070")["batch_size_effectif"]  # 8
@@ -251,9 +256,9 @@ def build_config(
         "lora_dropout": lora_dropout,
         "lora_target_modules": LORA_TARGET_MODULES,
         "learning_rate": learning_rate,
-        "batch_size_par_pas": 1,  # un exemple à la fois dans le modèle (pas de padding)
-        "accumulation_steps": ACCUMULATION_STEPS,
-        "batch_size_effectif": 1 * ACCUMULATION_STEPS,
+        "batch_size_par_pas": batch_size,
+        "accumulation_steps": accumulation_steps,
+        "batch_size_effectif": batch_size * accumulation_steps,
         "max_length": MAX_LENGTH,
         "epochs": num_epochs,
         "patience": patience,
@@ -264,25 +269,31 @@ def build_config(
     }
 
 
-def epoch_is_complete(steps_done: int, number_of_examples: int, accumulation_steps: int) -> bool:
+def epoch_is_complete(steps_done: int, number_of_examples: int, batch_size: int, accumulation_steps: int) -> bool:
     """Dit si une epoch est allée jusqu'au bout (tous les groupes d'exemples ont été corrigés).
 
     Paramètres :
         steps_done : nombre de corrections faites pendant l'epoch.
         number_of_examples : nombre d'exemples train.
-        accumulation_steps : nombre d'exemples par groupe.
+        batch_size : nombre d'exemples par lot.
+        accumulation_steps : nombre de lots par groupe.
 
     Retour :
         True si steps_done vaut le nombre de groupes de l'epoch (le dernier groupe peut être plus petit).
 
     Exemple :
-        epoch_is_complete(3, 10, 4)  # True : 10 exemples en groupes de 4 = 3 groupes
+        epoch_is_complete(3, 10, 1, 4)  # True : 10 exemples en groupes de 4 = 3 groupes
+        epoch_is_complete(2, 10, 2, 2)  # False : 4 exemples par groupe, il en faut 3
     """
-    number_of_groups = math.ceil(number_of_examples / accumulation_steps)
+    # un groupe contient batch_size x accumulation_steps exemples (le dernier peut en avoir moins)
+    number_of_groups = math.ceil(number_of_examples / (batch_size * accumulation_steps))
     return steps_done == number_of_groups
 
 
-def run_one_epoch(model, train_examples, val_examples, optimizer, epoch, step_before, output_dir, eval_every, patience, state):
+def run_one_epoch(
+    model, train_examples, val_examples, optimizer, epoch, step_before, output_dir, eval_every, patience, state,
+    batch_size=1, accumulation_steps=ACCUMULATION_STEPS, pad_token_id=None,
+):
     """Entraîne une epoch, mesure la loss val à sa fin, sauvegarde epoch_N et écrit historique_loss.csv.
 
     Si l'entraînement s'arrête au milieu de l'epoch, rien n'est écrit dans historique_loss.csv
@@ -294,6 +305,7 @@ def run_one_epoch(model, train_examples, val_examples, optimizer, epoch, step_be
         step_before : nombre de pas d'optimisation déjà faits avant cette epoch.
         output_dir, eval_every, patience : voir run_training.
         state : carnet de suivi (modifié sur place).
+        batch_size, accumulation_steps, pad_token_id : voir train_steps.
 
     Retour :
         {"epoch", "loss_train", "loss_val", "seconds", "adapter_dir", "steps", "complete"} ;
@@ -309,7 +321,8 @@ def run_one_epoch(model, train_examples, val_examples, optimizer, epoch, step_be
     # Seed différente à chaque epoch : train_steps repart de son epoch 1 à chaque appel ;
     # sans seed différente, l'ordre de mélange serait le même à chaque epoch.
     losses, steps = train_steps(
-        model, train_examples, num_epochs=1, optimizer=optimizer, seed=SEED + epoch, epoch_label=epoch,
+        model, train_examples, num_epochs=1, batch_size=batch_size, accumulation_steps=accumulation_steps,
+        pad_token_id=pad_token_id, optimizer=optimizer, seed=SEED + epoch, epoch_label=epoch,
         on_optimizer_step=on_step, start_step=step_before,
     )
     step_after = step_before + steps
@@ -321,7 +334,7 @@ def run_one_epoch(model, train_examples, val_examples, optimizer, epoch, step_be
     # loss val = mesurée à la fin de l'epoch : les deux ne sont pas exactement comparables.
     loss_train = sum(losses) / len(losses)
     loss_val = state["last_loss_val"]
-    complete = epoch_is_complete(steps, len(train_examples), ACCUMULATION_STEPS)
+    complete = epoch_is_complete(steps, len(train_examples), batch_size, accumulation_steps)
     adapter_dir = None
 
     if complete:
@@ -463,6 +476,8 @@ def run_training(
     patience: int = 0,
     max_train: int = 0,
     eval_every: int = None,
+    batch_size: int = 1,
+    accumulation_steps: int = ACCUMULATION_STEPS,
 ) -> list[dict]:
     """Entraîne le modèle epoch par epoch, sauvegarde chaque epoch et retourne les résultats.
 
@@ -480,6 +495,11 @@ def run_training(
         max_train : nombre maximal d'exemples train utilisés (0 : tous), pour tester vite ; ignoré en mode quick.
         eval_every : mesure la loss val sur tout val tous les eval_every pas d'optimisation, en plus de la fin
             de chaque epoch (None ou 0 : fin d'epoch seulement ; None en mode quick : tous les 2 pas).
+        batch_size : nombre d'exemples lus ensemble par le modèle en une passe (1 : un exemple à la fois).
+        accumulation_steps : nombre de lots dont on additionne les gradients avant une correction.
+            Batch effectif = batch_size x accumulation_steps (8 par défaut). Un lot de 8 exemples longs
+            (jusqu'à ~3 600 tokens) demande beaucoup de mémoire GPU : prévu pour un A100 80 Go.
+            Si « CUDA out of memory », réduire batch_size et augmenter accumulation_steps (4 x 2, 2 x 4...).
 
     Retour :
         une liste de dicts, un par epoch : {"epoch", "loss_train", "loss_val", "seconds", "adapter_dir", "steps"}.
@@ -492,6 +512,8 @@ def run_training(
         results = run_training(quick=True)
         len(results)  # 2
     """
+    if batch_size < 1 or accumulation_steps < 1:
+        raise SystemExit("--batch-size et --accumulation-steps doivent valoir au moins 1")
     if eval_every is None:
         eval_every = QUICK_EVAL_EVERY if quick else 0
     if quick:
@@ -499,9 +521,13 @@ def run_training(
     output_dir = prepare_output_dir(output_dir, quick)
 
     model, tokenizer = load_model_4bit()
+    # Token de remplissage du padding. Qwen en a un (<|endoftext|>) ; eos en secours si un autre modèle n'en avait pas.
+    # Sa valeur importe peu : attention_mask et labels l'ignorent (voir make_batch).
+    pad_token_id = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else tokenizer.eos_token_id
     model = add_lora(model, rank=lora_rank, alpha=lora_alpha, dropout=lora_dropout)
     train_examples, val_examples = prepare_data(quick, max_train, tokenizer)
     print(f"{len(train_examples)} exemples train, {len(val_examples)} exemples val, {num_epochs} epochs")
+    print(f"batch {batch_size} x accumulation {accumulation_steps} = {batch_size * accumulation_steps} exemples par pas")
 
     # Un seul optimiseur pour tout l'entraînement : il garde sa mémoire d'une epoch à l'autre.
     # Il ne reçoit que les paramètres entraînables (A et B).
@@ -510,7 +536,7 @@ def run_training(
 
     config = build_config(
         num_epochs, learning_rate, lora_rank, lora_alpha, lora_dropout, patience, eval_every,
-        len(train_examples), len(val_examples), torch.cuda.get_device_name(0),
+        len(train_examples), len(val_examples), torch.cuda.get_device_name(0), batch_size, accumulation_steps,
     )
     init_output_dir(output_dir, config)
     torch.cuda.reset_peak_memory_stats()
@@ -522,6 +548,7 @@ def run_training(
     for epoch in range(1, num_epochs + 1):
         result = run_one_epoch(
             model, train_examples, val_examples, optimizer, epoch, total_steps, output_dir, eval_every, patience, state,
+            batch_size, accumulation_steps, pad_token_id,
         )
         total_steps += result["steps"]
         # une epoch interrompue n'est pas un résultat d'epoch : son pas et sa raison vont dans resultat.json
@@ -607,12 +634,18 @@ def self_test() -> None:
         assert saved["duree_totale_secondes"] == 12 and saved["epoch_partielle"] is True and saved["pas_dans_epoch"] == 1
 
     # 10 exemples en groupes de 4 : 3 groupes
-    assert epoch_is_complete(3, 10, 4) and not epoch_is_complete(2, 10, 4)
+    assert epoch_is_complete(3, 10, 1, 4) and not epoch_is_complete(2, 10, 1, 4)
+    # avec des lots de 2 et 2 lots par groupe : 4 exemples par groupe, donc encore 3 groupes
+    assert epoch_is_complete(3, 10, 2, 2) and not epoch_is_complete(2, 10, 2, 2)
+    # 16 exemples (mode quick), lots de 2, 2 lots par groupe : 4 corrections par epoch
+    assert epoch_is_complete(4, 16, 2, 2) and not epoch_is_complete(3, 16, 2, 2)
     test_save_best_and_output_dir()
 
     config = build_config(3, 2e-4, 16, 32, 0.05, 0, 10, 885, 118, "gpu de test")
     assert config["batch_size_effectif"] == config["accumulation_steps"] == 8
     assert config["max_length"] == MAX_LENGTH and config["eval_every"] == 10
+    config = build_config(3, 2e-4, 16, 32, 0.05, 0, 10, 885, 118, "gpu de test", batch_size=4, accumulation_steps=2)
+    assert (config["batch_size_par_pas"], config["accumulation_steps"], config["batch_size_effectif"]) == (4, 2, 8)
     print("self-test run_training : OK")
 
 
@@ -641,6 +674,21 @@ if __name__ == "__main__":
     )
     parser.add_argument("--output-dir", default=None, help=f"dossier de sortie (défaut : {OUTPUT_DIR})")
     parser.add_argument("--max-train", type=int, default=0, help="nombre maximal d'exemples train (0 : tous), pour tester vite")
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=1,
+        help="exemples lus ensemble par le modèle (défaut 1). Un lot de 8 exemples longs demande beaucoup de "
+        "mémoire GPU (prévu pour un A100 80 Go) ; si CUDA out of memory, réduire --batch-size et "
+        "augmenter --accumulation-steps",
+    )
+    parser.add_argument(
+        "--accumulation-steps",
+        type=int,
+        default=ACCUMULATION_STEPS,
+        help=f"lots dont on additionne les gradients avant une correction (défaut {ACCUMULATION_STEPS}) ; "
+        "batch effectif = --batch-size x --accumulation-steps",
+    )
     args = parser.parse_args()
     if args.self_test:
         self_test()
@@ -656,4 +704,6 @@ if __name__ == "__main__":
         patience=args.patience,
         max_train=args.max_train,
         eval_every=args.eval_every,
+        batch_size=args.batch_size,
+        accumulation_steps=args.accumulation_steps,
     )

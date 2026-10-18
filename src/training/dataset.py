@@ -11,6 +11,8 @@ import csv
 import json
 from pathlib import Path
 
+import torch
+
 # src/training/dataset.py -> on remonte de deux dossiers pour atteindre la racine du dépôt
 DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "dialogue" / "classification"
 SPLITS = ("train", "val")
@@ -135,7 +137,7 @@ def tokenize_example(messages: list[dict], tokenizer, max_length: int = MAX_LENG
     # labels : ce que le modèle doit deviner. -100 (IGNORE_INDEX) = "ne pas apprendre ce token",
     # donc le prompt est ignoré et seule la réponse du tuteur est apprise.
     # labels a la même longueur que input_ids ; le décalage d'un cran (prédire le token suivant)
-    # est fait par le modèle lui-même, on ne décale rien ici
+    # est fait plus tard, dans per_example_loss (train.py), on ne décale rien ici
     labels = [IGNORE_INDEX] * len(prompt_ids) + answer_ids
 
     return {
@@ -145,8 +147,55 @@ def tokenize_example(messages: list[dict], tokenizer, max_length: int = MAX_LENG
     }
 
 
+def make_batch(examples: list[dict], pad_token_id: int) -> dict:
+    """Regroupe plusieurs exemples en un lot : des tenseurs de même longueur, que le modèle lit en une fois.
+
+    Les exemples n'ont pas la même longueur, or un tenseur est un tableau rectangulaire.
+    On complète donc les plus courts à droite jusqu'à la longueur du plus long (le padding, du remplissage).
+
+    Paramètres :
+        examples : exemples de tokenize_example (au moins un).
+        pad_token_id : numéro du token de remplissage (tokenizer.pad_token_id).
+
+    Retour :
+        {"input_ids", "attention_mask", "labels"}, trois tenseurs torch de forme [nombre d'exemples, longueur du plus long].
+
+    Exemple :
+        make_batch([court, long], 0)["attention_mask"][0]  # tensor([1, 1, 1, 0, 0, 0])
+    """
+    max_length = max(len(example["input_ids"]) for example in examples)
+
+    input_ids, attention_mask, labels = [], [], []
+    for example in examples:
+        number_of_pads = max_length - len(example["input_ids"])
+        # Le padding est du remplissage : il ne doit ni être lu, ni compter dans la loss.
+        # input_ids : on met le token de remplissage, il faut bien une valeur valide pour le modèle.
+        input_ids.append(example["input_ids"] + [pad_token_id] * number_of_pads)
+        # attention_mask à 0 : le modèle ne regarde pas ces positions (le vrai texte ne "lit" jamais le padding).
+        attention_mask.append(example["attention_mask"] + [0] * number_of_pads)
+        # labels à -100 : ces positions sont ignorées dans le calcul de la loss.
+        labels.append(example["labels"] + [IGNORE_INDEX] * number_of_pads)
+
+    return {
+        "input_ids": torch.tensor(input_ids),
+        "attention_mask": torch.tensor(attention_mask),
+        "labels": torch.tensor(labels),
+    }
+
+
 if __name__ == "__main__":
     # Lancer depuis la racine du dépôt : python -m src.training.dataset
+    # Test 0 (sans GPU, sans tokenizer) : make_batch sur deux petits exemples fabriqués, de longueurs 3 et 5
+    short = {"input_ids": [10, 11, 12], "attention_mask": [1, 1, 1], "labels": [-100, 11, 12]}
+    long = {"input_ids": [20, 21, 22, 23, 24], "attention_mask": [1] * 5, "labels": [-100, -100, 22, 23, 24]}
+    batch = make_batch([short, long], pad_token_id=99)
+    assert batch["input_ids"].shape == (2, 5)
+    assert batch["input_ids"][0].tolist() == [10, 11, 12, 99, 99]
+    assert batch["attention_mask"][0].tolist() == [1, 1, 1, 0, 0]
+    assert batch["labels"][0].tolist() == [-100, 11, 12, -100, -100]
+    assert batch["input_ids"][1].tolist() == long["input_ids"]  # le plus long n'est pas modifié
+    print("make_batch : padding à droite, attention_mask 0 et labels -100 sur le remplissage")
+
     # Ces imports sont lents (et inutiles pour le reste du fichier) : on ne les fait qu'ici
     from transformers import AutoTokenizer
 
