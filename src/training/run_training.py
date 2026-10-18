@@ -7,7 +7,7 @@ Une epoch est un passage complet sur les exemples. Après chaque epoch, on mesur
 Les tests de la boucle sont dans train.py.
 """
 
-# Lancer depuis la racine : python -m src.training.run_training (environ 45 min par epoch sur RTX 4070 ; fermer les jeux)
+# Lancer depuis la racine : python -m src.training.run_training (~4 h par epoch sur RTX 4070 12 Go, mémoire saturée ; bien plus rapide sur Colab A100, à mesurer ; fermer les jeux)
 # Test rapide : python -m src.training.run_training --quick
 
 import argparse
@@ -78,7 +78,7 @@ def run_training(
     else:
         if output_dir is None:
             output_dir = OUTPUT_DIR
-        # Un entraînement complet coûte ~2 h : on refuse de l'écraser par erreur.
+        # Un entraînement complet coûte plusieurs heures (~4 h par epoch sur RTX 4070) : on refuse de l'écraser par erreur.
         # Ce test est fait AVANT de charger le modèle, pour échouer tout de suite.
         if list(Path(output_dir).glob("epoch_*")):
             raise SystemExit(f"{output_dir} contient déjà un entraînement : supprime-le ou change de version")
@@ -154,9 +154,8 @@ def run_training(
             {"epoch": epoch, "loss_train": loss_train, "loss_val": loss_val, "seconds": seconds, "adapter_dir": adapter_dir}
         )
 
-        # Arrêt anticipé : si la loss val ne baisse plus, continuer ne fait que surapprendre.
-        # Avec la v0.2 (meilleure epoch = la 1re, loss val 1.476 puis 1.482), patience=1 aurait arrêté
-        # après l'epoch 2 et évité les ~4 h de l'epoch 3.
+        # Arrêt anticipé : si la loss val ne baisse plus, continuer ne fait que surapprendre
+        # et coûte des heures pour rien (ex. v0.2 : loss val 1.476 puis 1.482 → arrêt après l'epoch 2).
         if best_loss_val is None or loss_val < best_loss_val:
             best_loss_val = loss_val
             epochs_without_improvement = 0
