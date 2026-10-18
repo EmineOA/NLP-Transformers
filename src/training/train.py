@@ -40,6 +40,7 @@ def train_steps(
     accumulation_steps: int = ACCUMULATION_STEPS,
     seed: int = SEED,
     optimizer=None,
+    epoch_label: int = None,
 ) -> tuple[list[float], int]:
     """Entraîne le modèle, par groupes d'exemples, et retourne les loss et le nombre de corrections.
 
@@ -55,6 +56,8 @@ def train_steps(
         accumulation_steps : nombre d'exemples par groupe (le dernier groupe peut être plus petit).
         seed : graine du mélange, pour retrouver le même ordre à chaque lancement.
         optimizer : optimiseur AdamW déjà créé (None : train_steps en crée un neuf avec learning_rate).
+        epoch_label : numéro d'epoch affiché dans les messages (None : on affiche 1, 2, 3... selon la boucle).
+            Utile quand l'appelant lance une epoch à la fois : sans lui, chaque appel afficherait "epoch 1".
 
     Retour :
         (losses, number_of_optimizer_steps) : la loss de chaque exemple (float, dans l'ordre vu)
@@ -118,7 +121,8 @@ def train_steps(
                 # On enregistre la loss NON divisée, sinon les valeurs affichées dépendraient de la taille du groupe.
                 # .item() récupère le nombre seul, sans garder tout le graphe de calcul en mémoire
                 losses.append(outputs.loss.item())
-                print(f"epoch {epoch}, exemple {len(losses)} : loss {losses[-1]:.4f}")
+                shown_epoch = epoch if epoch_label is None else epoch_label
+                print(f"epoch {shown_epoch}, exemple {len(losses)} : loss {losses[-1]:.4f}")
 
             # Temps 4 et 5 : une fois par groupe (hors de la boucle sur les exemples du groupe).
             # 4. step déplace A et B dans le sens OPPOSÉ au gradient (ici la moyenne du groupe),
