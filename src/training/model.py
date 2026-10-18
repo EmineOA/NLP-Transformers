@@ -13,8 +13,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 from src.llm.model import DEFAULT_MODEL_NAME
 
-# r : nombre de colonnes de A et de lignes de B.
-# A réduit l'entrée à r valeurs, B la ramène à la taille de sortie.
+# r : nombre de lignes de A et de colonnes de B.
+# A réduit l'entrée à r valeurs, B les ramène à la taille de sortie.
 LORA_RANK = 16
 # alpha : force de la correction (elle est multipliée par alpha / r, ici 2).
 LORA_ALPHA = 32
@@ -162,3 +162,16 @@ if __name__ == "__main__":
     for name, param in model.named_parameters():
         if param.requires_grad:
             assert "lora_" in name, f"poids de base entraînable : {name}"
+
+    # Test de rank : on repart d'un modèle neuf (add_lora ne se rappelle pas sur un modèle déjà adapté)
+    # et on vérifie la forme réelle des matrices. A est (r, entrée) : sa 1re dimension vaut r ;
+    # B est (sortie, r) : sa 2e dimension vaut r.
+    del model
+    torch.cuda.empty_cache()
+    model, tokenizer = load_model_4bit()
+    model = add_lora(model, rank=8)
+    shape_a = next(param.shape for name, param in model.named_parameters() if "lora_A" in name)
+    shape_b = next(param.shape for name, param in model.named_parameters() if "lora_B" in name)
+    assert shape_a[0] == 8, f"lora_A devrait avoir 8 lignes, forme observée : {tuple(shape_a)}"
+    assert shape_b[1] == 8, f"lora_B devrait avoir 8 colonnes, forme observée : {tuple(shape_b)}"
+    print(f"rank=8 : lora_A {tuple(shape_a)}, lora_B {tuple(shape_b)} : OK")
