@@ -41,6 +41,8 @@ def train_steps(
     seed: int = SEED,
     optimizer=None,
     epoch_label: int = None,
+    on_optimizer_step=None,
+    start_step: int = 0,
 ) -> tuple[list[float], int]:
     """Entraîne le modèle, par groupes d'exemples, et retourne les loss et le nombre de corrections.
 
@@ -58,10 +60,16 @@ def train_steps(
         optimizer : optimiseur AdamW déjà créé (None : train_steps en crée un neuf avec learning_rate).
         epoch_label : numéro d'epoch affiché dans les messages (None : on affiche 1, 2, 3... selon la boucle).
             Utile quand l'appelant lance une epoch à la fois : sans lui, chaque appel afficherait "epoch 1".
+        on_optimizer_step : fonction appelée après chaque correction avec (step_number, group_loss),
+            où group_loss est la moyenne des loss (non divisées) des exemples du groupe.
+            Si elle renvoie True, l'entraînement s'arrête tout de suite (None : pas de fonction).
+        start_step : numéro de la dernière correction déjà faite avant cet appel (0 au départ) ;
+            l'appelant qui lance une epoch à la fois le passe pour que step_number continue d'une epoch à l'autre.
 
     Retour :
         (losses, number_of_optimizer_steps) : la loss de chaque exemple (float, dans l'ordre vu)
-        et le nombre de corrections de A et B faites.
+        et le nombre de corrections de A et B faites dans cet appel (le dernier step_number est
+        start_step + number_of_optimizer_steps).
 
     Exemple :
         losses, steps = train_steps(model, examples, num_epochs=2, accumulation_steps=1)
@@ -131,6 +139,14 @@ def train_steps(
             # 5. zero_grad remet les gradients à zéro, sinon ils s'additionneraient d'un groupe à l'autre
             optimizer.zero_grad()
             number_of_optimizer_steps += 1
+
+            # Les dernières group_size loss sont celles du groupe qui vient d'être corrigé.
+            if on_optimizer_step is not None:
+                group_loss = sum(losses[-group_size:]) / group_size
+                stop_requested = on_optimizer_step(start_step + number_of_optimizer_steps, group_loss)
+                # Sortir ici (et pas seulement de la boucle des groupes) arrête aussi les epochs suivantes.
+                if stop_requested:
+                    return losses, number_of_optimizer_steps
     return losses, number_of_optimizer_steps
 
 
@@ -361,9 +377,40 @@ def test_accumulation():
     torch.cuda.empty_cache()
 
 
+def test_callback_and_stop():
+    """Test : la fonction de rappel reçoit les bons numéros de pas, et renvoyer True arrête l'entraînement."""
+    model, tokenizer = load_model_4bit()
+    model = add_lora(model)
+
+    # 6 exemples en groupes de 2 : 3 corrections par epoch
+    conversations = load_split("train")[15:21]
+    examples = [tokenize_example(messages, tokenizer) for messages in conversations]
+
+    calls = []
+
+    def record_and_stop_at_5(step_number, group_loss):
+        calls.append((step_number, group_loss))
+        return step_number == 5
+
+    # start_step=2 : les pas sont numérotés 3, 4, 5... ; l'arrêt à 5 tombe au milieu de la 2e epoch
+    losses, number_of_optimizer_steps = train_steps(
+        model, examples, num_epochs=2, accumulation_steps=2, on_optimizer_step=record_and_stop_at_5, start_step=2,
+    )
+    assert [step for step, _ in calls] == [3, 4, 5]
+    assert number_of_optimizer_steps == 3
+    assert len(losses) == 6
+    # la loss du groupe 1 est la moyenne de ses 2 exemples
+    assert abs(calls[0][1] - sum(losses[:2]) / 2) < 1e-9
+    print("rappel : pas 3, 4, 5 reçus, arrêt à 5 sur demande")
+
+    del model
+    torch.cuda.empty_cache()
+
+
 if __name__ == "__main__":
     # Lancer depuis la racine du dépôt : python -m src.training.train
     # L'ordre compte : test_save_and_reload lit l'adaptateur écrit par test_memorize_small_batch.
     test_memorize_small_batch()
     test_save_and_reload()
     test_accumulation()
+    test_callback_and_stop()
