@@ -155,7 +155,8 @@ def run_training(
         )
 
         # Arrêt anticipé : si la loss val ne baisse plus, continuer ne fait que surapprendre.
-        # Avec la v0.2 (meilleure epoch = la 2e), patience=1 aurait évité les ~4 h de l'epoch 3.
+        # Avec la v0.2 (meilleure epoch = la 1re, loss val 1.476 puis 1.482), patience=1 aurait arrêté
+        # après l'epoch 2 et évité les ~4 h de l'epoch 3.
         if best_loss_val is None or loss_val < best_loss_val:
             best_loss_val = loss_val
             epochs_without_improvement = 0
