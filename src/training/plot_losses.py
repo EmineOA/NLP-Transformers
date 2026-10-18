@@ -12,6 +12,7 @@ historique_pas.csv et historique_val.csv (une ligne par pas, une par mesure val)
 
 import csv
 import json
+import tempfile
 from pathlib import Path
 
 import matplotlib
@@ -299,6 +300,28 @@ def draw_run_markers(axis, val_steps: list, loss_val: list, epoch_starts: list) 
         )
 
 
+def read_effective_batch_size(output_dir) -> int:
+    """Lit le batch effectif (exemples par pas d'optimisation) d'un entraînement.
+
+    Paramètres :
+        output_dir : dossier de l'entraînement (avec ou sans config.json).
+
+    Retour :
+        batch_size_effectif de config.json s'il existe ; sinon ACCUMULATION_STEPS
+        (les anciens runs, comme v0.3, ont un lot de 1 exemple et 8 accumulations).
+
+    Exemple :
+        read_effective_batch_size("adapters/v0.4")  # 8
+    """
+    config_path = Path(output_dir) / "config.json"
+    if config_path.exists():
+        with open(config_path, encoding="utf-8") as file:
+            config = json.load(file)
+        # config.json d'un ancien run : pas de clé batch_size_effectif, on retombe sur la valeur par défaut
+        return config.get("batch_size_effectif", ACCUMULATION_STEPS)
+    return ACCUMULATION_STEPS
+
+
 def plot_training_run(output_dir: str, output_path: str, title: str) -> None:
     """Trace la courbe fine d'UN entraînement : loss train par pas, loss val par mesure, meilleur adaptateur.
 
@@ -320,7 +343,7 @@ def plot_training_run(output_dir: str, output_path: str, title: str) -> None:
     figure.patch.set_facecolor(BACKGROUND_COLOR)
     axis.set_facecolor(BACKGROUND_COLOR)
     axis.set_title(title, color=TITLE_COLOR, fontsize=12)
-    axis.set_xlabel(f"pas d'optimisation (1 pas = {ACCUMULATION_STEPS} exemples)", color=SECONDARY_COLOR)
+    axis.set_xlabel(f"pas d'optimisation (1 pas = {read_effective_batch_size(output_dir)} exemples)", color=SECONDARY_COLOR)
     axis.set_ylabel("loss", color=SECONDARY_COLOR)
     axis.tick_params(colors=SECONDARY_COLOR)
     # un pas est un nombre entier : pas de graduation 1.5
@@ -435,6 +458,12 @@ if __name__ == "__main__":
     # Petites fonctions de la courbe fine
     assert moving_average([1, 3, 5], window=2) == [1.0, 2.0, 4.0]
     assert find_epoch_starts([1, 2, 3, 4], [1, 1, 2, 2]) == [(3, 2)]
+
+    # Batch effectif : v0.3 n'a pas la clé (repli sur ACCUMULATION_STEPS), un config.json récent la donne.
+    assert read_effective_batch_size("experiments/results/train_v0.3") == ACCUMULATION_STEPS
+    with tempfile.TemporaryDirectory() as folder:
+        Path(folder, "config.json").write_text('{"batch_size_effectif": 16}', encoding="utf-8")
+        assert read_effective_batch_size(folder) == 16
 
     # Courbe fine : seulement si un entraînement a laissé ses fichiers (par ex. adapters/quick après le test rapide).
     # Le PNG de test est supprimé ensuite : il ne sert qu'à vérifier que la fonction tourne.
