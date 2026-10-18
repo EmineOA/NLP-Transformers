@@ -8,3 +8,5 @@ transformers==5.20.1
 peft==0.21.2
 bitsandbytes==0.50.2
 accelerate==1.15.0
+# pour les courbes de loss
+matplotlib==3.11.2
