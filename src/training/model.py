@@ -73,7 +73,7 @@ def load_model_4bit(model_name: str = DEFAULT_MODEL_NAME):
     return model, tokenizer
 
 
-def add_lora(model):
+def add_lora(model, rank: int = LORA_RANK, alpha: int = LORA_ALPHA, dropout: float = LORA_DROPOUT):
     """Ajoute les adaptateurs LoRA au modèle 4 bits gelé.
 
     LoRA : à côté de chaque grande matrice gelée W, on ajoute deux petites matrices A et B.
@@ -82,6 +82,9 @@ def add_lora(model):
 
     Paramètres :
         model : modèle chargé en 4 bits par load_model_4bit.
+        rank : valeur de r (taille des petites matrices).
+        alpha : force de la correction.
+        dropout : proportion de valeurs mises à 0 au hasard pendant l'entraînement (0.05 = 5 %).
 
     Retour :
         le modèle avec adaptateurs LoRA, prêt pour l'entraînement.
@@ -97,9 +100,9 @@ def add_lora(model):
     model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
 
     config = LoraConfig(
-        r=LORA_RANK,
-        lora_alpha=LORA_ALPHA,
-        lora_dropout=LORA_DROPOUT,
+        r=rank,
+        lora_alpha=alpha,
+        lora_dropout=dropout,
         target_modules=LORA_TARGET_MODULES,
         task_type="CAUSAL_LM",  # modèle qui prédit le token suivant
     )
