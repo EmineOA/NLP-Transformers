@@ -8,6 +8,7 @@ Ce module ne tient AUCUN historique caché : l'appelant transmet les échanges.
 from __future__ import annotations
 
 from functools import lru_cache
+from pathlib import Path
 from typing import Any
 
 from src.agents.baseline import parse_pedagogical_response
@@ -21,6 +22,37 @@ def _default_components():
     """Charge une seule fois le modèle pour les appels successifs (hors tests)."""
     from src.llm.model import load_model
     return load_model()
+
+
+# Meilleur adaptateur du run final (v1.0). Le dossier adapters/ est ignoré par git :
+# on le copie depuis Drive.
+LORA_ADAPTER_DIR = Path(__file__).resolve().parents[2] / "adapters" / "v1.0" / "best"
+
+
+@lru_cache(maxsize=1)
+def _lora_components():
+    """Charge une seule fois Qwen 4 bits avec l'adaptateur LoRA du bloc C.
+
+    Retour :
+        LLMComponents (tokenizer, model, device), comme _default_components.
+
+    Exemple :
+        _lora_components().device  # device(type='cuda')
+    """
+    # Vérifié avant tout chargement pour échouer vite avec un message clair.
+    if not LORA_ADAPTER_DIR.is_dir():
+        raise FileNotFoundError(
+            f"Adaptateur LoRA introuvable : copier le dossier best/ de Drive dans {LORA_ADAPTER_DIR}"
+        )
+
+    # Imports locaux : peft et bitsandbytes ne sont pas nécessaires pour la baseline.
+    from src.llm.model import LLMComponents, get_device
+    from src.training.model import load_model_with_adapter
+
+    model, tokenizer = load_model_with_adapter(str(LORA_ADAPTER_DIR))
+    # load_model_4bit exige CUDA et place le modèle sur le GPU 0 (device_map={"": 0}) ;
+    # get_device() renvoie alors "cuda", c'est-à-dire le GPU courant, le 0 par défaut.
+    return LLMComponents(tokenizer=tokenizer, model=model, device=get_device())
 
 
 def _controlled_refusal(feedback: str) -> dict:
@@ -82,23 +114,25 @@ def generate_response(
     components: Any = None,
     max_new_tokens: int = 160,
 ) -> dict:
-    """Évalue une réponse via la baseline, selon la grille du bloc A.
+    """Évalue une réponse de l'étudiant (baseline ou LoRA), selon la grille du bloc A.
 
     Paramètres :
         messages : échanges au format role/content, terminés par un message user.
         concept : fiche JSON ou ID de fiche à charger.
         question : objet question ou ID de question de la fiche.
-        model_version : 'baseline' actuellement ; 'lora' sera branché par C.
+        model_version : 'baseline' (Qwen en 16 bits) ou 'lora' (Qwen en 4 bits + adaptateur du bloc C).
+            Appeler les deux dans le même processus garde les deux modèles en mémoire GPU.
         prompt_version : 'criteria' ou 'fewshot' (comparaison de prompts).
         max_history_turns : nombre maximal de tours complets précédents.
         components : objet model/tokenizer/device facultatif, pour réutilisation et tests.
+            S'il est fourni, il est utilisé tel quel, quel que soit model_version.
 
     Retour : dictionnaire du contrat 2. Une sortie de Qwen mal formatée reste
     invalide : aucun verdict n'est inventé ou corrigé artificiellement.
     """
     cleaned = _validate_messages(messages)
-    if model_version != "baseline":
-        raise NotImplementedError("L'adaptateur LoRA relève du bloc C et n'est pas branché.")
+    if model_version not in {"baseline", "lora"}:
+        raise ValueError("model_version doit valoir 'baseline' ou 'lora'.")
     if isinstance(concept, str):
         try:
             concept = load_concept(concept)
@@ -112,7 +146,12 @@ def generate_response(
 
     bounded = _bounded_history(cleaned, max_history_turns)
     prompt = build_pedagogical_prompt(concept, selected, version=prompt_version)
-    llm = components if components is not None else _default_components()
+    if components is not None:
+        llm = components
+    elif model_version == "lora":
+        llm = _lora_components()
+    else:
+        llm = _default_components()
     raw = generate_chat(
         model=llm.model,
         tokenizer=llm.tokenizer,
