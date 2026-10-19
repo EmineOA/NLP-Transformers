@@ -70,8 +70,13 @@ class TestDatasetExport(unittest.TestCase):
         """Exerce la commande publique sur le vrai CSV complet."""
         with tempfile.TemporaryDirectory() as folder:
             output = Path(folder) / "complete.jsonl"
-            result = subprocess.run([sys.executable, str(MODULE), "--output", str(output)],
-                                    capture_output=True, text=True, encoding="utf-8", cwd=ROOT)
+            result = subprocess.run(
+                                [sys.executable, "-X", "utf8", str(MODULE), "--output", str(output)],
+                                capture_output=True,
+                                text=True,
+                                encoding="utf-8",
+                                cwd=ROOT,
+                            )
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue(output.is_file(), "La commande n'a produit aucun JSONL.")
             self.assertEqual(len(output.read_text(encoding="utf-8").splitlines()), 1003)
