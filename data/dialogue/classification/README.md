@@ -43,7 +43,7 @@ expected_output = example["messages"][-1]["content"]
 
 Le résumé est une représentation explicite de l'historique disponible, pas une reconstitution d'anciens tours complets. Le moteur reste inchangé. Pour une comparaison baseline/LoRA équitable, les deux doivent recevoir cette même représentation ; une application qui envoie de vrais échanges complets doit être alignée avec l'équipe avant de revendiquer cette équivalence.
 
-Le split existant reste dans le CSV : 885 lignes `train`, 118 lignes `val`, groupées par question. Le JSONL commun contient les deux : appliquer la colonne `split` avant l'entraînement, sans utiliser tout l'export comme un unique lot train. Le test final indépendant n'est pas ce fichier.
+Le split est dans le CSV, groupé par question : 649 lignes `train` (11 questions), 177 lignes `val` (3 questions) et 177 lignes `test` (3 questions). Le JSONL commun contient les trois : appliquer la colonne `split` avant l'entraînement, sans utiliser tout l'export comme un unique lot train.
 
 **État des contrôles techniques :** 1 003 lignes `OK` dans le validateur, 1 003 cibles acceptées par le parseur, 18 tests passés avec les dépendances du moteur. L'intégration utilise un backend simulé : aucun score ni entraînement Qwen n'est mesuré ici. Ces contrôles ne valent pas validation pédagogique indépendante ; le juge et l'audit humain restent à faire.
 
@@ -65,7 +65,7 @@ Pour une seule question, le tuteur doit gérer 4 verdicts × 3 essais × 3 style
 | Exemples par critère `PARTIEL` / `INCORRECT`, par question | 1 à 2 | 5 à 8 |
 | Exemples par type de refus (`HORS_PERIMETRE`), par question | moins de 1 | 2 à 3 (≈ 47 sur le corpus) |
 | Lignes par (question, verdict, essai) | souvent 0 ou 1 | au moins 3 |
-| Lignes de validation | ≈ 35 | 118 |
+| Lignes de validation / test | ≈ 35 / ≈ 35 | 177 / 177 |
 
 Avec 300 lignes, certains critères des fiches n'apparaîtraient jamais à l'entraînement. Avec 1 003 lignes, chaque critère est illustré plusieurs fois, dans des essais et des styles différents.
 
@@ -219,4 +219,12 @@ On calcule deux kappas :
 
 Ce dataset de 1 003 lignes est le **dataset de référence** pour l'entraînement QLoRA.
 
-1. **Split de validation** : il est fait par question (`monty-hall_q3` et `dilemme-du-tramway_q2`), donc la perte de validation mesure la généralisation à des questions jamais vues. Ce choix sera revu si besoin. Le test final est un fichier séparé (bloc D).
+1. **Split train / val / test (≈ 65 / 18 / 18 %)** : il est fait par question entière, pour que val et test mesurent la généralisation à des questions jamais vues à l'entraînement. Un découpage ligne par ligne aurait donné pile 70 / 15 / 15, mais avec les mêmes questions en train et en test, donc un score gonflé.
+
+   | Split | Questions | Lignes |
+   |---|---|---|
+   | `train` | 11 (6 philosophie, 5 maths) | 649 |
+   | `val` | `dilemme-du-tramway_q2`, `monty-hall_q3`, `plier-une-feuille-42-fois_q2` | 177 |
+   | `test` | `bateau-de-thesee_q3`, `doute-de-descartes_q1`, `infinis-plus-grands-que-l-infini_q2` | 177 |
+
+   Chaque concept garde au moins une question en `train`. Le test contient une Q1, une Q2 et une Q3 de trois concepts différents, pour mesurer aussi l'usage de l'historique. Les verdicts (16 / 16 / 16 / 11 par question) et les essais ont les mêmes proportions dans les trois splits. Le test reste généré par les mêmes modèles que l'entraînement ; `evaluation/cases_v0.1.jsonl` porte sur `monty-hall_q2`, qui est en `train`, et ne doit pas servir de test final.

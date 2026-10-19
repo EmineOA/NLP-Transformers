@@ -15,7 +15,7 @@ Fichiers :
 - Par question : 16 `PARFAIT`, 16 `PARTIEL`, 16 `INCORRECT`, 11 `HORS_PERIMETRE`.
 - Essais : 493 en essai 1, 255 en essai 2, 255 en essai 3.
 - Seules les 174 lignes « Q1, essai 1 » ont un historique vide.
-- Split groupé par question : `monty-hall_q3` et `dilemme-du-tramway_q2` en `val`, le reste en `train`. Les tests finaux sont un fichier séparé.
+- Split groupé par question (11 / 3 / 3 questions, 649 / 177 / 177 lignes) : `val` = `dilemme-du-tramway_q2`, `monty-hall_q3`, `plier-une-feuille-42-fois_q2` ; `test` = `bateau-de-thesee_q3`, `doute-de-descartes_q1`, `infinis-plus-grands-que-l-infini_q2` ; le reste en `train`. Chaque concept garde au moins une question en `train`.
 
 ## Colonnes
 
@@ -32,7 +32,7 @@ Fichiers :
 | `feedback` | réponse attendue du tuteur, après la ligne de verdict | non |
 | `cas` | consigne d'écriture : critère de la fiche que la réponse doit illustrer | oui |
 | `style` | style d'écriture à imiter (court, hésitant, fautes d'orthographe) | oui |
-| `split` | `train` ou `val` | oui |
+| `split` | `train`, `val` ou `test` | oui |
 | `generateur` | modèle qui écrit la ligne (`claude-opus-5.5` ou `sol-6.1`), tiré au hasard par `attribuer_generateurs.py` | oui |
 
 ## Historique
