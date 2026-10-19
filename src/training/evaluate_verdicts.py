@@ -167,7 +167,7 @@ if __name__ == "__main__":
     # python -m src.training.evaluate_verdicts --adapter adapters/v0.2/best --split val --limit 12 --output fichier.json
     parser = argparse.ArgumentParser(description="Mesure la précision du verdict du tuteur.")
     parser.add_argument("--adapter", default="none", help='dossier de l\'adaptateur LoRA, ou "none" pour le modèle de base')
-    parser.add_argument("--split", default="val", help='"train" ou "val"')
+    parser.add_argument("--split", default="val", help='"train", "val" ou "test"')
     parser.add_argument("--limit", type=int, default=0, help="nombre d'exemples tirés au hasard (graine 0) ; 0 = tous")
     parser.add_argument("--output", default=None, help="fichier JSON où écrire le résultat (optionnel)")
     parser.add_argument("--self-test", action="store_true", help="teste label_of puis s'arrête, sans charger de modèle")
