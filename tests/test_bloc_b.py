@@ -115,12 +115,28 @@ class TestContrats(unittest.TestCase):
         self.assertTrue(result["valid_format"])
         fake.assert_not_called()
 
-    def test_model_version_lora_non_disponible(self):
-        with self.assertRaises(NotImplementedError):
+    def test_model_version_inconnue_refusee(self):
+        with self.assertRaises(ValueError):
             generate_response(
                 [{"role": "user", "content": "Réponse"}], FICHE, FICHE["questions"][0],
-                model_version="lora", components=DUMMY_LLM,
+                model_version="inconnue", components=DUMMY_LLM,
             )
+
+    @patch("src.agents.inference._default_components")
+    @patch("src.agents.inference._lora_components", return_value=DUMMY_LLM)
+    @patch("src.agents.inference.generate_chat")
+    def test_model_version_lora_charge_l_adaptateur(self, fake, lora, baseline):
+        # Les deux chargeurs sont remplacés : aucun vrai modèle n'est chargé. On vérifie
+        # que "lora" passe par _lora_components et garde le même contrat de sortie.
+        fake.return_value = "[VERDICT: PARFAIT]\nC'est cohérent."
+        result = generate_response(
+            [{"role": "user", "content": "Réponse"}], FICHE, FICHE["questions"][0],
+            model_version="lora",
+        )
+        self.assertEqual(result["verdict"], "PARFAIT")
+        self.assertTrue(result["valid_format"])
+        lora.assert_called_once()
+        baseline.assert_not_called()
 
     def test_rejeter_message_systeme_externe(self):
         with self.assertRaises(ValueError):
