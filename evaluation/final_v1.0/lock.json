@@ -1,0 +1,8 @@
+{
+  "version": "v1.0",
+  "selection_sha256": "c02fe07cf0f3451a026aba242ee04cc763bf638237e1f79e3e8725f4530a7b4a",
+  "cases_sha256": "117eda3501cfd99bb7397e95b908767e70b6b28fc4db2c000e25da00eae482bb",
+  "dataset_git_blob_sha": "d2f3f4b8310184705640d8b2afc19a7a66d616c7",
+  "source_commit": "adffd8fc8ac2ac22f6e9620c2b35b10dc08ccf8b",
+  "nombre_requetes": 20
+}

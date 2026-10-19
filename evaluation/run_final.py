@@ -117,7 +117,7 @@ def create_human_template(scenarios: list[dict], path: Path) -> Path:
     if path.exists():
         raise FileExistsError("Grille déjà existante : conserver la notation humaine")
     fields = [
-        "test_id", "scenario_id", "tour", "modele",
+        "test_id", "coherence_feedback_verdict_0_2","scenario_id", "tour", "modele",
         "pertinence_0_2", "role_format_0_2", "historique_0_2",
         "hors_perimetre_0_2", "absence_inventions_0_2",
         "refus_effectif_oui_non_na", "commentaires", "evaluateur",
