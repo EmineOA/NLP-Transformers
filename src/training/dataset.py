@@ -1,8 +1,9 @@
 """Préparation des données pour l'entraînement QLoRA (bloc C).
 
 Ce fichier lit les conversations du dataset (fichier JSONL + fichier CSV) et les
-sépare en deux groupes : "train" (le modèle apprend dessus) et "val" (on vérifie
-qu'il généralise). Il mesure aussi la longueur des conversations en tokens, puis
+sépare en trois groupes : "train" (le modèle apprend dessus), "val" (on vérifie
+qu'il généralise et on choisit le meilleur adaptateur) et "test" (mesure finale,
+jamais vue pendant l'entraînement ni le choix de l'adaptateur). Il mesure aussi la longueur des conversations en tokens, puis
 transforme chaque conversation en un exemple que le modèle peut apprendre :
 la consigne est masquée, seule la réponse du tuteur compte pour l'apprentissage.
 """
@@ -15,21 +16,21 @@ import torch
 
 # src/training/dataset.py -> on remonte de deux dossiers pour atteindre la racine du dépôt
 DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "dialogue" / "classification"
-SPLITS = ("train", "val")
+SPLITS = ("train", "val", "test")
 
 
 def load_split(split: str) -> list[list[dict]]:
     """Charge les conversations d'un split du dataset de classification.
 
     Paramètres :
-        split : "train" ou "val" (colonne `split` de dataset_source.csv).
+        split : "train", "val" ou "test" (colonne `split` de dataset_source.csv).
 
     Retour :
         liste de conversations ; chaque conversation est la liste `messages`
         (system, user, assistant) de dataset_messages.jsonl.
 
     Exemple :
-        len(load_split("val"))  # 118
+        len(load_split("val"))  # 177
     """
     if split not in SPLITS:
         raise ValueError(f"split inconnu : {split} (attendu : {SPLITS})")
@@ -201,14 +202,24 @@ if __name__ == "__main__":
 
     from src.llm.model import DEFAULT_MODEL_NAME
 
-    # Test 1 : chargement des deux splits
+    # Test 1 : chargement des trois splits
     train = load_split("train")
     val = load_split("val")
-    # 885 train + 118 val = 1 003 conversations (split fixé par le bloc A)
-    assert len(train) == 885 and len(val) == 118
-    for messages in train + val:
+    test = load_split("test")
+    # 649 train + 177 val + 177 test = 1 003 conversations (split fixé par le bloc A, par question entière)
+    assert len(train) == 649 and len(val) == 177 and len(test) == 177
+    for messages in train + val + test:
         assert messages[-1]["role"] == "assistant"  # le dernier message est la réponse du tuteur
-    print(f"load_split : {len(train)} train, {len(val)} val, chaque conversation finit par l'assistant")
+
+    # une question présente dans deux splits ferait fuiter ses réponses de train vers val ou test
+    with open(DATA_DIR / "dataset_source.csv", encoding="utf-8-sig", newline="") as file:
+        source_rows = list(csv.DictReader(file, delimiter=";"))
+    questions = {name: {row["question_id"] for row in source_rows if row["split"] == name} for name in SPLITS}
+    assert not questions["train"] & questions["val"]
+    assert not questions["train"] & questions["test"]
+    assert not questions["val"] & questions["test"]
+    print(f"load_split : {len(train)} train, {len(val)} val, {len(test)} test, aucune question partagée, "
+          "chaque conversation finit par l'assistant")
 
     # Test 2 : longueurs en tokens
     tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL_NAME)
