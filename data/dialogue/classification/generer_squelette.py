@@ -48,8 +48,10 @@ CYCLE_ESSAIS_PRECEDENTS = ["INCORRECT", "PARTIEL", "HORS_PERIMETRE", "PARTIEL", 
 
 STYLES = ["court", "hésitant", "fautes d'orthographe"]
 
-# Questions mises en validation (toutes leurs lignes)
-QUESTIONS_VAL = {"dilemme-du-tramway_q2", "monty-hall_q3"}
+# Split groupé par question (toutes les lignes d'une question dans le même split) :
+# 11 questions train, 3 val, 3 test.
+QUESTIONS_VAL = {"dilemme-du-tramway_q2", "monty-hall_q3", "plier-une-feuille-42-fois_q2"}
+QUESTIONS_TEST = {"bateau-de-thesee_q3", "doute-de-descartes_q1", "infinis-plus-grands-que-l-infini_q2"}
 
 COLONNES = [
     "id", "concept_id", "question_id", "enonce", "essai_question",
@@ -104,7 +106,8 @@ def main():
                         "feedback": "",
                         "cas": crits[i % len(crits)],
                         "style": STYLES[(i + iq) % len(STYLES)],
-                        "split": "val" if q["id"] in QUESTIONS_VAL else "train",
+                        "split": ("test" if q["id"] in QUESTIONS_TEST
+                                  else "val" if q["id"] in QUESTIONS_VAL else "train"),
                     })
 
     with open(SORTIE, "w", encoding="utf-8-sig", newline="") as f:
