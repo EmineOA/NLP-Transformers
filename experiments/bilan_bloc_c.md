@@ -107,8 +107,6 @@ result = generate_response(messages, "monty-hall", "monty-hall_q1", model_versio
 ## 7. Reste à faire
 
 - Décider avec Emine (bloc B) qui ajoute le préfixe `RÉPONSE ACTUELLE À ÉVALUER :`.
-- Ajouter le lien Hugging Face au README.
-- Copier les résultats v1.0 (CSV, `config.json`, `resultat.json`, évaluations) dans `experiments/results/train_v1.0` et `results/eval/`.
 - Faire relire la branche `bloc-c-entrainement` par une autre personne, puis la fusionner sur `main`.
 - Brancher le LoRA dans Gradio (T7.1) et dans l'évaluation du bloc D.
 
@@ -125,4 +123,5 @@ result = generate_response(messages, "monty-hall", "monty-hall_q1", model_versio
 | `src/training/plot_losses.py` | courbes de loss |
 | `src/agents/inference.py` | `generate_response`, avec `model_version="lora"` |
 | `experiments/bloc_c_qlora.ipynb` | notebook du bloc C, à lire avec ses sorties |
+| `experiments/results/train_v1.0/`, `results/eval/*_v1.0*` | historiques de loss, config et évaluations du run final |
 | `requirements-qlora.txt` | versions figées (transformers 5.20.1, peft 0.21.2, bitsandbytes 0.50.2, accelerate 1.15.0) |
