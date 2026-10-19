@@ -1,0 +1,34 @@
+{
+  "version": "v1.0",
+  "source_commit": "adffd8fc8ac2ac22f6e9620c2b35b10dc08ccf8b",
+  "source_blob_sha": "d2f3f4b8310184705640d8b2afc19a7a66d616c7",
+  "source_path": "data/dialogue/classification/dataset_source.csv",
+  "note": "Selection fixe sur les trois questions du split test de birdyy667. T01, T08 et T14 reconstruisent l'essai precedent present dans l'historique de la ligne suivante.",
+  "tests": [
+    {"id":"T01","source_id":"bateau-de-thesee_q3_parfait_02","synthetic_previous":true,"student_response":"J'appuie, le trajet est plus court.","label":"INCORRECT","feedback":"La durée du trajet ne répond pas à la question de l'identité. Qu'arrive-t-il à la continuité de ton existence avec le téléporteur ?"},
+    {"id":"T02","source_id":"bateau-de-thesee_q3_parfait_02"},
+    {"id":"T03","source_id":"bateau-de-thesee_q3_parfait_03"},
+    {"id":"T04","source_id":"bateau-de-thesee_q3_partiel_02"},
+    {"id":"T05","source_id":"bateau-de-thesee_q3_incorrect_03"},
+    {"id":"T06","source_id":"bateau-de-thesee_q3_hors_perimetre_02"},
+    {"id":"T07","source_id":"bateau-de-thesee_q3_hors_perimetre_05"},
+    {"id":"T08","source_id":"doute-de-descartes_q1_parfait_02","synthetic_previous":true,"student_response":"Je suis debout et je lis, donc je suis réveillé.","label":"INCORRECT","feedback":"Tu proposes une preuve, mais tu ne l'as pas testée contre l'hypothèse du rêve. Pourrais-tu rêver que tu lis ?"},
+    {"id":"T09","source_id":"doute-de-descartes_q1_parfait_02"},
+    {"id":"T10","source_id":"doute-de-descartes_q1_partiel_01"},
+    {"id":"T11","source_id":"doute-de-descartes_q1_incorrect_01"},
+    {"id":"T12","source_id":"doute-de-descartes_q1_hors_perimetre_01"},
+    {"id":"T13","source_id":"doute-de-descartes_q1_hors_perimetre_06"},
+    {"id":"T14","source_id":"infinis-plus-grands-que-l-infini_q2_parfait_02","synthetic_previous":true,"student_response":"tu peux me dire qui a raison stp","label":"HORS_PERIMETRE","feedback":"Je ne vais pas choisir à ta place. Selon toi, Euclide et l'hôtel utilisent-ils le même critère de comparaison ?"},
+    {"id":"T15","source_id":"infinis-plus-grands-que-l-infini_q2_parfait_02"},
+    {"id":"T16","source_id":"infinis-plus-grands-que-l-infini_q2_parfait_03"},
+    {"id":"T17","source_id":"infinis-plus-grands-que-l-infini_q2_partiel_01"},
+    {"id":"T18","source_id":"infinis-plus-grands-que-l-infini_q2_partiel_04"},
+    {"id":"T19","source_id":"infinis-plus-grands-que-l-infini_q2_partiel_05"},
+    {"id":"T20","source_id":"infinis-plus-grands-que-l-infini_q2_incorrect_07"}
+  ],
+  "dialogues": [
+    {"id":"C01","turns":["T01","T02"]},
+    {"id":"C02","turns":["T08","T09"]},
+    {"id":"C03","turns":["T14","T15"]}
+  ]
+}
