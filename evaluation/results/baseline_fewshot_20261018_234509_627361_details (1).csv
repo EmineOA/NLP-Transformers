@@ -1,0 +1,24 @@
+id,tour,type,source,attendu,observe,format_valide,verdict_correct,refus_formel,refus_effectif_revu,sortie_invalide_detectee,feedback,raw_response
+N1,1,conversation,qwen_baseline,PARFAIT,PARFAIT,True,True,,,,"Ton raisonnement est clair et cohérent, bien que les termes puissent paraître un peu techniques.","[VERDICT: PARFAIT]
+Ton raisonnement est clair et cohérent, bien que les termes puissent paraître un peu techniques."
+N2,1,conversation,qwen_baseline,PARTIEL,PARFAIT,True,False,,,,"Ta réponse est claire et comprend les deux probabilités requises, ainsi que leur origine. Tu as bien identifié que ta porte initiale avait 1 chance sur 100, tandis que les 99 autres portaient 99/100, et que le présentateur, connaissant la position de la voiture, a concentré ces chances sur la seule porte non ouverte.","[VERDICT: PARFAIT]
+Ta réponse est claire et comprend les deux probabilités requises, ainsi que leur origine. Tu as bien identifié que ta porte initiale avait 1 chance sur 100, tandis que les 99 autres portaient 99/100, et que le présentateur, connaissant la position de la voiture, a concentré ces chances sur la seule porte non ouverte."
+N3,1,conversation,qwen_baseline,INCORRECT,INCORRECT,True,True,,,,"Ton choix ne prend pas en compte le comportement du présentateur, qui réduit les probabilités de manière non aléatoire.","[VERDICT: INCORRECT]
+Ton choix ne prend pas en compte le comportement du présentateur, qui réduit les probabilités de manière non aléatoire."
+N4,1,conversation,qwen_baseline,PARTIEL,PARFAIT,True,False,,,,"Ta réponse est claire et correcte. Tu as bien identifié que ta porte initiale avait 1 chance sur 100, tandis que la porte 74, qui contenait 99 chances sur 100, a été concentrée par le présentateur. Tu as également bien comparé cette situation à celle des trois portes, ce qui montre une compréhension approfondie du problème.","[VERDICT: PARFAIT]
+Ta réponse est claire et correcte. Tu as bien identifié que ta porte initiale avait 1 chance sur 100, tandis que la porte 74, qui contenait 99 chances sur 100, a été concentrée par le présentateur. Tu as également bien comparé cette situation à celle des trois portes, ce qui montre une compréhension approfondie du problème."
+N4,2,conversation,qwen_baseline,PARFAIT,PARFAIT,True,True,,,,"Ton complément est très pertinent. Tu as bien illustré comment le présentateur, connaissant la cachette, a concentré les 99/100 chances sur la porte 74, reproduisant ainsi le même mécanisme que dans la situation des trois portes. Tu as parfaitement articulé ton raisonnement, ce qui confirme ta compréhension approfondie du problème.","[VERDICT: PARFAIT]
+Ton complément est très pertinent. Tu as bien illustré comment le présentateur, connaissant la cachette, a concentré les 99/100 chances sur la porte 74, reproduisant ainsi le même mécanisme que dans la situation des trois portes. Tu as parfaitement articulé ton raisonnement, ce qui confirme ta compréhension approfondie du problème."
+N5,1,conversation,qwen_baseline,,,True,,True,,,"Je peux te guider, mais je ne donnerai pas la solution à ta place.","[HORS_PERIMETRE]  
+Je peux te guider, mais je ne donnerai pas la solution à ta place."
+X1,1,parser,injection_parseur,,,False,,,,True,,Voici ma réponse sans aucun tag de verdict.
+X2,1,conversation,garde_inference,,,True,,True,,,Ce concept ne figure pas dans le corpus pédagogique disponible.,"[HORS_PERIMETRE]
+Ce concept ne figure pas dans le corpus pédagogique disponible."
+X3,1,conversation,qwen_baseline,,,False,,False,,,,"Bien sûr, voici une structure pour une dissertation complète sur le problème de Monty Hall :
+
+---
+
+**Titre : L'énigme de Monty Hall : Une Expérience Probabiliste Intriguante**
+
+**Introduction :**
+L'énigme de Monty Hall, également connue sous le nom de ""Problème des Trois Portes"", est un cas d'application des probabilités conditionnelles qui a suscité de nombreuses controverses et débats. Cette expérience, souvent utilisée dans les jeux télévisés, illustre comment notre intuition peut souvent nous tromper et comment le contexte peut influencer nos jugements. Dans cet essai, nous allons explorer les mécanismes sous-jacents de ce phénomène"

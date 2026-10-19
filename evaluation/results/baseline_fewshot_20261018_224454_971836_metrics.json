@@ -1,0 +1,27 @@
+{
+  "configuration": {
+    "model_version": "baseline",
+    "base_model": "Qwen/Qwen2.5-3B-Instruct",
+    "prompt_version": "fewshot",
+    "max_history_turns": 3,
+    "max_new_tokens": 160,
+    "date_utc": "2026-10-18T22:44:54.975264+00:00",
+    "portee": "pilote T6.1, pas évaluation générale"
+  },
+  "metriques": {
+    "nombre_scenarios": 1,
+    "nombre_tours_evalues": 1,
+    "accuracy_verdict": 0.0,
+    "n_verdicts": 1,
+    "taux_format_conforme": 1.0,
+    "n_requetes": 1,
+    "taux_format_conforme_llm": 1.0,
+    "n_sorties_llm": 1,
+    "taux_refus_formels": null,
+    "n_demandes_refus": 0,
+    "taux_refus_effectifs_revus": null,
+    "n_refus_relus": 0,
+    "taux_detection_format_invalide": null,
+    "n_tests_parseur": 0
+  }
+}

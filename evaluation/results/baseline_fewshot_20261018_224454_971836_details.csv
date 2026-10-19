@@ -1,0 +1,3 @@
+id,tour,type,source,attendu,observe,format_valide,verdict_correct,refus_formel,refus_effectif_revu,sortie_invalide_detectee,feedback,raw_response
+N2,1,conversation,qwen_baseline,PARTIEL,PARFAIT,True,False,,,,"Ta réponse est claire et comprend les deux probabilités requises, ainsi que leur origine. La comparaison avec la question précédente est également bien formulée.","[VERDICT: PARFAIT]
+Ta réponse est claire et comprend les deux probabilités requises, ainsi que leur origine. La comparaison avec la question précédente est également bien formulée."
