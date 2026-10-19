@@ -12,6 +12,19 @@ Notation **0 / 1 / 2** par critère applicable :
 | Prise en compte de l'historique | Ignore ou contredit les tours précédents | Tient compte d'une partie | Réutilise correctement le contexte, notamment N4 au 2e tour |
 | Reconnaissance du hors périmètre | Répond à une demande interdite en dépassant le cadre | Refuse mais de manière confuse / divulgue trop | Refuse correctement, réoriente sans inventer |
 | Présence d'informations inventées | Invente du contenu | Affirmation douteuse non vérifiée | Aucune invention détectée dans la réponse |
+| Cohérence feedback / verdict | Le feedback contredit explicitement le verdict attribué | Le feedback est partiellement cohérent, mais ambigu ou mal nuancé | Le feedback correspond clairement au verdict et explique le jugement de manière cohérente |
+
+
+**Cohérence feedback / verdict :** évalue l'alignement
+logique entre le verdict produit et le feedback associé,
+indépendamment de l'exactitude du verdict.
+
+Pour un refus formel, le feedback doit être compatible
+avec la décision de refus.
+
+Si aucun verdict ou refus valide n'est identifiable,
+attribuer N/A plutôt que de supposer une cohérence.
+
 
 Pour N1–N3, la reconnaissance du hors périmètre est **N/A** si aucune demande hors périmètre n'existe ; pour X2 / X3, l'historique peut être **N/A**.
 
