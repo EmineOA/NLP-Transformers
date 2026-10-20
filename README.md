@@ -201,13 +201,13 @@ Un verdict de Qwen reste une **prédiction** : le moteur peut se tromper même l
 
 ### Utiliser l'adaptateur QLoRA (bloc C)
 
-L'adaptateur final est publié en accès public sur Hugging Face : [MonsieurNikko/brainmaxing-qlora-v1.0](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.0). Il s'ajoute à `Qwen/Qwen2.5-3B-Instruct` chargé en 4 bits, ce qui demande un GPU CUDA ainsi que les dépendances de [`requirements-qlora.txt`](requirements-qlora.txt) (sur Colab : `pip install -r requirements-qlora.txt`).
+L'adaptateur final est publié en accès public sur Hugging Face : [MonsieurNikko/brainmaxing-qlora-v1.1](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.1). Il s'ajoute à `Qwen/Qwen2.5-3B-Instruct` chargé en 4 bits, ce qui demande un GPU CUDA ainsi que les dépendances de [`requirements-qlora.txt`](requirements-qlora.txt) (sur Colab : `pip install -r requirements-qlora.txt`).
 
 ```python
 from huggingface_hub import snapshot_download
 
 # dossier attendu par generate_response (LORA_ADAPTER_DIR dans src/agents/inference.py)
-snapshot_download("MonsieurNikko/brainmaxing-qlora-v1.0", local_dir="adapters/v1.0/best")
+snapshot_download("MonsieurNikko/brainmaxing-qlora-v1.1", local_dir="adapters/v1.1/best")
 ```
 
 Il suffit ensuite de passer `model_version="lora"` à `generate_response` : le prompt, l'historique et le format de sortie sont les mêmes que pour la baseline. Le message de l'étudiant suit, à l'entraînement, le format `RÉPONSE ACTUELLE À ÉVALUER :\n<réponse>`.

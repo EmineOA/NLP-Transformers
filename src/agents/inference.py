@@ -24,9 +24,9 @@ def _default_components():
     return load_model()
 
 
-# Meilleur adaptateur du run final (v1.0). Le dossier adapters/ est ignoré par git :
-# on le copie depuis Drive.
-LORA_ADAPTER_DIR = Path(__file__).resolve().parents[2] / "adapters" / "v1.0" / "best"
+# Meilleur adaptateur du run final (v1.1, nouveau split train/val/test). Le dossier adapters/ est ignoré
+# par git : on le télécharge depuis Hugging Face (MonsieurNikko/brainmaxing-qlora-v1.1).
+LORA_ADAPTER_DIR = Path(__file__).resolve().parents[2] / "adapters" / "v1.1" / "best"
 
 
 @lru_cache(maxsize=1)

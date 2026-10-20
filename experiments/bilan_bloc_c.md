@@ -11,7 +11,7 @@ Ce document résume le travail QLoRA du bloc C, du chargement des données à l'
   - refus (`HORS_PERIMETRE`) détectés : 31 sur 33 avec l'adaptateur, 0 pour la base ;
   - format valide 177 / 177 et aucune erreur grave (0 / 81) avec l'adaptateur.
 - **Run v1.0** (ancien split 885 / 118, sans test) : sur les 118 exemples de `val`, verdicts justes **49,2 %** pour la base et **91,5 %** avec l'adaptateur ; refus détectés 22 / 22. Ces chiffres ne sont pas comparables à ceux de v1.1 : les questions du nouveau `val` et du nouveau `test` faisaient partie de l'ancien `train`.
-- L'adaptateur v1.0 est public sur Hugging Face : [MonsieurNikko/brainmaxing-qlora-v1.0](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.0). Il est branché dans l'application : `generate_response(..., model_version="lora")`. L'adaptateur v1.1 est sur le Drive (`adapters/v1.1/best`) et n'est pas encore publié.
+- L'adaptateur v1.1 est public sur Hugging Face : [MonsieurNikko/brainmaxing-qlora-v1.1](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.1). Il est branché dans l'application : `generate_response(..., model_version="lora")`. L'adaptateur v1.0 (ancien split) reste public : [MonsieurNikko/brainmaxing-qlora-v1.0](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.0).
 
 ## 1. Ce que le modèle apprend
 
@@ -118,7 +118,7 @@ Sorties des cellules d'évaluation du notebook (fichiers `eval_v1.1_*.json` sur 
 
 ## 5. Intégration dans l'application
 
-- **Code** : `src/agents/inference.py`. `generate_response(..., model_version="lora")` charge Qwen en 4 bits, puis branche l'adaptateur de `adapters/v1.0/best`. Le chargement n'a lieu qu'une fois.
+- **Code** : `src/agents/inference.py`. `generate_response(..., model_version="lora")` charge Qwen en 4 bits, puis branche l'adaptateur de `adapters/v1.1/best`. Le chargement n'a lieu qu'une fois.
   - Le prompt, l'historique et la lecture du verdict sont identiques à ceux de la baseline. Le contrat 3 est inchangé.
 - **Tests** : `tests/test_bloc_b.py` contient 14 tests, tous OK, avec un faux modèle et sans GPU. Ils vérifient que :
   - `"lora"` passe par l'adaptateur ;
@@ -127,7 +127,7 @@ Sorties des cellules d'évaluation du notebook (fichiers `eval_v1.1_*.json` sur 
 
 ```python
 from huggingface_hub import snapshot_download
-snapshot_download("MonsieurNikko/brainmaxing-qlora-v1.0", local_dir="adapters/v1.0/best")
+snapshot_download("MonsieurNikko/brainmaxing-qlora-v1.1", local_dir="adapters/v1.1/best")
 
 from src.agents.inference import generate_response
 result = generate_response(messages, "monty-hall", "monty-hall_q1", model_version="lora")
@@ -145,7 +145,6 @@ result = generate_response(messages, "monty-hall", "monty-hall_q1", model_versio
 
 ## 7. Reste à faire
 
-- Décider s'il faut publier l'adaptateur v1.1 sur Hugging Face à la place de v1.0, et le brancher dans `generate_response` (aujourd'hui `adapters/v1.0/best`).
 - Mesurer la cohérence entre le verdict et le feedback (cas 4 de la section 4).
 - Décider avec Emine (bloc B) qui construit le message élève au format d'entraînement (blocs de la section 1).
 - Faire relire la branche `bloc-c-entrainement` par une autre personne, puis la fusionner sur `main`.
