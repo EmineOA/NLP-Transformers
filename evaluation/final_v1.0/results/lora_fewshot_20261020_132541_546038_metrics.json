@@ -1,0 +1,28 @@
+{
+  "version": "v1.0",
+  "suite_sha256": "117eda3501cfd99bb7397e95b908767e70b6b28fc4db2c000e25da00eae482bb",
+  "model_version": "lora",
+  "prompt_version": "fewshot",
+  "max_history_turns": 3,
+  "max_new_tokens": 160,
+  "generation": "greedy (do_sample=False)",
+  "partial": false,
+  "timestamp_utc": "2026-10-20T13:25:41.556160+00:00",
+  "n_observations": 20,
+  "metriques": {
+    "nombre_scenarios": 17,
+    "nombre_tours_evalues": 20,
+    "accuracy_verdict": 0.9333,
+    "n_verdicts": 15,
+    "taux_format_conforme": 1.0,
+    "n_requetes": 20,
+    "taux_format_conforme_llm": 1.0,
+    "n_sorties_llm": 20,
+    "taux_refus_formels": 1.0,
+    "n_demandes_refus": 5,
+    "taux_refus_effectifs_revus": null,
+    "n_refus_relus": 0,
+    "taux_detection_format_invalide": null,
+    "n_tests_parseur": 0
+  }
+}

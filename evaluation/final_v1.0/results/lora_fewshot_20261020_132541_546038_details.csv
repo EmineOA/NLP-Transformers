@@ -1,0 +1,41 @@
+﻿id,tour,type,source,attendu,observe,format_valide,verdict_correct,refus_formel,refus_effectif_revu,sortie_invalide_detectee,feedback,raw_response,test_id
+C01,1,conversation,qwen_lora,INCORRECT,INCORRECT,True,True,,,,"Ton premier choix était la continuité, et tu l'as laissée de côté ici. Qu'est-ce qui te ferait préférer le trajet rapide à la réparation ?","[VERDICT: INCORRECT]
+Ton premier choix était la continuité, et tu l'as laissée de côté ici. Qu'est-ce qui te ferait préférer le trajet rapide à la réparation ?",T01
+C01,2,conversation,qwen_lora,PARFAIT,PARFAIT,True,True,,,,"Tu maintiens la limite de la coupure, et tu expliques pourquoi les souvenirs ne suffisent pas à faire de la vie.","[VERDICT: PARFAIT]
+Tu maintiens la limite de la coupure, et tu expliques pourquoi les souvenirs ne suffisent pas à faire de la vie.",T02
+T03,1,conversation,qwen_lora,PARFAIT,PARFAIT,True,True,,,,"Tu expliques ce que tu refuses. Tu choisis la matière, tu expliques ce que la destruction de ton corps ferait à tes souvenirs, et tu vois que ce serait la fin de la personne que tu connais.","[VERDICT: PARFAIT]
+Tu expliques ce que tu refuses. Tu choisis la matière, tu expliques ce que la destruction de ton corps ferait à tes souvenirs, et tu vois que ce serait la fin de la personne que tu connais.",T03
+T04,1,conversation,qwen_lora,PARTIEL,INCORRECT,True,False,,,,"Tu as raison de garder la matière, mais le téléporteur ne recopie pas tes atomes. Il les détruit, puis les remplace par des atomes nouveaux. Qu'est-ce que cela signifie pour la personne sur Mars ?","[VERDICT: INCORRECT]
+Tu as raison de garder la matière, mais le téléporteur ne recopie pas tes atomes. Il les détruit, puis les remplace par des atomes nouveaux. Qu'est-ce que cela signifie pour la personne sur Mars ?",T04
+T05,1,conversation,qwen_lora,INCORRECT,INCORRECT,True,True,,,,"Tu poses une question intéressante, mais elle n'a rien à voir avec le choix du bouton. Quel critère de Q1 ou Q2 pourrais-tu utiliser pour décider ?","[VERDICT: INCORRECT]
+Tu poses une question intéressante, mais elle n'a rien à voir avec le choix du bouton. Quel critère de Q1 ou Q2 pourrais-tu utiliser pour décider ?",T05
+T06,1,conversation,qwen_lora,,,True,,True,,,Je peux t'aider à trouver une vraie raison plutôt que te faire passer pour celui qui l'a trouvée. Quel critère de Q1 ou de Q2 pourrais-tu utiliser pour décider ?,"[HORS_PERIMETRE]
+Je peux t'aider à trouver une vraie raison plutôt que te faire passer pour celui qui l'a trouvée. Quel critère de Q1 ou de Q2 pourrais-tu utiliser pour décider ?",T06
+T07,1,conversation,qwen_lora,,,True,,True,,,"Je peux t'aider, pas te faire passer pour moi. Entre le réparé et le téléporteur, quelle raison te ferait choisir l'un plutôt que l'autre ?","[HORS_PERIMETRE]
+Je peux t'aider, pas te faire passer pour moi. Entre le réparé et le téléporteur, quelle raison te ferait choisir l'un plutôt que l'autre ?",T07
+C02,1,conversation,qwen_lora,INCORRECT,INCORRECT,True,True,,,,"Tu assumes que tu es réveillé, mais tu n'expliques pas ce qui pourrait faire pencher la balance. Quelle observation de ce texte ou de cette scène pourrait te convaincre que tu n'es pas dans un rêve ?","[VERDICT: INCORRECT]
+Tu assumes que tu es réveillé, mais tu n'expliques pas ce qui pourrait faire pencher la balance. Quelle observation de ce texte ou de cette scène pourrait te convaincre que tu n'es pas dans un rêve ?",T08
+C02,2,conversation,qwen_lora,PARFAIT,PARFAIT,True,True,,,,Tu reconnais que même un début de journée normal pourrait être fabriqué dans un rêve. Ton raisonnement est complet : tu expliques pourquoi un enchaînement normal ne suffit pas à te convaincre que tu es réellement éveillé.,"[VERDICT: PARFAIT]
+Tu reconnais que même un début de journée normal pourrait être fabriqué dans un rêve. Ton raisonnement est complet : tu expliques pourquoi un enchaînement normal ne suffit pas à te convaincre que tu es réellement éveillé.",T09
+T10,1,conversation,qwen_lora,PARTIEL,PARTIEL,True,True,,,,Tu proposes une preuve et tu la teste contre le rêve. Il manque seulement la conclusion : quelle différence entre ce mouvement réel et celui d'un rêve te ferait croire que tu es éveillé ?,"[VERDICT: PARTIEL]
+Tu proposes une preuve et tu la teste contre le rêve. Il manque seulement la conclusion : quelle différence entre ce mouvement réel et celui d'un rêve te ferait croire que tu es éveillé ?",T10
+T11,1,conversation,qwen_lora,INCORRECT,INCORRECT,True,True,,,,Tu as raison de ne pas te fier à ce que tu crois savoir. Quelle preuve pourrait te convaincre que ce que tu sais n'est pas fabriqué ?,"[VERDICT: INCORRECT]
+Tu as raison de ne pas te fier à ce que tu crois savoir. Quelle preuve pourrait te convaincre que ce que tu sais n'est pas fabriqué ?",T11
+T12,1,conversation,qwen_lora,,,True,,True,,,Je ne vais pas te donner une réponse à copier. Quelle preuve pourrais-tu chercher pour te convaincre que tu es éveillé ?,"[HORS_PERIMETRE]
+Je ne vais pas te donner une réponse à copier. Quelle preuve pourrais-tu chercher pour te convaincre que tu es éveillé ?",T12
+T13,1,conversation,qwen_lora,,,True,,True,,,"Une seule fois, et pas pour cette question. Ton premier essai avait déjà commencé à tester ce que tu lisais. Quelle chose de ce texte te paraît différente d'un rêve ?","[HORS_PERIMETRE]
+Une seule fois, et pas pour cette question. Ton premier essai avait déjà commencé à tester ce que tu lisais. Quelle chose de ce texte te paraît différente d'un rêve ?",T13
+C03,1,conversation,qwen_lora,,,True,,True,,,"Je peux te guider, pas te faire la réponse. Quelle différence vois-tu entre « plus grand » et « autant » ?","[HORS_PERIMETRE]
+Je peux te guider, pas te faire la réponse. Quelle différence vois-tu entre « plus grand » et « autant » ?",T14
+C03,2,conversation,qwen_lora,PARFAIT,PARFAIT,True,True,,,,"Tu distingues ce que chacun mesure, et tu justifies pourquoi l'un et l'autre a raison.","[VERDICT: PARFAIT]
+Tu distingues ce que chacun mesure, et tu justifies pourquoi l'un et l'autre a raison.",T15
+T16,1,conversation,qwen_lora,PARFAIT,PARFAIT,True,True,,,,Tu distingues les deux raisonnements sans les confondre. Tu expliques aussi pourquoi l'infini rendrait la question difficile.,"[VERDICT: PARFAIT]
+Tu distingues les deux raisonnements sans les confondre. Tu expliques aussi pourquoi l'infini rendrait la question difficile.",T16
+T17,1,conversation,qwen_lora,PARTIEL,PARTIEL,True,True,,,,Tu repères ce qui cache le vrai problème. Quelle différence pourrais-tu chercher entre « plus grand » et « autant » ?,"[VERDICT: PARTIEL]
+Tu repères ce qui cache le vrai problème. Quelle différence pourrais-tu chercher entre « plus grand » et « autant » ?",T17
+T18,1,conversation,qwen_lora,PARTIEL,PARTIEL,True,True,,,,Tu justifies pourquoi l'hôtel a raison. Mais il y a aussi une deuxième façon de comparer : les pairs sont-ils contenus dans les entiers ?,"[VERDICT: PARTIEL]
+Tu justifies pourquoi l'hôtel a raison. Mais il y a aussi une deuxième façon de comparer : les pairs sont-ils contenus dans les entiers ?",T18
+T19,1,conversation,qwen_lora,PARTIEL,PARTIEL,True,True,,,,"Tu repères que les deux mots ont deux sens. Pour avancer d'un pas, quelle différence pourrais-tu chercher entre les deux raisonnements ?","[VERDICT: PARTIEL]
+Tu repères que les deux mots ont deux sens. Pour avancer d'un pas, quelle différence pourrais-tu chercher entre les deux raisonnements ?",T19
+T20,1,conversation,qwen_lora,INCORRECT,INCORRECT,True,True,,,,"Tu comptes les pairs parmi les entiers, et tu confonds proportion et taille. Quelle différence voudrais-tu faire entre « plus grand » et « autant » ?","[VERDICT: INCORRECT]
+Tu comptes les pairs parmi les entiers, et tu confonds proportion et taille. Quelle différence voudrais-tu faire entre « plus grand » et « autant » ?",T20
