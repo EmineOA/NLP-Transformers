@@ -42,12 +42,7 @@ def evaluate(scenarios: list[dict], *, model_version: str = "baseline",
         scenarios = [s for s in scenarios if any(t["test_id"] == only for t in s["turns"])]
         if not scenarios:
             raise ValueError(f"Test inconnu : {only}")
-    if components is None:
-        if model_version == "lora":
-            raise NotImplementedError(
-                "Brancher un chargeur LoRA/QLoRA du bloc C dans evaluation/run_final.py ; "
-                "ne jamais utiliser le modèle de base comme adaptateur."
-            )
+    if components is None and model_version == "baseline":
         from src.llm.model import load_model
         components = load_model()
 
