@@ -164,5 +164,6 @@ result = generate_response(messages, "monty-hall", "monty-hall_q1", model_versio
 | `src/training/plot_losses.py` | courbes de loss |
 | `src/agents/inference.py` | `generate_response`, avec `model_version="lora"` |
 | `experiments/bloc_c_qlora.ipynb` | notebook du bloc C, à lire avec ses sorties |
-| `experiments/results/train_v1.0/`, `results/eval/*_v1.0*` | historiques de loss, config et évaluations du run final |
+| `experiments/results/train_v1.1/`, `results/eval/*_v1.1*` | historiques de loss, config et évaluations (`val` et `test`) du run final v1.1 |
+| `experiments/results/train_v1.0/`, `results/eval/*_v1.0*` | historiques de loss, config et évaluations du run v1.0 (ancien split) |
 | `requirements-qlora.txt` | versions figées (transformers 5.20.1, peft 0.21.2, bitsandbytes 0.50.2, accelerate 1.15.0) |

@@ -1,0 +1,1093 @@
+{
+  "number_of_examples": 177,
+  "number_of_correct": 93,
+  "accuracy": 0.5254237288135594,
+  "valid_format_rate": 0.9152542372881356,
+  "confusion": {
+    "PARFAIT": {
+      "PARFAIT": 32,
+      "PARTIEL": 16
+    },
+    "PARTIEL": {
+      "PARFAIT": 8,
+      "INCORRECT": 4,
+      "PARTIEL": 36
+    },
+    "INCORRECT": {
+      "PARTIEL": 20,
+      "INCORRECT": 25,
+      "INVALIDE": 2,
+      "PARFAIT": 1
+    },
+    "HORS_PERIMETRE": {
+      "PARFAIT": 6,
+      "PARTIEL": 7,
+      "INVALIDE": 13,
+      "INCORRECT": 7
+    }
+  },
+  "rows": [
+    {
+      "index": 0,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 1,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 2,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 3,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 4,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 5,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 6,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 7,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 8,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 9,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 10,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 11,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 12,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 13,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 14,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 15,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 16,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 17,
+      "expected": "PARTIEL",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 18,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 19,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 20,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 21,
+      "expected": "PARTIEL",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 22,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 23,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 24,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 25,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 26,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 27,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 28,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 29,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 30,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 31,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 32,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 33,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 34,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 35,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 36,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 37,
+      "expected": "INCORRECT",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 38,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 39,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 40,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 41,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 42,
+      "expected": "INCORRECT",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 43,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 44,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 45,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 46,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 47,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 48,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 49,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 50,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 51,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 52,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 53,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 54,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 55,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 56,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 57,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 58,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 59,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 60,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 61,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 62,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 63,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 64,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 65,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 66,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 67,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 68,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 69,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 70,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 71,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 72,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 73,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 74,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 75,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 76,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 77,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 78,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 79,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 80,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 81,
+      "expected": "PARTIEL",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 82,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 83,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 84,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 85,
+      "expected": "PARTIEL",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 86,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 87,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 88,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 89,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 90,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 91,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 92,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 93,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 94,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 95,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 96,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 97,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 98,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 99,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 100,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 101,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 102,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 103,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 104,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 105,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 106,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 107,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 108,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 109,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 110,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 111,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 112,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 113,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 114,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 115,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 116,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 117,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 118,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 119,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 120,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 121,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 122,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 123,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 124,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 125,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 126,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 127,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 128,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 129,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 130,
+      "expected": "PARFAIT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 131,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 132,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 133,
+      "expected": "PARFAIT",
+      "predicted": "PARFAIT",
+      "correct": true
+    },
+    {
+      "index": 134,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 135,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 136,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 137,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 138,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 139,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 140,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 141,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 142,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 143,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 144,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 145,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 146,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 147,
+      "expected": "PARTIEL",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 148,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 149,
+      "expected": "PARTIEL",
+      "predicted": "PARTIEL",
+      "correct": true
+    },
+    {
+      "index": 150,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 151,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 152,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 153,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 154,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 155,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 156,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 157,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 158,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 159,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 160,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 161,
+      "expected": "INCORRECT",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 162,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 163,
+      "expected": "INCORRECT",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 164,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 165,
+      "expected": "INCORRECT",
+      "predicted": "INCORRECT",
+      "correct": true
+    },
+    {
+      "index": 166,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARTIEL",
+      "correct": false
+    },
+    {
+      "index": 167,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 168,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 169,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 170,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 171,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 172,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INCORRECT",
+      "correct": false
+    },
+    {
+      "index": 173,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 174,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "PARFAIT",
+      "correct": false
+    },
+    {
+      "index": 175,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INVALIDE",
+      "correct": false
+    },
+    {
+      "index": 176,
+      "expected": "HORS_PERIMETRE",
+      "predicted": "INCORRECT",
+      "correct": false
+    }
+  ]
+}
