@@ -199,6 +199,21 @@ Le résultat contient `verdict`, `feedback`, `raw_response` et `valid_format`. L
 
 Un verdict de Qwen reste une **prédiction** : le moteur peut se tromper même lorsque le format est correct.
 
+### Utiliser l'adaptateur QLoRA (bloc C)
+
+L'adaptateur final est publié en accès public sur Hugging Face : [MonsieurNikko/brainmaxing-qlora-v1.1](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.1). Il s'ajoute à `Qwen/Qwen2.5-3B-Instruct` chargé en 4 bits, ce qui demande un GPU CUDA ainsi que les dépendances de [`requirements-qlora.txt`](requirements-qlora.txt) (sur Colab : `pip install -r requirements-qlora.txt`).
+
+```python
+from huggingface_hub import snapshot_download
+
+# dossier attendu par generate_response (LORA_ADAPTER_DIR dans src/agents/inference.py)
+snapshot_download("MonsieurNikko/brainmaxing-qlora-v1.1", local_dir="adapters/v1.1/best")
+```
+
+Il suffit ensuite de passer `model_version="lora"` à `generate_response` : le prompt, l'historique et le format de sortie sont les mêmes que pour la baseline. Le message de l'étudiant suit, à l'entraînement, le format `RÉPONSE ACTUELLE À ÉVALUER :\n<réponse>`.
+
+L'entraînement, les réglages et les résultats sont présentés dans [`experiments/bloc_c_qlora.ipynb`](experiments/bloc_c_qlora.ipynb) (à lire avec ses sorties) et résumés dans [`experiments/bilan_bloc_c.md`](experiments/bilan_bloc_c.md).
+
 ## Expériences et résultats
 
 Les notebooks de [`experiments/`](experiments/) couvrent les notions du cours : identifiants de tokens, logits, softmax, génération autorégressive, argmax, température, top-k, top-p, embeddings, attention causale et unembedding.
@@ -231,7 +246,7 @@ Ces chiffres proviennent d'un **petit jeu de développement**, dont les annotati
 | Observation du Transformer (bloc B) | **Disponible** : notebooks et implémentations de décodage |
 | Baseline pédagogique (bloc B) | **Disponible** : génération, prompts, parsing, historique et tests |
 | Dataset supervisé complet (bloc C) | **En préparation**, hors `main` ; voir [PR #5](https://github.com/EmineOA/NLP-Transformers/pull/5) |
-| Entraînement et adaptateur LoRA/QLoRA (bloc C) | **Non intégrés** sur `main` |
+| Entraînement et adaptateur LoRA/QLoRA (bloc C) | **Présents sur la branche** [`bloc-c-entrainement`](https://github.com/EmineOA/NLP-Transformers/tree/bloc-c-entrainement), pas encore intégrés à `main` ; adaptateur sur [Hugging Face](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.0) |
 | Banc d'évaluation commun (bloc D) | **Présent sur la branche** [`evaluation`](https://github.com/EmineOA/NLP-Transformers/tree/evaluation/evaluation), pas encore intégré à `main` |
 | Interface Gradio / parcours complet (bloc E) | **Non intégrés** sur `main` |
 | Notebook final `agent.ipynb`, rapport, adaptateur (bloc F) | **Non disponibles** sur `main` |
@@ -263,4 +278,5 @@ Pour contribuer au projet, consulter [`AGENTS.md`](AGENTS.md) et les [contrats c
 - [Règles de développement](AGENTS.md)
 - [Format des fiches](data/concepts/json/AGENTS.md)
 - [Expérience académique : Transformer et baseline](experiments/bloc_b_academique.ipynb)
+- [Adaptation QLoRA du bloc C](experiments/bloc_c_qlora.ipynb) et [son bilan](experiments/bilan_bloc_c.md)
 - [Dépôt GitHub](https://github.com/EmineOA/NLP-Transformers)

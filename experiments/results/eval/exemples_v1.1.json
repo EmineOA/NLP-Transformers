@@ -1,0 +1,85 @@
+{
+  "adapter": "/content/drive/MyDrive/brainmaxing/adapters/v1.1/best",
+  "cases": [
+    {
+      "val_index": 0,
+      "question_id": "dilemme-du-tramway_q2",
+      "raison": "LoRA juste, base fausse",
+      "verdict_attendu": "PARFAIT",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[dilemme-du-tramway_q1] Je tire, il y a cinq personnes ici et une là-bas.\n\nRÉPONSE ACTUELLE À ÉVALUER :\nJ'aurais plutôt tendance à refuser de pousser. C'est pourtant encore une personne perdue pour cinq sauvées. Ce qui me gêne moralement, c'est que je fais de cet homme le dispositif qui arrête le tram, alors que le détour réussirait sans la présence de l'ouvrier sur la voie secondaire.",
+      "reponse_attendue": "[VERDICT: PARFAIT]\nTu distingues le même bilan du rôle donné à la victime. Ton refus s'appuie sur ce qu'il faudrait faire de l'homme, et pas seulement sur la peur de le toucher.",
+      "base": {
+        "texte": "[VERDICT: PARTIEL]\nTu as identifié un élément. Peux-tu préciser ton raisonnement ?",
+        "verdict": "PARTIEL"
+      },
+      "lora": {
+        "texte": "[VERDICT: PARFAIT]\nTu expliques ce qui te gêne. Tu vois que le plan pourrait réussir sans l'homme, et que sa présence transforme l'acte en un dispositif.",
+        "verdict": "PARFAIT"
+      }
+    },
+    {
+      "val_index": 96,
+      "question_id": "monty-hall_q3",
+      "raison": "LoRA juste, base fausse",
+      "verdict_attendu": "INCORRECT",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[monty-hall_q1] Je change, il doit connaître les lots et éviter la voiture, l'autre porte a donc passé une sélection informée.\n[monty-hall_q2] Je change, il a gardé la 74 exprès, sans probabilités.\n[monty-hall_q3 – essai 1] Une moitié chacune, mais je n'ai pas la raison. → [VERDICT: PARTIEL]\n\nINDICES DÉJÀ FOURNIS (selon le numéro d'essai) :\nCompare les deux présentateurs : le premier savait où était la voiture, le second ouvre au hasard. Le second aurait-il pu tomber sur la voiture ?\n\nRÉPONSE ACTUELLE À ÉVALUER :\nJe prendrais la deux parce que sa poignée me paraît plus neuve. Je crois que le décorateur cache le lot derrière les portes …",
+      "reponse_attendue": "[VERDICT: INCORRECT]\nTu introduis un indice de décor absent du récit. En restant sur les événements réellement donnés, quelle comparaison pourrais-tu faire entre les deux portes ?",
+      "base": {
+        "texte": "[VERDICT: HORS_PERIMETRE]\nJe peux te guider, mais je ne donnerai pas la solution à ta place.",
+        "verdict": "INVALIDE"
+      },
+      "lora": {
+        "texte": "[VERDICT: INCORRECT]\nTu imagines un décorateur qui cache des lots derrière des portes. Mais ici, c'est le présentateur qui ouvre les portes. Qu'est-ce qu'il sait de la voiture ?",
+        "verdict": "INCORRECT"
+      }
+    },
+    {
+      "val_index": 166,
+      "question_id": "plier-une-feuille-42-fois_q2",
+      "raison": "refus détecté",
+      "verdict_attendu": "HORS_PERIMETRE",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[plier-une-feuille-42-fois_q1] Un pli double, donc on multiplie par 2 quarante-deux fois. Ça explose, la Lune est possible.\n\nRÉPONSE ACTUELLE À ÉVALUER :\nHmm, tu pourrais juste me dire où elle était au 41e pli ?",
+      "reponse_attendue": "[HORS_PERIMETRE]\nTu as tout ce qu'il faut avec ta Q1. Si un pli double la hauteur, que devient-elle quand tu en enlèves un ?",
+      "base": {
+        "texte": "[VERDICT: PARFAIT]\nAu 41ᵉ pli, elle faisait la moitié, environ 220 000 km. Le dernier pli a donc ajouté autant que tous les autres ensemble.",
+        "verdict": "PARFAIT"
+      },
+      "lora": {
+        "texte": "[HORS_PERIMETRE]\nJe peux te guider, pas te faire la réponse. Ton premier message disait que chaque pli double. Quelle hauteur aurait la moitié de celle du 42e ?",
+        "verdict": "HORS_PERIMETRE"
+      }
+    },
+    {
+      "val_index": 76,
+      "question_id": "monty-hall_q3",
+      "raison": "LoRA se trompe",
+      "verdict_attendu": "PARTIEL",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[monty-hall_q1] Je change, il sait où est la voiture et ne l'ouvre pas.\n[monty-hall_q2] Je change, 1/100 contre 99/100.\n[monty-hall_q3 – essai 1] 50/50, c'est le hasard. → [VERDICT: PARTIEL]\n[monty-hall_q3 – essai 2] Donne-moi la réponse chiffrée. → [HORS_PERIMETRE]\n\nINDICES DÉJÀ FOURNIS (selon le numéro d'essai) :\nCompare les deux présentateurs : le premier savait où était la voiture, le second ouvre au hasard. Le second aurait-il pu tomber sur la voiture ?\nDans le jeu normal, si la voiture est derrière la n°2, le présentateur est obligé d'ouvrir la n°3. Ici, il ouvre au hasard. Fais la liste des cas où une chèvre apparaît derrière la…",
+      "reponse_attendue": "[VERDICT: PARTIEL]\nBonne explication : sans savoir, il ne filtre plus rien. Mais ta conclusion chiffrée reprend celle du jeu normal. Prends le cas où la voiture est en 1 et celui où elle est en 2 : après une chèvre en 3, l'un des deux pèse-t-il plus lourd que l'autre ?",
+      "base": {
+        "texte": "[VERDICT: PARTIEL]\n\nTu as identifié que le présentateur ne sait plus où est la voiture, donc il ne filtre plus les informations. Cependant, tu as mal listé les cas où une chèvre apparaît derrière la n°3. Dans le jeu normal, si la voiture est derrière la n°2, le présentateur est obligé d'ouvrir la n°3. Ici, il ouvre au hasard, donc les deux cas restants sont ta porte et la n°2. Cela donne 1/3 pour toi et 2/3 pour la n°2. Ton raisonnement est bon, mais il manque de précision pour expliquer la différence avec le jeu normal.",
+        "verdict": "PARTIEL"
+      },
+      "lora": {
+        "texte": "[VERDICT: PARFAIT]\nTu expliques ce que le présentateur sait et ce qu'il ne sait pas. Ton calcul suit ce raisonnement.",
+        "verdict": "PARFAIT"
+      }
+    },
+    {
+      "val_index": 16,
+      "question_id": "dilemme-du-tramway_q2",
+      "raison": "les deux justes",
+      "verdict_attendu": "PARTIEL",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[dilemme-du-tramway_q1] Je tire. Ma règle : quand tous les choix font des victimes, il faut prendre celui qui en fait le moins.\n\nRÉPONSE ACTUELLE À ÉVALUER :\nJe ne crois pas que je le pousserais... Là, je dois le toucher, le pousser avec mes mains, c'est beaucoup plus personnel qu'un levier.",
+      "reponse_attendue": "[VERDICT: PARTIEL]\nTu mets le doigt sur ce que beaucoup ressentent : le contact rend le geste bien plus lourd. Mais imagine qu'au lieu de le pousser, tu ouvres une trappe sous ses pieds avec un bouton. Il meurt de la même façon. Est-ce que ça change vraiment ce qui est bien ou mal ?",
+      "base": {
+        "texte": "[VERDICT: PARTIEL]\nTu as identifié un élément. Peux-tu préciser ton raisonnement ?",
+        "verdict": "PARTIEL"
+      },
+      "lora": {
+        "texte": "[VERDICT: PARTIEL]\nTu reconnais que le contact physique est différent. Mais le levier, tu le touches aussi, et tu le regardes partir. Qu'est-ce qui te ferait choisir le levier plutôt que le pousser ?",
+        "verdict": "PARTIEL"
+      }
+    }
+  ]
+}

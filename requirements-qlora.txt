@@ -1,0 +1,12 @@
+# Dépendances de l'entraînement QLoRA (src/training/), versions testées sur RTX 4070 SUPER, Python 3.13.
+# torch avec CUDA 12.8 s'installe depuis l'index PyTorch :
+#   pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+#   pip install -r requirements-qlora.txt
+# Sur Google Colab, torch est déjà installé : ne pas le réinstaller, lancer seulement
+#   pip install -r requirements-qlora.txt
+transformers==5.20.1
+peft==0.21.2
+bitsandbytes==0.50.2
+accelerate==1.15.0
+# pour les courbes de loss
+matplotlib==3.11.2

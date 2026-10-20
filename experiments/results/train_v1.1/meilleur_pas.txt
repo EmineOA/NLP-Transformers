@@ -1,0 +1,3 @@
+pas=164
+epoch=2
+loss_val=1.4659

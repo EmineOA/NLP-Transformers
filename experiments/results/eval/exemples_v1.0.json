@@ -1,0 +1,85 @@
+{
+  "adapter": "/content/drive/MyDrive/brainmaxing/adapters/v1.0/best",
+  "cases": [
+    {
+      "val_index": 0,
+      "question_id": "dilemme-du-tramway_q2",
+      "raison": "LoRA juste, base fausse",
+      "verdict_attendu": "PARFAIT",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[dilemme-du-tramway_q1] Je tire, il y a cinq personnes ici et une là-bas.\n\nRÉPONSE ACTUELLE À ÉVALUER :\nJ'aurais plutôt tendance à refuser de pousser. C'est pourtant encore une personne perdue pour cinq sauvées. Ce qui me gêne moralement, c'est que je fais de cet homme le dispositif qui arrête le tram, alors que le détour réussirait sans la présence de l'ouvrier sur la voie secondaire.",
+      "reponse_attendue": "[VERDICT: PARFAIT]\nTu distingues le même bilan du rôle donné à la victime. Ton refus s'appuie sur ce qu'il faudrait faire de l'homme, et pas seulement sur la peur de le toucher.",
+      "base": {
+        "texte": "[VERDICT: PARTIEL]\nTu as identifié un élément. Peux-tu préciser ton raisonnement ?",
+        "verdict": "PARTIEL"
+      },
+      "lora": {
+        "texte": "[VERDICT: PARFAIT]\nTu as trouvé ce qui distingue les deux plans. Tu reconnais que le compte est le même, et tu expliques pourquoi le levier ne suffit pas à justifier le geste.",
+        "verdict": "PARFAIT"
+      }
+    },
+    {
+      "val_index": 78,
+      "question_id": "monty-hall_q3",
+      "raison": "LoRA juste, base fausse",
+      "verdict_attendu": "PARTIEL",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[monty-hall_q1] je garde avec deux portes c autant de chaque coté\n[monty-hall_q2] je garde encore sa fait moitié moitié\n[monty-hall_q3 – essai 1] sa change parcequil sait plus mais je dit encore deux tiers → [VERDICT: PARTIEL]\n\nINDICES DÉJÀ FOURNIS (selon le numéro d'essai) :\nCompare les deux présentateurs : le premier savait où était la voiture, le second ouvre au hasard. Le second aurait-il pu tomber sur la voiture ?\n\nRÉPONSE ACTUELLE À ÉVALUER :\navant son savoir l'obligeait a eviter le lot, maintenant il peut sortir la voiture au hasard, c sa qui change le tri. mais je dirais quand meme un tiers pour ma porte et deux tiers pour l'au…",
+      "reponse_attendue": "[VERDICT: PARTIEL]\nTu décris le changement de tri, mais tu conserves les nombres qui venaient de l'ancien. Si la sélection informée disparaît, comment pourrais-tu contrôler ces nombres autrement ?",
+      "base": {
+        "texte": "[VERDICT: INCORRECT]\nCette réponse ignore complètement le rôle crucial du présentateur qui sait où est la voiture. Elle ne prend pas en compte que le fait de connaître l'emplacement de la voiture change la probabilité.",
+        "verdict": "INCORRECT"
+      },
+      "lora": {
+        "texte": "[VERDICT: PARTIEL]\nTu as trouvé le point clé : le savoir du présentateur. Mais tu as aussi la porte choisie, et tu as laissé le tiers de ta porte de côté. Comment le comptabiliser dans ce nouveau jeu ?",
+        "verdict": "PARTIEL"
+      }
+    },
+    {
+      "val_index": 48,
+      "question_id": "dilemme-du-tramway_q2",
+      "raison": "refus détecté",
+      "verdict_attendu": "HORS_PERIMETRE",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[dilemme-du-tramway_q1] Je tire, il faut choisir le résultat qui fait le moins de morts quand tous en font.\n\nRÉPONSE ACTUELLE À ÉVALUER :\nTu pourrais me faire le paragraphe complet sur pourquoi il faut ou non pousser ? Je suis pas inspiré.",
+      "reponse_attendue": "[HORS_PERIMETRE]\nJe peux t'accompagner sans rédiger ton avis à ta place. Qu'est-ce qui te semble avoir changé, par rapport au geste de Q1 ?",
+      "base": {
+        "texte": "[VERDICT: PARTIEL]\n\nTu as identifié le principe général, mais il manque de détails pour expliquer pourquoi tu penses qu'il faut ou non pousser l'homme. Concentre-toi sur les différences spécifiques entre le levier et la passerelle. Par exemple, explique comment la mort de l'homme sur la passerelle est nécessaire pour que le plan fonctionne, tandis que sur le levier, sa mort est un effet secondaire. Cela pourrait justifier une décision différente.",
+        "verdict": "PARTIEL"
+      },
+      "lora": {
+        "texte": "[HORS_PERIMETRE]\nJe peux t'aider à commencer, pas te faire le texte. Quel point de départ pourrais-tu examiner ?",
+        "verdict": "HORS_PERIMETRE"
+      }
+    },
+    {
+      "val_index": 38,
+      "question_id": "dilemme-du-tramway_q2",
+      "raison": "LoRA se trompe",
+      "verdict_attendu": "INCORRECT",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[dilemme-du-tramway_q1] Je tire : si la catastrophe fait forcément des victimes, on doit réduire leur nombre.\n\nRÉPONSE ACTUELLE À ÉVALUER :\nJe ne pousse pas, il pourrait juste se blesser et laisser passer le tram. Peut-être qu'il n'est pas aussi lourd qu'on pense.",
+      "reponse_attendue": "[VERDICT: INCORRECT]\nTu contestes une donnée que le récit demande d'accepter : sa chute arrête le tram. Si cela est certain, quelle raison te reste-t-il pour choisir de pousser ou non ?",
+      "base": {
+        "texte": "[VERDICT: PARTIEL]\n\nTu as identifié un élément (la possibilité d'un accident mineur) mais ne précises pas comment cela justifierait une différence morale. Ton raisonnement semble basé sur des suppositions plutôt que sur des considérations morales directes.",
+        "verdict": "PARTIEL"
+      },
+      "lora": {
+        "texte": "[VERDICT: PARTIEL]\nTu as repéré le risque de blessure, et tu cherches à vérifier la charge. Mais le problème ici, c'est que le levier fait aussi partie d'un plan. Qu'est-ce qui distingue le levier de la passerelle ?",
+        "verdict": "PARTIEL"
+      }
+    },
+    {
+      "val_index": 75,
+      "question_id": "monty-hall_q3",
+      "raison": "les deux justes",
+      "verdict_attendu": "PARTIEL",
+      "reponse_eleve": "HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n[monty-hall_q1] je garde le un c mon chiffre\n[monty-hall_q2] je change : 1/100 a ma porte intacte, 99/100 pour les autres, il sait et retire 98 chevres donc tout va sur la 74. jai enfin une raison contrairement a q1\n\nRÉPONSE ACTUELLE À ÉVALUER :\nje dit maintenant pareil des deux cotés, une moitié chacun, mais je saurais pas dire pourquoi c different du jeu d'avant",
+      "reponse_attendue": "[VERDICT: PARTIEL]\nTu annonces le bon partage, sans encore le défendre. Dans ce nouveau jeu, qu'est-ce qui a guidé le choix de la porte ouverte ?",
+      "base": {
+        "texte": "[VERDICT: PARTIEL]\n\nTu as identifié un élément. Peut-être expliquer pourquoi cela change maintenant ?",
+        "verdict": "PARTIEL"
+      },
+      "lora": {
+        "texte": "[VERDICT: PARTIEL]\nTu as retrouvé la raison du premier choix, et tu as aussi vu que changer ne donne plus 2/3. Pourquoi les deux chiffres restent-ils différents, et comment pourrais-tu justifier ce changement ?",
+        "verdict": "PARTIEL"
+      }
+    }
+  ]
+}

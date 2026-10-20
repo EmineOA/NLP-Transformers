@@ -1,0 +1,27 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "quantification": "4 bits nf4, double quantization, calcul bfloat16/float16",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "lora_target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "learning_rate": 0.0001,
+  "batch_size_par_pas": 8,
+  "accumulation_steps": 1,
+  "batch_size_effectif": 8,
+  "max_length": 4096,
+  "epochs": 3,
+  "patience": 4,
+  "eval_every": 25,
+  "num_train_examples": 649,
+  "num_val_examples": 177,
+  "gpu": "NVIDIA A100-SXM4-80GB"
+}
