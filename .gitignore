@@ -6,3 +6,10 @@ __pycache__/
 
 # Adaptateurs LoRA entraînés (~100 Mo chacun) : jamais dans git
 adapters/
+# copies locales des adaptateurs téléchargées depuis le Drive, à côté des résultats
+experiments/results/**/*.safetensors
+experiments/results/train_*/best/
+experiments/results/train_*/epoch_*/
+
+# fichiers système macOS
+.DS_Store
