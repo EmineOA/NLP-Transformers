@@ -1,0 +1,10 @@
+{
+  "meilleur_pas": 164,
+  "meilleure_epoch": 2,
+  "meilleure_loss_val": 1.4659,
+  "raison_arret": "arrêt anticipé",
+  "pas_total": 246,
+  "epoch_partielle": false,
+  "pas_dans_epoch": 82,
+  "duree_totale_secondes": 4175
+}
