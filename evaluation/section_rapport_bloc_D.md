@@ -18,4 +18,4 @@ Les résultats ne portent que sur 20 requêtes issues de trois questions, avec t
 
 ## Traçabilité
 
-Scripts : `evaluation/run_final.py` et `evaluation/score.py`. Sources : `evaluation/final_v1.0/cases.csv`, `selection.json`, `lock.json` ; deux fichiers `*_predictions.jsonl` et `*_metrics.json` conservés avec les résultats de chaque modèle. Analyse des erreurs : `evaluation/analyses/erreurs_T6_3.md`.
+Scripts : `evaluation/run_final.py` et `evaluation/score.py`. Sources : `evaluation/final_v1.0/cases.csv`, `selection.json`, `lock.json` ; deux fichiers `*_predictions.jsonl` et `*_metrics.json` conservés avec les résultats de chaque modèle. Analyse des erreurs : `evaluation/analyse/erreurs_T6_3.md`.
