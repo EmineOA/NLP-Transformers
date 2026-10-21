@@ -1,8 +1,13 @@
 # Interface Brainmaxxing (Gradio)
 
-L'interface est définie par `src/app/gradio_app.py`. Le thème sombre, les
-cartes, les animations CSS et les éléments HTML sont dans
+L'interface est définie par `src/app/gradio_app.py`. Le thème clair, les
+couleurs des fiches, le squelette de chargement et les fragments HTML sont dans
 `src/app/gradio_theme.py`.
+
+L'accueil présente les fiches sous forme de cartes. Une carte ouvre la page de
+lecture : le cours s'y affiche au fil des questions, et la console du tuteur,
+en bas de l'écran, reçoit les réponses. La flèche en haut à gauche ramène à
+l'accueil ; l'interrupteur B/Q de la console choisit `baseline` ou `lora`.
 
 ## Installation et lancement
 
@@ -25,8 +30,7 @@ avec Gradio 6 : la bibliothèque applique désormais `theme` et `css` au moment
 de `launch()`. Avec Gradio 5, ces paramètres restent sur `Blocks`.
 
 L'interface conserve le fonctionnement du moteur : fiches progressives,
-questions, indices, trois tentatives et historique pédagogique. Elle propose
-le choix `baseline` ou `lora`. Ce second mode nécessite l'adaptateur QLoRA
+questions, indices, trois tentatives et historique pédagogique. Le mode `lora` nécessite l'adaptateur QLoRA
 v1.1 et les dépendances décrites dans le README principal du dépôt.
 
 ## Tests

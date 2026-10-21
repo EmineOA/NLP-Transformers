@@ -7,11 +7,15 @@ jamais par le modèle.
 from __future__ import annotations
 
 import inspect
+from functools import partial
 from typing import Callable
 
 from src.agents.concepts import CONCEPT_FOLDER, load_concept
 from src.agents.pedagogical_context import build_student_message, summarize_history
-from src.app.gradio_theme import CUSTOM_CSS, FOOTER_HTML, HEADER_HTML, SIDEBAR_GUIDE_HTML, make_theme
+from src.app.gradio_theme import (
+    CONCEPT_STYLES, CUSTOM_CSS, HEAD_HTML, HEADER_HTML, LOGO_HTML, card_html, console_title_html,
+    make_theme, story_header_html, switch_html,
+)
 
 MAX_ATTEMPTS = 3
 
@@ -21,15 +25,6 @@ VERDICT_LABELS = {
     "INCORRECT": "❌ Incorrect",
 }
 OUT_OF_SCOPE_LABEL = "⛔ Demande refusée"
-
-PRESENTATION = (
-    "### Agent pédagogique\n"
-     "Choisis un concept, découvre progressivement son cours et réponds aux questions "
-    "de la fiche. L'agent évalue ta réponse : "
-    "✅ Parfait, 🟡 Partiel, ❌ Incorrect ou ⛔ Hors sujet.\n\n"
-    "**Limites** : il ne connaît que les concepts de la liste, tu as "
-    f"{MAX_ATTEMPTS} essais par question, et il peut se tromper."
-)
 
 
 def list_concepts() -> list[tuple[str, str]]:
@@ -62,14 +57,36 @@ def _question_text(concept: dict, state: dict) -> str:
     return f"**Question {index + 1}/{len(questions)}** : {questions[index]['enonce']}"
 
 
-def _next_course_sections(concept: dict, state: dict) -> str:
-    """Révèle seulement les nouvelles sections autorisées pour la question."""
+def _next_course_sections(concept: dict, state: dict) -> list[dict]:
+    """Révèle seulement les nouvelles sections autorisées pour la question.
+
+    Retour :
+        liste des sections nouvellement visibles (vide si rien de nouveau).
+    """
     until = concept["questions"][state["question_index"]]["apres_section"]
     previous = state["shown_sections"]
-    state["shown_sections"] = until
+    state["shown_sections"] = max(previous, until)
+    return concept["explication"][previous:until]
+
+
+def render_course(state: dict) -> str:
+    """Texte du cours visible dans la page de lecture (Markdown).
+
+    Paramètres :
+        state : état courant ; seules les `shown_sections` premières sections sont rendues.
+
+    Retour :
+        Markdown des sections déjà débloquées, vide si aucun concept.
+
+    Exemple :
+        render_course(start_concept("monty-hall")[0]).startswith("## Introduction")  # True
+    """
+    if not state.get("concept_id"):
+        return ""
+    concept = load_concept(state["concept_id"])
     return "\n\n".join(
-        f"### {section['titre']}\n{section['contenu']}"
-        for section in concept["explication"][previous:until]
+        f"## {section['titre']}\n\n{section['contenu']}"
+        for section in concept["explication"][:state["shown_sections"]]
     )
 
 
@@ -80,7 +97,8 @@ def start_concept(concept_id: str) -> tuple[dict, list[dict]]:
         concept_id : identifiant de la fiche choisie.
 
     Retour :
-        (état initial, historique du chat avec l'explication et la 1re question).
+        (état initial, historique du chat avec la 1re question).
+        Le cours lui-même est affiché à part, voir `render_course`.
 
     Exemple :
         start_concept("monty-hall")[0]["question_index"]  # 0
@@ -90,11 +108,8 @@ def start_concept(concept_id: str) -> tuple[dict, list[dict]]:
     concept = load_concept(concept_id)
     state = _new_state()
     state["concept_id"] = concept_id
-    explanation = _next_course_sections(concept, state)
-    chat = [
-        {"role": "assistant", "content": f"## {concept['concept']}\n\n{explanation}"},
-        {"role": "assistant", "content": _question_text(concept, state)},
-    ]
+    _next_course_sections(concept, state)
+    chat = [{"role": "assistant", "content": _question_text(concept, state)}]
     return state, chat
 
 
@@ -109,13 +124,15 @@ def format_verdict(result: dict) -> str:
 
     Exemple :
         format_verdict({"verdict": "PARFAIT", "feedback": "Bravo.", "valid_format": True})
-        # "**✅ Parfait**\n\nBravo."
+        # '<span class="v PARFAIT">✅ Parfait</span>\n\nBravo.'
     """
     if not result.get("valid_format"):
         # sortie mal formée : affichée telle quelle, sans verdict inventé
         return str(result.get("raw_response") or result.get("feedback") or "")
-    label = VERDICT_LABELS.get(result.get("verdict"), OUT_OF_SCOPE_LABEL)
-    return f"**{label}**\n\n{result.get('feedback', '')}"
+    verdict = result.get("verdict")
+    label = VERDICT_LABELS.get(verdict, OUT_OF_SCOPE_LABEL)
+    css_class = verdict if verdict in VERDICT_LABELS else "REFUS"  # couleur de l'étiquette
+    return f'<span class="v {css_class}">{label}</span>\n\n{result.get("feedback", "")}'
 
 
 def next_step(state: dict, result: dict) -> tuple[dict, str]:
@@ -160,7 +177,9 @@ def next_step(state: dict, result: dict) -> tuple[dict, str]:
         return state, note + "Concept terminé. Choisis un autre concept dans la liste pour continuer."
     sections = _next_course_sections(concept, state)
     if sections:
-        note += sections + "\n\n"
+        # le cours s'affiche dans la page : le chat signale seulement la nouveauté
+        titles = ", ".join(f"*{section['titre']}*" for section in sections)
+        note += f"📖 La suite du cours vient d'apparaître : {titles}.\n\n"
     return state, note + _question_text(concept, state)
 
 
@@ -240,148 +259,158 @@ def reset_session() -> tuple[dict, list[dict]]:
     return _new_state(), []
 
 
-def render_progress(state: dict) -> str:
-    """Résumé du parcours affiché dans l'interface, sans modifier l'état."""
-    if not state.get("concept_id"):
-        label, detail, percent = "Prêt à commencer", "Choisis un concept pour démarrer.", 0
-    else:
-        concept = load_concept(state["concept_id"])
-        total = len(concept["questions"])
-        if state.get("finished"):
-            label, detail, percent = "Concept terminé", f"{total} question(s) parcourue(s).", 100
-        else:
-            index = state["question_index"]
-            attempt = min(state["attempts"] + 1, MAX_ATTEMPTS)
-            label = f"Question {index + 1} / {total}"
-            detail = f"Tentative {attempt} / {MAX_ATTEMPTS}"
-            percent = round(100 * index / total)
+def _gauge(label: str, percent: int, aria: str) -> str:
+    """Une ligne de progression : libellé puis jauge horizontale."""
     return (
-        '<div class="bm-progress-card">'
-        '<div class="bm-progress-head"><span class="bm-progress-title">' + label + '</span></div>'
-        '<div class="bm-progress-meta">' + detail + '</div>'
-        '<div class="bm-progress-track" role="progressbar" '
-        f'aria-label="Progression du concept" aria-valuemin="0" aria-valuemax="100" '
-        f'aria-valuenow="{percent}"><span class="bm-progress-fill" style="width:{percent}%"></span></div>'
-        '</div>'
+        f'<div class="bm-gauge-row"><span class="bm-gauge-label">{label}</span>'
+        f'<div class="bm-progress-track" role="progressbar" aria-label="{aria}" aria-valuemin="0" '
+        f'aria-valuemax="100" aria-valuenow="{percent}">'
+        f'<span class="bm-progress-fill" style="width:{percent}%"></span></div></div>'
     )
 
 
+def render_progress(state: dict) -> str:
+    """Deux jauges empilées (questions, tentatives) pour l'en-tête de la console.
+
+    Exemple :
+        "Tentative 1 / 3" in render_progress(start_concept("monty-hall")[0])  # True
+    """
+    if not state.get("concept_id"):
+        rows = [("Prêt à commencer", 0, "Progression du concept")]
+    else:
+        total = len(load_concept(state["concept_id"])["questions"])
+        if state.get("finished"):
+            rows = [(f"Concept terminé ({total} questions)", 100, "Progression du concept")]
+        else:
+            index = state["question_index"]
+            attempt = min(state["attempts"] + 1, MAX_ATTEMPTS)
+            rows = [
+                (f"Question {index + 1} / {total}", round(100 * index / total), "Progression du concept"),
+                # la jauge des tentatives montre l'essai en cours, déjà entamé
+                (f"Tentative {attempt} / {MAX_ATTEMPTS}", round(100 * attempt / MAX_ATTEMPTS),
+                 "Tentatives utilisées"),
+            ]
+    return '<div class="bm-progress-card">' + "".join(_gauge(*row) for row in rows) + "</div>"
+
+
+def ordered_concepts() -> list[dict]:
+    """Fiches disponibles, dans l'ordre de la maquette puis les nouvelles fiches.
+
+    Exemple :
+        ordered_concepts()[0]["id"]  # "monty-hall"
+    """
+    available = {concept_id for _, concept_id in list_concepts()}
+    known = [concept_id for concept_id in CONCEPT_STYLES if concept_id in available]
+    others = sorted(available - set(known))
+    return [load_concept(concept_id) for concept_id in known + others]
+
+
+def toggle_model(model_version: str) -> str:
+    """Bascule entre les deux tuteurs.
+
+    Exemple :
+        toggle_model("baseline")  # "lora"
+    """
+    return "baseline" if model_version == "lora" else "lora"
+
+
+# Repli de la console : purement visuel, géré dans le navigateur.
+FOLD_JS = "() => { document.querySelector('#bm-console')?.classList.toggle('min'); }"
+SCROLL_TOP_JS = "() => { window.scrollTo({top: 0}); }"
+
+
 def build_app():
-    """Construit la vue Gradio. Le parcours et les appels au LLM restent inchangés."""
+    """Construit la vue Gradio de la maquette : grille des histoires puis page de lecture.
+
+    Le parcours et les appels au LLM restent ceux des fonctions ci-dessus.
+    """
     import gradio as gr
 
-    block_kwargs = {"title": "Brainmaxxing — Tuteur pédagogique"}
+    block_kwargs = {"title": "Brainmaxing"}
     if "theme" not in inspect.signature(gr.Blocks.launch).parameters:
-        # Gradio 5 : thème et CSS sont configurés sur Blocks.
-        block_kwargs.update(theme=make_theme(gr), css=CUSTOM_CSS)
+        # Gradio 5 : thème, CSS et polices sont configurés sur Blocks.
+        block_kwargs.update(theme=make_theme(gr), css=CUSTOM_CSS, head=HEAD_HTML)
 
     with gr.Blocks(**block_kwargs) as app:
         state = gr.State(_new_state())
-        gr.HTML(HEADER_HTML)
+        model_version = gr.State("baseline")
 
-        with gr.Row(equal_height=False):
-            with gr.Column(scale=1, min_width=285):
-                with gr.Group(elem_classes=["bm-panel"]):
-                    gr.Markdown("### Ton espace", elem_classes=["bm-side-title"])
-                    gr.Markdown(
-                        "Choisis un sujet et une configuration pour commencer.",
-                        elem_classes=["bm-side-intro"],
-                    )
-                    concept_choice = gr.Dropdown(
-                        choices=list_concepts(),
-                        label="Concept à découvrir",
-                        info="Un cours guidé, question après question",
-                        value=None,
-                        interactive=True,
-                        elem_classes=["bm-field"],
-                    )
-                    model_choice = gr.Radio(
-                        choices=[
-                            ("Qwen · Baseline", "baseline"),
-                            ("Qwen · QLoRA", "lora"),
-                        ],
-                        value="baseline",
-                        label="Version du tuteur",
-                        elem_classes=["bm-field"],
-                    )
-                    reset = gr.Button(
-                        "↻ Recommencer",
-                        variant="secondary",
-                        elem_classes=["bm-action-row"],
-                    )
+        # Page 1 : choix d'une histoire.
+        with gr.Column(elem_id="bm-home") as home_view:
+            gr.HTML(HEADER_HTML, container=False, padding=False)
+            card_buttons = []
+            with gr.Column(elem_id="bm-grid"):
+                for concept in ordered_concepts():
+                    with gr.Column(elem_id=f"bm-card-{concept['id']}", elem_classes=["bm-card"]):
+                        gr.HTML(card_html(concept), container=False, padding=False)
+                        hit = gr.Button(f"Commencer : {concept['id']}", elem_classes=["bm-hit"])
+                    card_buttons.append((concept["id"], hit))
 
-                with gr.Group(elem_classes=["bm-panel"]):
-                    gr.Markdown("### Comment ça marche ?", elem_classes=["bm-side-title"])
-                    gr.HTML(SIDEBAR_GUIDE_HTML)
-                    with gr.Accordion("Rôle et limites du tuteur", open=False):
-                        gr.Markdown(
-                            "Le tuteur évalue le raisonnement avec la fiche du concept. "
-                            "Il peut faire des erreurs et ne remplace pas un enseignant. "
-                            "Trois tentatives sont possibles par question, avec deux indices."
-                        )
-
-            with gr.Column(scale=2, min_width=400):
-                with gr.Group(elem_classes=["bm-panel"]):
-                    gr.Markdown("### Ton dialogue", elem_classes=["bm-main-title"])
-                    gr.Markdown(
-                        "Réponds naturellement. Un indice apparaît si ta réponse est incomplète.",
-                        elem_classes=["bm-main-subtitle"],
-                    )
-                    progress = gr.HTML(render_progress(_new_state()))
-                    chatbot_kwargs = {
-                        "height": 540,
-                        "label": "Échanges avec le tuteur",
-                        "elem_classes": ["bm-chat"],
-                    }
-                    chatbot_params = inspect.signature(gr.Chatbot).parameters
-                    if "type" in chatbot_params:
-                        chatbot_kwargs["type"] = "messages"
-                    if "show_copy_button" in chatbot_params:
-                        chatbot_kwargs["show_copy_button"] = True
-                    elif "buttons" in chatbot_params:
-                        chatbot_kwargs["buttons"] = ["copy"]
-                    chatbot = gr.Chatbot(**chatbot_kwargs)
+        # Page 2 : cours pleine largeur et console du tuteur en bas.
+        with gr.Column(elem_id="bm-reading", visible=False) as reading_view:
+            with gr.Row(elem_classes=["bm-topbar-row"]):
+                back = gr.Button("Revenir aux histoires", elem_id="bm-back")
+                gr.HTML(LOGO_HTML, container=False, padding=False)
+            story = gr.HTML("", container=False, padding=False)
+            course = gr.Markdown("", elem_classes=["bm-text"])
+            with gr.Column(elem_id="bm-console"):
+                with gr.Row(elem_classes=["bm-console-h"]):
+                    fold = gr.Button("⤡", elem_id="bm-fold")
+                    gr.HTML(console_title_html(), container=False, padding=False)
+                    # Interrupteur Baseline / QLoRA : dessin HTML + bouton transparent par-dessus.
+                    with gr.Column(elem_id="bm-tut"):
+                        switch = gr.HTML(switch_html("baseline"), container=False, padding=False)
+                        switch_hit = gr.Button("Changer de tuteur", elem_classes=["bm-hit"])
+                    progress = gr.HTML(render_progress(_new_state()), container=False, padding=False)
+                chatbot_kwargs = {"elem_id": "bm-chat", "show_label": False, "container": False}
+                chatbot_params = inspect.signature(gr.Chatbot).parameters
+                if "type" in chatbot_params:
+                    chatbot_kwargs["type"] = "messages"
+                if "buttons" in chatbot_params:
+                    chatbot_kwargs["buttons"] = []
+                chatbot = gr.Chatbot(**chatbot_kwargs)
+                with gr.Row(elem_id="bm-composer"):
                     textbox = gr.Textbox(
-                        placeholder="Quel est ton raisonnement ? Explique ton choix…",
-                        label="Ta réponse",
-                        lines=3,
-                        max_lines=6,
-                        elem_classes=["bm-input"],
+                        placeholder="Explique avec tes mots…", show_label=False, container=False,
+                        lines=1, max_lines=4, scale=1, elem_id="bm-answer",
                     )
-                    send = gr.Button(
-                        "Envoyer ma réponse →",
-                        variant="primary",
-                        elem_classes=["bm-primary"],
-                    )
+                    send = gr.Button("↑", elem_id="bm-send", scale=0, min_width=34)
 
-        gr.HTML(FOOTER_HTML)
+        def show(page):
+            """Visibilité des deux pages : accueil ou lecture."""
+            on_home = page == "home"
+            return gr.update(visible=on_home), gr.update(visible=not on_home)
 
-        def on_concept_change(concept_id):
+        pages = [home_view, reading_view]
+
+        def on_open(concept_id):
             new_state, new_chat = start_concept(concept_id)
-            return new_state, new_chat, render_progress(new_state), ""
+            concept = load_concept(concept_id)
+            return (new_state, new_chat, story_header_html(concept), render_course(new_state),
+                    render_progress(new_state), "", *show("read"))
+
+        for concept_id, hit in card_buttons:
+            hit.click(
+                partial(on_open, concept_id), None,
+                [state, chatbot, story, course, progress, textbox, *pages],
+            ).then(None, js=SCROLL_TOP_JS)
+
+        back.click(lambda: show("home"), None, pages).then(None, js=SCROLL_TOP_JS)
+
+        def on_toggle(version):
+            version = toggle_model(version)
+            return version, switch_html(version)
+
+        switch_hit.click(on_toggle, model_version, [model_version, switch])
+        fold.click(None, js=FOLD_JS)
 
         def on_send(text, current_state, history, version):
             new_state, new_chat = submit_answer(text, current_state, history, version)
-            return new_state, new_chat, "", render_progress(new_state)
+            return new_state, new_chat, "", render_progress(new_state), render_course(new_state)
 
-        def on_reset():
-            new_state, new_chat = reset_session()
-            return new_state, new_chat, None, "", render_progress(new_state)
-
-        concept_choice.change(
-            on_concept_change, concept_choice, [state, chatbot, progress, textbox]
-        )
-        send.click(
-            on_send, [textbox, state, chatbot, model_choice],
-            [state, chatbot, textbox, progress],
-        )
-        textbox.submit(
-            on_send, [textbox, state, chatbot, model_choice],
-            [state, chatbot, textbox, progress],
-        )
-        reset.click(
-            on_reset, None, [state, chatbot, concept_choice, textbox, progress]
-        )
+        for trigger in (send.click, textbox.submit):
+            trigger(on_send, [textbox, state, chatbot, model_version],
+                    [state, chatbot, textbox, progress, course])
     return app
 
 
@@ -393,6 +422,7 @@ def launch_app(**launch_kwargs):
         # Gradio 6 : thème et CSS sont configurés lors du lancement.
         launch_kwargs.setdefault("theme", make_theme(gr))
         launch_kwargs.setdefault("css", CUSTOM_CSS)
+        launch_kwargs.setdefault("head", HEAD_HTML)
     return build_app().launch(**launch_kwargs)
 
 

@@ -1,279 +1,462 @@
-"""Identité visuelle de l'interface Gradio Brainmaxxing."""
+"""Identité visuelle de l'interface Gradio Brainmaxing (maquette « Become a smart guy »).
 
-HEADER_HTML = """
-<section class="bm-hero" aria-label="Présentation Brainmaxxing">
-  <div class="bm-hero-orb bm-orb-one" aria-hidden="true"></div>
-  <div class="bm-hero-orb bm-orb-two" aria-hidden="true"></div>
-  <div class="bm-hero-content">
-    <span class="bm-eyebrow">LABORATOIRE D'APPRENTISSAGE</span>
-    <h1>Brain<span>maxxing.</span></h1>
-    <p>Explore un concept, défends ton raisonnement et progresse avec un tuteur IA
-    qui t'aide à trouver, plutôt qu'à recopier, la réponse.</p>
-    <div class="bm-tags" aria-label="Fonctionnalités">
-      <span>6 concepts</span><span>17 questions</span>
-      <span>Indices progressifs</span><span>Qwen &amp; QLoRA</span>
-    </div>
-  </div>
-  <div class="bm-hero-mark" aria-hidden="true">✦</div>
-</section>
+Ce module ne contient que de la présentation : couleurs, polices, fragments HTML
+et CSS. Le parcours pédagogique reste dans `gradio_app.py`.
+"""
+from html import escape
+
+# Éclair jaune posé sur le cerveau du logo.
+BOLT_SVG = (
+    '<svg viewBox="0 0 20 28" aria-hidden="true"><path d="M13 1 3 15h6l-3 12 11-15h-6z" '
+    'fill="#FFD43B" stroke="#B88700" stroke-width="1.4" stroke-linejoin="round"/></svg>'
+)
+
+# Habillage de chaque fiche : titre court, accroche, emoji et couleur de carte.
+# L'ordre de ce dictionnaire est l'ordre d'affichage de la grille.
+CONCEPT_STYLES = {
+    "monty-hall": {"title": "Le problème de Monty Hall", "emoji": "🐐", "color": "--c-blue",
+                   "hook": "Trois portes, une voiture. Changer de porte double tes chances."},
+    "bateau-de-thesee": {"title": "Le bateau de Thésée", "emoji": "⛵", "color": "--c-violet",
+                         "hook": "On remplace chaque planche. Est-ce encore le même bateau ?"},
+    "plier-une-feuille-42-fois": {"title": "Plier une feuille 42 fois", "emoji": "🌕",
+                                  "color": "--c-yellow", "dark_ink": True,
+                                  "hook": "Une feuille de papier qui atteint la Lune."},
+    "dilemme-du-tramway": {"title": "Le dilemme du tramway", "emoji": "🚋", "color": "--c-coral",
+                           "hook": "Tirer le levier sauve cinq vies et en sacrifie une."},
+    "infinis-plus-grands-que-l-infini": {"title": "Des infinis plus grands que l'infini",
+                                         "emoji": "🌌", "color": "--c-indigo",
+                                         "hook": "Certains infinis en contiennent d'autres."},
+    "doute-de-descartes": {"title": "Le doute de Descartes", "emoji": "🎭", "color": "--c-green",
+                           "hook": "Et si tout ce que tu vois était une illusion ?"},
+}
+
+SUBJECT_LABELS = {"mathematiques": "Maths", "philosophie": "Philo"}
+MODEL_LABELS = {"baseline": "Baseline", "lora": "QLoRA"}
+
+
+def concept_style(concept: dict) -> dict:
+    """Habillage d'une fiche, avec un repli pour les fiches ajoutées plus tard.
+
+    Paramètres :
+        concept : fiche concept (contrat 1).
+
+    Retour :
+        {"title", "emoji", "color", "hook", "dark_ink"}.
+
+    Exemple :
+        concept_style({"id": "monty-hall", "concept": "..."})["emoji"]  # "🐐"
+    """
+    fallback = {"title": concept["concept"], "emoji": "💡", "color": "--c-blue", "hook": ""}
+    return {"dark_ink": False, **fallback, **CONCEPT_STYLES.get(concept["id"], {})}
+
+
+def difficulty_label(score: int) -> str:
+    """Traduit la difficulté chiffrée (0-100) de la fiche en mot.
+
+    Exemple :
+        difficulty_label(45)  # "Moyen"
+    """
+    if score < 40:
+        return "Facile"
+    return "Moyen" if score < 70 else "Difficile"
+
+
+def concept_tag(concept: dict) -> str:
+    """Étiquette « Matière · Difficulté » affichée au-dessus des titres.
+
+    Exemple :
+        concept_tag({"matiere": "mathematiques", "difficulte": 45})  # "Maths · Moyen"
+    """
+    subject = SUBJECT_LABELS.get(concept["matiere"], concept["matiere"].capitalize())
+    return f"{subject} · {difficulty_label(concept['difficulte'])}"
+
+
+LOGO_HTML = (
+    '<div class="bm-topbar"><div class="bm-logo">'
+    f'<span class="bm-mark bm-emoji" aria-hidden="true">🧠{BOLT_SVG}</span>Brainmaxing</div></div>'
+)
+
+HEADER_HTML = (
+    LOGO_HTML
+    + '<div class="bm-cover"><p>Become a smart guy</p></div>'
+    + f'<span class="bm-page-icon bm-emoji" aria-hidden="true">🧠{BOLT_SVG}</span>'
+    + '<h1 class="bm-title">Choisis une histoire</h1>'
+)
+
+# Squelette de chargement : affiché dès l'ouverture, par-dessus la page, puis retiré
+# en fondu quand les cartes, le CSS et les polices sont prêts. Évite l'aperçu brut de
+# Gradio (textes sans style, polices de secours) pendant les premières secondes.
+SKELETON_HTML = """
+<style>
+#bm-skeleton { position:fixed; inset:0; z-index:9999; background:#F5F8FA; overflow:hidden;
+  padding:0 clamp(16px,3vw,40px); transition:opacity .35s ease; }
+#bm-skeleton.bm-sk-out { opacity:0; pointer-events:none; }
+#bm-skeleton .sk { background:#E6EDF1; border-radius:10px; position:relative; overflow:hidden; }
+#bm-skeleton .sk::after { content:""; position:absolute; inset:0; transform:translateX(-100%);
+  background:linear-gradient(90deg, transparent, rgb(255 255 255 / .75), transparent);
+  animation:bm-shimmer 1.3s ease-in-out infinite; }
+@keyframes bm-shimmer { to { transform:translateX(100%); } }
+#bm-skeleton .sk-top { display:flex; align-items:center; gap:10px; height:54px; }
+#bm-skeleton .sk-logo { width:28px; height:28px; border-radius:50%; }
+#bm-skeleton .sk-name { width:120px; height:16px; }
+#bm-skeleton .sk-cover { height:clamp(150px,20vw,210px); border-radius:0;
+  margin:0 calc(-1 * clamp(16px,3vw,40px)); }
+#bm-skeleton .sk-icon { width:84px; height:84px; border-radius:50%; margin-top:-46px; background:#DCE5EB; }
+#bm-skeleton .sk-title { width:min(340px,70%); height:34px; margin:18px 0 28px; }
+#bm-skeleton .sk-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; }
+#bm-skeleton .sk-card { height:180px; border-radius:22px; padding:20px; display:grid;
+  grid-template-columns:52px 1fr; gap:14px; align-content:start; background:#EBF1F4; }
+#bm-skeleton .sk-card .sk { background:#DCE5EB; }
+#bm-skeleton .sk-emo { width:52px; height:52px; border-radius:16px; grid-row:span 4; }
+#bm-skeleton .sk-l1 { width:40%; height:10px; } #bm-skeleton .sk-l2 { width:80%; height:18px; }
+#bm-skeleton .sk-l3 { width:95%; height:12px; } #bm-skeleton .sk-btn { width:110px; height:34px; border-radius:99px; margin-top:6px; }
+@media (prefers-reduced-motion: reduce) { #bm-skeleton .sk::after { animation:none; } }
+</style>
+<script>
+(function () {
+  var card = '<div class="sk-card"><div class="sk sk-emo"></div><div class="sk sk-l1"></div>'
+    + '<div class="sk sk-l2"></div><div class="sk sk-l3"></div><div class="sk sk-btn"></div></div>';
+  var el = document.createElement("div");
+  el.id = "bm-skeleton";
+  el.setAttribute("aria-hidden", "true");
+  el.innerHTML = '<div class="sk-top"><div class="sk sk-logo"></div><div class="sk sk-name"></div></div>'
+    + '<div class="sk sk-cover"></div><div class="sk sk-icon"></div><div class="sk sk-title"></div>'
+    + '<div class="sk-grid">' + card.repeat(6) + "</div>";
+  (document.body || document.documentElement).appendChild(el);
+  var start = Date.now();
+  function ready() {
+    var cover = document.querySelector("#bm-home .bm-cover, #bm-reading .bm-cover");
+    return cover && getComputedStyle(cover).backgroundColor !== "rgba(0, 0, 0, 0)";
+  }
+  function hide() {
+    el.classList.add("bm-sk-out");
+    setTimeout(function () { el.remove(); }, 400);
+  }
+  (function wait() {
+    if (ready()) {
+      var fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+      fonts.then(function () { setTimeout(hide, 120); });
+    } else if (Date.now() - start < 15000) {
+      requestAnimationFrame(wait);
+    } else {
+      hide();  // filet de sécurité : ne jamais bloquer l'interface
+    }
+  })();
+})();
+</script>
 """
 
-SIDEBAR_GUIDE_HTML = """
-<div class="bm-guide">
-  <div class="bm-guide-row"><span class="bm-guide-index">01</span>
-    <div><strong>Explore</strong><p>Découvre les sections du concept au fil des questions.</p></div></div>
-  <div class="bm-guide-row"><span class="bm-guide-index">02</span>
-    <div><strong>Argumente</strong><p>Écris ton raisonnement, même si tu hésites.</p></div></div>
-  <div class="bm-guide-row"><span class="bm-guide-index">03</span>
-    <div><strong>Progresse</strong><p>Après un échec, utilise les indices pour réessayer.</p></div></div>
-</div>
-"""
+HEAD_HTML = (
+    SKELETON_HTML +
+    '<link rel="preconnect" href="https://fonts.googleapis.com">'
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:'
+    'opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700'
+    '&family=JetBrains+Mono:wght@500;700&display=swap">'
+    # Gradio retire @property du CSS personnalisé : sans cette déclaration, l'angle
+    # animé du liseré des cartes est invalide et le fond des cartes disparaît.
+    '<style>@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}</style>'
+)
 
-FOOTER_HTML = """
-<footer class="bm-footer">
-  <span>Brainmaxxing · Mini-projet NLP &amp; Transformers</span>
-  <span>Un verdict aide à progresser ; il peut rester imparfait.</span>
-</footer>
-"""
+
+def card_html(concept: dict) -> str:
+    """Contenu d'une carte de la grille d'accueil (le clic est géré par Gradio).
+
+    Exemple :
+        "Commencer" in card_html(load_concept("monty-hall"))  # True
+    """
+    style = concept_style(concept)
+    return (
+        f'<div class="bm-card-in"><span class="bm-emo bm-emoji" aria-hidden="true">{style["emoji"]}</span>'
+        f'<div><span class="bm-tag">{escape(concept_tag(concept))}</span>'
+        f'<h3>{escape(style["title"])}</h3><p>{escape(style["hook"])}</p></div>'
+        '<span class="bm-go">Commencer</span></div>'
+    )
+
+
+def story_header_html(concept: dict) -> str:
+    """Bandeau coloré, icône et titre de la page de lecture d'une fiche."""
+    style = concept_style(concept)
+    ink = "#2A2208" if style["dark_ink"] else "#fff"
+    return (
+        f'<div class="bm-cover" style="background:var({style["color"]})">'
+        f'<p style="color:{ink}">{escape(style["hook"] or style["title"])}</p></div>'
+        f'<span class="bm-page-icon bm-emoji" aria-hidden="true">{style["emoji"]}</span>'
+        f'<h1 class="bm-title bm-story-title">{escape(style["title"])}</h1>'
+    )
+
+
+def switch_html(model_version: str) -> str:
+    """Interrupteur B/Q de la console : Baseline à gauche, QLoRA à droite."""
+    label = MODEL_LABELS.get(model_version, "Baseline")
+    return (
+        f'<span class="bm-sw" data-v="{label}" role="switch" aria-checked="{str(label == "QLoRA").lower()}" '
+        f'aria-label="Tuteur {label}"><span class="b">B</span><span class="q">Q</span></span>'
+        f'<span class="bm-tip">Tuteur : {label} (cliquer pour changer)</span>'
+    )
+
+
+def console_title_html() -> str:
+    """En-tête de la console : logo et nom du tuteur (la version est dans l'interrupteur)."""
+    return (
+        f'<div class="bm-console-title"><span class="bm-mark bm-emoji" aria-hidden="true">🧠{BOLT_SVG}</span>'
+        '<b>Ton tuteur</b></div>'
+    )
+
+
+def _card_rules() -> str:
+    """Couleur et décalage d'animation propres à chaque carte de la grille."""
+    rules = []
+    for index, (concept_id, style) in enumerate(CONCEPT_STYLES.items()):
+        ink = "#2A2208" if style.get("dark_ink") else "#fff"
+        rules.append(f"#bm-card-{concept_id}{{--c:var({style['color']});--ink:{ink};--i:{index}}}")
+    return "\n".join(rules)
+
 
 CUSTOM_CSS = """
-/* Palette et disposition */
-:root {
-  --bm-surface: rgba(17, 27, 47, .89);
-  --bm-border: rgba(180, 197, 233, .14);
-  --bm-text: #eef3ff;
-  --bm-muted: #a8b8d3;
-  --bm-accent: #9387ff;
+:root, .gradio-container {
+  --cover:#1E9ACD; --primary:#1C9ACE; --primary-ink:#0E6F99; --tint:#E8F5FB;
+  --bg:#F5F8FA; --surface:#FFFFFF; --fill:#EEF3F6; --line:#D5E1E7; --fg:#0F1D24; --muted:#6A7F8A;
+  --ok:#1E9C61; --warn:#B87900; --bad:#D0443A; --refus:#6C5BD0;
+  --c-blue:#1C9ACE; --c-violet:#A15BE0; --c-yellow:#F4CD3C; --c-coral:#EC7A72; --c-green:#26A97A; --c-indigo:#4F67E8;
+  --f-display:"Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif;
+  --f:"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  --pad:clamp(16px,3vw,40px);
 }
+body, gradio-app { background:var(--bg) !important; }
 .gradio-container {
-  max-width: 1460px !important;
-  margin-inline: auto !important;
-  padding: 24px 28px 32px !important;
-  background:
-    radial-gradient(ellipse at 8% 3%, rgba(101, 77, 226, .19), transparent 30%),
-    radial-gradient(ellipse at 92% 34%, rgba(28, 181, 169, .11), transparent 27%),
-    #0b1120 !important;
+  max-width:none !important; width:100% !important; margin:0 !important;
+  padding:0 0 48px !important; background:var(--bg) !important;
+  color:var(--fg); font:17px/1.55 var(--f) !important; color-scheme:light;
+  -webkit-font-smoothing:antialiased; overflow-x:clip;
 }
-.bm-hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border: 1px solid rgba(169, 164, 255, .23);
-  border-radius: 26px;
-  padding: 32px 40px;
-  margin-bottom: 22px;
-  background: linear-gradient(115deg, rgba(70, 55, 141, .52), rgba(16, 36, 56, .96) 77%);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .20);
-}
-.bm-hero-content { position: relative; z-index: 2; max-width: 790px; }
-.bm-eyebrow { font-size: .73rem; letter-spacing: .19em; color: #bfc4ff; font-weight: 750; }
-.bm-hero h1 { font-size: clamp(2.1rem, 4vw, 3.6rem); font-weight: 850;
-  color: #f8faff; line-height: 1.12; margin: 12px 0 10px; letter-spacing: -.045em; }
-.bm-hero h1 span { color: #a8a0ff; }
-.bm-hero p { color: #d1ddf1; max-width: 660px; font-size: 1rem; line-height: 1.65; margin: 0; }
-.bm-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 21px; }
-.bm-tags span { padding: 7px 12px; border-radius: 999px; font-weight: 600; font-size: .76rem;
-  color: #dde7fa; background: rgba(255, 255, 255, .07);
-  border: 1px solid rgba(255, 255, 255, .11); }
-.bm-hero-orb { pointer-events: none; position: absolute; border-radius: 50%; filter: blur(3px); }
-.bm-orb-one { width: 240px; height: 240px; right: -55px; top: -115px;
-  background: radial-gradient(circle, rgba(145, 120, 255, .45), transparent 72%); }
-.bm-orb-two { width: 250px; height: 250px; right: 5%; bottom: -178px;
-  background: radial-gradient(circle, rgba(35, 207, 187, .32), transparent 72%); }
-.bm-hero-mark { position: absolute; right: 7%; top: 40px; font-size: 110px; line-height: 1;
-  color: rgba(225, 223, 255, .13); transform: rotate(-15deg); }
+/* Gradio limite la page à 1280 px avec ses propres marges : la maquette est en pleine largeur. */
+.gradio-container .main.fillable, .gradio-container .main.app { max-width:none !important; width:100% !important;
+  margin:0 !important; padding:0 var(--pad) 0 var(--pad) !important; }
+.gradio-container > .main, .gradio-container .wrap.contain { gap:0 !important; }
+footer { display:none !important; }
+.bm-emoji { font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; line-height:1; }
+.gradio-container :focus-visible { outline:3px solid var(--primary) !important; outline-offset:3px; }
+.gradio-container .html-container, .gradio-container .prose { padding:0 !important; }
 
-.bm-panel {
-  background: var(--bm-surface) !important;
-  border: 1px solid var(--bm-border) !important;
-  border-radius: 22px !important;
-  padding: 18px 18px 16px !important;
-  box-shadow: 0 14px 42px rgba(0, 0, 0, .15);
-  backdrop-filter: blur(12px);
-}
-.bm-side-title h3, .bm-main-title h3 { color: var(--bm-text) !important; margin-bottom: 3px; }
-.bm-side-intro p, .bm-main-subtitle p { color: var(--bm-muted) !important; line-height: 1.55; }
-.bm-field { margin-top: 7px; }
-.bm-action-row { margin-top: 8px; }
-.bm-panel .block { border-radius: 14px !important; }
-.bm-panel button { border-radius: 13px !important; font-weight: 700 !important;
-  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease !important; }
-.bm-panel button:hover { transform: translateY(-2px); box-shadow: 0 7px 18px rgba(0, 0, 0, .17); }
-.bm-primary button { box-shadow: 0 8px 25px rgba(99, 85, 244, .26) !important; }
-.bm-guide { display: grid; gap: 17px; padding: 4px 1px 8px; }
-.bm-guide-row { display: flex; align-items: flex-start; gap: 13px; }
-.bm-guide-index { font: 750 .79rem/1.2 system-ui, sans-serif; color: #bfbaff;
-  background: rgba(135, 121, 255, .14); border: 1px solid rgba(135, 121, 255, .25);
-  border-radius: 10px; padding: 8px 9px; min-width: 37px; text-align: center; }
-.bm-guide-row strong { font-size: .92rem; color: #f1f4ff; }
-.bm-guide-row p { font-size: .81rem; line-height: 1.5; margin: 3px 0 0; color: var(--bm-muted); }
-.bm-separator { height: 1px; background: var(--bm-border); margin: 16px 0; }
-.bm-progress-card { padding: 13px 16px; border-radius: 15px;
-  border: 1px solid rgba(157, 169, 212, .13);
-  background: linear-gradient(105deg, rgba(74, 65, 150, .16), rgba(20, 44, 65, .22)); }
-.bm-progress-head { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
-.bm-progress-title { color: #edf3ff; font-weight: 700; font-size: .88rem; }
-.bm-progress-meta { color: #aebfda; font-size: .77rem; margin-top: 5px; }
-.bm-progress-track { height: 7px; border-radius: 999px; overflow: hidden;
-  background: rgba(191, 203, 232, .12); margin-top: 13px; }
-.bm-progress-fill { display: block; height: 100%; border-radius: inherit;
-  background: linear-gradient(90deg, #8072ff, #2bd3b5); transition: width .3s ease; }
-.bm-chat { min-height: 500px; overflow: hidden; border-radius: 16px !important; }
-.bm-input textarea { border-radius: 13px !important; }
-.bm-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
-  margin: 20px 4px 0; color: #8f9db8; font-size: .77rem; }
+/* Logo, bandeau et titres */
+.bm-topbar { display:flex; align-items:center; padding-block:14px; }
+.bm-logo { display:flex; align-items:center; gap:10px; font:800 1.15rem var(--f-display);
+  letter-spacing:-.02em; color:var(--fg); }
+.bm-mark { position:relative; font-size:26px; }
+.bm-mark svg { position:absolute; width:10px; height:14px; top:-1px; right:-1px;
+  filter:drop-shadow(0 1px 1px rgb(0 0 0 / .25)); }
+.bm-cover { margin-left:calc(-1 * var(--pad)); margin-right:calc(-1 * var(--pad)); height:clamp(150px,20vw,210px); background:var(--cover);
+  display:flex; align-items:center; justify-content:center; padding-inline:16px; }
+.bm-cover p { margin:0; max-width:22ch; color:#fff; font:800 clamp(1.8rem,1rem + 3.5vw,3.4rem)/1 var(--f-display);
+  letter-spacing:-.03em; text-align:center; text-wrap:balance; }
+.bm-page-icon { position:relative; display:inline-block; font-size:clamp(64px,8vw,84px);
+  margin-top:calc(clamp(64px,8vw,84px) * -.55); }
+.bm-page-icon svg { position:absolute; width:30%; height:42%; top:-2%; right:-2%;
+  filter:drop-shadow(0 1px 2px rgb(0 0 0 / .3)); }
+.bm-title { font:700 clamp(1.8rem,1.3rem + 2vw,2.4rem)/1.1 var(--f-display) !important; letter-spacing:-.02em;
+  margin:8px 0 20px !important; color:var(--fg) !important; }
+.bm-story-title { margin-top:18px !important; }  /* respiration sous l'emoji de l'histoire */
 
+/* Flèche de retour à gauche du logo (page de lecture) */
+.bm-topbar-row { align-items:center !important; gap:0 !important; flex-wrap:nowrap !important; }
+.bm-topbar-row > * { flex:none !important; min-width:0 !important; width:auto !important; }
+#bm-back { width:38px !important; height:38px; min-width:0 !important; padding:0 !important; margin-right:10px;
+  border-radius:50% !important; border:0 !important; background:var(--surface) !important; color:var(--fg) !important;
+  box-shadow:0 1px 4px rgb(15 29 36 / .12) !important; position:relative; overflow:hidden;
+  color:transparent !important; font-size:0 !important; transition:background .2s,transform .15s; }
+/* le libellé reste pour l'accessibilité ; la flèche est centrée par-dessus */
+#bm-back::before { content:""; position:absolute; inset:0; margin:auto; width:20px; height:20px;
+  background:var(--fg);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 10H4M9 4l-6 6 6 6'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 10H4M9 4l-6 6 6 6'/%3E%3C/svg%3E") center/contain no-repeat; }
+#bm-back:hover { background:var(--tint) !important; }
+#bm-back:hover::before { background:var(--primary-ink); }
+#bm-back:active { transform:scale(.94); }
 
-/* Les blocs natifs de Gradio peuvent reprendre des surfaces du thème clair.
-   Ces règles évitent les textes clairs sur des fonds blancs dans nos panneaux. */
-.gradio-container {
-  color-scheme: dark;
-}
-.gradio-container .bm-panel {
-  color: var(--bm-text);
-  color-scheme: dark;
-}
-.gradio-container .bm-panel .bm-side-title,
-.gradio-container .bm-panel .bm-side-intro,
-.gradio-container .bm-panel .bm-main-title,
-.gradio-container .bm-panel .bm-main-subtitle {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-.gradio-container .bm-panel .bm-side-title *,
-.gradio-container .bm-panel .bm-main-title * {
-  color: #f1f5ff !important;
-}
-.gradio-container .bm-panel .bm-side-intro *,
-.gradio-container .bm-panel .bm-main-subtitle * {
-  color: #acbcda !important;
-}
-.gradio-container .bm-panel .bm-guide,
-.gradio-container .bm-panel .bm-guide-row {
-  background: transparent !important;
-  color: #eaf0ff !important;
-}
-.gradio-container .bm-panel .bm-progress-card {
-  background: linear-gradient(105deg, #26284f, #143042) !important;
-  border: 1px solid #405078 !important;
-  color: #edf3ff !important;
-}
-.gradio-container .bm-panel .bm-progress-title {
-  color: #f4f7ff !important;
-}
-.gradio-container .bm-panel .bm-progress-meta {
-  color: #bfcee7 !important;
-}
-.gradio-container .bm-panel input,
-.gradio-container .bm-panel textarea,
-.gradio-container .bm-panel select {
-  color: #edf3ff !important;
-  caret-color: #edf3ff;
-  background-color: #0c182b !important;
-  border-color: #324361 !important;
-}
-.gradio-container .bm-panel input::placeholder,
-.gradio-container .bm-panel textarea::placeholder {
-  color: #a8b8d3 !important;
-  opacity: 1;
-}
-.gradio-container .bm-panel .bm-chat {
-  background: #0c182b !important;
-  color: #eaf0ff !important;
-  border: 1px solid #30415e !important;
-}
-.gradio-container .bm-panel :is(.block-label, .block-title, label) {
-  color: #e8eeff !important;
-}
-.gradio-container .bm-panel .info,
-.gradio-container .bm-panel .wrap .info {
-  color: #b2c0dc !important;
-}
-.gradio-container .bm-panel button:focus-visible,
-.gradio-container .bm-panel input:focus-visible,
-.gradio-container .bm-panel textarea:focus-visible {
-  outline: 2px solid #b1a9ff !important;
-  outline-offset: 2px;
-}
+/* Interrupteur Baseline / QLoRA dans l'en-tête de la console (même dessin, à l'horizontale) */
+#bm-tut { position:relative; width:60px !important; height:32px; min-width:0 !important; border-radius:99px;
+  display:grid !important; place-items:center; padding:0 !important; gap:0 !important; flex:none !important;
+  overflow:visible !important; }
+.bm-tip { display:none; }
+#bm-tut:hover .bm-tip { display:block; position:absolute; top:calc(100% + 8px);  /* la console coupe ce qui dépasse en haut */ left:50%;
+  transform:translateX(-50%); background:var(--fg); color:var(--bg); font:600 .8rem var(--f); padding:5px 9px;
+  border-radius:8px; white-space:nowrap; pointer-events:none; z-index:5; }
+.bm-sw { position:relative; width:60px; height:32px; border-radius:99px; background:var(--fill); display:flex;
+  justify-content:space-around; align-items:center; font:700 .75rem var(--f-mono); color:var(--muted); }
+.bm-sw::before { content:""; position:absolute; left:3px; top:3px; width:26px; height:26px; border-radius:50%;
+  background:var(--primary-ink); box-shadow:0 1px 3px rgb(0 0 0 / .25);
+  transition:transform .3s cubic-bezier(.3,1.4,.5,1); }
+.bm-sw[data-v="QLoRA"]::before { transform:translateX(28px); }
+.bm-sw span { position:relative; z-index:1; transition:color .2s; }
+.bm-sw[data-v="Baseline"] .b, .bm-sw[data-v="QLoRA"] .q { color:#fff; }
+
+/* Bouton transparent qui rend toute une carte (ou l'interrupteur) cliquable */
+.bm-hit { position:absolute !important; inset:0; z-index:3; width:100% !important; height:100% !important;
+  min-width:0 !important; opacity:0; cursor:pointer; border-radius:inherit !important; }
+
+/* Page 1 : grille de cartes */
+#bm-grid { display:grid !important; grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  grid-auto-rows:1fr; gap:16px !important; }  /* 1fr : toutes les lignes, donc toutes les cartes, ont la même hauteur */
+/* La hauteur de la carte descend jusqu'au contenu, pour caler « Commencer » en bas. */
+.bm-card { display:flex !important; flex-direction:column; }
+.bm-card > .block:not(:has(.bm-hit)), .bm-card .html-container, .bm-card .prose { flex:1 1 auto; display:flex !important;
+  flex-direction:column; height:100%; }
+.bm-card-in { flex:1 1 auto; grid-template-rows:auto 1fr auto; }
+.bm-card-in > .bm-emo { grid-row:1; }
+.bm-card-in > div { grid-column:2; grid-row:1 / span 2; }
+@media (max-width:420px) { #bm-grid { grid-template-columns:1fr; } }
+.bm-card { --a:0deg; --c:var(--c-blue); --ink:#fff; position:relative; color:var(--ink); border-radius:22px !important;
+  padding:20px !important; min-width:0 !important; border:1.5px solid transparent !important;
+  background:linear-gradient(var(--c),var(--c)) padding-box,
+    conic-gradient(from var(--a),transparent 0 60%,rgb(255 255 255 / .55) 80%,transparent 100%) border-box !important;
+  box-shadow:0 10px 24px -14px var(--c); transition:transform .12s ease-out,box-shadow .2s;
+  animation:bm-spin 8s linear infinite; animation-delay:calc(var(--i) * -.7s); }
+.bm-card:hover { transform:translateY(-3px); box-shadow:0 16px 30px -14px var(--c); }
+.bm-card:active { transform:scale(.98); }
+@keyframes bm-spin { to { --a:360deg; } }
+.bm-card-in { display:grid; grid-template-columns:52px minmax(0,1fr); gap:14px; align-items:start; color:var(--ink); }
+.bm-emo { display:grid; place-items:center; width:52px; height:52px; border-radius:16px;
+  background:rgb(255 255 255 / .22); font-size:30px; }
+.bm-tag { font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+.bm-card-in h3 { font:700 1.2rem/1.2 var(--f-display) !important; margin:2px 0 4px !important;
+  letter-spacing:-.01em; text-wrap:balance; color:var(--ink) !important; }
+.bm-card-in p { margin:0 !important; font-size:.92rem; opacity:.9; line-height:1.4; color:var(--ink) !important; }
+.bm-go { grid-column:2; grid-row:3; align-self:end; margin-top:14px; justify-self:start; background:var(--surface); color:var(--fg); font-size:.88rem;
+  font-weight:700; padding:8px 18px; border-radius:99px; box-shadow:0 2px 6px rgb(0 0 0 / .12); transition:transform .15s; }
+.bm-card:hover .bm-go { transform:scale(1.04); }
+
+/* Page 2 : lecture pleine largeur */
+#bm-reading { padding-bottom:calc(33vh + 40px); }
+#bm-reading > * { margin:0 !important; }
+.bm-story-title { margin-bottom:0 !important; }
+.bm-text { padding:4px 4px 0 !important; }  /* + l'écart natif de Gradio = 48px, comme la maquette */
+.bm-text h2:first-child, .bm-text .prose > h2:first-child { margin-top:0 !important; }
+.bm-text h2 { font:700 1.35rem/1.25 var(--f-display) !important; margin:26px 0 8px !important;
+  letter-spacing:-.01em; color:var(--fg) !important; border:0 !important; }
+.bm-text p, .bm-text li { max-width:75ch; font-size:1.06rem !important; color:var(--fg) !important; line-height:1.55; }
+.bm-text p { margin:0 0 12px !important; }
+
+/* Console du tuteur : carte flottante en bas */
+#bm-console { position:fixed !important; left:50%; transform:translateX(-50%); bottom:16px; z-index:8;
+  width:min(760px,calc(100% - 100px)) !important; max-height:33vh; min-height:200px; background:var(--surface);
+  border-radius:24px; box-shadow:0 12px 40px -12px rgb(15 29 36 / .28),0 0 0 1px var(--line);
+  display:flex !important; flex-direction:column; gap:0 !important; padding:0 !important; overflow:hidden; }
+@media (max-width:600px) { #bm-console { width:calc(100% - 88px) !important; left:16px; transform:none; } }
+#bm-console > * { width:auto !important; }
+.bm-console-h { align-items:center !important; gap:8px !important; padding:12px 18px 4px; flex-wrap:nowrap !important;
+  width:auto !important; }
+.bm-console-h > * { min-width:0 !important; flex:none !important; width:auto !important; }
+.bm-console-h > :last-child { margin-left:auto !important; }  /* progression calée à droite */
+.bm-console-title { white-space:nowrap; }
+#bm-fold { width:32px !important; height:32px; min-width:0 !important; padding:0 !important; margin-left:-6px;
+  border-radius:50% !important; border:0 !important; background:var(--fill) !important; color:var(--muted) !important;
+  box-shadow:none !important; font-size:15px !important; line-height:1; transition:background .2s,color .2s; }
+#bm-fold:hover { background:var(--tint) !important; color:var(--primary-ink) !important; }
+.bm-console-title { display:flex; align-items:center; gap:8px; font-size:.85rem; font-weight:600; color:var(--muted); }
+.bm-console-title .bm-mark { font-size:20px; }
+.bm-console-title b { color:var(--fg); font:700 .95rem var(--f-display); }
+.bm-progress-card { display:flex; flex-direction:column; align-items:flex-end; gap:4px; font-size:.78rem;
+  color:var(--muted); }
+.bm-gauge-row { display:flex; align-items:center; gap:10px; white-space:nowrap; }
+.bm-gauge-label { font-weight:600; }
+.bm-gauge-row:first-child .bm-gauge-label { color:var(--fg); font-weight:700; }
+.bm-progress-track { width:96px; height:6px; border-radius:99px; background:var(--fill); overflow:hidden; }
+.bm-progress-fill { display:block; height:100%; border-radius:inherit; background:var(--primary); transition:width .3s ease; }
+.bm-gauge-row + .bm-gauge-row .bm-progress-fill { background:var(--warn); }  /* tentatives : couleur distincte */
+#bm-console.min { min-height:0; }
+#bm-console.min #bm-chat, #bm-console.min #bm-composer { display:none !important; }
+#bm-console.min .bm-console-h { padding-bottom:12px; }
+
+/* Fil de discussion : bulles */
+/* Le fil défile à l'intérieur de la console, comme dans la maquette (tiers bas de l'écran). */
+#bm-chat { --chat-h:max(88px, calc(33vh - 116px)); flex:1 1 auto; min-height:0 !important; height:auto !important;
+  max-height:var(--chat-h); overflow:hidden !important; border:0 !important;
+  background:transparent !important; box-shadow:none !important; padding:0 !important; }
+#bm-chat .bubble-wrap { max-height:var(--chat-h); overflow-y:auto !important; }
+#bm-chat .bubble-wrap, #bm-chat .wrapper { background:transparent !important; }
+#bm-chat .bubble-wrap { padding:8px 18px !important; }
+#bm-chat .message-row { margin:0 0 8px !important; padding:0 !important; }
+#bm-chat .message { padding:9px 14px !important; border-radius:18px !important; font-size:.98rem !important;
+  border:0 !important; box-shadow:none !important; max-width:85%; }
+#bm-chat .message * { font-size:.98rem; line-height:1.45; }
+#bm-chat .message.bot, #bm-chat .bot-row .message { background:var(--fill) !important; color:var(--fg) !important;
+  border-bottom-left-radius:6px !important; }
+#bm-chat .message.user, #bm-chat .user-row .message { background:var(--primary-ink) !important; color:#fff !important;
+  border-bottom-right-radius:6px !important; }
+#bm-chat .message.user *, #bm-chat .user-row .message * { color:#fff !important; }
+#bm-chat .message p { margin:0 0 6px !important; }
+#bm-chat .message p:last-child { margin:0 !important; }
+#bm-chat .avatar-container, #bm-chat .message-buttons-bot, #bm-chat .icon-button-wrapper { display:none !important; }
+.v { display:block; font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  margin-bottom:2px; color:var(--muted); }
+.v.PARFAIT { color:var(--ok) !important; } .v.PARTIEL { color:var(--warn) !important; }
+.v.INCORRECT { color:var(--bad) !important; } .v.REFUS { color:var(--refus) !important; }
+
+/* Zone de saisie en pilule */
+#bm-composer { width:auto !important; flex-wrap:nowrap !important; align-items:flex-end !important; gap:8px !important;
+  margin:6px 12px 12px; background:var(--fill); border-radius:99px; padding:5px 5px 5px 16px; }
+#bm-composer > * { min-width:0 !important; }
+#bm-composer > #bm-answer, #bm-composer > .block:has(#bm-answer) { flex:1 1 auto !important; }
+#bm-answer, #bm-answer .wrap, #bm-answer label { background:transparent !important; border:0 !important;
+  box-shadow:none !important; padding:0 !important; }
+#bm-answer textarea { background:transparent !important; border:0 !important; box-shadow:none !important;
+  resize:none; padding:7px 0 !important; min-height:24px; font:17px/1.4 var(--f) !important; color:var(--fg) !important; }
+#bm-answer textarea::placeholder { color:var(--muted) !important; opacity:1; }
+#bm-send { width:34px !important; height:34px; min-width:0 !important; flex:none !important; padding:0 !important;
+  border-radius:50% !important; border:0 !important; background:var(--primary-ink) !important; color:#fff !important;
+  font-size:17px !important; font-weight:700 !important; box-shadow:none !important; transition:transform .1s; }
+#bm-send:active { transform:scale(.92); }
 
 @media (max-width: 900px) {
-  .gradio-container { padding: 12px 13px 20px !important; }
-  .bm-hero { padding: 24px 23px; border-radius: 19px; }
-  .bm-hero-mark { display: none; }
-  .bm-panel { padding: 13px !important; }
+  .bm-cover p { font-size:clamp(1.6rem,6vw,2.4rem); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bm-panel button, .bm-progress-fill { transition: none !important; }
-  .bm-panel button:hover { transform: none; }
+  .bm-card { animation:none; }
+  .bm-card, .bm-go, .bm-sw::before, .bm-progress-fill { transition:none !important; }
 }
-"""
+@media (prefers-reduced-motion: no-preference) {
+  #bm-chat .message-row, #bm-home, #bm-reading { animation:bm-in .35s cubic-bezier(.2,.8,.2,1); }
+  @keyframes bm-in { from { opacity:0; transform:translateY(6px); } }
+}
+""" + _card_rules()
 
 
 def make_theme(gr):
-    """Applique des surfaces sombres cohérentes, en modes clair et sombre."""
-    return gr.themes.Soft(
-        primary_hue="indigo",
-        secondary_hue="emerald",
+    """Thème clair de la maquette, identique en modes clair et sombre de Gradio.
+
+    Gradio bascule en sombre selon le système : on fixe les mêmes valeurs dans
+    les deux modes pour que la maquette garde ses contrastes.
+    """
+    values = {
+        "body_background_fill": "#F5F8FA",
+        "body_text_color": "#0F1D24",
+        "body_text_color_subdued": "#6A7F8A",
+        "background_fill_primary": "#FFFFFF",
+        "background_fill_secondary": "#EEF3F6",
+        "block_background_fill": "#FFFFFF",
+        "block_border_color": "#D5E1E7",
+        "block_label_background_fill": "#EEF3F6",
+        "block_label_text_color": "#0F1D24",
+        "block_title_text_color": "#0F1D24",
+        "block_info_text_color": "#6A7F8A",
+        "input_background_fill": "#EEF3F6",
+        "input_border_color": "#D5E1E7",
+        "input_border_color_focus": "#1C9ACE",
+        "panel_background_fill": "#FFFFFF",
+        "button_primary_background_fill": "#0E6F99",
+        "button_primary_background_fill_hover": "#1C9ACE",
+        "button_primary_text_color": "#FFFFFF",
+        "button_secondary_background_fill": "#EEF3F6",
+        "button_secondary_background_fill_hover": "#E8F5FB",
+        "button_secondary_text_color": "#0F1D24",
+        "color_accent_soft": "#E8F5FB",
+    }
+    both_modes = {**values, **{f"{key}_dark": value for key, value in values.items()}}
+    return gr.themes.Base(
+        primary_hue="sky",
         neutral_hue="slate",
-        radius_size="lg",
-    ).set(
-        body_background_fill="#0b1120",
-        body_background_fill_dark="#0b1120",
-        body_text_color="#eef3ff",
-        body_text_color_dark="#eef3ff",
-        body_text_color_subdued="#a8b8d3",
-        body_text_color_subdued_dark="#a8b8d3",
-        background_fill_primary="#121d32",
-        background_fill_primary_dark="#121d32",
-        background_fill_secondary="#1a2740",
-        background_fill_secondary_dark="#1a2740",
-        block_background_fill="#111b2f",
-        block_background_fill_dark="#111b2f",
-        block_border_color="#293852",
-        block_border_color_dark="#293852",
-        block_label_background_fill="#202e4b",
-        block_label_background_fill_dark="#202e4b",
-        block_label_text_color="#e8eeff",
-        block_label_text_color_dark="#e8eeff",
-        block_title_background_fill="#111b2f",
-        block_title_background_fill_dark="#111b2f",
-        block_title_text_color="#eef3ff",
-        block_title_text_color_dark="#eef3ff",
-        block_info_text_color="#aebeda",
-        block_info_text_color_dark="#aebeda",
-        input_background_fill="#0c182b",
-        input_background_fill_dark="#0c182b",
-        input_background_fill_focus="#10223b",
-        input_background_fill_focus_dark="#10223b",
-        input_border_color="#324361",
-        input_border_color_dark="#324361",
-        input_border_color_focus="#9288ff",
-        input_border_color_focus_dark="#9288ff",
-        panel_background_fill="#111b2f",
-        panel_background_fill_dark="#111b2f",
-        panel_border_color="#293852",
-        panel_border_color_dark="#293852",
-        checkbox_label_background_fill="#1a2944",
-        checkbox_label_background_fill_dark="#1a2944",
-        checkbox_label_background_fill_selected="#5b50bd",
-        checkbox_label_background_fill_selected_dark="#5b50bd",
-        checkbox_label_text_color="#ebf0ff",
-        checkbox_label_text_color_dark="#ebf0ff",
-        checkbox_label_text_color_selected="#ffffff",
-        checkbox_label_text_color_selected_dark="#ffffff",
-        button_primary_background_fill="#6456ed",
-        button_primary_background_fill_dark="#6456ed",
-        button_primary_background_fill_hover="#776aff",
-        button_primary_background_fill_hover_dark="#776aff",
-        button_primary_text_color="#ffffff",
-        button_primary_text_color_dark="#ffffff",
-        button_secondary_background_fill="#24344f",
-        button_secondary_background_fill_dark="#24344f",
-        button_secondary_background_fill_hover="#314366",
-        button_secondary_background_fill_hover_dark="#314366",
-        button_secondary_text_color="#eef3ff",
-        button_secondary_text_color_dark="#eef3ff",
-        accordion_text_color="#e5edff",
-        accordion_text_color_dark="#e5edff",
-    )
+        font=[gr.themes.GoogleFont("Hanken Grotesk"), "system-ui", "sans-serif"],
+        font_mono=[gr.themes.GoogleFont("JetBrains Mono"), "ui-monospace", "monospace"],
+    ).set(**both_modes)

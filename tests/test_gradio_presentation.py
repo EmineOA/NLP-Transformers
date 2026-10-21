@@ -1,8 +1,14 @@
 """Vérification légère de la présentation Gradio, sans chargement de Qwen."""
 import unittest
 
-from src.app.gradio_app import build_app, render_progress, start_concept, submit_answer
-from src.app.gradio_theme import CUSTOM_CSS, HEADER_HTML, make_theme
+from src.app.gradio_app import (
+    build_app, format_verdict, ordered_concepts, render_course, render_progress, start_concept,
+    submit_answer, toggle_model,
+)
+from src.app.gradio_theme import (
+    CUSTOM_CSS, HEAD_HTML, HEADER_HTML, card_html, concept_tag, difficulty_label, make_theme,
+    switch_html,
+)
 
 
 class TestGradioPresentation(unittest.TestCase):
@@ -38,6 +44,44 @@ class TestGradioPresentation(unittest.TestCase):
         self.assertIn("prefers-reduced-motion", CUSTOM_CSS)
         self.assertIn("@media (max-width: 900px)", CUSTOM_CSS)
         self.assertIn("bm-progress-card", CUSTOM_CSS)
+
+    def test_course_rendered_in_page_not_in_chat(self):
+        state, chat = start_concept("monty-hall")
+        course = render_course(state)
+        self.assertTrue(course.startswith("## Introduction"))
+        self.assertNotIn("Introduction", chat[0]["content"])
+        self.assertEqual(render_course({"concept_id": None}), "")
+
+    def test_new_sections_announced_in_chat(self):
+        state, chat = start_concept("monty-hall")
+        before = render_course(state)
+
+        def perfect(*_args):
+            return {"verdict": "PARFAIT", "feedback": "Oui.", "raw_response": "", "valid_format": True}
+
+        state, chat = submit_answer("Je change.", state, chat, generate=perfect)
+        self.assertGreater(len(render_course(state)), len(before))
+        self.assertTrue(any("La suite du cours" in m["content"] for m in chat))
+
+    def test_verdict_label_has_colour_class(self):
+        self.assertIn('class="v PARTIEL"', format_verdict(
+            {"verdict": "PARTIEL", "feedback": "x", "valid_format": True}))
+        self.assertIn('class="v REFUS"', format_verdict(
+            {"verdict": None, "feedback": "x", "valid_format": True}))
+
+    def test_cards_follow_mockup_order(self):
+        ids = [concept["id"] for concept in ordered_concepts()]
+        self.assertEqual(ids[:2], ["monty-hall", "bateau-de-thesee"])
+        self.assertEqual(len(ids), 6)
+        self.assertIn("Commencer", card_html(ordered_concepts()[0]))
+
+    def test_labels_and_switch(self):
+        self.assertEqual([difficulty_label(n) for n in (25, 45, 75)], ["Facile", "Moyen", "Difficile"])
+        self.assertEqual(concept_tag({"matiere": "philosophie", "difficulte": 35}), "Philo · Facile")
+        self.assertEqual(toggle_model("baseline"), "lora")
+        self.assertEqual(toggle_model("lora"), "baseline")
+        self.assertIn('data-v="QLoRA"', switch_html("lora"))
+        self.assertIn("@property --a", HEAD_HTML)
 
     def test_dark_palette_covers_both_gradio_modes(self):
         try:
