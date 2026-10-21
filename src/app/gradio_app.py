@@ -6,6 +6,7 @@ jamais par le modèle.
 """
 from __future__ import annotations
 
+import inspect
 from typing import Callable
 
 from src.agents.concepts import CONCEPT_FOLDER, load_concept
@@ -269,11 +270,12 @@ def build_app():
     """Construit la vue Gradio. Le parcours et les appels au LLM restent inchangés."""
     import gradio as gr
 
-    with gr.Blocks(
-        title="Brainmaxxing — Tuteur pédagogique",
-        theme=make_theme(gr),
-        css=CUSTOM_CSS,
-    ) as app:
+    block_kwargs = {"title": "Brainmaxxing — Tuteur pédagogique"}
+    if "theme" not in inspect.signature(gr.Blocks.launch).parameters:
+        # Gradio 5 : thème et CSS sont configurés sur Blocks.
+        block_kwargs.update(theme=make_theme(gr), css=CUSTOM_CSS)
+
+    with gr.Blocks(**block_kwargs) as app:
         state = gr.State(_new_state())
         gr.HTML(HEADER_HTML)
 
@@ -326,13 +328,19 @@ def build_app():
                         elem_classes=["bm-main-subtitle"],
                     )
                     progress = gr.HTML(render_progress(_new_state()))
-                    chatbot = gr.Chatbot(
-                        type="messages",
-                        height=540,
-                        label="Échanges avec le tuteur",
-                        show_copy_button=True,
-                        elem_classes=["bm-chat"],
-                    )
+                    chatbot_kwargs = {
+                        "height": 540,
+                        "label": "Échanges avec le tuteur",
+                        "elem_classes": ["bm-chat"],
+                    }
+                    chatbot_params = inspect.signature(gr.Chatbot).parameters
+                    if "type" in chatbot_params:
+                        chatbot_kwargs["type"] = "messages"
+                    if "show_copy_button" in chatbot_params:
+                        chatbot_kwargs["show_copy_button"] = True
+                    elif "buttons" in chatbot_params:
+                        chatbot_kwargs["buttons"] = ["copy"]
+                    chatbot = gr.Chatbot(**chatbot_kwargs)
                     textbox = gr.Textbox(
                         placeholder="Quel est ton raisonnement ? Explique ton choix…",
                         label="Ta réponse",
@@ -377,5 +385,16 @@ def build_app():
     return app
 
 
+def launch_app(**launch_kwargs):
+    """Lance Gradio avec la palette adaptée à la version installée."""
+    import gradio as gr
+
+    if "theme" in inspect.signature(gr.Blocks.launch).parameters:
+        # Gradio 6 : thème et CSS sont configurés lors du lancement.
+        launch_kwargs.setdefault("theme", make_theme(gr))
+        launch_kwargs.setdefault("css", CUSTOM_CSS)
+    return build_app().launch(**launch_kwargs)
+
+
 if __name__ == "__main__":
-    build_app().launch()
+    launch_app()
