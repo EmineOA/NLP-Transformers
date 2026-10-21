@@ -39,6 +39,50 @@ class TestGradioPresentation(unittest.TestCase):
         self.assertIn("@media (max-width: 900px)", CUSTOM_CSS)
         self.assertIn("bm-progress-card", CUSTOM_CSS)
 
+    def test_dark_palette_covers_both_gradio_modes(self):
+        try:
+            import gradio as gr
+        except ImportError:
+            self.skipTest("Gradio facultatif pour les tests métier.")
+        theme = make_theme(gr)
+        for variable in (
+            "body_background_fill",
+            "block_background_fill",
+            "block_label_background_fill",
+            "block_label_text_color",
+            "block_title_text_color",
+            "input_background_fill",
+            "button_secondary_background_fill",
+            "button_secondary_text_color",
+        ):
+            self.assertEqual(
+                getattr(theme, variable),
+                getattr(theme, variable + "_dark"),
+                variable,
+            )
+
+    def test_dark_theme_contrast(self):
+        try:
+            import gradio as gr
+        except ImportError:
+            self.skipTest("Gradio facultatif pour les tests métier.")
+        theme = make_theme(gr)
+
+        def luminance(hex_color):
+            rgb = [int(hex_color[i:i+2], 16) / 255 for i in (1, 3, 5)]
+            linear = [x / 12.92 if x <= 0.04045 else ((x + 0.055) / 1.055) ** 2.4 for x in rgb]
+            return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+
+        for foreground, background in (
+            ("block_label_text_color", "block_label_background_fill"),
+            ("body_text_color", "body_background_fill"),
+            ("button_secondary_text_color", "button_secondary_background_fill"),
+        ):
+            light, dark = sorted((luminance(getattr(theme, foreground)),
+                                  luminance(getattr(theme, background))))
+            contrast = (dark + 0.05) / (light + 0.05)
+            self.assertGreaterEqual(contrast, 4.5, foreground)
+
     def test_builds_without_loading_model(self):
         try:
             import gradio as gr
