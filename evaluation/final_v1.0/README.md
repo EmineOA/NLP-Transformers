@@ -31,7 +31,7 @@ python evaluation/run_final.py --model baseline --prompt fewshot
 
 `--only T02` rejoue T01 puis T02, car l'historique en dépend. Une exécution partielle enregistre des prédictions, mais **aucun score global**. Sans `--only`, les 20 sorties, le CSV de score et les métriques sont écrits sous `evaluation/final_v1.0/results/`.
 
-Le modèle `lora` n'est pas encore connecté au contrat `generate_response` dans `src/agents/inference.py` sur la branche `main` auditée. Cette suite refuse donc d'annoncer de faux résultats LoRA tant que le bloc C n'est pas intégré.
+Le modèle `lora` est maintenant raccordé à `generate_response` sur `main` (PR #10). Les exécutions enregistrées figurent sous `results/` : baseline 19/20 formats valides, LoRA 20/20 ; verdicts nominaux 11/15 contre 14/15 ; refus formels 0/5 contre 5/5. La notation qualitative LoRA reste une pré-annotation à valider humainement.
 
 La grille humaine existante dans `evaluation/grille_humaine_v0.1.md` est à appliquer aux 20 réponses générées. Conserver un tableau de notation par `test_id` et par `model_version`, avec les cinq critères du sujet et les commentaires. Le taux de refus formel ne suffit pas à valider un refus pertinent.
 

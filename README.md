@@ -6,7 +6,7 @@ Brainmaxxing est un projet de tuteur pédagogique fondé sur un modèle de langa
 
 Le projet est développé dans le cadre du **Mini-projet 2 — Agent conversationnel : du Transformer pré-entraîné à une application de dialogue**. Il suit une démarche expérimentale : observer un Transformer instructionnel, construire une baseline sans entraînement, préparer des dialogues, adapter le modèle avec LoRA/QLoRA, puis comparer les deux versions dans une interface Gradio.
 
-> **État du dépôt (`main`, 16 octobre 2026)** — Les fiches pédagogiques et la baseline Qwen sont intégrées et testables. L'entraînement LoRA/QLoRA, l'évaluation comparative finale et l'interface Gradio ne sont pas encore disponibles sur cette branche. Les fonctionnalités décrites comme *prévues* ci-dessous ne constituent pas une démonstration déjà opérationnelle.
+> **État de `main` au 21 octobre 2026** — Fiches pédagogiques, dataset (1 003 exemples), baseline, adaptateur QLoRA v1.1, entraînement et évaluation comparative enregistrée sont intégrés. La correction du parcours Gradio est proposée dans [PR #12](https://github.com/EmineOA/NLP-Transformers/pull/12) ; la PR #11 reste ouverte. Le notebook final `agent.ipynb`, le rapport et les validations humaines sont à finaliser.
 
 ## Fonctionnement pédagogique
 
@@ -245,11 +245,11 @@ Ces chiffres proviennent d'un **petit jeu de développement**, dont les annotati
 | Fiches et grilles pédagogiques (bloc A) | **Disponibles** : 6 concepts, 17 questions |
 | Observation du Transformer (bloc B) | **Disponible** : notebooks et implémentations de décodage |
 | Baseline pédagogique (bloc B) | **Disponible** : génération, prompts, parsing, historique et tests |
-| Dataset supervisé complet (bloc C) | **En préparation**, hors `main` ; voir [PR #5](https://github.com/EmineOA/NLP-Transformers/pull/5) |
-| Entraînement et adaptateur LoRA/QLoRA (bloc C) | **Présents sur la branche** [`bloc-c-entrainement`](https://github.com/EmineOA/NLP-Transformers/tree/bloc-c-entrainement), pas encore intégrés à `main` ; adaptateur sur [Hugging Face](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.0) |
-| Banc d'évaluation commun (bloc D) | **Présent sur la branche** [`evaluation`](https://github.com/EmineOA/NLP-Transformers/tree/evaluation/evaluation), pas encore intégré à `main` |
-| Interface Gradio / parcours complet (bloc E) | **Non intégrés** sur `main` |
-| Notebook final `agent.ipynb`, rapport, adaptateur (bloc F) | **Non disponibles** sur `main` |
+| Dataset supervisé complet (bloc C) | **Intégré** : 1 003 exemples, split 649/177/177 par question entière ; audit humain final non encore démontré |
+| Entraînement et adaptateur LoRA/QLoRA (bloc C) | **Intégrés** (PR #10) : run v1.1, courbes train/val, [adaptateur public](https://huggingface.co/MonsieurNikko/brainmaxing-qlora-v1.1) |
+| Banc d'évaluation commun (bloc D) | **Intégré** : 20 requêtes, 17 scénarios, scores baseline/LoRA ; notes qualitatives LoRA à valider humainement |
+| Interface Gradio / parcours complet (bloc E) | [PR #11](https://github.com/EmineOA/NLP-Transformers/pull/11) ouverte ; corrections A/B/C/E proposées en [PR #12](https://github.com/EmineOA/NLP-Transformers/pull/12) |
+| Notebook final `agent.ipynb` et rapport (bloc F) | **À assembler** ; l'adaptateur est disponible séparément via Hugging Face |
 
 Le projet est organisé en **trois sprints** : MVP de bout en bout, passage à l'échelle (corpus et entraînement), puis évaluation et finalisation. Le détail des user stories, dépendances, critères d'acceptation et livrables figure dans [`backlog.md`](backlog.md).
 

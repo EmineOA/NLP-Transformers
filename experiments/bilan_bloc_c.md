@@ -146,9 +146,9 @@ result = generate_response(messages, "monty-hall", "monty-hall_q1", model_versio
 ## 7. Reste à faire
 
 - Mesurer la cohérence entre le verdict et le feedback (cas 4 de la section 4).
-- Décider avec Emine (bloc B) qui construit le message élève au format d'entraînement (blocs de la section 1).
-- Faire relire la branche `bloc-c-entrainement` par une autre personne, puis la fusionner sur `main`.
-- Brancher le LoRA dans Gradio (T7.1) et dans l'évaluation du bloc D.
+- Harmonisation du format élève proposée dans la PR #12 : sérialiseur partagé entre export et Gradio, à relire avec B et E.
+- Intégration à `main` effectuée via PR #10 ; vérifier le fonctionnement dans le notebook académique final.
+- L'évaluation du bloc D sur LoRA est enregistrée ; vérifier l'interface Gradio sur GPU réel après fusion de la PR d'intégration.
 
 ## Fichiers
 
