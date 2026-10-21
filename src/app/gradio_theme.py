@@ -123,6 +123,80 @@ CUSTOM_CSS = """
 .bm-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
   margin: 20px 4px 0; color: #8f9db8; font-size: .77rem; }
 
+
+/* Les blocs natifs de Gradio peuvent reprendre des surfaces du thème clair.
+   Ces règles évitent les textes clairs sur des fonds blancs dans nos panneaux. */
+.gradio-container {
+  color-scheme: dark;
+}
+.gradio-container .bm-panel {
+  color: var(--bm-text);
+  color-scheme: dark;
+}
+.gradio-container .bm-panel .bm-side-title,
+.gradio-container .bm-panel .bm-side-intro,
+.gradio-container .bm-panel .bm-main-title,
+.gradio-container .bm-panel .bm-main-subtitle {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.gradio-container .bm-panel .bm-side-title *,
+.gradio-container .bm-panel .bm-main-title * {
+  color: #f1f5ff !important;
+}
+.gradio-container .bm-panel .bm-side-intro *,
+.gradio-container .bm-panel .bm-main-subtitle * {
+  color: #acbcda !important;
+}
+.gradio-container .bm-panel .bm-guide,
+.gradio-container .bm-panel .bm-guide-row {
+  background: transparent !important;
+  color: #eaf0ff !important;
+}
+.gradio-container .bm-panel .bm-progress-card {
+  background: linear-gradient(105deg, #26284f, #143042) !important;
+  border: 1px solid #405078 !important;
+  color: #edf3ff !important;
+}
+.gradio-container .bm-panel .bm-progress-title {
+  color: #f4f7ff !important;
+}
+.gradio-container .bm-panel .bm-progress-meta {
+  color: #bfcee7 !important;
+}
+.gradio-container .bm-panel input,
+.gradio-container .bm-panel textarea,
+.gradio-container .bm-panel select {
+  color: #edf3ff !important;
+  caret-color: #edf3ff;
+  background-color: #0c182b !important;
+  border-color: #324361 !important;
+}
+.gradio-container .bm-panel input::placeholder,
+.gradio-container .bm-panel textarea::placeholder {
+  color: #a8b8d3 !important;
+  opacity: 1;
+}
+.gradio-container .bm-panel .bm-chat {
+  background: #0c182b !important;
+  color: #eaf0ff !important;
+  border: 1px solid #30415e !important;
+}
+.gradio-container .bm-panel :is(.block-label, .block-title, label) {
+  color: #e8eeff !important;
+}
+.gradio-container .bm-panel .info,
+.gradio-container .bm-panel .wrap .info {
+  color: #b2c0dc !important;
+}
+.gradio-container .bm-panel button:focus-visible,
+.gradio-container .bm-panel input:focus-visible,
+.gradio-container .bm-panel textarea:focus-visible {
+  outline: 2px solid #b1a9ff !important;
+  outline-offset: 2px;
+}
+
 @media (max-width: 900px) {
   .gradio-container { padding: 12px 13px 20px !important; }
   .bm-hero { padding: 24px 23px; border-radius: 19px; }
@@ -137,7 +211,7 @@ CUSTOM_CSS = """
 
 
 def make_theme(gr):
-    """Crée la palette sombre, sans importer Gradio lors des tests métier."""
+    """Applique des surfaces sombres cohérentes, en modes clair et sombre."""
     return gr.themes.Soft(
         primary_hue="indigo",
         secondary_hue="emerald",
@@ -145,15 +219,61 @@ def make_theme(gr):
         radius_size="lg",
     ).set(
         body_background_fill="#0b1120",
+        body_background_fill_dark="#0b1120",
         body_text_color="#eef3ff",
+        body_text_color_dark="#eef3ff",
+        body_text_color_subdued="#a8b8d3",
+        body_text_color_subdued_dark="#a8b8d3",
         background_fill_primary="#121d32",
+        background_fill_primary_dark="#121d32",
         background_fill_secondary="#1a2740",
+        background_fill_secondary_dark="#1a2740",
         block_background_fill="#111b2f",
+        block_background_fill_dark="#111b2f",
         block_border_color="#293852",
-        block_label_text_color="#cbd6e9",
+        block_border_color_dark="#293852",
+        block_label_background_fill="#202e4b",
+        block_label_background_fill_dark="#202e4b",
+        block_label_text_color="#e8eeff",
+        block_label_text_color_dark="#e8eeff",
+        block_title_background_fill="#111b2f",
+        block_title_background_fill_dark="#111b2f",
+        block_title_text_color="#eef3ff",
+        block_title_text_color_dark="#eef3ff",
+        block_info_text_color="#aebeda",
+        block_info_text_color_dark="#aebeda",
         input_background_fill="#0c182b",
+        input_background_fill_dark="#0c182b",
+        input_background_fill_focus="#10223b",
+        input_background_fill_focus_dark="#10223b",
         input_border_color="#324361",
+        input_border_color_dark="#324361",
+        input_border_color_focus="#9288ff",
+        input_border_color_focus_dark="#9288ff",
+        panel_background_fill="#111b2f",
+        panel_background_fill_dark="#111b2f",
+        panel_border_color="#293852",
+        panel_border_color_dark="#293852",
+        checkbox_label_background_fill="#1a2944",
+        checkbox_label_background_fill_dark="#1a2944",
+        checkbox_label_background_fill_selected="#5b50bd",
+        checkbox_label_background_fill_selected_dark="#5b50bd",
+        checkbox_label_text_color="#ebf0ff",
+        checkbox_label_text_color_dark="#ebf0ff",
+        checkbox_label_text_color_selected="#ffffff",
+        checkbox_label_text_color_selected_dark="#ffffff",
         button_primary_background_fill="#6456ed",
+        button_primary_background_fill_dark="#6456ed",
         button_primary_background_fill_hover="#776aff",
+        button_primary_background_fill_hover_dark="#776aff",
         button_primary_text_color="#ffffff",
+        button_primary_text_color_dark="#ffffff",
+        button_secondary_background_fill="#24344f",
+        button_secondary_background_fill_dark="#24344f",
+        button_secondary_background_fill_hover="#314366",
+        button_secondary_background_fill_hover_dark="#314366",
+        button_secondary_text_color="#eef3ff",
+        button_secondary_text_color_dark="#eef3ff",
+        accordion_text_color="#e5edff",
+        accordion_text_color_dark="#e5edff",
     )
