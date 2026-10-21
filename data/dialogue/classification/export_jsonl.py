@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from src.llm.prompts import build_pedagogical_prompt
 from src.agents.concepts import load_concept, load_question
+from src.agents.pedagogical_context import build_student_message
 
 TAGS = {"PARFAIT": "[VERDICT: PARFAIT]", "PARTIEL": "[VERDICT: PARTIEL]",
         "INCORRECT": "[VERDICT: INCORRECT]", "HORS_PERIMETRE": "[HORS_PERIMETRE]"}
@@ -32,15 +33,14 @@ def build_messages(row: dict, concept: dict, question: dict, prompt_version: str
     attempt = int(row["essai_question"])
     if attempt not in (1, 2, 3):
         raise ValueError("L'essai doit être 1, 2 ou 3.")
-    context = []
-    if row["historique"]:
-        context.append("HISTORIQUE RÉSUMÉ (contexte, pas la réponse à évaluer) :\n" + row["historique"])
-    if attempt > 1:
-        context.append("INDICES DÉJÀ FOURNIS (selon le numéro d'essai) :\n" + "\n".join(question["indices"][:attempt - 1]))
-    context.append("RÉPONSE ACTUELLE À ÉVALUER :\n" + row["reponse_utilisateur"])
+    student_message = build_student_message(
+        row["reponse_utilisateur"],
+        history=row["historique"],
+        hints_seen=question["indices"][:attempt - 1],
+    )
     return [
         {"role": "system", "content": build_pedagogical_prompt(concept, question, version=prompt_version)},
-        {"role": "user", "content": "\n\n".join(context)},
+        {"role": "user", "content": student_message},
         {"role": "assistant", "content": TAGS[row["label"]] + "\n" + row["feedback"]},
     ]
 
