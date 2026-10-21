@@ -78,7 +78,7 @@ LOGO_HTML = (
 
 HEADER_HTML = (
     LOGO_HTML
-    + '<div class="bm-cover"><p>Become a smart guy</p></div>'
+    + '<div class="bm-cover"><p>Become the smartest guy in the room</p></div>'
     + f'<span class="bm-page-icon bm-emoji" aria-hidden="true">🧠{BOLT_SVG}</span>'
     + '<h1 class="bm-title">Choisis une histoire</h1>'
 )
@@ -148,6 +148,34 @@ SKELETON_HTML = """
 
 HEAD_HTML = (
     SKELETON_HTML +
+    """<script>
+    (() => {
+      // Un seul minuteur, même si Gradio recharge l'en-tête.
+      clearTimeout(window.bmCardHopTimer);
+      function scheduleHop() {
+        window.bmCardHopTimer = setTimeout(hop, 4000 + Math.random() * 5000);
+      }
+      function hop() {
+        // Ne pas déplacer une carte pendant que l'utilisateur la cible.
+        const cards = [...document.querySelectorAll('#bm-home .bm-card')].filter(card => {
+          const rect = card.getBoundingClientRect();
+          return card.getClientRects().length && rect.bottom > 0 && rect.top < innerHeight
+            && !card.matches(':hover, :focus-within');
+        });
+        if (!document.hidden && cards.length && !document.getElementById('bm-skeleton')) {
+          const card = cards[Math.floor(Math.random() * cards.length)];
+          // « translate » conserve le survol et le liseré animé existants.
+          card.animate([
+            {translate: '0 0'}, {translate: '0 -8px', offset: 0.4},
+            {translate: '0 0', offset: 0.8}, {translate: '0 -2px', offset: 0.9},
+            {translate: '0 0'}
+          ], {id: 'bm-card-hop', duration: 650, easing: 'ease-in-out'});
+        }
+        scheduleHop();
+      }
+      scheduleHop();
+    })();
+    </script>"""
     '<link rel="preconnect" href="https://fonts.googleapis.com">'
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
     '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:'
@@ -406,7 +434,13 @@ footer { display:none !important; }
 #bm-answer textarea::placeholder { color:var(--muted) !important; opacity:1; }
 #bm-send { width:34px !important; height:34px; min-width:0 !important; flex:none !important; padding:0 !important;
   border-radius:50% !important; border:0 !important; background:var(--primary-ink) !important; color:#fff !important;
-  font-size:17px !important; font-weight:700 !important; box-shadow:none !important; transition:transform .1s; }
+  font-size:0 !important; box-shadow:none !important; transition:transform .1s;
+  position:relative; }
+/* Flèche pleine : le texte du bouton reste disponible pour l'accessibilité. */
+#bm-send::before { content:""; position:absolute; inset:0; margin:auto; width:20px; height:20px;
+  background:#fff; pointer-events:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 20V10H5a1 1 0 0 1-.7-1.7l7-7a1 1 0 0 1 1.4 0l7 7A1 1 0 0 1 19 10h-5v10a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1Z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 20V10H5a1 1 0 0 1-.7-1.7l7-7a1 1 0 0 1 1.4 0l7 7A1 1 0 0 1 19 10h-5v10a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1Z'/%3E%3C/svg%3E") center/contain no-repeat; }
 #bm-send:active { transform:scale(.92); }
 
 @media (max-width: 900px) {
