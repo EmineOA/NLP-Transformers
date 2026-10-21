@@ -1,0 +1,3 @@
+# Interface du tuteur Brainmaxxing.
+# Gradio 5 et 6 : l'application adapte l'API du Chatbot et l'emplacement du thème.
+gradio>=5.20,<7
