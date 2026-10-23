@@ -1,3 +1,5 @@
+Présentation : https://drive.google.com/file/d/1rPNAYB0oEMhyb4SOYrpxJ9ZqW9GoNq8r/view
+
 # Brainmaxxing
 
 **Agent conversationnel d'apprentissage actif — Mini-projet NLP & Transformers**
